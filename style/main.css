@@ -1,78 +1,108 @@
-html {
-    position: relative;
-    min-height: 100%;
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 body {
-    margin: 0 0 100px;
-    background-image: url("../assets/JustChattingPicture.png");
     font-family: "Haettenschweiler";
+    background-color: #BAADC6;
 }
 
-#go {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#clickHere {
-    position: absolute;
-    color: white;
-    font-size: 500px;
-    text-shadow: 1px 1px 20px #DE9F38;
-    cursor: pointer;
-}
-
-#main-content {
-    top: 0%;
-    position: absolute;
-    display: none;
-    text-align: center;
-    left: 40%;
-    transform: translateX(-40%);
-}
-
-main {
-    margin-top: 10%;
-    width: 1300px;
-    height: 600px;
-    display: center;
-}
-
-nav ul li {
-    display: inline-block;
-    font-size: 70px;
-    text-decoration: none;
-    margin: 20px 20px 20px;
-}
-
-nav ul {
-    display: flex;
-    justify-content: center;
+ul {
+    /* No bullet points */
+    list-style-type: none;
 }
 
 a {
-    color: whitesmoke;
-    transition-duration: 200ms;
+    /* Remove underscores from urls*/
     text-decoration: none;
 }
 
-a:hover {
-    transition-duration: 200ms;
+h1,
+h2 {
+    font-weight: 300;
+    line-height: 1.2;
+    margin: 10px 0;
 }
 
-footer {
-    position: absolute;
-    left: 0;
-    height: 10px;
+.logo {
+    font-size: 50px;
+}
+
+p {
+    margin: 10px 0;
+}
+
+
+/* So the images don't bust out of their container */
+
+img {
     width: 100%;
-    right: 0;
 }
 
-footer ul li {
-    display: inline-block;
-    font-size: 30px;
-    text-decoration: none;
-    margin: 20px 20px 20px;
+.navbar {
+    background-color: #6e006e;
+    color: whitesmoke;
+    height: 100px;
+}
+
+.navbar ul {
+    display: flex;
+}
+
+.navbar a {
+    color: whitesmoke;
+    padding: 10px;
+    margin: 0 5px;
+    font-size: 1.5rem;
+}
+
+.navbar .flex {
+    justify-content: space-between;
+}
+
+
+/* Container for the heading, so it lookse more handy. */
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    overflow: auto;
+    padding: 0 40px;
+}
+
+.flex {
+    display: flex;
+    /* Retains to the main */
+    justify-content: center;
+    /* Retains to the cross */
+    align-items: center;
+    height: 100%;
+}
+
+
+/* Twitch */
+
+#watchMe {
+    transition-duration: 500ms;
+    position: fixed;
+    width: 100px;
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
+    font-family: "Haettenschweiler";
+    font-size: 20px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 20%;
+}
+
+#watchMe:hover {
+    transition-duration: 500ms;
+    background-color: #f953f9;
+}
+
+#watchMe a {
+    color: #DE9F38;
 }

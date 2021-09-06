@@ -11,32 +11,28 @@
 
 <body>
 
-    <div id="go">
-        <h1 id="clickHere">PENTA</h1>
-    </div>
+    <button id="watchMe"><a href="twitch.tv/fps_penta">Jetzt zugucken!</a></button>
 
-    <div id="main-content">
-        <header>
+    <!-- The navbar -->
+    <div class="navbar">
+        <div class="container flex">
+            <h1 class="logo">Penta</h1>
             <nav>
                 <ul>
-                    <li><a href="sub-sites/Schedule.html">Schedule</a></li>
-                    <li><a href="">Specs</a></li>
+                    <li>
+                        <a href="Schedule">Schedule</a>
+                        <a href="Specs">Specs</a>
+                    </li>
                 </ul>
             </nav>
-        </header>
-
-        <main>
-            <div id="twitch-embed"></div>
-        </main>
-
+        </div>
     </div>
 
-    <footer>
-        <ul>
-            <li><a href="sub-sites/Schedule.html">Impressum</a></li>
-            <li><a href="">Contact</a></li>
-        </ul>
-    </footer>
+    <!-- Twitch -->
+    <section class="twitch">
+        <div id="twitch-embed"></div>
+    </section>
+
 </body>
 
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
@@ -44,20 +40,13 @@
 
 <script type="text/javascript">
     new Twitch.Embed("twitch-embed", {
-        width: 1500,
+        width: 1920,
         height: 600,
         channel: "fps_penta",
     });
 </script>
 
 <script>
-    $(document).ready(() => {
-        $("#clickHere").click(() => {
-            $("#clickHere").fadeOut(1000, () => {
-                $("#main-content").fadeIn(500);
-            })
-        })
-    });
 </script>
 
 </html>
