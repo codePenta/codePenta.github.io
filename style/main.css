@@ -31,7 +31,7 @@ h2 {
 }
 
 .logo {
-    font-size: 50px;
+    font-size: 100px;
 }
 
 p {
@@ -48,7 +48,7 @@ img {
 .navbar {
     background-color: #231B40;
     color: var(--accentColor);
-    height: 100px;
+    height: 140px;
 }
 
 .navbar ul {
@@ -61,6 +61,7 @@ img {
     margin: 0 5px;
     font-size: 1.5rem;
     transition-duration: 500ms;
+    font-size: 50px;
 }
 
 .navbar a:hover {
@@ -76,7 +77,7 @@ img {
 /* Container for the heading, so it looks more handy. */
 
 .container {
-    max-width: 1100px;
+    max-width: 1500px;
     margin: 0 auto;
     overflow: auto;
     padding: 0 40px;
@@ -91,20 +92,20 @@ img {
     height: 100%;
 }
 
-
-/* Twitch */
-
-/* Scroll down arrows (reserved*/
-
 /* Socials */
 .socials-area {
-    background: red;
+    background: #2c2643;
+}
+
+.socials-area > h1 {
+    text-align: center;
+    font-size: 80px;
+    color: var(--accentColor);
 }
 
 .socials {
-    padding: 0;
     margin: 0 auto;
-    max-width: 1100px;
+    max-width: 1500px;
 }
 
 .socials > ul {
@@ -115,6 +116,6 @@ img {
 
 .socials > ul > li {
     list-style-type: none;
-    margin: 20px 80px;
+    margin: 100px;
     width: 15%;
 }
