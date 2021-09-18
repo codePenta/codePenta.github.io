@@ -4,8 +4,12 @@
     margin: 0;
 }
 
+:root {
+    --accentColor: #DE9F38;
+}
+
 body {
-    font-family: "Haettenschweiler";
+    font-family: "Haettenschweiler", sans-serif;
     background-color: #BAADC6;
 }
 
@@ -42,8 +46,8 @@ img {
 }
 
 .navbar {
-    background-color: #6e006e;
-    color: whitesmoke;
+    background-color: #231B40;
+    color: var(--accentColor);
     height: 100px;
 }
 
@@ -52,10 +56,16 @@ img {
 }
 
 .navbar a {
-    color: whitesmoke;
+    color: var(--accentColor);
     padding: 10px;
     margin: 0 5px;
     font-size: 1.5rem;
+    transition-duration: 500ms;
+}
+
+.navbar a:hover {
+    color: #dec396;
+    transition-duration: 500ms;
 }
 
 .navbar .flex {
@@ -63,7 +73,7 @@ img {
 }
 
 
-/* Container for the heading, so it lookse more handy. */
+/* Container for the heading, so it looks more handy. */
 
 .container {
     max-width: 1100px;
@@ -75,7 +85,7 @@ img {
 .flex {
     display: flex;
     /* Retains to the main */
-    justify-content: center;
+    justify-content: space-around;
     /* Retains to the cross */
     align-items: center;
     height: 100%;
@@ -84,25 +94,27 @@ img {
 
 /* Twitch */
 
-#watchMe {
-    transition-duration: 500ms;
-    position: fixed;
-    width: 100px;
-    height: 50px;
-    bottom: 20px;
-    right: 20px;
-    font-family: "Haettenschweiler";
-    font-size: 20px;
-    border-style: solid;
-    border-color: black;
-    border-radius: 20%;
+/* Scroll down arrows (reserved*/
+
+/* Socials */
+.socials-area {
+    background: red;
 }
 
-#watchMe:hover {
-    transition-duration: 500ms;
-    background-color: #f953f9;
+.socials {
+    padding: 0;
+    margin: 0 auto;
+    max-width: 1100px;
 }
 
-#watchMe a {
-    color: #DE9F38;
+.socials > ul {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.socials > ul > li {
+    list-style-type: none;
+    margin: 20px 80px;
+    width: 15%;
 }
