@@ -93,7 +93,8 @@ img {
 
 /* Twitch */
 #twitch-embed {
-    box-shadow: 2px 2px 20px #f953f9;
+    border-top: 1px solid #FBF8FF;
+    box-shadow: 2px 2px 10px 5px #8E3FD9;
     background-color: #2c2643;
 }
 
