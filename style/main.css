@@ -5,8 +5,9 @@
 }
 
 :root {
-    --accentColor: #DE9F38;
+    --heading_color: #FBF8FF;
 }
+
 
 body {
     font-family: "Haettenschweiler", sans-serif;
@@ -36,6 +37,7 @@ h2 {
 
 p {
     margin: 10px 0;
+    font-size: 35px;
 }
 
 
@@ -47,7 +49,7 @@ img {
 
 .navbar {
     background-color: #231B40;
-    color: var(--accentColor);
+    color: #FBF8FF;
     height: 140px;
 }
 
@@ -56,7 +58,7 @@ img {
 }
 
 .navbar a {
-    color: var(--accentColor);
+    color: var(--heading_color);
     padding: 10px;
     margin: 0 5px;
     transition-duration: 500ms;
@@ -109,8 +111,8 @@ img {
     text-align: center;
     font-size: 80px;
     margin: 0;
-    padding: 0px;
-    color: var(--accentColor);
+    padding: 0;
+    color: var(--heading_color);
 }
 
 .socials {
@@ -125,10 +127,49 @@ img {
     flex-wrap: wrap;
 }
 
-.socials > ul > li {
+.socials > ul > li > a {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
     list-style-type: none;
     margin: 100px;
-    width: 15%;
+    background: #231B40;
+    padding: 55px;
+    width: 500px;
+    box-shadow: 2px 2px 10px 5px #8E3FD9;
+    border: 1px solid #FBF8FF;
+    transition-duration: 500ms;
+}
+
+.socials > ul > li > a:hover {
+    transition-duration: 500ms;
+    background: var(--heading_color);
+}
+
+.socials > ul > li > a > .details {
+    color: var(--heading_color);
+}
+
+.socials > ul > li > a:hover > .details {
+    transition-duration: 500ms;
+    color: #472773;
+}
+
+.socials > ul > li > a:hover .amount-content {
+    transition-duration: 500ms;
+    color: black;
+}
+
+.socials > .details {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.amount-content {
+    color: #DE9F38;
 }
 
 /* Footer */
@@ -150,10 +191,15 @@ footer > .container > section > .mail {
 
 footer > .container > section > .mail > p {
     font-size: 50px;
-    color: #DE9F38;
+    color: var(--heading_color);;
 }
 
 footer > .container > section > .mail > span {
+    font-size: 30px;
+    color: var(--heading_color);
+}
+
+footer > .container > section > .mail > span > a {
     font-size: 30px;
     color: #DE9F38;
 }

@@ -39,12 +39,22 @@
     <h1>Socials</h1>
     <section class="socials">
         <ul>
-            <li><a href="https://www.twitter.com/pentaforlife">
-                <img alt="" src="assets/icons8-twitter.svg">
-            </a></li>
-            <li><a href="https://www.instagram.com/pentaforlife">
-                <img alt="" src="assets/icons8-instagram.svg">
-            </a></li>
+            <li>
+                <a href="https://www.twitter.com/pentaforlife" target="_blank">
+                    <img alt="" src="assets/icons8-twitter.svg">
+                    <section class="details">
+                        <p class="amount">Followers: <br><span class="amount-content">32</span></p>
+                    </section>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/pentaforlife" target="_blank">
+                    <img alt="" src="assets/icons8-instagram.svg">
+                    <section class="details">
+                        <p class="amount">Followers: <br><span class="amount-content">50</span></p>
+                    </section>
+                </a>
+            </li>
         </ul>
     </section>
 </div>
@@ -57,7 +67,7 @@
                     Contact
                 </p>
                 <span>
-                E-Mail: Noch nicht eingestellt
+                E-Mail: <a href="">COMING SOON</a>
                 </span>
             </div>
         </section>
@@ -77,7 +87,7 @@
         channel: "fps_penta",
     });
 
-    $(document).ready(() => {
+    $(document).ready(async () => {
 
         let originalTextSchedule = "Schedule"
         let originalTextSpecs = "Specs"
@@ -91,7 +101,9 @@
             $('#specs').text("COMING SOON")
         }, () =>
             $('#specs').text(originalTextSpecs))
+
     })
+
 
 </script>
 
