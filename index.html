@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/main.css">
-    <title>Document</title>
+    <link href="assets/pentaRoundLogoShadow.png" rel="icon">
+    <title>Penta | Video Producer and Developer</title>
 </head>
 
 <body>
@@ -18,8 +19,8 @@
         <nav>
             <ul>
                 <li>
-                    <a href="subsites/schedule.html">Schedule</a>
-                    <a href="subsites/specs.html">Specs</a>
+                    <a id="schedule" <!--href="subsites/schedule.html" -->Schedule</a>
+                    <a id="specs" <!--href="subsites/specs.html"-->Specs</a>
                 </li>
             </ul>
         </nav>
@@ -75,17 +76,23 @@
         height: 725,
         channel: "fps_penta",
     });
+
     $(document).ready(() => {
-        $('.round').click(function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            $('.arrow').toggleClass('bounceAlpha');
-        });
+
+        let originalTextSchedule = "Schedule"
+        let originalTextSpecs = "Specs"
+
+        $('#schedule').hover(() => {
+            $('#schedule').text("COMING SOON")
+        }, () =>
+            $('#schedule').text(originalTextSchedule))
+
+        $('#specs').hover(() => {
+            $('#specs').text("COMING SOON")
+        }, () =>
+            $('#specs').text(originalTextSpecs))
     })
 
-</script>
-
-<script>
 </script>
 
 </html>

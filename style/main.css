@@ -42,7 +42,7 @@ p {
 /* So the images don't bust out of their container */
 
 img {
-    width: 100%;
+    width: 50%;
 }
 
 .navbar {
@@ -66,6 +66,7 @@ img {
 .navbar a:hover {
     color: #dec396;
     transition-duration: 500ms;
+    text-decoration: line-through;
 }
 
 .navbar .flex {
