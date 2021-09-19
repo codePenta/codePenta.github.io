@@ -223,3 +223,72 @@ section > span > a:hover {
     transition-duration: 500ms;
     color: #dec396;
 }
+
+@media screen and (max-width: 400px) {
+    .logo {
+        font-size: 40px;
+    }
+
+    .navbar {
+        height: 90px;
+    }
+
+    .navbar ul {
+        display: flex;
+    }
+
+    .navbar a {
+        color: var(--heading_color);
+        padding: 10px;
+        margin: 0 5px;
+        transition-duration: 500ms;
+        font-size: 20px;
+    }
+
+    .navbar a:hover {
+        color: #dec396;
+        transition-duration: 500ms;
+        text-decoration: line-through;
+    }
+
+    .navbar .flex {
+        justify-content: space-between;
+    }
+
+    .socials-area {
+        padding-bottom: 40px;
+    }
+
+    /* Socials */
+    .socials-area > h1 {
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+
+    .socials > ul > li > a {
+        margin: 20px;
+        padding: 20px;
+        width: 300px;
+    }
+
+    .socials > ul > li > a > .details > p {
+        font-size: 25px;
+    }
+
+    footer > .container > section > .mail > p {
+        font-size: 40px;
+    }
+
+    footer > .container > section > .mail > span {
+        font-size: 20px;
+    }
+
+    footer > .container > section > .mail > span {
+        font-size: 25px;
+    }
+
+    footer > .container > section > .mail > span > a {
+        font-size: 25px;
+    }
+
+}
