@@ -59,7 +59,6 @@ img {
     color: var(--accentColor);
     padding: 10px;
     margin: 0 5px;
-    font-size: 1.5rem;
     transition-duration: 500ms;
     font-size: 50px;
 }
@@ -92,6 +91,13 @@ img {
     height: 100%;
 }
 
+/* Twitch */
+#twitch-embed {
+    box-shadow: 2px 2px 20px #f953f9;
+    background-color: #2c2643;
+}
+
+
 /* Socials */
 .socials-area {
     background: #2c2643;
@@ -100,11 +106,14 @@ img {
 .socials-area > h1 {
     text-align: center;
     font-size: 80px;
+    margin: 0;
+    padding: 0px;
     color: var(--accentColor);
 }
 
 .socials {
     margin: 0 auto;
+    left: 50%;
     max-width: 1500px;
 }
 
@@ -118,4 +127,50 @@ img {
     list-style-type: none;
     margin: 100px;
     width: 15%;
+}
+
+/* Footer */
+
+footer {
+    background: #231B40;
+}
+
+footer > .container > section {
+    display: flex;
+    flex-direction: row;
+    max-width: 1500px;
+}
+
+footer > .container > section > div {
+    margin: 40px;
+}
+
+footer > .container > section > div > p {
+    font-size: 50px;
+    color: #DE9F38;
+}
+
+footer > .container > section > div > span {
+    font-size: 30px;
+    color: #DE9F38;
+}
+
+
+section > span {
+    font-size: 30px;
+    color: #DE9F38;
+}
+
+section > img {
+    width: 50%;
+}
+
+section > span > a {
+    color: #DE9F38;
+    transition-duration: 500ms;
+}
+
+section > span > a:hover {
+    transition-duration: 500ms;
+    color: #dec396;
 }
