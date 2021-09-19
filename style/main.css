@@ -139,18 +139,19 @@ footer > .container > section {
     display: flex;
     flex-direction: row;
     max-width: 1500px;
+    flex-wrap: wrap;
 }
 
-footer > .container > section > div {
+footer > .container > section > .mail {
     margin: 40px;
 }
 
-footer > .container > section > div > p {
+footer > .container > section > .mail > p {
     font-size: 50px;
     color: #DE9F38;
 }
 
-footer > .container > section > div > span {
+footer > .container > section > .mail > span {
     font-size: 30px;
     color: #DE9F38;
 }
