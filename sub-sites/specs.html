@@ -12,6 +12,12 @@
 
 <body>
 
+<div id="alert">
+    <h1>
+        IM AUFBAU
+    </h1>
+</div>
+
 <!-- The navbar -->
 <div class="navbar">
     <div class="container flex">
@@ -19,7 +25,7 @@
         <nav>
             <ul>
                 <li>
-                    <a href="faq.html" id="faq">FAQ</a>
+                    <a class="faq" href="">FAQ</a>
                 </li>
             </ul>
         </nav>
@@ -92,7 +98,14 @@
 <script src="https://embed.twitch.tv/embed/v1.js"></script>
 
 <script type="text/javascript">
-
+    $(document).ready(() => {
+        $('#alert').hide()
+        $('.faq').mouseover(() => {
+            $('#alert').slideDown("slow")
+                .delay(2000)
+                .slideUp("slow")
+        })
+    })
 </script>
 
 </html>
