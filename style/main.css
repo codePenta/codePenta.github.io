@@ -103,14 +103,6 @@ img {
     height: 100%;
 }
 
-/* Twitch */
-#twitch-embed {
-    border-top: 1px solid #FBF8FF;
-    box-shadow: 2px 2px 10px 5px #8E3FD9;
-    background-color: #2c2643;
-}
-
-
 /* Socials */
 .socials-area {
     background: url("../assets/alt_background_nopentagons.png");
