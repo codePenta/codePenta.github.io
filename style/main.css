@@ -4,16 +4,6 @@
     margin: 0;
 }
 
-#alert {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#alert > h1 {
-    position: relative;
-}
-
 :root {
     --heading_color: #FBF8FF;
 }
@@ -101,6 +91,12 @@ img {
     /* Retains to the cross */
     align-items: center;
     height: 100%;
+}
+
+/* Clips */
+iframe {
+    width: 100%;
+    height: 550px;
 }
 
 /* Socials */
