@@ -93,10 +93,12 @@ img {
     height: 100%;
 }
 
+
 iframe {
     width: 100%;
     height: 570px;
     position: relative;
+    overflow: hidden;
 }
 
 /* Socials */
