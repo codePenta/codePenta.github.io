@@ -110,10 +110,10 @@ img {
 
 
 #twitch-embed {
-    width: 100%;
     height: 790px;
     position: relative;
     overflow: hidden;
+    filter: drop-shadow(1px 1px 10px #8E3FD9);
 }
 
 /* Socials */
@@ -127,6 +127,7 @@ img {
     font-size: 80px;
     margin: 0;
     padding: 0;
+    transform: translateY(35px);
     color: var(--heading_color);
 }
 
@@ -258,7 +259,7 @@ section > span > a:hover {
         padding: 10px;
         margin: 0 5px;
         transition-duration: 500ms;
-        font-size: 20px;
+        font-size: 23px;
     }
 
     .navbar a:hover {
@@ -271,6 +272,12 @@ section > span > a:hover {
         justify-content: space-between;
     }
 
+    #twitch-embed {
+        margin: 0 auto;
+        width: 500px;
+        height: 600px;
+    }
+
     .socials-area {
         padding-bottom: 40px;
     }
@@ -279,6 +286,7 @@ section > span > a:hover {
     .socials-area > h1 {
         font-size: 40px;
         margin-bottom: 20px;
+        transform: translateY(15px);
     }
 
     .socials > ul > li > a {

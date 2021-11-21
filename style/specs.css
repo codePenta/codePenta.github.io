@@ -101,7 +101,7 @@ img {
 .specs-area {
     background: url("../assets/alt_background_nopentagons.png");
     background-size: cover;
-    box-shadow: 2px 2px 10px 5px #8E3FD9;
+    filter: drop-shadow(1px 1px 10px #8E3FD9);
 
 }
 
@@ -109,7 +109,7 @@ img {
     text-align: center;
     font-size: 80px;
     margin: 0;
-    padding: 0;
+    padding-top: 20px;
     color: var(--heading_color);
 }
 
@@ -132,7 +132,7 @@ img {
     clip-path: polygon(15% 0%, 85% 0%, 100% 30%, 100% 70%, 85% 100%, 15% 100%, 0% 70%, 0% 30%);
 }
 
-.games {
+.specs {
     margin: 0 auto;
     left: 50%;
     max-width: 1500px;
@@ -244,7 +244,7 @@ section > span > a:hover {
 }
 
 @media screen and (max-width: 400px) {
-    .logo {
+    .navbar > .container > .logo {
         font-size: 40px;
     }
 
@@ -261,7 +261,7 @@ section > span > a:hover {
         padding: 10px;
         margin: 0 5px;
         transition-duration: 500ms;
-        font-size: 20px;
+        font-size: 23px;
     }
 
     .navbar a:hover {
@@ -284,9 +284,13 @@ section > span > a:hover {
         margin-bottom: 20px;
     }
 
+    #peripherals {
+        font-size: 40px;
+    }
+
     .specs > ul > li > a {
         margin: 20px;
-        padding: 20px;
+        padding: 10px;
         width: 300px;
     }
 

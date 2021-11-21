@@ -101,7 +101,8 @@ img {
 .games-area {
     background: url("../assets/alt_background_nopentagons.png");
     background-size: cover;
-    box-shadow: 2px 2px 10px 5px #8E3FD9;
+    filter: drop-shadow(1px 1px 10px #8E3FD9);
+
 }
 
 .games-area > h1 {
@@ -109,6 +110,7 @@ img {
     font-size: 80px;
     margin: 0;
     padding: 0;
+    transform: translateY(10px);
     color: var(--heading_color);
 }
 
@@ -164,6 +166,18 @@ img {
 .games > ul > li > a:hover {
     transition-duration: 500ms;
     background: var(--heading_color);
+}
+
+.games > ul > li > a > .extra {
+    color: #231B40;
+    display: none;
+    transition-duration: 500ms;
+}
+
+.games > ul > li > a:hover > .extra {
+    color: #472773;
+    display: block;
+    transition-duration: 500ms;
 }
 
 .games > ul > li > a > .details {
@@ -243,7 +257,7 @@ section > span > a:hover {
 }
 
 @media screen and (max-width: 400px) {
-    .logo {
+    .navbar > .container > .logo {
         font-size: 40px;
     }
 
@@ -260,7 +274,7 @@ section > span > a:hover {
         padding: 10px;
         margin: 0 5px;
         transition-duration: 500ms;
-        font-size: 20px;
+        font-size: 23px;
     }
 
     .navbar a:hover {
@@ -285,7 +299,7 @@ section > span > a:hover {
 
     .games > ul > li > a {
         margin: 20px;
-        padding: 20px;
+        padding: 0;
         width: 300px;
     }
 

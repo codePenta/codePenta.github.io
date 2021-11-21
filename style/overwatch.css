@@ -109,7 +109,7 @@ img {
     text-align: center;
     font-size: 80px;
     margin: 0;
-    padding: 0;
+    padding-top: 20px;
     color: var(--heading_color);
 }
 
@@ -300,7 +300,7 @@ section > span > a:hover {
 }
 
 @media screen and (max-width: 400px) {
-    .logo {
+    .navbar > .container > .logo {
         font-size: 40px;
     }
 
@@ -317,7 +317,7 @@ section > span > a:hover {
         padding: 10px;
         margin: 0 5px;
         transition-duration: 500ms;
-        font-size: 20px;
+        font-size: 23px;
     }
 
     .navbar a:hover {
@@ -335,9 +335,31 @@ section > span > a:hover {
     }
 
     /* Socials */
-    .faq-area > h1 {
+    .settings-area > h1 {
         font-size: 40px;
         margin-bottom: 20px;
+    }
+
+    .info > .info-header-wrapper .info-header > p {
+        margin-left: 1.2rem;
+    }
+
+    .info-header {
+        clip-path: polygon(7% 0%, 94% 0%, 100% 30%, 100% 70%, 94% 100%, 7% 100%, 0% 70%, 0% 30%);
+    }
+
+    .settings-area > .settings > #about {
+        width: 30px;
+        margin-left: 25px;
+    }
+
+    .settings-area > #game-status {
+        width: 210px;
+    }
+
+    .info-wrapper {
+        margin-left: -50px;
+        margin-right: 30px;
     }
 
     .settings > ul > li > a {
