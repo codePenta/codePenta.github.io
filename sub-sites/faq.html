@@ -15,21 +15,47 @@
 <!-- The navbar -->
 <div class="navbar">
     <div class="container flex">
-        <h1 class="logo">Penta</h1>
+        <a class="logo" href="../index.html">Penta</a>
         <nav>
             <ul>
                 <li>
                     <a class="specs" href="specs.html">Specs</a>
                 </li>
+                <li>
+                    <a class="specs" href="games.html">Games</a>
+                </li>
             </ul>
         </nav>
     </div>
 </div>
-<!-- Socials -->
+
+<!-- FAQ -->
 <div class="faq-area">
-    <h1>Specs</h1>
+    <h1>FAQ</h1>
     <section class="faq">
-        <h2>Da ich nebenbei studiere, ist noch kein fester Zeitplan für mich festzulegen</h2>
+        <img alt="" id="about" src="../assets/icons8-about.svg">
+        <ul>
+            <li>
+                <div class="info-wrapper">
+                    <div class="info">
+                        <p class="info-q">Q: Wie alt bist du ?</p>
+                        <p class="info-a">A: Ich bin <span id="age"></span> Jahre alt</p>
+                    </div>
+                    <div class="info">
+                        <p class="info-q">Q: Was machst Du beruflich ?</p>
+                        <p class="info-a">A: Ich mache meinen Bachelor in angewandter Informatik (B.Sc)</p>
+                    </div>
+                    <div class="info">
+                        <p class="info-q">Q: Welche DPI nutzt du ?</p>
+                        <p class="info-a">A: 450</p>
+                    </div>
+                    <div class="info">
+                        <p class="info-q">Q: Wo wohnst du ?</p>
+                        <p class="info-a">A: Ich wohne in Hessen</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
     </section>
 </div>
 
@@ -55,6 +81,15 @@
 <script src="https://embed.twitch.tv/embed/v1.js"></script>
 
 <script type="text/javascript">
+
+    function showAge() {
+        let age = document.getElementById('age');
+        let currentYear = new Date().getFullYear();
+
+        age.innerHTML = (currentYear - 2001).toString();
+    }
+
+    showAge();
 
 </script>
 

@@ -11,29 +11,30 @@
 </head>
 
 <body>
-
-<div id="alert">
-    <h1>
-        IM AUFBAU
-    </h1>
-</div>
-
 <!-- The navbar -->
 <div class="navbar">
     <div class="container flex">
-        <h1 class="logo">Penta</h1>
+        <a class="logo" href="../index.html">Penta</a>
         <nav>
             <ul>
                 <li>
-                    <a class="faq" href="">FAQ</a>
+                    <a class="faq" href="faq.html">FAQ</a>
+                </li>
+                <li>
+                    <a class="faq" href="games.html">Games</a>
                 </li>
             </ul>
         </nav>
     </div>
 </div>
-<!-- Socials -->
+<!-- Specs -->
 <div class="specs-area">
-    <h1>Specs</h1>
+    <h1>SPECS</h1>
+    <div id="peripherals-wrap">
+        <div id="peripherals">
+            Peripherals
+        </div>
+    </div>
     <section class="specs">
         <ul>
             <li>
@@ -97,15 +98,7 @@
         src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://embed.twitch.tv/embed/v1.js"></script>
 
-<script type="text/javascript">
-    $(document).ready(() => {
-        $('#alert').hide()
-        $('.faq').mouseover(() => {
-            $('#alert').slideDown("slow")
-                .delay(2000)
-                .slideUp("slow")
-        })
-    })
+<script>
 </script>
 
 </html>

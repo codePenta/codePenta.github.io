@@ -3,10 +3,26 @@
     padding: 0;
     margin: 0;
 }
+
 :root {
     --heading_color: #FBF8FF;
 }
 
+#wrapper {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    justify-content: center;
+    align-items: center;
+}
+
+#wrapper > #maintenance {
+    color: whitesmoke;
+}
 
 body {
     font-family: "Haettenschweiler", sans-serif;
@@ -30,7 +46,7 @@ h2 {
     margin: 10px 0;
 }
 
-.navbar > .container > .logo {
+.logo {
     font-size: 100px;
 }
 
@@ -69,11 +85,6 @@ img {
     transition-duration: 500ms;
 }
 
-.navbar > .faq:hover {
-    text-decoration: line-through;
-    transition-duration: 500ms;
-}
-
 .navbar .flex {
     justify-content: space-between;
 }
@@ -97,15 +108,21 @@ img {
     height: 100%;
 }
 
-/* Specs */
-.specs-area {
-    background: url("../assets/alt_background_nopentagons.png");
-    background-size: cover;
-    box-shadow: 2px 2px 10px 5px #8E3FD9;
 
+#twitch-embed {
+    width: 100%;
+    height: 790px;
+    position: relative;
+    overflow: hidden;
 }
 
-.specs-area > h1 {
+/* Socials */
+.socials-area {
+    background: url("../assets/alt_background_nopentagons.png");
+    background-size: cover;
+}
+
+.socials-area > h1 {
     text-align: center;
     font-size: 80px;
     margin: 0;
@@ -113,75 +130,55 @@ img {
     color: var(--heading_color);
 }
 
-#peripherals-wrap {
-    margin-top: 40px;
-    margin-bottom: 40px;
-    filter: drop-shadow(1px 1px 5px #dd9e38);
-}
-
-#peripherals {
-    font-size: 2.5rem;
-    color: white;
-    background-color: #231B40;
-    left: 50%;
-    padding: 10px;
-    max-width: 1500px;
-    width: 200px;
-    margin: 0 auto;
-    text-align: center;
-    clip-path: polygon(15% 0%, 85% 0%, 100% 30%, 100% 70%, 85% 100%, 15% 100%, 0% 70%, 0% 30%);
-}
-
-.games {
+.socials {
     margin: 0 auto;
     left: 50%;
     max-width: 1500px;
 }
 
-.specs > ul {
+.socials > ul {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
-.specs > ul > li > a {
+.socials > ul > li > a {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
     list-style-type: none;
-    margin: 50px;
+    margin: 100px;
     background: #231B40;
     padding: 55px;
     width: 500px;
-    height: auto;
-    min-height: 400px;
+    min-height: auto;
     box-shadow: 2px 2px 10px 5px #8E3FD9;
     border: 1px solid #FBF8FF;
     transition-duration: 500ms;
 }
 
-.specs > ul > li > a:hover {
+.socials > ul > li > a:hover {
     transition-duration: 500ms;
     background: var(--heading_color);
 }
 
-.specs > ul > li > a > .details {
+.socials > ul > li > a > .details {
     color: var(--heading_color);
 }
 
-.specs > ul > li > a:hover > .details {
+.socials > ul > li > a:hover > .details {
     transition-duration: 500ms;
     color: #472773;
 }
 
-.specs > ul > li > a:hover .amount-content {
+.socials > ul > li > a:hover .amount-content {
     transition-duration: 500ms;
     color: black;
 }
 
-.specs > .details {
+.socials > .details {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -274,23 +271,23 @@ section > span > a:hover {
         justify-content: space-between;
     }
 
-    .specs-area {
+    .socials-area {
         padding-bottom: 40px;
     }
 
     /* Socials */
-    .specs-area > h1 {
+    .socials-area > h1 {
         font-size: 40px;
         margin-bottom: 20px;
     }
 
-    .specs > ul > li > a {
+    .socials > ul > li > a {
         margin: 20px;
         padding: 20px;
         width: 300px;
     }
 
-    .specs > ul > li > a > .details > p {
+    .socials > ul > li > a > .details > p {
         font-size: 25px;
     }
 
