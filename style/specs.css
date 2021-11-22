@@ -113,13 +113,13 @@ img {
     color: var(--heading_color);
 }
 
-#peripherals-wrap {
+.header-wrap {
     margin-top: 40px;
     margin-bottom: 40px;
     filter: drop-shadow(1px 1px 5px #dd9e38);
 }
 
-#peripherals {
+.header {
     font-size: 2.5rem;
     color: white;
     background-color: #231B40;
@@ -270,6 +270,12 @@ section > span > a:hover {
         text-decoration: line-through;
     }
 
+    .header {
+        font-size: 25px;
+        padding: 10px;
+        width: 125px;
+    }
+
     .navbar .flex {
         justify-content: space-between;
     }
@@ -289,13 +295,15 @@ section > span > a:hover {
     }
 
     .specs > ul > li > a {
-        margin: 20px;
-        padding: 10px;
-        width: 300px;
+        margin: 25px;
+        padding: 5px;
+        width: 100px;
+        min-height: 130px;
     }
 
     .specs > ul > li > a > .details > p {
-        font-size: 25px;
+        font-size: 15px;
+        text-align: center;
     }
 
     footer > .container > section > .mail > p {
