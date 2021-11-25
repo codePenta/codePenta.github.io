@@ -12,6 +12,15 @@
 
 <body>
 
+<nav>
+    <a class="menu__icon mobile"><span></span></a>
+    <ul class="menu mobile">
+        <li><a class="menu__item" href="sub-sites/specs.html">Specs</a></li>
+        <li><a class="menu__item" href="sub-sites/faq.html">FAQ</a></li>
+        <li><a class="menu__item" href="sub-sites/games.html">Games</a></li>
+    </ul>
+</nav>
+
 <!--<div id="wrapper">-->
 <!--    <h1 id="maintenance">UNDER MAINTENANCE</h1>-->
 <!--</div>-->
@@ -86,6 +95,13 @@
 <script src="https://embed.twitch.tv/embed/v1.js"></script>
 
 <script type="text/javascript">
+
+    $(document).ready(() => {
+        $('.menu__icon').click(() => {
+            $('body').toggleClass('menu_shown');
+        })
+    })
+
     new Twitch.Embed("twitch-embed", {
         width: 1920,
         height: '100%',

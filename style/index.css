@@ -8,6 +8,7 @@
     --heading_color: #FBF8FF;
 }
 
+
 #wrapper {
     display: flex;
     position: absolute;
@@ -60,6 +61,14 @@ p {
 
 img {
     width: 50%;
+}
+
+.menu__item {
+    display: none;
+}
+
+.menu.mobile {
+    display: none;
 }
 
 .navbar {
@@ -241,9 +250,94 @@ section > span > a:hover {
     color: #dec396;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 360px) {
     .logo {
         font-size: 40px;
+    }
+
+    .menu__icon {
+        height: 32px;
+        width: 43px;
+        margin: 3%;
+        position: absolute;
+        top: 10px;
+        right: 3%;
+        display: inline-block;
+        vertical-align: middle;
+        z-index: 20;
+    }
+
+    .menu__icon span {
+        display: block;
+        background: blue;
+        width: 100%;
+        height: 4px;
+        margin-top: -2px;
+        position: absolute;
+        left: 0;
+        top: 50%;
+    }
+
+    .menu__icon:before,
+    .menu__icon:after {
+        content: "";
+        display: block;
+        background: blue;
+        width: 100%;
+        height: 4px;
+        position: absolute;
+        left: 0;
+        transform-origin: center center;
+        transform: rotate(0deg);
+        transition: all 0.3s ease;
+    }
+
+    .menu__icon:before {
+        top: 2px;
+        margin-top: -2px;
+    }
+
+    .menu__icon:after {
+        bottom: 2px;
+        margin-bottom: -2px;
+    }
+
+    .menu_shown .menu__icon span {
+        background: transparent;
+    }
+
+    .menu_shown .menu__icon:before {
+        top: 50%;
+        transform: rotate(45deg);
+    }
+
+    .menu_shown .menu__icon:after {
+        bottom: 50%;
+        transform: rotate(-45deg);
+    }
+
+    .mobile.menu {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        min-height: 100vh;
+        text-align: center;
+        padding-top: 112px;
+        background: #7eb4e2;
+        z-index: 10;
+        transition: all 0.4s ease-in-out;
+        transform: translateX(-100%);
+    }
+
+    .menu_shown .mobile.menu {
+        transform: translateX(0);
+    }
+
+    .mobile .menu__item {
+        display: block;
+        line-height: 2;
+        padding: 25px 0;
     }
 
     .navbar {
@@ -251,7 +345,7 @@ section > span > a:hover {
     }
 
     .navbar ul {
-        display: flex;
+        display: none;
     }
 
     .navbar a {

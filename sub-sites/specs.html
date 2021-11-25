@@ -12,6 +12,15 @@
 
 <body>
 <!-- The navbar -->
+
+<nav>
+    <a class="menu__icon mobile"><span></span></a>
+    <ul class="menu mobile">
+        <li><a class="menu__item" href="faq.html">FAQ</a></li>
+        <li><a class="menu__item" href="games.html">Games</a></li>
+    </ul>
+</nav>
+
 <div class="navbar">
     <div class="container flex">
         <a class="logo" href="../index.html">Penta</a>
@@ -96,7 +105,7 @@
             <li>
                 <a href="https://www.alternate.de/AORUS/GeForce-RTX-3070-AORUS-MASTER-8G-LHR-Grafikkarte/html/product/1768036"
                    target="_blank">
-                    <img alt="" src="../assets/icons8-video-card-100.png">
+                    <img alt="" src="../assets/icons8_video_card.svg">
                     <section class="details">
                         <p class="name">NVIDIA RTX 3070</p>
                     </section>
@@ -105,7 +114,7 @@
             <li>
                 <a href="https://www.alternate.de/AMD/Ryzen-7-5800X-Prozessor/html/product/1685585"
                    target="_blank">
-                    <img alt="" src="../assets/icons8-cpu-100.png">
+                    <img alt="" src="../assets/icons8_processor.svg">
                     <section class="details">
                         <p class="name">RYZEN 7™ 5800X</p>
                     </section>
@@ -114,7 +123,7 @@
             <li>
                 <a href="https://www.alternate.de/SAMSUNG/SSD-980-500-GB/html/product/1719951"
                    target="_blank">
-                    <img alt="" src="../assets/icons8-harddisk-100.png">
+                    <img alt="" src="../assets/icons8_ssd.svg">
                     <section class="details">
                         <p class="name">SAMSUNG SSD 980 500GB</p>
                     </section>
@@ -123,7 +132,7 @@
             <li>
                 <a href="https://www.alternate.de/SAMSUNG/980-PRO-500-GB-SSD/html/product/1670613"
                    target="_blank">
-                    <img alt="" src="../assets/icons8-harddisk-100.png">
+                    <img alt="" src="../assets/icons8_ssd.svg">
                     <section class="details">
                         <p class="name">SAMSUNG SSD 980 PRO 500GB</p>
                     </section>
@@ -132,7 +141,7 @@
             <li>
                 <a href="https://www.alternate.de/AMD/Ryzen-7-5800X-Prozessor/html/product/1685585"
                    target="_blank">
-                    <img alt="" src="../assets/icons8-harddisk-100.png">
+                    <img alt="" src="../assets/icons8_hdd.svg">
                     <section class="details">
                         <p class="name">WDC WD20EZRZ-00Z5HB0</p>
                     </section>
@@ -174,6 +183,11 @@
 <script src="https://embed.twitch.tv/embed/v1.js"></script>
 
 <script>
+    $(document).ready(() => {
+        $('.menu__icon').click(() => {
+            $('body').toggleClass('menu_shown');
+        })
+    })
 </script>
 
 </html>
