@@ -127,7 +127,7 @@ img {
 
 /* Socials */
 .socials-area {
-    background: url("../assets/alt_background_nopentagons.png");
+    background: url("../assets/backgrounds/alt_background_nopentagons.png");
     background-size: cover;
 }
 
@@ -221,6 +221,7 @@ footer > .container > section > .mail > p {
 }
 
 footer > .container > section > .mail > span {
+    display: flex;
     font-size: 30px;
     color: var(--heading_color);
 }
@@ -228,6 +229,12 @@ footer > .container > section > .mail > span {
 footer > .container > section > .mail > span > a {
     font-size: 30px;
     color: #DE9F38;
+}
+
+footer > .container > section > .mail > span > a > img {
+    height: 45px;
+    width: 45px;
+    transform: translateY(-5px);
 }
 
 

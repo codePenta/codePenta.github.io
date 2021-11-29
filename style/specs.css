@@ -108,7 +108,7 @@ img {
 
 /* Specs */
 .specs-area {
-    background: url("../assets/alt_background_nopentagons.png");
+    background: url("../assets/backgrounds/alt_background_nopentagons.png");
     background-size: cover;
     filter: drop-shadow(1px 1px 10px #8E3FD9);
 
@@ -230,6 +230,12 @@ footer > .container > section > .mail > span {
 footer > .container > section > .mail > span > a {
     font-size: 30px;
     color: #DE9F38;
+}
+
+footer > .container > section > .mail > span > a > img {
+    height: 45px;
+    width: 45px;
+    transform: translateY(12px);
 }
 
 
