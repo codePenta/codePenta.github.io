@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="../style/schedule.css" rel="stylesheet">
+    <link href="../assets/pentaRoundLogoShadow.png" rel="icon">
+    <title>Penta | Schedule</title>
+</head>
+
+<body>
+
+<nav>
+    <a class="menu__icon mobile"><span></span></a>
+    <ul class="menu mobile">
+        <li><a class="menu__item" href="faq.html">FAQ</a></li>
+        <li><a class="menu__item" href="games.html">Games</a></li>
+        <li><a class="menu__item" href="schedule.html">Schedule</a></li>
+    </ul>
+</nav>
+
+<!-- The navbar -->
+<div class="navbar">
+    <div class="container flex">
+        <a class="logo" href="../index.html">Penta</a>
+        <nav>
+            <ul>
+                <li>
+                    <a class="schedule" href="specs.html">Specs</a>
+                </li>
+                <li>
+                    <a class="schedule" href="faq.html">FAQ</a>
+                </li>
+                <li>
+                    <a class="schedule" href="games.html">Games</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<!-- FAQ -->
+<div class="schedule-area">
+    <h1>SCHEDULE</h1>
+    <section class="schedule">
+        <ul>
+            <li>
+                <img alt="" src="../assets/icons/weekdays/icons8_monday.svg">
+                <section class="details">
+                    <p>From <span class="time">7am</span> <br>to <span class="time">12am</span></p>
+                </section>
+            </li>
+            <li>
+                <img alt="" src="../assets/icons/weekdays/icons8_tuesday.svg">
+                <section class="details">
+                    <p>From <span class="time">7am</span> <br>to <span class="time">12am</span></p>
+                </section>
+            </li>
+            <li>
+                <img alt="" src="../assets/icons/weekdays/icons8_wednesday.svg">
+                <section class="details">
+                    <p>From <span class="time">7am</span> <br>to <span class="time">12am</span></p>
+                </section>
+            </li>
+            <li>
+                <img alt="" src="../assets/icons/weekdays/icons8_thursday.svg">
+                <section class="details">
+                    <p>From <span class="time">7am</span> <br>to <span class="time">12am</span></p>
+                </section>
+            </li>
+            <li>
+                <img alt="" src="../assets/icons/weekdays/icons8_friday.svg">
+                <section class="details">
+                    <p>From <span class="time">7am</span> <br>to <span class="time">12am</span></p>
+                </section>
+            </li>
+            <li>
+                <img alt="" src="../assets/icons/weekdays/icons8_saturday.svg">
+                <section class="details">
+                    <p>From <span class="time">7am</span> <br>to <span class="time">2am</span></p>
+                </section>
+            </li>
+            <li>
+                <img alt="" src="../assets/icons/weekdays/icons8_sunday.svg">
+                <section class="details">
+                    <p>From <span class="time">7am</span> <br>to <span class="time">1am</span></p>
+                </section>
+            </li>
+        </ul>
+    </section>
+</div>
+
+<footer>
+    <div class="container">
+        <section>
+            <div class="mail">
+                <p>
+                    Contact
+                </p>
+                <span>
+                E-Mail: <a href="mailto:kompexrealitydsigns@gmail.com"><img alt=""
+                                                                            src="../assets/icons/icons8_mail.svg"></a>
+                </span>
+            </div>
+        </section>
+    </div>
+</footer>
+</body>
+
+<script crossorigin="anonymous" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://embed.twitch.tv/embed/v1.js"></script>
+<script>
+    $(document).ready(() => {
+        $('.menu__icon').click(() => {
+            $('body').toggleClass('menu_shown');
+            $('body').toggleClass('sticky');
+        })
+    })
+</script>
+
+</html>

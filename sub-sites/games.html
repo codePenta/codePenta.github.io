@@ -11,12 +11,25 @@
 </head>
 
 <body>
+
+<nav>
+    <a class="menu__icon mobile"><span></span></a>
+    <ul class="menu mobile">
+        <li><a class="menu__item" href="specs.html">Specs</a></li>
+        <li><a class="menu__item" href="faq.html">FAQ</a></li>
+        <li><a class="menu__item" href="schedule.html">Schedule</a></li>
+    </ul>
+</nav>
+
 <!-- The navbar -->
 <div class="navbar">
     <div class="container flex">
         <a class="logo" href="../index.html">Penta</a>
         <nav>
             <ul>
+                <li>
+                    <a class="specs" href="schedule.html">Schedule</a>
+                </li>
                 <li>
                     <a class="faq" href="specs.html">Specs</a>
                 </li>
@@ -78,6 +91,12 @@
 <script src="https://embed.twitch.tv/embed/v1.js"></script>
 
 <script>
+    $(document).ready(() => {
+        $('.menu__icon').click(() => {
+            $('body').toggleClass('menu_shown');
+            $('body').toggleClass('sticky');
+        })
+    })
 </script>
 
 </html>

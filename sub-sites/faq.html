@@ -12,6 +12,15 @@
 
 <body>
 
+<nav>
+    <a class="menu__icon mobile"><span></span></a>
+    <ul class="menu mobile">
+        <li><a class="menu__item" href="schedule.html">Schedule</a></li>
+        <li><a class="menu__item" href="specs.html">Specs</a></li>
+        <li><a class="menu__item" href="games.html">Games</a></li>
+    </ul>
+</nav>
+
 <!-- The navbar -->
 <div class="navbar">
     <div class="container flex">
@@ -19,10 +28,13 @@
         <nav>
             <ul>
                 <li>
+                    <a class="schedule" href="schedule.html">Schedule</a>
+                </li>
+                <li>
                     <a class="specs" href="specs.html">Specs</a>
                 </li>
                 <li>
-                    <a class="specs" href="games.html">Games</a>
+                    <a class="games" href="games.html">Games</a>
                 </li>
             </ul>
         </nav>
@@ -83,6 +95,12 @@
 <script src="https://embed.twitch.tv/embed/v1.js"></script>
 
 <script type="text/javascript">
+    $(document).ready(() => {
+        $('.menu__icon').click(() => {
+            $('body').toggleClass('menu_shown');
+            $('body').toggleClass('sticky');
+        })
+    })
 
     function showAge() {
         let age = document.getElementById('age');

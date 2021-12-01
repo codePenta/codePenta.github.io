@@ -79,7 +79,6 @@ img {
 }
 
 .navbar > .faq:hover {
-    text-decoration: line-through;
     transition-duration: 500ms;
 }
 
@@ -282,7 +281,6 @@ section > span > a:hover {
     .navbar a:hover {
         color: #dec396;
         transition-duration: 500ms;
-        text-decoration: line-through;
     }
 
 
@@ -291,7 +289,7 @@ section > span > a:hover {
         width: 43px;
         margin: 3%;
         position: absolute;
-        top: 10px;
+        top: 18px;
         right: 3%;
         display: inline-block;
         vertical-align: middle;
@@ -326,19 +324,11 @@ section > span > a:hover {
     .menu__icon:before {
         top: 2px;
         margin-top: -2px;
-        border-top-color: white;
-        border-top-style: solid;
-        border-top-right-radius: 60px;
-        border-top-left-radius: 60px;
     }
 
     .menu__icon:after {
         bottom: 2px;
         margin-bottom: -2px;
-        border-top-color: white;
-        border-top-style: solid;
-        border-bottom-right-radius: 60px;
-        border-bottom-left-radius: 60px;
     }
 
 
@@ -358,14 +348,15 @@ section > span > a:hover {
 
 
     .mobile.menu {
+        display: block;
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
-        min-height: 80vh;
+        min-height: 100vh;
         text-align: center;
         padding-top: 112px;
-        background: rgba(0, 0, 0, .7);
+        background: #000000;
         z-index: 10;
         transition: all .4s ease-in-out;
         transform: translateX(100%);
@@ -379,8 +370,14 @@ section > span > a:hover {
         display: block;
         line-height: 2;
         padding: 25px 0;
-        font-size: 30px;
         color: white;
+        background: #231B40;
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+    }
+
+    .sticky {
+        position: fixed;
     }
 
     .header {

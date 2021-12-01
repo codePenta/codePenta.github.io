@@ -17,7 +17,7 @@
     <ul class="menu mobile">
         <li><a class="menu__item" href="sub-sites/specs.html">Specs</a></li>
         <li><a class="menu__item" href="sub-sites/faq.html">FAQ</a></li>
-        <li><a class="menu__item" href="sub-sites/games.html">Games</a></li>
+        <li><a class="menu__item" href="sub-sites/schedule.html">Schedule</a></li>
     </ul>
 </nav>
 
@@ -33,13 +33,16 @@
                     <a class="specs" href="sub-sites/specs.html">Specs</a>
                     <a class="faq" href="sub-sites/faq.html">FAQ</a>
                     <a class="games" href="sub-sites/games.html">Games</a>
+                    <a class="schedule" href="sub-sites/schedule.html">Schedule</a>
                 </li>
             </ul>
         </nav>
     </div>
 </div>
 
-<div id="twitch-embed"></div>
+<div class="clips">
+    <iframe frameborder="0" src="viewer.html"></iframe>
+</div>
 
 <div class="socials-area">
     <h1>Socials</h1>
@@ -47,7 +50,7 @@
         <ul>
             <li>
                 <a href="https://www.twitter.com/pentaforlife" target="_blank">
-                    <img alt="" src="assets/icons/icons8-twitter.svg">
+                    <img alt="" src="assets/icons/icons8_twitter.svg">
                     <section class="details">
                         <p class="amount">Followers: <br><span class="amount-content">32</span></p>
                     </section>
@@ -55,7 +58,7 @@
             </li>
             <li>
                 <a href="https://www.instagram.com/pentaforlife" target="_blank">
-                    <img alt="" src="assets/icons/icons8-instagram.svg">
+                    <img alt="" src="assets/icons/icons8_instagram.svg">
                     <section class="details">
                         <p class="amount">Followers: <br><span class="amount-content">51</span></p>
                     </section>
@@ -63,9 +66,9 @@
             </li>
             <li>
                 <a href="https://www.twitch.tv/pentaforlife" target="_blank">
-                    <img alt="" src="assets/icons/icons8-twitch.svg">
+                    <img alt="" src="assets/icons/icons8_twitch.svg">
                     <section class="details">
-                        <p class="amount">Followers: <br><span class="amount-content">133</span></p>
+                        <p class="amount">Followers: <br><span class="amount-content">138</span></p>
                     </section>
                 </a>
             </li>
@@ -102,12 +105,6 @@
             $('body').toggleClass('menu_shown');
         })
     })
-
-    new Twitch.Embed("twitch-embed", {
-        width: 1920,
-        height: '100%',
-        channel: "fps_penta",
-    });
 </script>
 
 </html>

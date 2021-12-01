@@ -72,7 +72,6 @@ img {
 }
 
 .navbar > .settings:hover {
-    text-decoration: line-through;
     transition-duration: 500ms;
 }
 
@@ -329,7 +328,6 @@ section > span > a:hover {
     .navbar a:hover {
         color: #dec396;
         transition-duration: 500ms;
-        text-decoration: line-through;
     }
 
     .navbar .flex {
