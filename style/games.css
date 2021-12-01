@@ -247,7 +247,7 @@ footer > .container > section > .mail > span > a {
 footer > .container > section > .mail > span > a > img {
     height: 45px;
     width: 45px;
-    transform: translateY(12px);
+    transform: translateY(-5px);
 }
 
 
@@ -435,10 +435,6 @@ section > span > a:hover {
 
     footer > .container > section > .mail > span {
         font-size: 20px;
-    }
-
-    footer > .container > section > .mail > span {
-        font-size: 25px;
     }
 
     footer > .container > section > .mail > span > a > img {

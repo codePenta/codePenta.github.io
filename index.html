@@ -40,9 +40,9 @@
     </div>
 </div>
 
-<div class="clips">
-    <iframe frameborder="0" src="viewer.html"></iframe>
-</div>
+<!--<div class="clips">-->
+<!--    <iframe id="clips-content" frameborder="0" src="viewer.html" width="75%" height="900px"></iframe>-->
+<!--</div>-->
 
 <div class="socials-area">
     <h1>Socials</h1>
@@ -99,11 +99,22 @@
 <script src="https://embed.twitch.tv/embed/v1.js"></script>
 
 <script type="text/javascript">
-
+    let frame = $("#clips-content")
     $(document).ready(() => {
         $('.menu__icon').click(() => {
             $('body').toggleClass('menu_shown');
         })
+        // set the height of the iframe as
+        // the height of the iframe content
+        frame.style.height =
+            frame.contentWindow.document.body.scrollHeight + 'px';
+
+
+        // set the width of the iframe as the
+        // width of the iframe content
+        frame.style.width =
+            frame.contentWindow.document.body.scrollWidth + 'px';
+
     })
 </script>
 

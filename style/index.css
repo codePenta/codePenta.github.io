@@ -114,16 +114,15 @@ img {
     height: 100%;
 }
 
-
 .clips {
+    height: 800px;
+    background: black;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
-.clips > iframe {
-    height: 790px;
-    filter: drop-shadow(1px 1px 10px #8E3FD9);
+.clips > #clips-content {
+    transform: translateY(-51px);
 }
 
 /* Socials */
