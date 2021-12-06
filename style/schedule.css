@@ -124,7 +124,7 @@ img {
 .schedule {
     margin: 0 auto;
     left: 50%;
-    max-width: 1500px;
+    max-width: 1000px;
 }
 
 .schedule > ul {
@@ -142,7 +142,7 @@ img {
     list-style-type: none;
     margin: 50px;
     background: #231B40;
-    padding: 55px;
+    padding: 15px;
     width: 250px;
     min-height: 200px;
     box-shadow: 2px 2px 10px 5px #8E3FD9;
@@ -247,7 +247,7 @@ section > span > a:hover {
     color: #dec396;
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 480px) {
     .navbar > .container > .logo {
         font-size: 40px;
     }

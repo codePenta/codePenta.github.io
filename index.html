@@ -17,6 +17,7 @@
     <ul class="menu mobile">
         <li><a class="menu__item" href="sub-sites/specs.html">Specs</a></li>
         <li><a class="menu__item" href="sub-sites/faq.html">FAQ</a></li>
+        <li><a class="menu__item" href="sub-sites/games.html">Games</a></li>
         <li><a class="menu__item" href="sub-sites/schedule.html">Schedule</a></li>
     </ul>
 </nav>
@@ -103,6 +104,7 @@
     $(document).ready(() => {
         $('.menu__icon').click(() => {
             $('body').toggleClass('menu_shown');
+            $('body').toggleClass('.sticky');
         })
         // set the height of the iframe as
         // the height of the iframe content

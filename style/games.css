@@ -103,12 +103,12 @@ img {
     height: 100%;
 }
 
-/* Specs */
+/* Games */
 .games-area {
     background: url("../assets/backgrounds/alt_background_nopentagons.png");
-    background-size: cover;
+    background-size: auto;
     filter: drop-shadow(1px 1px 10px #8E3FD9);
-
+    min-height: 63.5vh;
 }
 
 .games-area > h1 {
@@ -120,29 +120,10 @@ img {
     color: var(--heading_color);
 }
 
-#peripherals-wrap {
-    margin-top: 40px;
-    margin-bottom: 40px;
-    filter: drop-shadow(1px 1px 5px #dd9e38);
-}
-
-#peripherals {
-    font-size: 2.5rem;
-    color: white;
-    background-color: #231B40;
-    left: 50%;
-    padding: 10px;
-    max-width: 1500px;
-    width: 200px;
-    margin: 0 auto;
-    text-align: center;
-    clip-path: polygon(15% 0%, 85% 0%, 100% 30%, 100% 70%, 85% 100%, 15% 100%, 0% 70%, 0% 30%);
-}
-
 .games {
     margin: 0 auto;
     left: 50%;
-    max-width: 1500px;
+    max-width: 1000px;
 }
 
 .games > ul {
@@ -160,10 +141,10 @@ img {
     list-style-type: none;
     margin: 50px;
     background: #231B40;
-    padding: 55px;
-    width: 500px;
+    padding: 15px;
+    width: 300px;
     height: auto;
-    min-height: 470px;
+    min-height: 300px;
     box-shadow: 2px 2px 10px 5px #8E3FD9;
     border: 1px solid #FBF8FF;
     transition-duration: 500ms;
@@ -270,7 +251,7 @@ section > span > a:hover {
     color: #dec396;
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 480px) {
     .navbar > .container > .logo {
         font-size: 40px;
     }
@@ -348,11 +329,6 @@ section > span > a:hover {
         margin-bottom: -2px;
     }
 
-
-    .sticky {
-        position: fixed;
-    }
-
     .menu_shown .menu__icon span {
         background: transparent;
     }
@@ -388,18 +364,19 @@ section > span > a:hover {
     }
 
     .mobile .menu__item {
-        display: block;
-        line-height: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 25px;
         padding: 25px 0;
         color: white;
-        background: #231B40;
         font-size: 1.5rem;
         margin-bottom: 5px;
     }
 
 
     .games-area {
-        min-height: 55vh;
+        min-height: 60vh;
         flex-direction: column;
     }
 
