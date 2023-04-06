@@ -1,0 +1,93 @@
+:root {
+  --primary: #231b40;
+  --primary-2: #7a36d9;
+  --secondary: #f29d35;
+  --secondary-2: #efb978;
+  --tertiary: #e7dcf2;
+  --tertiary-2: #0c0915;
+}
+
+body {
+  background-color: var(--tertiary-2);
+  font-family: "Montserrat", sans-serif;
+  color: var(--secondary);
+  font-size: 1.25rem;
+  line-height: 150%;
+  scroll-behavior: smooth;
+  margin: 0;
+}
+
+
+.subtitle {
+  font-size: 25px;
+  font-weight: 600;
+  color: var(--secondary-2);
+  margin: 0;
+}
+
+h1 {
+  font-variant: small-caps;
+  font-style: italic;
+  font-size: 6rem;
+}
+
+h5 {
+  font-size: 1.625rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--secondary-2);
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--tertiary);
+}
+
+li {
+  list-style-type: none;
+}
+
+nav a {
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  left: 0;
+  display: inline-block;
+}
+
+nav a:hover {
+  left: 10px;
+}
+
+nav {
+  position: fixed;
+  left: 20px;
+  top: 20px;
+}
+
+section {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.intro-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.projects-container {
+    height: 100vh;
+}
+
+#projects-wrapper {
+  height: 100vh;
+  background-color: var(--tertiary);
+}
+
+#projects-wrapper > .projects-container > h1 {
+  color: var(--tertiary-2);
+  position: relative;
+  top: 126px;
+}
