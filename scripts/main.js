@@ -13,27 +13,18 @@ nav.forEach((item) => {
 });
 
 window.addEventListener('scroll', () => {
-    let currentSection = '';
-
+    let current = '';
     sections.forEach((section) => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-
-        if (scrollY >= sectionTop - sectionHeight / 3) {
-            currentSection = section.getAttribute('id');
+        if (offsetTop >= (sectionTop - sectionHeight / 3)) {
+            current = section.getAttribute('id');
         }
     });
-
-    setActiveClass(currentSection);
+    nav.forEach((item) => {
+        item.classList.remove('active');
+        if (item.classList.contains(current)) {
+            item.classList.add('active');
+        }
+    });
 });
-
-function setActiveClass(currentSection) {
-    sections.forEach((section) => {
-        if (section.getAttribute('id') !== currentSection) {
-            section.classList.remove('active');
-        } else {
-            section.classList.add('active');
-            navbar.style.color = (section.classList.contains('light-background')) ? 'var(--tertiary-2)' : 'var(--tertiary)';
-        }
-    });
-}
