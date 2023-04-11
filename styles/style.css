@@ -17,9 +17,9 @@ body {
   color: var(--secondary);
   font-size: 1.25rem;
   line-height: 150%;
-  scroll-behavior: smooth;
   margin: 0;
 }
+
 
 .subtitle {
   font-size: 25px;
@@ -27,6 +27,8 @@ body {
   font-style: italic;
   color: var(--secondary-2);
   margin: 0;
+  font-variant: small-caps;
+  font-style: italic;
 }
 
 h1 {
@@ -40,33 +42,13 @@ h5 {
   font-weight: 400;
   font-style: italic;
   margin: 0;
-  font-variant: small-caps;
 }
+
+/* Core */
 
 a {
   text-decoration: none;
   color: var(--tertiary);
-}
-
-li {
-  list-style-type: none;
-}
-
-nav a {
-  transition: all 0.3s ease-in-out;
-  position: relative;
-  left: 0;
-  display: inline-block;
-}
-
-nav a:hover {
-  left: 10px;
-}
-
-nav {
-  position: fixed;
-  left: 20px;
-  top: 20px;
 }
 
 section {
@@ -76,7 +58,16 @@ section {
 
 /* Intro */
 
-.intro-container {
+.lighter h1 {
+  color: var(--tertiary-2);
+}
+
+.lighter h5 {
+  color: var(--tertiary-2);
+}
+
+/* Intro */
+.intro-container{
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -87,7 +78,7 @@ section {
 /* Projects */
 
 .projects-container {
-  height: 100vh;
+    height: 100vh;
 }
 
 #projects-wrapper {
@@ -95,7 +86,7 @@ section {
   background-color: var(--tertiary);
 }
 
-.projects-container > .header h1 {
+#projects-wrapper > .projects-container > h1 {
   color: var(--tertiary-2);
   position: relative;
   top: 126px;

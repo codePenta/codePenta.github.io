@@ -1,30 +1,49 @@
-let nav = document.querySelector('nav > ul > li').querySelectorAll('a');
-const navbar = document.querySelector('nav > ul > li > a');
-const sections = document.querySelectorAll('div');
+let navbarLinks = document.querySelectorAll('nav > ul > .line > li > a');
+let navbarItems = document.querySelectorAll('nav > ul > .line');
+console.log(navbarLinks);
+const sections = document.querySelectorAll('section');
+let age = document.querySelector('#age');
 
-nav.forEach((item) => {
-    item.addEventListener('hover', (e) => {
-        item.style.color = "red";
-        e.preventDefault();
-        let target = e.target.getAttribute('href');
-        let targetElement = document.querySelector(target);
-        targetElement.scrollIntoView({ behavior: "smooth" });
-    });
-});
+const obServer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            if (entry.target.classList.contains('lighter')) {
+                navbarLinks.forEach(element => {
+                    element.style.setProperty('color', 'var(--primary)');
+                });
+
+                navbarItems.forEach(element => {
+                    element.style.setProperty('background-color', 'var(--primary)');
+                });
+            } else {
+                navbarLinks.forEach(element => {
+                    element.style.setProperty('color', 'var(--tertiary)');
+                });
 
 window.addEventListener('scroll', () => {
-    let current = '';
+    let currentSection = '';
+
     sections.forEach((section) => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-        if (offsetTop >= (sectionTop - sectionHeight / 3)) {
-            current = section.getAttribute('id');
+
+        if (scrollY >= sectionTop - sectionHeight / 3) {
+            currentSection = section.getAttribute('id');
         }
     });
-    nav.forEach((item) => {
-        item.classList.remove('active');
-        if (item.classList.contains(current)) {
-            item.classList.add('active');
-        }
-    });
+
+    setActiveClass(currentSection);
 });
+
+function setActiveClass(currentSection) {
+    sections.forEach((section) => {
+        if (section.getAttribute('id') !== currentSection) {
+            section.classList.remove('active');
+        } else {
+            section.classList.add('active');
+            navbar.style.color = (section.classList.contains('light-background')) ? 'var(--tertiary-2)' : 'var(--tertiary)';
+        }
+    });
+}
+
+age.innerHTML = calculateAge('2001-03-29', new Date());
