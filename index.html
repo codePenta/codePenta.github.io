@@ -13,26 +13,51 @@
     <header>
         <nav>
             <ul>
-                <div class="line"></div><li><a href="#intro-wrapper">Home</a></li>
-                <div class="line"></div><li><a href="#projects-wrapper">Projects</a></li>
-                <div class="line"></div><li><a href="#contact">Contact</a></li>
+                <a href="#intro-wrapper">
+                    <div class="prefix"></div>
+                    <li>Home</li>
+                </a>
+                <a href="#projects-wrapper">
+                    <div class="prefix"></div>
+                    <li>Projects</li>
+                </a>
+                <a href="#contact-wrapper">
+                    <div class="prefix"></div>
+                    <li>Contact</li>
+                </a>
             </ul>
         </nav>
     </header>
+
     <main>
-        <div id="intro">
+        <div id="intro-wrapper">
             <section class="intro-container">
                 <h1>Ferenz Helm</h1>
                 <p class="subtitle"><span id="age"></span> years old, Hobby-Developer & UXDesigner</p>
             </section>
         </div>
         <div id="projects-wrapper">
-            <section class="projects-container light-background">
+            <section class="projects-container lighter">
                 <h1>Projects</h1>
-                <p class="subtitle">Projects</p>
+                <h5>Currently working on</h5>
+                <div class="current-project">
+                    <div class="current-project-header">
+                        <h4 id="project-name"></h4>
+                    </div>
+                    <div class="current-project-body">
+                        <p class="current-project-description"></p>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="contact-wrapper">
+            <section class="contact-container">
+                <h1>Contact</h1>
+                <h5>Found my work intriguing</h5>
             </section>
         </div>
     </main>
 </body>
 <script src="scripts/main.js"></script>
+
 </html>
