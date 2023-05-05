@@ -1,11 +1,30 @@
 let sections = document.querySelectorAll('section');
-let divs = document.querySelectorAll('main > div');
 let navigationBar = document.querySelector('nav');
-let navigationBarItems = document.querySelectorAll('nav > ul > a');
+
+let divs = document.querySelectorAll('main > div');
+let navigationBarItems = document.querySelectorAll('nav ul a');
 
 let hamburgerMenu = document.querySelector('.mobile-menu .hamburger');
 let hamburgerMenuItems = document.querySelector('.mobile-menu .menu-items');
 let closeHamburgerMenu = document.querySelector('.mobile-menu .menu-items .close-hamburger');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  divs.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    if (scrollY >= sectionTop - sectionHeight / 3) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  navigationBarItems.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href').includes(current)) {
+      link.classList.add('active');
+    }
+  });
+});
 
 let observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -48,3 +67,4 @@ hamburgerMenu.addEventListener('click', () => {
 closeHamburgerMenu.addEventListener('click', () => {
   hamburgerMenuItems.classList.remove('open');
 });
+

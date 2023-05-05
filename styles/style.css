@@ -68,6 +68,10 @@ nav a:hover .prefix {
   width: 49px;
 }
 
+nav ul a.active {
+  left: 15px;
+}
+
 /* Headers */
 
 .subtitle {
@@ -172,6 +176,7 @@ section {
 }
 
 @media screen and (max-width: 768px) {
+
   /* Hamburger menu */
 
   .mobile-menu {
@@ -216,6 +221,7 @@ section {
   }
 
   .mobile-menu .menu-items ul {
+    padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -227,7 +233,7 @@ section {
     font-variant: small-caps;
     font-style: italic;
     font-weight: 400;
-    margin-bottom: 7px;
+    margin-bottom: 20px;
     font-size: 23.36px;
   }
 
