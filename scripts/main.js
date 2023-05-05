@@ -1,57 +1,50 @@
-import { Notion } from "../scripts/notion.js";
+let sections = document.querySelectorAll('section');
+let divs = document.querySelectorAll('main > div');
+let navigationBar = document.querySelector('nav');
+let navigationBarItems = document.querySelectorAll('nav > ul > a');
 
-class Navigation {
-  constructor() {
-    this.links = document.querySelectorAll('nav a');
-    this.prefixes = document.querySelectorAll('nav .prefix');
-    this.sections = document.querySelectorAll('section');
-    this.age = document.querySelector('#age');
-    this.notion = new Notion();
+let hamburgerMenu = document.querySelector('.mobile-menu .hamburger');
+let hamburgerMenuItems = document.querySelector('.mobile-menu .menu-items');
+let closeHamburgerMenu = document.querySelector('.mobile-menu .menu-items .close-hamburger');
 
-    this.observer = new IntersectionObserver(this.observe.bind(this), { threshold: .4 });
-    this.sections.forEach(section => this.observer.observe(section));
-  }
-
-  observe(entries) {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        if (entry.target.classList.contains('lighter')) {
-          this.links.forEach(element => {
-            element.style.setProperty('color', 'var(--primary)');
-          });
-          this.prefixes.forEach(element => {
-            element.style.setProperty('background', 'var(--primary)');
-          });
-        } else {
-          this.links.forEach(element => {
-            element.style.setProperty('color', 'var(--tertiary)');
-          });
-          this.prefixes.forEach(element => {
-            element.style.setProperty('background', 'var(--tertiary)');
-          });
-        }
+let observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      if (entry.target.classList.contains('lighter')) {
+        navigationBarItems.forEach(element => {
+          element.style.setProperty('color', 'var(--primary');
+          element.children[0].style.setProperty('background', 'var(--primary)');
+        });
+      } else {
+        navigationBarItems.forEach(element => {
+          element.style.setProperty('color', 'var(--tertiary)');
+          element.children[0].style.setProperty('background', 'var(--tertiary)');
+        });
       }
-    });
-  }
-
-  calculateAge(birthDate, otherDate) {
-    birthDate = new Date(birthDate);
-    otherDate = new Date(otherDate);
-
-    let years = (otherDate.getFullYear() - birthDate.getFullYear());
-
-    if (otherDate.getMonth() < birthDate.getMonth() ||
-        otherDate.getMonth() == birthDate.getMonth() && otherDate.getDate() < birthDate.getDate()) {
-      years--;
     }
+  });
+}, { threshold: 0.7 });
 
-    return years;
+sections.forEach((section) => {
+  observer.observe(section);
+});
+
+let today = new Date();
+let birthDate = new Date('2001-03-29');
+
+(function () {
+  let age = today.getFullYear() - birthDate.getFullYear();
+  let m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
   }
+  document.querySelector('#age').innerHTML = age;
+})();
 
-  displayAge() {
-    this.age.innerHTML = this.calculateAge('2001-03-29', new Date());
-  }
-}
+hamburgerMenu.addEventListener('click', () => {
+  hamburgerMenuItems.classList.add('open');
+});
 
-const nav = new Navigation();
-nav.displayAge();
+closeHamburgerMenu.addEventListener('click', () => {
+  hamburgerMenuItems.classList.remove('open');
+});

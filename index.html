@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
     <meta charset="UTF-8">
@@ -11,6 +11,37 @@
 
 <body>
     <header>
+
+        <!-- Can you create a functional hamburger menu -->
+        <div class="mobile-menu">
+            <div class="hamburger">
+                <div class="hamburger-menu-line"></div>
+                <div class="hamburger-menu-line"></div>
+                <div class="hamburger-menu-line"></div>
+            </div>
+
+            <div class="menu-items">
+                <div class="close-hamburger-wrapper">
+                    <div class="close-hamburger">
+                        <div class="close-mobile-menu"></div>
+                        <div class="close-mobile-menu"></div>
+                        <div class="close-mobile-menu"></div>
+                    </div>
+                </div>
+                <ul>
+                    <a href="#intro-wrapper">
+                        <li>Home</li>
+                    </a>
+                    <a href="#projects-wrapper">
+                        <li>Projects</li>
+                    </a>
+                    <a href="#contact-wrapper">
+                        <li>Contact</li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+
         <nav>
             <ul>
                 <a href="#intro-wrapper">
@@ -33,7 +64,7 @@
         <div id="intro-wrapper">
             <section class="intro-container">
                 <h1>Ferenz Helm</h1>
-                <p class="subtitle"><span id="age"></span> years old, Hobby-Developer & UXDesigner</p>
+                <p class="subtitle"><span id="age"></span> years old, doing what I love</p>
             </section>
         </div>
         <div id="projects-wrapper">
@@ -58,6 +89,6 @@
         </div>
     </main>
 </body>
-<script src="scripts/main.js"></script>
+<script src="scripts/main.js" type="module"></script>
 
 </html>
