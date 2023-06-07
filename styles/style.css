@@ -169,7 +169,7 @@ section {
   top: 126px;
 }
 
-.contact-container h5 {
+#contact-wrapper h5 {
   color: var(--secondary-2);
   position: relative;
   top: 126px;
@@ -182,7 +182,6 @@ section {
   .mobile-menu {
     display: flex;
     justify-content: right;
-    position: relative;
     margin: 2rem 2rem;
   }
 
@@ -198,7 +197,7 @@ section {
   .mobile-menu .hamburger .hamburger-menu-line {
     width: 40px;
     height: 3px;
-    background-color: var(--secondary);
+    background-color: var(--tertiary);
     transition: all 0.3s ease-in-out;
   }
 
@@ -237,6 +236,12 @@ section {
     font-size: 23.36px;
   }
 
+  .mobile-menu .menu-items .close-hamburger-wrapper {
+    display: flex;
+    justify-content: right;
+    background: white;
+  }
+
   .mobile-menu .menu-items .close-hamburger {
     position: fixed;
     top: 6%;
@@ -252,7 +257,7 @@ section {
   .mobile-menu .close-mobile-menu {
     width: 40px;
     height: 3px;
-    background-color: var(--secondary);
+    background-color: var(--tertiary);
     transition: all 0.3s ease-in-out;
   }
 
@@ -307,8 +312,8 @@ section {
   /* Currently working on */
 
   .current-project {
-    width: 90vw;
-    height: 40vh;
+    max-width: 90vw;
+    max-height: 40vh;
   }
 
   /* Contact */
