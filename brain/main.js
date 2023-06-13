@@ -90,5 +90,13 @@ class Navigation {
             ageContainer.innerHTML = age.toString();
         }
     }
+    getProjects() {
+        const url = "https://api.github.com/users/cdpenta/repos";
+        fetch(url)
+            .then((response) => response.json())
+            .then((data) => {
+            console.log(data);
+        });
+    }
 }
 const navigation = new Navigation();
