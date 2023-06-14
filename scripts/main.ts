@@ -1,5 +1,5 @@
-import dotenv from 'dotenv';
-dotenv.config();
+import { APIErrorCode, Client, LogLevel } from "@notionhq/client";
+import { AnyMxRecord } from "dns";
 
 class Navigation {
   sections: NodeListOf<HTMLElement>;
@@ -22,6 +22,7 @@ class Navigation {
     );
 
     this.initialize();
+    this.getNotionData();
   }
 
   private initialize() {
@@ -117,13 +118,20 @@ class Navigation {
     }
   }
 
-  private getProjects() {
-    const url = "https://api.github.com/users/cdpenta/repos";
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      });
+  private async getNotionData() {
+    const notion = new Client({
+      auth: process.env.NOTION_API_KEY,
+      logLevel: LogLevel.DEBUG,
+    });
+
+    const databaseId = process.env.NOTION_PROJECTS_DATABASE_ID;
+
+    try {
+        
+
+    } catch (error) {
+      console.error(error);
+    }
   }
 }
 
