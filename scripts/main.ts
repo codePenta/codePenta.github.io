@@ -1,6 +1,4 @@
-import { APIErrorCode, Client, LogLevel } from "@notionhq/client";
-import { AnyMxRecord } from "dns";
-
+import { Octokit } from "octokit";
 class Navigation {
   sections: NodeListOf<HTMLElement>;
   divs: NodeListOf<HTMLDivElement>;
@@ -22,7 +20,7 @@ class Navigation {
     );
 
     this.initialize();
-    this.getNotionData();
+    this.getData();
   }
 
   private initialize() {
@@ -118,20 +116,16 @@ class Navigation {
     }
   }
 
-  private async getNotionData() {
-    const notion = new Client({
-      auth: process.env.NOTION_API_KEY,
-      logLevel: LogLevel.DEBUG,
+  private async getData() {
+    const octokit = new Octokit({ auth: process.env.PERSONAL_ACCESS_TOKEN });
+
+    let response = await octokit.rest.repos.listForUser({
+      username: "codePenta",
     });
 
-    const databaseId = process.env.NOTION_PROJECTS_DATABASE_ID;
-
-    try {
-        
-
-    } catch (error) {
-      console.error(error);
-    }
+    response.data.forEach((repo: any) => {
+      console.log(repo);
+    });
   }
 }
 
