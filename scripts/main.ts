@@ -120,7 +120,7 @@ class Navigation {
     const octokit = new Octokit({ auth: process.env.PERSONAL_ACCESS_TOKEN });
 
     let response = await octokit.rest.repos.listForUser({
-      username: "codePenta",
+      username: process.env.GITHUB_USERNAME,
     });
 
     response.data.forEach((repo: any) => {
