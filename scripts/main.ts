@@ -20,7 +20,7 @@ class Navigation {
     );
 
     this.initialize();
-    this.getData();
+    this.getRepositoryData();
   }
 
   private initialize() {
@@ -116,16 +116,17 @@ class Navigation {
     }
   }
 
-  private async getData() {
-    const octokit = new Octokit({ auth: process.env.PERSONAL_ACCESS_TOKEN });
+  private async getRepositoryData() {
+    try {
+      const octokit = new Octokit({ auth: process.env.PERSONAL_ACCESS_TOKEN });
 
-    let response = await octokit.rest.repos.listForUser({
-      username: process.env.GITHUB_USERNAME,
-    });
+      const reposListRaw = await octokit.rest.repos.listForAuthenticatedUser();
+      console.log(reposListRaw);
+      
 
-    response.data.forEach((repo: any) => {
-      console.log(repo);
-    });
+    } catch (error: any) {
+      console.error(error)
+    }
   }
 }
 
