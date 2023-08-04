@@ -1,4 +1,5 @@
-import { Octokit } from "octokit";
+import ReposReader from "./repos/ReposReader";
+
 class Navigation {
   sections: NodeListOf<HTMLElement>;
   divs: NodeListOf<HTMLDivElement>;
@@ -20,7 +21,7 @@ class Navigation {
     );
 
     this.initialize();
-    this.getRepositoryData();
+    new ReposReader().getData();
   }
 
   private initialize() {
@@ -116,18 +117,17 @@ class Navigation {
     }
   }
 
-  private async getRepositoryData() {
+  /*private async getRepositoryData() {
     try {
       const octokit = new Octokit({ auth: process.env.PERSONAL_ACCESS_TOKEN });
 
       const reposListRaw = await octokit.rest.repos.listForAuthenticatedUser();
       console.log(reposListRaw);
-      
 
     } catch (error: any) {
       console.error(error)
     }
-  }
+  }*/
 }
 
 const navigation = new Navigation();
