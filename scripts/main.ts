@@ -1,6 +1,7 @@
+import Repo from "./repos/Repo";
 import ReposReader from "./repos/ReposReader";
 
-class Navigation {
+class Main {
   sections: NodeListOf<HTMLElement>;
   divs: NodeListOf<HTMLDivElement>;
   navigationBarItems: NodeListOf<HTMLAnchorElement>;
@@ -21,11 +22,15 @@ class Navigation {
       ".mobile-menu .menu-items .close-hamburger"
     );
 
-    this.initialize();
-    new ReposReader().getData();
+    this.initializePage();
+
+    console.log("Fetching repos...");
+    let reposReader = new ReposReader();
+    let data = reposReader.getData();
+    reposReader.parseData(data);
   }
 
-  private initialize() {
+  private initializePage() {
     window.addEventListener("scroll", () => {
       const current = this.getCurrentSection();
       this.updateNavigation(current);
@@ -119,4 +124,4 @@ class Navigation {
   }
 }
 
-const navigation = new Navigation();
+const main = new Main();
