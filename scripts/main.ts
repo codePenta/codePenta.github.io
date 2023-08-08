@@ -12,10 +12,11 @@ class Navigation {
     this.sections = document.querySelectorAll("section");
     this.divs = document.querySelectorAll("main > div");
     this.navigationBarItems = document.querySelectorAll("nav ul a");
-    this.hamburgerMenu = document.querySelector(".mobile-menu .hamburger");
+    this.hamburgerMenu = document.querySelector(".hamburger");
     this.hamburgerMenuItems = document.querySelector(
       ".mobile-menu .menu-items"
     );
+
     this.closeHamburgerMenu = document.querySelector(
       ".mobile-menu .menu-items .close-hamburger"
     );
@@ -36,7 +37,7 @@ class Navigation {
     if (this.hamburgerMenu) {
       this.hamburgerMenu.addEventListener("click", () => {
         if (this.hamburgerMenuItems) {
-          this.hamburgerMenuItems.classList.add("open");
+          this.hamburgerMenuItems.classList.toggle("open");
         }
       });
     }
@@ -116,18 +117,6 @@ class Navigation {
       ageContainer.innerHTML = age.toString();
     }
   }
-
-  /*private async getRepositoryData() {
-    try {
-      const octokit = new Octokit({ auth: process.env.PERSONAL_ACCESS_TOKEN });
-
-      const reposListRaw = await octokit.rest.repos.listForAuthenticatedUser();
-      console.log(reposListRaw);
-
-    } catch (error: any) {
-      console.error(error)
-    }
-  }*/
 }
 
 const navigation = new Navigation();

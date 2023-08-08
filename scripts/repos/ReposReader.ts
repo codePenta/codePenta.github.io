@@ -2,8 +2,6 @@ import { Octokit } from "octokit";
 
 export default class ReposReader {
 
-    constructor() {}
-
     async getData() {
         try {
             
@@ -12,8 +10,6 @@ export default class ReposReader {
             const reposListRaw = await octokit.rest.repos.listForAuthenticatedUser();
 
             console.log(reposListRaw);
-            
-
         } catch (error: any) {
             console.error(error)
         }

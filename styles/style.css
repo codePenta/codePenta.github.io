@@ -1,3 +1,5 @@
+@import url("defaults/core.css");
+
 :root {
   --primary: #231b40;
   --primary-2: #7a36d9;
@@ -7,433 +9,62 @@
   --tertiary-2: #0c0915;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-.mobile-menu {
-  display: none;
-}
-
-body {
-  background-color: var(--tertiary-2);
-  font-family: "Montserrat", sans-serif;
-  color: var(--secondary);
-  font-size: 1.25rem;
-  line-height: 150%;
-  margin: 0;
-}
-
-/* Navbar */
-
-nav {
-  position: fixed;
-  top: 38px;
-  left: 51px;
-}
-
-nav li {
-  list-style-type: none;
-  font-variant: small-caps;
-  font-style: italic;
-  font-weight: 400;
-  margin-bottom: 7px;
-  font-size: 23.36px;
-}
-
-nav a {
-  transition: all 0.3s ease-in-out;
-  position: relative;
-  left: 0;
-  display: flex;
-  align-items: center;
-}
-
-nav .prefix {
-  align-items: center;
-  display: inline-flex;
-  background: var(--tertiary);
-  width: 40px;
-  height: 2px;
-  margin-right: 15px;
-  transition: all 0.3s ease-in-out;
-}
-
-nav a:hover li {
-  left: 15px;
-}
-
-nav a:hover .prefix {
-  transition-duration: 100ms;
-  width: 49px;
-}
-
-nav ul a.active {
-  left: 15px;
-}
-
-/* Headers */
-
-.subtitle {
-  position: relative;
-  font-size: 25px;
-  font-weight: 600;
-  font-style: italic;
-  color: var(--secondary-2);
-  font-variant: small-caps;
-}
-
-h1 {
-  font-variant: small-caps;
-  font-style: italic;
-  font-size: 6rem;
-}
-
-h5 {
-  font-size: 1.625rem;
-  font-weight: 500;
-  font-style: italic;
-  margin: 0;
-  position: relative;
-  top: 126px;
-}
-
-/* Core */
-
-a {
-  text-decoration: none;
-  color: var(--tertiary);
-}
-
-section {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Intro */
-
-.lighter h1 {
-  color: var(--tertiary-2);
-}
-
-.lighter h5 {
-  color: var(--tertiary-2);
-}
-
-.intro-container {
-  height: 100vh;
+.container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-}
-
-/* Projects */
-
-#projects-wrapper {
   height: 100vh;
-  background-color: var(--tertiary);
-}
-
-#projects-wrapper > .projects-container > h1 {
-  color: var(--tertiary-2);
-  position: relative;
-  top: 126px;
-}
-
-.projects-container > .header h5 {
-  color: var(--tertiary-2);
-  position: relative;
-  top: 126px;
-}
-
-/* Currently working on */
-
-.current-project {
-  position: relative;
-  width: 1236px;
-  height: calc(100vh - 454px);
-  top: 126px;
-  background: var(--tertiary-2);
-}
-
-/* Contact */
-
-#contact-wrapper {
-  height: 100vh;
-  background-color: var(--tertiary-2);
-}
-
-#contact-wrapper > .contact-container h1 {
-  color: var(--secondary);
-  position: relative;
-  top: 126px;
-}
-
-#contact-wrapper h5 {
-  color: var(--secondary-2);
-  position: relative;
-  top: 126px;
-}
-
-@media screen and (max-width: 1440px) {
-  .mobile-menu {
-    display: flex;
-    justify-content: right;
-    margin: 2rem 2rem;
-  }
-
-  .mobile-menu .hamburger {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 40px;
-    height: 30px;
-    cursor: pointer;
-  }
-
-  .mobile-menu .hamburger .hamburger-menu-line {
-    width: 40px;
-    height: 3px;
-    background-color: var(--tertiary);
-    transition: all 0.3s ease-in-out;
-  }
-
-  .mobile-menu .menu-items {
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 99;
-    width: 100%;
-    height: 100vh;
-    background-color: var(--tertiary-2);
-    transform: translateX(-100%);
-    transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
-  }
-
-  .mobile-menu .menu-items.open {
-    transform: translateX(0);
-  }
-
-  .mobile-menu .menu-items ul {
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .mobile-menu .menu-items li {
-    list-style-type: none;
-    font-variant: small-caps;
-    font-style: italic;
-    font-weight: 400;
-    margin-bottom: 20px;
-    font-size: 23.36px;
-  }
-
-  .mobile-menu .menu-items .close-hamburger-wrapper {
-    display: flex;
-    justify-content: right;
-    background: white;
-  }
-
-  .mobile-menu .menu-items .close-hamburger {
-    position: fixed;
-    top: 6%;
-    left: 81%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 40px;
-    height: 30px;
-    cursor: pointer;
-  }
-
-  .mobile-menu .close-mobile-menu {
-    width: 40px;
-    height: 3px;
-    background-color: var(--tertiary);
-    transition: all 0.3s ease-in-out;
-  }
-
-  .mobile-menu .close-hamburger .close-mobile-menu:nth-child(1) {
-    transform: rotate(45deg) translate(10px, 10px);
-  }
-
-  .mobile-menu .close-hamburger .close-mobile-menu:nth-child(2) {
-    transform: rotate(-45deg) translate(10px, -10px);
-  }
-
-  .mobile-menu .close-hamburger .close-mobile-menu:nth-child(3) {
-    display: none;
-  }
-
-  nav {
-    display: none;
-  }
 }
 
 @media screen and (max-width: 768px) {
-  /* Hamburger menu */
-
+  
   .mobile-menu {
-    display: flex;
-    justify-content: right;
-    margin: 2rem 2rem;
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 100;
+    background-color: var(--primary);
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
   }
 
-  .mobile-menu .hamburger {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  .hamburger {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
     width: 40px;
-    height: 30px;
+    height: 40px;
     cursor: pointer;
-  }
-
-  .mobile-menu .hamburger .hamburger-menu-line {
-    width: 40px;
-    height: 3px;
-    background-color: var(--tertiary);
-    transition: all 0.3s ease-in-out;
+    background: green;
   }
 
   .mobile-menu .menu-items {
     display: flex;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 99;
-    width: 100%;
-    height: 100vh;
-    background-color: var(--tertiary-2);
-    transform: translateX(-100%);
-    transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
-  }
-
-  .mobile-menu .menu-items.open {
-    transform: translateX(0);
-  }
-
-  .mobile-menu .menu-items ul {
-    padding: 0;
-    display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    height: 100%;
   }
 
-  .mobile-menu .menu-items li {
-    list-style-type: none;
-    font-variant: small-caps;
-    font-style: italic;
-    font-weight: 400;
-    margin-bottom: 20px;
-    font-size: 23.36px;
-  }
-
-  .mobile-menu .menu-items .close-hamburger-wrapper {
-    display: flex;
-    justify-content: right;
-    background: white;
-  }
-
-  .mobile-menu .menu-items .close-hamburger {
-    position: fixed;
-    top: 6%;
-    left: 81%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  .mobile-menu .close-hamburger-wrapper {
+    position: absolute;
+    top: 20px;
+    right: 20px;
     width: 40px;
-    height: 30px;
+    height: 40px;
     cursor: pointer;
-  }
-
-  .mobile-menu .close-mobile-menu {
-    width: 40px;
-    height: 3px;
-    background-color: var(--tertiary);
-    transition: all 0.3s ease-in-out;
-  }
-
-  .mobile-menu .close-hamburger .close-mobile-menu:nth-child(1) {
-    transform: rotate(45deg) translate(10px, 10px);
-  }
-
-  .mobile-menu .close-hamburger .close-mobile-menu:nth-child(2) {
-    transform: rotate(-45deg) translate(10px, -10px);
-  }
-
-  .mobile-menu .close-hamburger .close-mobile-menu:nth-child(3) {
-    display: none;
+    background: red;
   }
 
   nav {
     display: none;
-  }
-
-  section {
-    max-width: 90vw;
-  }
-
-  /* Intro */
-
-  .intro-container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  #intro-wrapper h1 {
-    font-size: 2.9rem;
-    line-height: 1.1em;
-  }
-
-  #intro-wrapper .subtitle {
-    font-size: 1em;
-  }
-
-  /* Projects */
-
-  #projects-wrapper > .projects-container > h1 {
-    font-size: 2.9rem;
-  }
-
-  #projects-wrapper h5 {
-    font-size: 1em;
-  }
-
-  /* Currently working on */
-
-  .current-project {
-    max-width: 90vw;
-    max-height: 40vh;
-  }
-
-  /* Contact */
-
-  #contact-wrapper > .contact-container h1 {
-    font-size: 2.9rem;
-  }
-
-  #contact-wrapper h5 {
-    font-size: 1em;
-  }
-
-  /* Footer */
-
-  footer {
-    height: 100px;
-  }
-
-  footer .footer-container {
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 }
