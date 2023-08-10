@@ -5,29 +5,31 @@ class Main {
   sections: NodeListOf<HTMLElement>;
   divs: NodeListOf<HTMLDivElement>;
   navigationBarItems: NodeListOf<HTMLAnchorElement>;
-  hamburgerMenu: HTMLElement | null;
+  hamburgerMenuButton: HTMLElement | null;
   hamburgerMenuItems: HTMLElement | null;
   closeHamburgerMenu: HTMLElement | null;
+  mobileMenu: HTMLElement | null;
+  reposReader: ReposReader;
 
   constructor() {
     this.sections = document.querySelectorAll("section");
     this.divs = document.querySelectorAll("main > div");
     this.navigationBarItems = document.querySelectorAll("nav ul a");
-    this.hamburgerMenu = document.querySelector(".hamburger");
+    this.hamburgerMenuButton = document.querySelector(".hamburger");
+    this.mobileMenu = document.querySelector(".mobile-menu");
     this.hamburgerMenuItems = document.querySelector(
       ".mobile-menu .menu-items"
     );
 
     this.closeHamburgerMenu = document.querySelector(
-      ".mobile-menu .menu-items .close-hamburger"
+      ".mobile-menu .menu-items .close-hamburger-wrapper"
     );
 
     this.initializePage();
 
-    console.log("Fetching repos...");
-    let reposReader = new ReposReader();
-    let data = reposReader.getData();
-    reposReader.parseData(data);
+    this.reposReader = new ReposReader();
+    let data = this.reposReader.getData();
+    this.reposReader.parseData(data);
   }
 
   private initializePage() {
@@ -39,19 +41,16 @@ class Main {
     this.observeSections();
     this.calculateAge();
 
-    if (this.hamburgerMenu) {
-      this.hamburgerMenu.addEventListener("click", () => {
-        if (this.hamburgerMenuItems) {
-          this.hamburgerMenuItems.classList.toggle("open");
-        }
+    if (this.hamburgerMenuButton) {
+      this.hamburgerMenuButton.addEventListener("click", () => {
+          this.mobileMenu.classList.add("open");
       });
     }
 
     if (this.closeHamburgerMenu) {
+      console.log(this.closeHamburgerMenu);
       this.closeHamburgerMenu.addEventListener("click", () => {
-        if (this.hamburgerMenuItems) {
-          this.hamburgerMenuItems.classList.remove("open");
-        }
+          this.mobileMenu.classList.remove("open");
       });
     }
   }
@@ -86,6 +85,26 @@ class Main {
               this.setNavigationBarColor("var(--primary)", "var(--primary)");
             } else {
               this.setNavigationBarColor("var(--tertiary)", "var(--tertiary)");
+            }
+
+            if (entry.target.classList.contains("projects-container")) {
+              const projectsList = document.createElement("ul");
+              projectsList.id = "projects-list";
+
+              this.reposReader.getResults().forEach((repo) => {
+                const project = document.createElement("li");
+                project.classList.add(repo.name);
+                project.innerText = repo.name;
+                project.style.setProperty('color', 'var(--primary)')
+                projectsList.appendChild(project);
+              });
+
+              this.navigationBarItems.item(1).insertAdjacentElement("afterend", projectsList);
+            } else {
+              const projectsList = document.querySelector("#projects-list");
+              if (projectsList) {
+                projectsList.remove();
+              }
             }
           }
         });

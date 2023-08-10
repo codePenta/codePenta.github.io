@@ -3,7 +3,7 @@ import Repo from "./Repo";
 
 export default class ReposReader {
 
-    public results: Repo[] = [];
+    private results: Repo[] = [];
 
     constructor() {
     }
@@ -20,14 +20,15 @@ export default class ReposReader {
     }
 
     parseData(reposListRaw: Promise<any>) {
-        console.log("Parsing repos...");
         reposListRaw.then((reposList) => {
-            console.log("Repos parsed!");
             reposList.data.forEach((repo: any) => {
-                console.log(repo);
                 const newRepo = new Repo(repo.name, repo.html_url, repo.description, repo.language);
                 this.results.push(newRepo);
             });
         });
+    }
+
+    getResults() {
+        return this.results;
     }
 }

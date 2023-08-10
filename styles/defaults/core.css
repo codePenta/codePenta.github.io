@@ -28,11 +28,11 @@ body {
 
 nav {
     position: fixed;
-    top: 38px;
-    left: 51px;
+    top: 1rem;
+    left: 1rem;
 }
 
-nav li {
+li {
     list-style-type: none;
     font-variant: small-caps;
     font-style: italic;
