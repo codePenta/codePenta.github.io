@@ -9,50 +9,52 @@ class Main {
   hamburgerMenuItems: HTMLElement | null;
   closeHamburgerMenu: HTMLElement | null;
   mobileMenu: HTMLElement | null;
+  projectsNavigation: HTMLElement | null;
   reposReader: ReposReader;
 
   constructor() {
+    this.initializePage();
+    this.reposReader = new ReposReader();
+    this.setupEventListeners();
+  }
+
+  private initializePage() {
     this.sections = document.querySelectorAll("section");
     this.divs = document.querySelectorAll("main > div");
     this.navigationBarItems = document.querySelectorAll("nav ul a");
     this.hamburgerMenuButton = document.querySelector(".hamburger");
     this.mobileMenu = document.querySelector(".mobile-menu");
-    this.hamburgerMenuItems = document.querySelector(
-      ".mobile-menu .menu-items"
-    );
+    this.hamburgerMenuItems = document.querySelector(".mobile-menu .menu-items");
+    this.closeHamburgerMenu = document.querySelector(".close-hamburger-wrapper");
+    this.projectsNavigation = document.querySelector('#projects-navigation');
 
-    this.closeHamburgerMenu = document.querySelector(
-      ".mobile-menu .menu-items .close-hamburger-wrapper"
-    );
-
-    this.initializePage();
-
-    this.reposReader = new ReposReader();
-    let data = this.reposReader.getData();
-    this.reposReader.parseData(data);
+    this.observeSections();
+    this.calculateAge();
   }
 
-  private initializePage() {
+  private setupEventListeners() {
     window.addEventListener("scroll", () => {
       const current = this.getCurrentSection();
       this.updateNavigation(current);
     });
 
-    this.observeSections();
-    this.calculateAge();
-
     if (this.hamburgerMenuButton) {
       this.hamburgerMenuButton.addEventListener("click", () => {
-          this.mobileMenu.classList.add("open");
+        this.mobileMenu?.classList.add("open");
       });
     }
 
     if (this.closeHamburgerMenu) {
-      console.log(this.closeHamburgerMenu);
       this.closeHamburgerMenu.addEventListener("click", () => {
-          this.mobileMenu.classList.remove("open");
+        this.mobileMenu?.classList.remove("open");
       });
     }
+
+    this.projectsNavigation?.addEventListener("click", () => {
+      setTimeout(() => {
+        this.updateProjectsList();
+      }, 300);
+    });
   }
 
   private getCurrentSection(): string {
@@ -69,10 +71,8 @@ class Main {
 
   private updateNavigation(current: string) {
     this.navigationBarItems.forEach((link) => {
-      link.classList.remove("active");
-      if (link.getAttribute("href")?.includes(current)) {
-        link.classList.add("active");
-      }
+      const href = link.getAttribute("href");
+      link.classList.toggle("active", href && href.includes(current));
     });
   }
 
@@ -81,30 +81,14 @@ class Main {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            if (entry.target.classList.contains("lighter")) {
-              this.setNavigationBarColor("var(--primary)", "var(--primary)");
-            } else {
-              this.setNavigationBarColor("var(--tertiary)", "var(--tertiary)");
-            }
+            const isLighter = entry.target.classList.contains("lighter");
+            this.setNavigationBarColor(isLighter ? "var(--primary)" : "var(--tertiary)", isLighter ? "var(--primary)" : "var(--tertiary)");
 
             if (entry.target.classList.contains("projects-container")) {
-              const projectsList = document.createElement("ul");
-              projectsList.id = "projects-list";
-
-              this.reposReader.getResults().forEach((repo) => {
-                const project = document.createElement("li");
-                project.classList.add(repo.name);
-                project.innerText = repo.name;
-                project.style.setProperty('color', 'var(--primary)')
-                projectsList.appendChild(project);
-              });
-
-              this.navigationBarItems.item(1).insertAdjacentElement("afterend", projectsList);
+              this.updateProjectsList();
             } else {
               const projectsList = document.querySelector("#projects-list");
-              if (projectsList) {
-                projectsList.remove();
-              }
+              projectsList?.remove();
             }
           }
         });
@@ -112,17 +96,48 @@ class Main {
       { threshold: 0.7 }
     );
 
-    this.sections.forEach((section) => {
-      observer.observe(section);
+    this.divs.forEach((div) => {
+      observer.observe(div);
     });
+  }
+
+  private updateProjectsList() {
+    const projectsList = document.createElement("ul");
+    projectsList.id = "projects-list";
+
+    this.reposReader.getResults().forEach((repo) => {
+      const project = document.createElement("a");
+      project.href = `#${repo.name.toLowerCase()}`;
+      project.classList.add(repo.name.toLowerCase());
+      project.innerText = repo.name;
+      project.style.setProperty('color', 'var(--primary)')
+      projectsList.appendChild(project);
+
+      setTimeout(() => {
+        project.animate(
+          [
+            { opacity: 0 },
+            { transform: "translateX(-100%)" },
+            { opacity: 1 },
+            { transform: "translateX(0)" },
+          ],
+          {
+            duration: 500,
+            easing: "ease-in-out",
+            fill: "forwards",
+          }
+        );
+      });
+    });
+  
+    this.navigationBarItems[1].insertAdjacentElement("afterend", projectsList);
   }
 
   private setNavigationBarColor(textColor: string, backgroundColor: string) {
     this.navigationBarItems.forEach((element) => {
       element.style.setProperty("color", textColor);
-      if (element.children[0] instanceof HTMLElement) {
-        element.children[0].style.setProperty("background", backgroundColor);
-      }
+      const firstChild = element.children[0] as HTMLElement | undefined;
+      firstChild?.style.setProperty("background", backgroundColor);
     });
   }
 
