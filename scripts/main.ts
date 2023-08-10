@@ -1,7 +1,7 @@
 import Repo from "./repos/Repo";
 import ReposReader from "./repos/ReposReader";
 
-class Main {
+export default class Main {
   sections: NodeListOf<HTMLElement>;
   divs: NodeListOf<HTMLDivElement>;
   navigationBarItems: NodeListOf<HTMLAnchorElement>;
@@ -51,13 +51,15 @@ class Main {
     }
 
     this.projectsNavigation?.addEventListener("click", () => {
-      setTimeout(() => {
-        this.updateProjectsList();
-      }, 300);
+      if (!document.querySelector('#projects-list')) {
+        setTimeout(() => {
+          this.updateProjectsList();
+        }, 200);
+      }
     });
   }
 
-  private getCurrentSection(): string {
+  getCurrentSection(): string {
     let current: string = "";
     this.divs.forEach((section) => {
       const sectionTop = section.offsetTop;
@@ -69,14 +71,14 @@ class Main {
     return current;
   }
 
-  private updateNavigation(current: string) {
+  updateNavigation(current: string) {
     this.navigationBarItems.forEach((link) => {
       const href = link.getAttribute("href");
       link.classList.toggle("active", href && href.includes(current));
     });
   }
 
-  private observeSections() {
+  observeSections() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -101,39 +103,37 @@ class Main {
     });
   }
 
-  private updateProjectsList() {
+  updateProjectsList() {
     const projectsList = document.createElement("ul");
     projectsList.id = "projects-list";
 
-    this.reposReader.getResults().forEach((repo) => {
+    this.reposReader.getResults().forEach((repo, index) => {
       const project = document.createElement("a");
       project.href = `#${repo.name.toLowerCase()}`;
       project.classList.add(repo.name.toLowerCase());
       project.innerText = repo.name;
       project.style.setProperty('color', 'var(--primary)')
-      projectsList.appendChild(project);
 
-      setTimeout(() => {
-        project.animate(
-          [
-            { opacity: 0 },
-            { transform: "translateX(-100%)" },
-            { opacity: 1 },
-            { transform: "translateX(0)" },
-          ],
-          {
-            duration: 500,
-            easing: "ease-in-out",
-            fill: "forwards",
-          }
-        );
-      });
+      project.animate(
+        [
+          { transform: "translateX(-100%)" },
+          { transform: "translateX(0)" },
+        ],
+        {
+          duration: 500,
+          easing: "cubic-bezier(0.52, 0.17, 0, 0.99)",
+          fill: "forwards",
+          delay: index * 20
+        }
+      );
+
+      projectsList.appendChild(project);
     });
-  
+
     this.navigationBarItems[1].insertAdjacentElement("afterend", projectsList);
   }
 
-  private setNavigationBarColor(textColor: string, backgroundColor: string) {
+  setNavigationBarColor(textColor: string, backgroundColor: string) {
     this.navigationBarItems.forEach((element) => {
       element.style.setProperty("color", textColor);
       const firstChild = element.children[0] as HTMLElement | undefined;
@@ -141,7 +141,7 @@ class Main {
     });
   }
 
-  private calculateAge() {
+  calculateAge() {
     const today = new Date();
     const birthDate = new Date("2001-03-29");
     const ageContainer = document.querySelector("#age");

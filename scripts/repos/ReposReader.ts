@@ -7,53 +7,36 @@ export default class ReposReader {
 
     constructor() {
         this.parseData(this.getData());
-
-        console.log(this.results);
-        
     }
 
     private async getData() {
         if (!process.env.PERSONAL_ACCESS_TOKEN) throw new Error("No personal access token provided");
-
+      
         try {
-            const cacheKey = "reposListCache";
-            const cachedData = localStorage.getItem(cacheKey);
-
-            if (cachedData) {
-                console.log("Cached data found");
-                const octokit = new Octokit({ auth: process.env.PERSONAL_ACCESS_TOKEN });
-
-                console.log("Checking if cached data is still valid");
-                const response = await octokit.request("GET /user/repos", {
-                    headers: {
-                        "If-None-Match": cachedData,
-                    },
-                });
-
-                console.log("Response status: " + response.status);
-
-                if (Number(response.status) === 304) {
-                    console.log("Using cached data");
-                    return JSON.parse(localStorage.getItem(cacheKey)!);
-                } else {
-                    console.log("Fetching new data");
-                    const newData = response.data;
-                    localStorage.setItem(cacheKey, response.headers.etag!);
-                    return newData;
-                }
-            } else {
-                // If there is no cached data, fetch the data and cache it
-                console.log("No cached data found");
-                const octokit = new Octokit({ auth: process.env.PERSONAL_ACCESS_TOKEN });
-                const response = await octokit.request("GET /user/repos");
-                const data = response.data;
-                localStorage.setItem(cacheKey, response.headers.etag!);
-                return data;
+          const cacheKey = "reposListCache";
+          const cachedData = localStorage.getItem(cacheKey);
+          const octokit = new Octokit({ auth: process.env.PERSONAL_ACCESS_TOKEN });
+      
+          if (cachedData) {
+            const { timestamp, data } = JSON.parse(cachedData);
+            const now = new Date().getTime();
+            const tenMinutes = 10 * 60 * 1000; // 1 hour in milliseconds
+      
+            if (now - timestamp < tenMinutes) {
+              console.log("Using cached data");
+              return data;
             }
+          }
+      
+          console.log("Fetching data from API");
+          const data = await octokit.request("GET /user/repos");
+          localStorage.setItem(cacheKey, JSON.stringify({ timestamp: new Date().getTime(), data }));
+          return data;
+      
         } catch (error: any) {
-            console.error(error);
+          console.error(error);
         }
-    }
+      }
 
     private parseData(reposListRaw: Promise<any>) {
         reposListRaw.then((reposList) => {
