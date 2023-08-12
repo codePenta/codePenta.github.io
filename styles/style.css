@@ -10,21 +10,29 @@
 }
 
 .container {
-  height: 100vh;
-  border: 1px solid red;
+  min-height: 100vh;
+  /* border: 1px solid red; */
 }
 
 .container section {
-  margin: 5rem 25rem;
-  border: 1px solid green;
+  padding-top: 15em;
+  padding-left: 13em;
 }
 
 .container.lighter {
   background-color: var(--tertiary);
 }
 
-nav #projects-list a {
+.container.darker {
+  background-color: var(--primary);
+}
+
+#project-nav-link {
   font-variant: small-caps;
+}
+
+#project-nav-link:hover {
+  color: var(--secondary);
 }
 
 @media screen and (max-width: 768px) {
@@ -36,7 +44,7 @@ nav #projects-list a {
     margin: 0;
     padding: 0;
     z-index: 100;
-    background-color: var(--primary);
+    background-color: var(--tertiary-2);
     width: 100%;
     height: 100%;
     overflow-y: auto;
@@ -52,7 +60,7 @@ nav #projects-list a {
     width: 40px;
     height: 40px;
     cursor: pointer;
-    background: green;
+    background-color: red;
   }
 
   .mobile-menu .menu-items {
@@ -70,7 +78,7 @@ nav #projects-list a {
     width: 40px;
     height: 40px;
     cursor: pointer;
-    background: red;
+    background-color: green;
   }
 
   .mobile-menu.open {
@@ -91,11 +99,20 @@ nav #projects-list a {
   }
 
   .mobile-menu .menu-items a:hover li {
-    background-color: var(--tertiary-2);
+    background-color: var(--tertiary);
   }
 
 
   nav {
     display: none;
+  }
+
+  .mobile-menu .hide {
+    display: none;
+  }
+  
+  .container section {
+    /* padding: 11em 5em; */
+    border: 1px solid red;
   }
 }
