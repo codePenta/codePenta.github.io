@@ -1,7 +1,8 @@
-import ReposReader from "../repos/ReposReader";
+import Reader from "../api/ReposReader";
+import ProjectBuilder from "../core/projectBuilder";
 
 export default class Builder {
-    public containers: NodeListOf<HTMLElement>;
+    containers: NodeListOf<HTMLElement>;
     containerWrappers: NodeListOf<HTMLDivElement>;
     navigationBarItems: NodeListOf<HTMLAnchorElement>;
     hamburgerMenuButton: HTMLElement | null;
@@ -9,7 +10,10 @@ export default class Builder {
     closeHamburgerMenu: HTMLElement | null;
     mobileMenu: HTMLElement | null;
     projectsNavigation: HTMLElement | null;
-    reposReader: ReposReader;
+    projectsSection: HTMLElement | null;
+
+    reposReader: Reader;
+    projectBuilder: ProjectBuilder;
 
     constructor() {
         this.containerWrappers = document.querySelectorAll('main > div');
@@ -23,7 +27,11 @@ export default class Builder {
         this.mobileMenu = document.querySelector('.mobile-menu');
 
         this.projectsNavigation = document.querySelector('#projects-navigation');
-        this.reposReader = new ReposReader();
+        this.projectsSection = document.querySelector('.projects-container');
+
+        this.reposReader = new Reader();
+        this.projectBuilder = new ProjectBuilder(this.reposReader);
+        this.projectBuilder.createSummaryContents();
     }
 
     build() {
@@ -31,6 +39,37 @@ export default class Builder {
         this.calculateAge();
         this.buildProjectsNavigation();
         this.buildSections();
+        this.buildProjectSummary();
+    }
+
+    buildProjectSummary() {
+        // this.reposReader.getResults().filter(repo => repo.languageUsed === 'C++').forEach(repo => {
+        //     const project = document.createElement('div');
+        //     project.classList.add('project');
+        //     project.id = repo.name.toLowerCase();
+
+        //     const projectTitle = document.createElement('h3');
+        //     projectTitle.innerHTML = repo.name;
+
+        //     const projectDescription = document.createElement('p');
+        //     projectDescription.innerHTML = repo.description;
+
+        //     const projectLanguage = document.createElement('p');
+        //     projectLanguage.innerHTML = repo.languageUsed;
+
+        //     const projectLink = document.createElement('a');
+        //     projectLink.href = repo.url;
+        //     projectLink.innerHTML = 'View on GitHub';
+
+        //     project.appendChild(projectTitle);
+        //     project.appendChild(projectDescription);
+        //     project.appendChild(projectLanguage);
+        //     project.appendChild(projectLink);
+
+        //     console.log(project);
+
+        //     this.projectsSection.appendChild(project);
+        // });
     }
 
     private updateNavbar(current: string) {
@@ -122,48 +161,43 @@ export default class Builder {
 
         if (window.innerWidth < 768) {
             this.mobileMenu.querySelector('a[href="#projects-wrapper"]').addEventListener('click', () => {
-                
+
             });
         }
+        setTimeout(() => {
 
-        const projectsList = document.createElement("ul");
-        projectsList.id = "projects-list";
+            const projectsList = document.createElement("ul");
+            projectsList.id = "projects-list";
 
-        this.reposReader.getResults().forEach((repo, index) => {
-            const project = document.createElement("a");
-            project.href = `#${repo.name.toLowerCase()}`;
-            project.classList.add(repo.name.toLowerCase());
+            this.reposReader.getResults().forEach((repo, index) => {
+                const project = document.createElement("a");
+                project.href = `#${repo.name.toLowerCase()}`;
 
-            const projectName = document.createElement("li");
-            projectName.innerHTML = repo.name;
-            projectName.style.setProperty("color", "var(--primary)");
+                const projectName = document.createElement("li");
+                projectName.innerHTML = repo.name;
 
-            project.appendChild(projectName);
-            // Set initial position of project element
-            project.style.transform = "translateX(-100%)";
+                project.appendChild(projectName);
+                // Set initial position of project element
 
-            // Append project element to projectsList
-            projectsList.appendChild(project);
+                // Append project element to projectsList
+                projectsList.appendChild(project);
 
-            // Animate project element
-            project.animate(
-                [
-                    { transform: "translateX(-100%)" },
-                    { transform: "translateX(0)" },
-                ],
-                {
-                    duration: 1000,
-                    easing: "cubic-bezier(0.52, 0.17, 0, 0.99)",
-                    fill: "forwards",
-                    delay: index * 20,
+                if (project.classList.contains("animate")) {
+                    setTimeout(() => {
+                        project.classList.remove("animate");
+                    }, index * 20);
+                } else {
+                    setTimeout(() => {
+                        project.classList.add("animate");
+                    }, index * 20);
                 }
-            );
-        });
+            });
 
-        this.navigationBarItems[1].insertAdjacentElement(
-            "afterend",
-            projectsList
-        );
+            this.navigationBarItems[1].insertAdjacentElement(
+                "afterend",
+                projectsList
+            );
+        }, 200);
     }
 
     private getCurrentSection(): string {

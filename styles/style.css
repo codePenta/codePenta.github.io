@@ -1,4 +1,6 @@
+@import url("animations/animations.css");
 @import url("defaults/core.css");
+@import url("dynamic/projects.css");
 
 :root {
   --primary: #231b40;
@@ -11,28 +13,33 @@
 
 .container {
   min-height: 100vh;
-  /* border: 1px solid red; */
+}
+
+#intro-wrapper section {
+  padding-top: 30em;
+  padding-left: 15em;
 }
 
 .container section {
-  padding-top: 15em;
-  padding-left: 13em;
+  padding-top: 8em;
+  padding-left: 15em;
+  border: 1px solid red;
 }
 
 .container.lighter {
   background-color: var(--tertiary);
 }
 
+.container.lighter h1 {
+  color: var(--primary); 
+}
+
+.container.lighter h5 {
+  color: var(--tertiary-2);
+}
+
 .container.darker {
-  background-color: var(--primary);
-}
-
-#project-nav-link {
-  font-variant: small-caps;
-}
-
-#project-nav-link:hover {
-  color: var(--secondary);
+  background-color: var(--tertiary-2);
 }
 
 @media screen and (max-width: 768px) {
@@ -110,7 +117,7 @@
   .mobile-menu .hide {
     display: none;
   }
-  
+
   .container section {
     /* padding: 11em 5em; */
     border: 1px solid red;

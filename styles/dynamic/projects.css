@@ -1,0 +1,23 @@
+#project-nav-link {
+    font-variant: small-caps;
+}
+
+#project-nav-link:hover {
+    color: var(--secondary);
+}
+
+#projects-list a {
+    position: relative;
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+#projects-list a.animate {
+    animation: slideInFromLeft 1s cubic-bezier(0.52, 0.17, 0, 0.99) forwards;
+}
+
+#projects-list li {
+    color: var(--primary);
+    font-size: .85em;
+    font-weight: 500;
+}

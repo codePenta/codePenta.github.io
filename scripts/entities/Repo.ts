@@ -2,15 +2,15 @@ export default class Repo {
     name: string;
     url: string;
     description: string;
-    language: string;
+    languageUsed: string;
 
     constructor(name: string, 
                 url: string, 
                 description: string, 
-                language: string) {
+                languageUsed: string) {
         this.name = name;
         this.url = url;
         this.description = description;
-        this.language = language;
+        this.languageUsed = languageUsed;
     }   
 }
