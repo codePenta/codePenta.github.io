@@ -1,8 +1,8 @@
 import ReposReader from "../repos/ReposReader";
 
 export default class Builder {
-    public sections: NodeListOf<HTMLElement>;
-    divs: NodeListOf<HTMLDivElement>;
+    public containers: NodeListOf<HTMLElement>;
+    containerWrappers: NodeListOf<HTMLDivElement>;
     navigationBarItems: NodeListOf<HTMLAnchorElement>;
     hamburgerMenuButton: HTMLElement | null;
     hamburgerMenuItems: HTMLElement | null;
@@ -12,8 +12,8 @@ export default class Builder {
     reposReader: ReposReader;
 
     constructor() {
-        this.sections = document.querySelectorAll('section');
-        this.divs = document.querySelectorAll('main > div');
+        this.containerWrappers = document.querySelectorAll('main > div');
+        this.containers = document.querySelectorAll('section');
 
         this.navigationBarItems = document.querySelectorAll('nav ul a');
 
@@ -87,7 +87,7 @@ export default class Builder {
             { threshold: 0.8 }
         );
 
-        this.divs.forEach((div) => {
+        this.containerWrappers.forEach((div) => {
             observer.observe(div);
         });
     }
@@ -168,7 +168,7 @@ export default class Builder {
 
     private getCurrentSection(): string {
         let current: string = "";
-        this.divs.forEach((section) => {
+        this.containerWrappers.forEach((section) => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
             if (window.scrollY >= sectionTop - sectionHeight / 3) {
