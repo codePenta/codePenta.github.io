@@ -9,9 +9,11 @@ const isProduction = process.env.NODE_ENV == "production";
 const stylesHandler = "style-loader";
 
 const config = {
+  devtool: "source-map",
   entry: "./scripts/main.ts",
   output: {
     path: path.resolve(__dirname, "brain"),
+    sourceMapFilename: "maps/brain.js.map"
   },
   plugins: [
     new Dotenv()

@@ -5,11 +5,6 @@ export default class Reader {
 
   results: Repo[] = [];
 
-  constructor() {
-    this.parseData(this.getData());
-
-  }
-
   private async getData() {
     if (!process.env.PERSONAL_ACCESS_TOKEN) throw new Error("No personal access token provided");
 
@@ -25,11 +20,9 @@ export default class Reader {
         headers = { "If-Modified-Since": lastModified };
       }
 
-      console.log("Fetching data from API");
       const response = await octokit.request("GET /user/repos", headers);
 
       if (Number(response.status) === 304) {
-        console.log("Using cached data");
         return JSON.parse(cachedData).data;
       }
 
@@ -44,16 +37,11 @@ export default class Reader {
     }
   }
 
-  private parseData(reposListRaw: Promise<any>) {
-    reposListRaw.then((reposList) => {
-      reposList.forEach((repo: any) => {
-        const newRepo = new Repo(repo.name, repo.url, repo.description, repo.language);
-        this.results.push(newRepo);
-      });
-    });
-  }
+  async getResults() {
+    const data = await this.getData();
 
-  getResults() {
-    return this.results;
+    data.forEach((repo: any) => {
+      this.results.push(new Repo(repo.name, repo.url, repo.description, repo.language));
+    });
   }
 }

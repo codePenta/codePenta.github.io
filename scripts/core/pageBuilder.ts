@@ -165,27 +165,28 @@ export default class Builder {
             });
         }
         setTimeout(() => {
-
             const projectsList = document.createElement("ul");
             projectsList.id = "projects-list";
 
-            for (const repo of this.reposReader.getResults()) {
-                const project = document.createElement("a");
-                project.href = `#${repo.name.toLowerCase()}`;
+            this.reposReader.getResults().finally(() => {
+                this.reposReader.results.forEach((repo, index) => {
+                    const project = document.createElement("a");
+                    project.href = `#${repo.name.toLowerCase()}`;
 
-                const projectName = document.createElement("li");
-                projectName.textContent = repo.name;
+                    const projectName = document.createElement("li");
+                    projectName.textContent = repo.name;
 
-                project.appendChild(projectName);
-                // Set initial position of project element
+                    project.appendChild(projectName);
+                    // Set initial position of project element
 
-                // Append project element to projectsList
-                projectsList.appendChild(project);
+                    // Append project element to projectsList
+                    projectsList.appendChild(project);
 
-                setTimeout(() => {
-                    project.classList.toggle("animate");
-                }, this.reposReader.getResults().indexOf(repo) * 20);
-            }
+                    setTimeout(() => {
+                        project.classList.toggle("animate");
+                    }, index * 20);
+                });
+            });
 
             this.navigationBarItems[1].insertAdjacentElement(
                 "afterend",
