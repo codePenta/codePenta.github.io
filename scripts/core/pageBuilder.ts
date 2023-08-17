@@ -169,12 +169,12 @@ export default class Builder {
             const projectsList = document.createElement("ul");
             projectsList.id = "projects-list";
 
-            this.reposReader.getResults().forEach((repo, index) => {
+            for (const repo of this.reposReader.getResults()) {
                 const project = document.createElement("a");
                 project.href = `#${repo.name.toLowerCase()}`;
 
                 const projectName = document.createElement("li");
-                projectName.innerHTML = repo.name;
+                projectName.textContent = repo.name;
 
                 project.appendChild(projectName);
                 // Set initial position of project element
@@ -182,16 +182,10 @@ export default class Builder {
                 // Append project element to projectsList
                 projectsList.appendChild(project);
 
-                if (project.classList.contains("animate")) {
-                    setTimeout(() => {
-                        project.classList.remove("animate");
-                    }, index * 20);
-                } else {
-                    setTimeout(() => {
-                        project.classList.add("animate");
-                    }, index * 20);
-                }
-            });
+                setTimeout(() => {
+                    project.classList.toggle("animate");
+                }, this.reposReader.getResults().indexOf(repo) * 20);
+            }
 
             this.navigationBarItems[1].insertAdjacentElement(
                 "afterend",
