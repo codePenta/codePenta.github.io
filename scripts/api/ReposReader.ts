@@ -3,11 +3,7 @@ import Repo from "../entities/Repo";
 
 export default class Reader {
 
-  results: Repo[] = [];
-
-  private async getData() {
-    if (!process.env.PERSONAL_ACCESS_TOKEN) throw new Error("No personal access token provided");
-
+  async getData() {
     try {
       const cacheKey = "reposListCache";
       const cachedData = localStorage.getItem(cacheKey);
@@ -35,13 +31,5 @@ export default class Reader {
     } catch (error: any) {
       console.error(error);
     }
-  }
-
-  async getResults() {
-    const data = await this.getData();
-
-    data.forEach((repo: any) => {
-      this.results.push(new Repo(repo.name, repo.url, repo.description, repo.language));
-    });
   }
 }

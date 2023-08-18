@@ -10363,15 +10363,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 var octokit_1 = __webpack_require__(/*! octokit */ "./node_modules/octokit/dist-web/index.js");
-var Repo_1 = __importDefault(__webpack_require__(/*! ../entities/Repo */ "./scripts/entities/Repo.ts"));
 var Reader = /** @class */ (function () {
     function Reader() {
-        this.results = [];
     }
     Reader.prototype.getData = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -10379,21 +10374,17 @@ var Reader = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (false)
-                            {}
-                        _a.label = 1;
-                    case 1:
-                        _a.trys.push([1, 3, , 4]);
+                        _a.trys.push([0, 2, , 3]);
                         cacheKey = "reposListCache";
                         cachedData = localStorage.getItem(cacheKey);
-                        octokit = new octokit_1.Octokit({ auth: "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" });
+                        octokit = new octokit_1.Octokit({ auth: "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" });
                         headers = {};
                         if (cachedData) {
                             lastModified_1 = JSON.parse(cachedData).lastModified;
                             headers = { "If-Modified-Since": lastModified_1 };
                         }
                         return [4 /*yield*/, octokit.request("GET /user/repos", headers)];
-                    case 2:
+                    case 1:
                         response = _a.sent();
                         if (Number(response.status) === 304) {
                             return [2 /*return*/, JSON.parse(cachedData).data];
@@ -10402,28 +10393,11 @@ var Reader = /** @class */ (function () {
                         data = response.data;
                         localStorage.setItem(cacheKey, JSON.stringify({ lastModified: lastModified, data: data }));
                         return [2 /*return*/, data];
-                    case 3:
+                    case 2:
                         error_1 = _a.sent();
                         console.error(error_1);
-                        return [3 /*break*/, 4];
-                    case 4: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    Reader.prototype.getResults = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var data;
-            var _this = this;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.getData()];
-                    case 1:
-                        data = _a.sent();
-                        data.forEach(function (repo) {
-                            _this.results.push(new Repo_1.default(repo.name, repo.url, repo.description, repo.language));
-                        });
-                        return [2 /*return*/];
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
                 }
             });
         });
@@ -10462,7 +10436,6 @@ var Builder = /** @class */ (function () {
         this.projectsSection = document.querySelector('.projects-container');
         this.reposReader = new ReposReader_1.default();
         this.projectBuilder = new projectBuilder_1.default(this.reposReader);
-        this.projectBuilder.createSummaryContents();
     }
     Builder.prototype.build = function () {
         this.setupEvents();
@@ -10472,26 +10445,27 @@ var Builder = /** @class */ (function () {
         this.buildProjectSummary();
     };
     Builder.prototype.buildProjectSummary = function () {
-        // this.reposReader.getResults().filter(repo => repo.languageUsed === 'C++').forEach(repo => {
-        //     const project = document.createElement('div');
-        //     project.classList.add('project');
-        //     project.id = repo.name.toLowerCase();
-        //     const projectTitle = document.createElement('h3');
-        //     projectTitle.innerHTML = repo.name;
-        //     const projectDescription = document.createElement('p');
-        //     projectDescription.innerHTML = repo.description;
-        //     const projectLanguage = document.createElement('p');
-        //     projectLanguage.innerHTML = repo.languageUsed;
-        //     const projectLink = document.createElement('a');
-        //     projectLink.href = repo.url;
-        //     projectLink.innerHTML = 'View on GitHub';
-        //     project.appendChild(projectTitle);
-        //     project.appendChild(projectDescription);
-        //     project.appendChild(projectLanguage);
-        //     project.appendChild(projectLink);
-        //     console.log(project);
-        //     this.projectsSection.appendChild(project);
-        // });
+        var _this = this;
+        this.projectBuilder.getLanguages().then(function (data) {
+            var summary = document.createElement('div');
+            summary.id = 'projects-summary';
+            var languages = Object.keys(data);
+            var shares = Object.values(data);
+            languages.forEach(function (language, index) {
+                var languageElement = document.createElement('div');
+                languageElement.classList.add('language');
+                var languageName = document.createElement('span');
+                languageName.classList.add('language-name');
+                languageName.textContent = language;
+                var languageShare = document.createElement('span');
+                languageShare.classList.add('language-share');
+                languageShare.textContent = "".concat(shares[index], "%");
+                languageElement.appendChild(languageName);
+                languageElement.appendChild(languageShare);
+                summary.appendChild(languageElement);
+            });
+            _this.projectsSection.appendChild(summary);
+        });
     };
     Builder.prototype.updateNavbar = function (current) {
         this.navigationBarItems.forEach(function (link) {
@@ -10568,7 +10542,6 @@ var Builder = /** @class */ (function () {
         }
     };
     Builder.prototype.buildProjectsNavigation = function () {
-        // Can you give me the code for mobile devices? So if someone clicks on #projects-wrapper, the menu will change to all the projects
         var _this = this;
         if (window.innerWidth < 768) {
             this.mobileMenu.querySelector('a[href="#projects-wrapper"]').addEventListener('click', function () {
@@ -10577,8 +10550,8 @@ var Builder = /** @class */ (function () {
         setTimeout(function () {
             var projectsList = document.createElement("ul");
             projectsList.id = "projects-list";
-            _this.reposReader.getResults().finally(function () {
-                _this.reposReader.results.forEach(function (repo, index) {
+            _this.reposReader.getData().then(function (repo) {
+                repo.forEach(function (repo, index) {
                     var project = document.createElement("a");
                     project.href = "#".concat(repo.name.toLowerCase());
                     var projectName = document.createElement("li");
@@ -10617,55 +10590,75 @@ exports["default"] = Builder;
 /*!****************************************!*\
   !*** ./scripts/core/projectBuilder.ts ***!
   \****************************************/
-/***/ ((__unused_webpack_module, exports) => {
+/***/ (function(__unused_webpack_module, exports) {
 
 "use strict";
 
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 var ProjectBuilder = /** @class */ (function () {
     function ProjectBuilder(reader) {
         this.shares = {};
         this.reader = reader;
     }
-    ProjectBuilder.prototype.createSummaryContents = function () {
-    };
-    ProjectBuilder.prototype.addShare = function (language, stars) {
-        if (this.shares[language]) {
-            this.shares[language] += stars;
-        }
-        else {
-            this.shares[language] = stars;
-        }
-    };
-    ProjectBuilder.prototype.removeShare = function (language) {
-        delete this.shares[language];
+    ProjectBuilder.prototype.getLanguages = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var repos, languages, uniqueLanguages;
+            var _this = this;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.reader.getData()];
+                    case 1:
+                        repos = _a.sent();
+                        languages = repos.map(function (repo) { return repo.language; });
+                        uniqueLanguages = new Set(languages);
+                        uniqueLanguages.forEach(function (language) {
+                            var count = languages.filter(function (l) { return l === language; }).length;
+                            _this.shares[language] = count;
+                        });
+                        return [2 /*return*/, this.shares];
+                }
+            });
+        });
     };
     return ProjectBuilder;
 }());
 exports["default"] = ProjectBuilder;
-
-
-/***/ }),
-
-/***/ "./scripts/entities/Repo.ts":
-/*!**********************************!*\
-  !*** ./scripts/entities/Repo.ts ***!
-  \**********************************/
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-var Repo = /** @class */ (function () {
-    function Repo(name, url, description, languageUsed) {
-        this.name = name;
-        this.url = url;
-        this.description = description;
-        this.languageUsed = languageUsed;
-    }
-    return Repo;
-}());
-exports["default"] = Repo;
 
 
 /***/ }),

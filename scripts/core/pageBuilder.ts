@@ -2,18 +2,18 @@ import Reader from "../api/ReposReader";
 import ProjectBuilder from "../core/projectBuilder";
 
 export default class Builder {
-    containers: NodeListOf<HTMLElement>;
-    containerWrappers: NodeListOf<HTMLDivElement>;
-    navigationBarItems: NodeListOf<HTMLAnchorElement>;
-    hamburgerMenuButton: HTMLElement | null;
-    hamburgerMenuItems: HTMLElement | null;
-    closeHamburgerMenu: HTMLElement | null;
-    mobileMenu: HTMLElement | null;
-    projectsNavigation: HTMLElement | null;
-    projectsSection: HTMLElement | null;
+    private containers: NodeListOf<HTMLElement>;
+    private containerWrappers: NodeListOf<HTMLDivElement>;
+    private navigationBarItems: NodeListOf<HTMLAnchorElement>;
+    private hamburgerMenuButton: HTMLElement | null;
+    private hamburgerMenuItems: HTMLElement | null;
+    private closeHamburgerMenu: HTMLElement | null;
+    private mobileMenu: HTMLElement | null;
+    private projectsNavigation: HTMLElement | null;
+    private projectsSection: HTMLElement | null;
 
-    reposReader: Reader;
-    projectBuilder: ProjectBuilder;
+    private reposReader: Reader;
+    private projectBuilder: ProjectBuilder;
 
     constructor() {
         this.containerWrappers = document.querySelectorAll('main > div');
@@ -31,7 +31,6 @@ export default class Builder {
 
         this.reposReader = new Reader();
         this.projectBuilder = new ProjectBuilder(this.reposReader);
-        this.projectBuilder.createSummaryContents();
     }
 
     build() {
@@ -43,33 +42,32 @@ export default class Builder {
     }
 
     buildProjectSummary() {
-        // this.reposReader.getResults().filter(repo => repo.languageUsed === 'C++').forEach(repo => {
-        //     const project = document.createElement('div');
-        //     project.classList.add('project');
-        //     project.id = repo.name.toLowerCase();
+        this.projectBuilder.getLanguages().then((data) => {
+            const summary = document.createElement('div');
+            summary.id = 'projects-summary';
+            const languages = Object.keys(data);
+            const shares = Object.values(data);
 
-        //     const projectTitle = document.createElement('h3');
-        //     projectTitle.innerHTML = repo.name;
+            languages.forEach((language: string, index: number) => {
+                const languageElement = document.createElement('div');
+                languageElement.classList.add('language');
 
-        //     const projectDescription = document.createElement('p');
-        //     projectDescription.innerHTML = repo.description;
+                const languageName = document.createElement('span');
+                languageName.classList.add('language-name');
+                languageName.textContent = language;
 
-        //     const projectLanguage = document.createElement('p');
-        //     projectLanguage.innerHTML = repo.languageUsed;
+                const languageShare = document.createElement('span');
+                languageShare.classList.add('language-share');
+                languageShare.textContent = `${shares[index]}%`;
 
-        //     const projectLink = document.createElement('a');
-        //     projectLink.href = repo.url;
-        //     projectLink.innerHTML = 'View on GitHub';
+                languageElement.appendChild(languageName);
+                languageElement.appendChild(languageShare);
 
-        //     project.appendChild(projectTitle);
-        //     project.appendChild(projectDescription);
-        //     project.appendChild(projectLanguage);
-        //     project.appendChild(projectLink);
+                summary.appendChild(languageElement);
+            });
 
-        //     console.log(project);
-
-        //     this.projectsSection.appendChild(project);
-        // });
+            this.projectsSection.appendChild(summary);
+        });
     }
 
     private updateNavbar(current: string) {
@@ -157,19 +155,18 @@ export default class Builder {
 
     private buildProjectsNavigation() {
 
-        // Can you give me the code for mobile devices? So if someone clicks on #projects-wrapper, the menu will change to all the projects
-
         if (window.innerWidth < 768) {
             this.mobileMenu.querySelector('a[href="#projects-wrapper"]').addEventListener('click', () => {
-
             });
         }
+
         setTimeout(() => {
             const projectsList = document.createElement("ul");
             projectsList.id = "projects-list";
 
-            this.reposReader.getResults().finally(() => {
-                this.reposReader.results.forEach((repo, index) => {
+            this.reposReader.getData().then((repo) => {
+                repo.forEach((repo: any, index: number) => {
+
                     const project = document.createElement("a");
                     project.href = `#${repo.name.toLowerCase()}`;
 

@@ -1,4 +1,5 @@
 import Reader from '../api/ReposReader';
+import Repo from '../entities/Repo';
 
 export default class ProjectBuilder {
 
@@ -10,19 +11,16 @@ export default class ProjectBuilder {
         this.reader = reader
     }
 
-    createSummaryContents() {
-        
-    }
+    async getLanguages(): Promise<any> {
+        const repos = await this.reader.getData();
+        const languages = repos.map((repo: Repo) => repo.language);
+        const uniqueLanguages = new Set(languages);
 
-    addShare(language: string, stars: number) {
-        if (this.shares[language]) {
-            this.shares[language] += stars;
-        } else {
-            this.shares[language] = stars;
-        }
-    }
+        uniqueLanguages.forEach((language: string) => {
+            const count = languages.filter((l: string) => l === language).length;
+            this.shares[language] = count;
+        });
 
-    removeShare(language: string) {
-        delete this.shares[language];
+        return this.shares;
     }
 }
