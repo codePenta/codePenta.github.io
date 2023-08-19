@@ -10416,7 +10416,7 @@ var Reader = /** @class */ (function () {
                         _a.trys.push([0, 2, , 3]);
                         cacheKey = "reposListCache";
                         cachedData = localStorage.getItem(cacheKey);
-                        octokit = new octokit_1.Octokit({ auth: "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" });
+                        octokit = new octokit_1.Octokit({ auth: "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" });
                         headers = {};
                         if (cachedData) {
                             lastModified_1 = JSON.parse(cachedData).lastModified;
@@ -10490,7 +10490,7 @@ var Builder = /** @class */ (function () {
             var languages = Object.keys(data);
             var shares = Object.values(data);
             languages.forEach(function (language, index) {
-                var languageElement = document.createElement('div');
+                var languageElement = document.createElement('a');
                 languageElement.classList.add('language');
                 var languageName = document.createElement('span');
                 languageName.classList.add('language-name');

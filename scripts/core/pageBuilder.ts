@@ -48,7 +48,7 @@ export default class Builder {
             const shares = Object.values(data);
 
             languages.forEach((language: string, index: number) => {
-                const languageElement = document.createElement('div');
+                const languageElement = document.createElement('a');
                 languageElement.classList.add('language');
 
                 const languageName = document.createElement('span');
