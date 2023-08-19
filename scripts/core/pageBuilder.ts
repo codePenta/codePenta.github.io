@@ -72,7 +72,7 @@ export default class Builder {
     private updateNavbar(current: string) {
         this.navigationBarItems.forEach((link: HTMLAnchorElement) => {
             const href = link.getAttribute("href");
-            link.classList.toggle("active", href && href.includes(current) ? true : false);
+            link.classList.toggle("active", href && href.includes(current));
         });
     }
 

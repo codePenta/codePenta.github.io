@@ -10416,7 +10416,7 @@ var Reader = /** @class */ (function () {
                         _a.trys.push([0, 2, , 3]);
                         cacheKey = "reposListCache";
                         cachedData = localStorage.getItem(cacheKey);
-                        octokit = new octokit_1.Octokit({ auth: "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" });
+                        octokit = new octokit_1.Octokit({ auth: "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" });
                         headers = {};
                         if (cachedData) {
                             lastModified_1 = JSON.parse(cachedData).lastModified;
@@ -10508,7 +10508,7 @@ var Builder = /** @class */ (function () {
     Builder.prototype.updateNavbar = function (current) {
         this.navigationBarItems.forEach(function (link) {
             var href = link.getAttribute("href");
-            link.classList.toggle("active", href && href.includes(current) ? true : false);
+            link.classList.toggle("active", href && href.includes(current));
         });
     };
     Builder.prototype.setupEvents = function () {
