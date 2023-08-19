@@ -57,7 +57,7 @@ export default class Builder {
 
                 const languageShare = document.createElement('span');
                 languageShare.classList.add('language-share');
-                languageShare.textContent = `${shares[index]}%`;
+                languageShare.textContent = `${shares[index]}`;
 
                 languageElement.appendChild(languageName);
                 languageElement.appendChild(languageShare);

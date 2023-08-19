@@ -25,35 +25,30 @@
 /* Projects summary */
 
 #projects-summary {
-    display: flex;
-    flex-direction: row;
+    margin: 4em 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
     justify-content: space-between;
-    margin: 0 auto;
-    padding: 0 1em;
-    max-width: 1000px;
-    column-gap: 1em;
+    max-width: 80%;
+    column-gap: 2em;
+    row-gap: 2em;
 }
 
 #projects-summary .language {
-    position: relative;
+    display: flex;
+    flex-direction: column;
     background: var(--primary);
     padding: 1.1em;
-    max-width: 100%;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(1, 1fr);
+    text-align: center;
+    gap: 1.1rem;
+    clip-path: polygon(10% 5%, 90% 5%, 95% 15%, 95% 85%, 90% 95%, 10% 95%, 5% 85%, 5% 15%);
 }
 
 #projects-summary .language-name {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-    font-size: 1.5em;
-    font-weight: 500;
-    text-align: left;
-    background: green;
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 #projects-summary .language-share {
-    grid-column: 2 / 2;
-    grid-row: 2 / 2;
+    font-size: 1.2em;
 }

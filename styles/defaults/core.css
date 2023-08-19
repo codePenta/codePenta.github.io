@@ -27,16 +27,14 @@ body {
 h1 {
     font-size: 6rem;
     font-weight: 700;
-    margin: 0;
-    margin-bottom: .6em;
+    margin: 0 0 .6em;
     font-variant: small-caps;
 }
 
 .subtitle {
     font-size: 1.4rem;
     font-weight: 500;
-    margin: 0;
-    margin-bottom: 1rem;
+    margin: 0 0 1rem;
 }
 
 /* Navbar */
@@ -57,7 +55,7 @@ li {
 }
 
 nav a {
-    transition: all 0.3s cubic-bezier(0.52, 0.17, 0, 0.99) forwards;
+    transition: all 0.3s cubic-bezier(0.52, 0.17, 0, 0.99);
     position: relative;
     left: 0;
     display: flex;

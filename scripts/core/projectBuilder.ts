@@ -17,8 +17,7 @@ export default class ProjectBuilder {
         const uniqueLanguages = new Set(allLanguages);
 
         uniqueLanguages.forEach((language: string) => {
-            let filteredLanguage = allLanguages.filter((l: string) => l === language).length;
-            this.shares[language] = Math.round(filteredLanguage / allLanguages.length * 100);
+            this.shares[language] = allLanguages.filter((l: string) => l === language).length;
         });
 
         return this.shares;
