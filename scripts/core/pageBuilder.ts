@@ -5,14 +5,14 @@ export default class Builder {
     private containers: NodeListOf<HTMLElement>;
     private containerWrappers: NodeListOf<HTMLDivElement>;
     private navigationBarItems: NodeListOf<HTMLAnchorElement>;
-    private hamburgerMenuButton: HTMLElement | null;
+    private readonly hamburgerMenuButton: HTMLElement | null;
     private hamburgerMenuItems: HTMLElement | null;
-    private closeHamburgerMenu: HTMLElement | null;
+    private readonly closeHamburgerMenu: HTMLElement | null;
     private mobileMenu: HTMLElement | null;
     private projectsNavigation: HTMLElement | null;
     private projectsSection: HTMLElement | null;
 
-    private reposReader: Reader;
+    private readonly reposReader: Reader;
     private projectBuilder: ProjectBuilder;
 
     constructor() {
@@ -36,7 +36,6 @@ export default class Builder {
     build() {
         this.setupEvents();
         this.calculateAge();
-        this.buildProjectsNavigation();
         this.buildSections();
         this.buildProjectSummary();
     }

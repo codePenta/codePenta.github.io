@@ -21,3 +21,39 @@
     font-size: .85em;
     font-weight: 500;
 }
+
+/* Projects summary */
+
+#projects-summary {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 0 1em;
+    max-width: 1000px;
+    column-gap: 1em;
+}
+
+#projects-summary .language {
+    position: relative;
+    background: var(--primary);
+    padding: 1.1em;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+}
+
+#projects-summary .language-name {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    font-size: 1.5em;
+    font-weight: 500;
+    text-align: left;
+    background: green;
+}
+
+#projects-summary .language-share {
+    grid-column: 2 / 2;
+    grid-row: 2 / 2;
+}

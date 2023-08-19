@@ -13,12 +13,12 @@ export default class ProjectBuilder {
 
     async getLanguages(): Promise<any> {
         const repos = await this.reader.getData();
-        const languages = repos.map((repo: Repo) => repo.language);
-        const uniqueLanguages = new Set(languages);
+        const allLanguages = repos.map((repo: Repo) => repo.language);
+        const uniqueLanguages = new Set(allLanguages);
 
         uniqueLanguages.forEach((language: string) => {
-            const count = languages.filter((l: string) => l === language).length;
-            this.shares[language] = count;
+            let filteredLanguage = allLanguages.filter((l: string) => l === language).length;
+            this.shares[language] = Math.round(filteredLanguage / allLanguages.length * 100);
         });
 
         return this.shares;

@@ -1647,7 +1647,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   endpoint: () => (/* binding */ endpoint)
 /* harmony export */ });
 /* harmony import */ var universal_user_agent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! universal-user-agent */ "./node_modules/universal-user-agent/dist-web/index.js");
-/* harmony import */ var is_plain_object__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! is-plain-object */ "./node_modules/@octokit/endpoint/node_modules/is-plain-object/dist/is-plain-object.mjs");
+/* harmony import */ var is_plain_object__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! is-plain-object */ "./node_modules/is-plain-object/dist/is-plain-object.mjs");
 // pkg/dist-src/defaults.js
 
 
@@ -6534,7 +6534,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _octokit_endpoint__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @octokit/endpoint */ "./node_modules/@octokit/endpoint/dist-web/index.js");
 /* harmony import */ var universal_user_agent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! universal-user-agent */ "./node_modules/universal-user-agent/dist-web/index.js");
-/* harmony import */ var is_plain_object__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! is-plain-object */ "./node_modules/@octokit/request/node_modules/is-plain-object/dist/is-plain-object.mjs");
+/* harmony import */ var is_plain_object__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! is-plain-object */ "./node_modules/is-plain-object/dist/is-plain-object.mjs");
 /* harmony import */ var _octokit_request_error__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @octokit/request-error */ "./node_modules/@octokit/request-error/dist-web/index.js");
 // pkg/dist-src/index.js
 
@@ -9323,7 +9323,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `@keyframes slideInFromLeft {
     opacity: 1;
     transform: translateX(0);
   }
-}`, "",{"version":3,"sources":["webpack://./styles/animations/animations.css"],"names":[],"mappings":"AAAA;EACE;IACE,UAAU;IACV,4BAA4B;EAC9B;EACA;IACE,UAAU;IACV,wBAAwB;EAC1B;AACF","sourcesContent":["@keyframes slideInFromLeft {\r\n  0% {\r\n    opacity: 0;\r\n    transform: translateX(-100%);\r\n  }\r\n  100% {\r\n    opacity: 1;\r\n    transform: translateX(0);\r\n  }\r\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./styles/animations/animations.css"],"names":[],"mappings":"AAAA;EACE;IACE,UAAU;IACV,4BAA4B;EAC9B;EACA;IACE,UAAU;IACV,wBAAwB;EAC1B;AACF","sourcesContent":["@keyframes slideInFromLeft {\n  0% {\n    opacity: 0;\n    transform: translateX(-100%);\n  }\n  100% {\n    opacity: 1;\n    transform: translateX(0);\n  }\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -9448,7 +9448,7 @@ a {
     text-decoration: none;
     color: var(--tertiary);
 }
-`, "",{"version":3,"sources":["webpack://./styles/defaults/core.css"],"names":[],"mappings":"AAAA;IACI,kBAAkB;IAClB,oBAAoB;IACpB,oBAAoB;IACpB,sBAAsB;IACtB,mBAAmB;IACnB,qBAAqB;AACzB;;AAEA;IACI,uBAAuB;AAC3B;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,qCAAqC;IACrC,uBAAuB;IACvB,kBAAkB;IAClB,iBAAiB;IACjB,SAAS;IACT,wBAAwB;AAC5B;;AAEA;IACI,eAAe;IACf,gBAAgB;IAChB,SAAS;IACT,mBAAmB;IACnB,wBAAwB;AAC5B;;AAEA;IACI,iBAAiB;IACjB,gBAAgB;IAChB,SAAS;IACT,mBAAmB;AACvB;;AAEA,WAAW;;AAEX;IACI,gBAAgB;IAChB,eAAe;IACf,UAAU;IACV,WAAW;AACf;;AAEA;IACI,qBAAqB;IACrB,wBAAwB;IACxB,kBAAkB;IAClB,gBAAgB;IAChB,kBAAkB;AACtB;;AAEA;IACI,+DAA+D;IAC/D,kBAAkB;IAClB,OAAO;IACP,aAAa;IACb,mBAAmB;AACvB;;AAEA;IACI,mBAAmB;IACnB,oBAAoB;IACpB,2BAA2B;IAC3B,WAAW;IACX,WAAW;IACX,kBAAkB;IAClB,gCAAgC;AACpC;;AAEA;IACI,UAAU;AACd;;AAEA;IACI,0BAA0B;IAC1B,WAAW;AACf;;AAEA;IACI,0BAA0B;AAC9B;;AAEA;IACI,UAAU;AACd;;;AAGA;IACI,qBAAqB;IACrB,sBAAsB;AAC1B","sourcesContent":[":root {\r\n    --primary: #231b40;\r\n    --primary-2: #7a36d9;\r\n    --secondary: #f29d35;\r\n    --secondary-2: #efb978;\r\n    --tertiary: #e7dcf2;\r\n    --tertiary-2: #0c0915;\r\n}\r\n\r\nhtml {\r\n    scroll-behavior: smooth;\r\n}\r\n\r\n.mobile-menu {\r\n    display: none;\r\n}\r\n\r\nbody {\r\n    font-family: \"Montserrat\", sans-serif;\r\n    color: var(--secondary);\r\n    font-size: 1.25rem;\r\n    line-height: 150%;\r\n    margin: 0;\r\n    font-variant: small-caps;\r\n}\r\n\r\nh1 {\r\n    font-size: 6rem;\r\n    font-weight: 700;\r\n    margin: 0;\r\n    margin-bottom: .6em;\r\n    font-variant: small-caps;\r\n}\r\n\r\n.subtitle {\r\n    font-size: 1.4rem;\r\n    font-weight: 500;\r\n    margin: 0;\r\n    margin-bottom: 1rem;\r\n}\r\n\r\n/* Navbar */\r\n\r\nnav {\r\n    font-size: 1.2em;\r\n    position: fixed;\r\n    top: -10px;\r\n    left: -10px;\r\n}\r\n\r\nli {\r\n    list-style-type: none;\r\n    font-variant: small-caps;\r\n    font-style: italic;\r\n    font-weight: 400;\r\n    margin-bottom: 7px;\r\n}\r\n\r\nnav a {\r\n    transition: all 0.3s cubic-bezier(0.52, 0.17, 0, 0.99) forwards;\r\n    position: relative;\r\n    left: 0;\r\n    display: flex;\r\n    align-items: center;\r\n}\r\n\r\nnav .prefix {\r\n    align-items: center;\r\n    display: inline-flex;\r\n    background: var(--tertiary);\r\n    width: 40px;\r\n    height: 2px;\r\n    margin-right: 15px;\r\n    transition: all 0.3s ease-in-out;\r\n}\r\n\r\nnav a:hover li {\r\n    left: 15px;\r\n}\r\n\r\nnav a:hover .prefix {\r\n    transition-duration: 100ms;\r\n    width: 49px;\r\n}\r\n\r\nnav a {\r\n    transition-duration: 100ms;\r\n}\r\n\r\nnav a.active {\r\n    left: 15px;\r\n}\r\n\r\n\r\na {\r\n    text-decoration: none;\r\n    color: var(--tertiary);\r\n}\r\n"],"sourceRoot":""}]);
+`, "",{"version":3,"sources":["webpack://./styles/defaults/core.css"],"names":[],"mappings":"AAAA;IACI,kBAAkB;IAClB,oBAAoB;IACpB,oBAAoB;IACpB,sBAAsB;IACtB,mBAAmB;IACnB,qBAAqB;AACzB;;AAEA;IACI,uBAAuB;AAC3B;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,qCAAqC;IACrC,uBAAuB;IACvB,kBAAkB;IAClB,iBAAiB;IACjB,SAAS;IACT,wBAAwB;AAC5B;;AAEA;IACI,eAAe;IACf,gBAAgB;IAChB,SAAS;IACT,mBAAmB;IACnB,wBAAwB;AAC5B;;AAEA;IACI,iBAAiB;IACjB,gBAAgB;IAChB,SAAS;IACT,mBAAmB;AACvB;;AAEA,WAAW;;AAEX;IACI,gBAAgB;IAChB,eAAe;IACf,UAAU;IACV,WAAW;AACf;;AAEA;IACI,qBAAqB;IACrB,wBAAwB;IACxB,kBAAkB;IAClB,gBAAgB;IAChB,kBAAkB;AACtB;;AAEA;IACI,+DAA+D;IAC/D,kBAAkB;IAClB,OAAO;IACP,aAAa;IACb,mBAAmB;AACvB;;AAEA;IACI,mBAAmB;IACnB,oBAAoB;IACpB,2BAA2B;IAC3B,WAAW;IACX,WAAW;IACX,kBAAkB;IAClB,gCAAgC;AACpC;;AAEA;IACI,UAAU;AACd;;AAEA;IACI,0BAA0B;IAC1B,WAAW;AACf;;AAEA;IACI,0BAA0B;AAC9B;;AAEA;IACI,UAAU;AACd;;;AAGA;IACI,qBAAqB;IACrB,sBAAsB;AAC1B","sourcesContent":[":root {\n    --primary: #231b40;\n    --primary-2: #7a36d9;\n    --secondary: #f29d35;\n    --secondary-2: #efb978;\n    --tertiary: #e7dcf2;\n    --tertiary-2: #0c0915;\n}\n\nhtml {\n    scroll-behavior: smooth;\n}\n\n.mobile-menu {\n    display: none;\n}\n\nbody {\n    font-family: \"Montserrat\", sans-serif;\n    color: var(--secondary);\n    font-size: 1.25rem;\n    line-height: 150%;\n    margin: 0;\n    font-variant: small-caps;\n}\n\nh1 {\n    font-size: 6rem;\n    font-weight: 700;\n    margin: 0;\n    margin-bottom: .6em;\n    font-variant: small-caps;\n}\n\n.subtitle {\n    font-size: 1.4rem;\n    font-weight: 500;\n    margin: 0;\n    margin-bottom: 1rem;\n}\n\n/* Navbar */\n\nnav {\n    font-size: 1.2em;\n    position: fixed;\n    top: -10px;\n    left: -10px;\n}\n\nli {\n    list-style-type: none;\n    font-variant: small-caps;\n    font-style: italic;\n    font-weight: 400;\n    margin-bottom: 7px;\n}\n\nnav a {\n    transition: all 0.3s cubic-bezier(0.52, 0.17, 0, 0.99) forwards;\n    position: relative;\n    left: 0;\n    display: flex;\n    align-items: center;\n}\n\nnav .prefix {\n    align-items: center;\n    display: inline-flex;\n    background: var(--tertiary);\n    width: 40px;\n    height: 2px;\n    margin-right: 15px;\n    transition: all 0.3s ease-in-out;\n}\n\nnav a:hover li {\n    left: 15px;\n}\n\nnav a:hover .prefix {\n    transition-duration: 100ms;\n    width: 49px;\n}\n\nnav a {\n    transition-duration: 100ms;\n}\n\nnav a.active {\n    left: 15px;\n}\n\n\na {\n    text-decoration: none;\n    color: var(--tertiary);\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -9497,7 +9497,43 @@ ___CSS_LOADER_EXPORT___.push([module.id, `#project-nav-link {
     color: var(--primary);
     font-size: .85em;
     font-weight: 500;
-}`, "",{"version":3,"sources":["webpack://./styles/dynamic/projects.css"],"names":[],"mappings":"AAAA;IACI,wBAAwB;AAC5B;;AAEA;IACI,uBAAuB;AAC3B;;AAEA;IACI,kBAAkB;IAClB,UAAU;IACV,4BAA4B;AAChC;;AAEA;IACI,wEAAwE;AAC5E;;AAEA;IACI,qBAAqB;IACrB,gBAAgB;IAChB,gBAAgB;AACpB","sourcesContent":["#project-nav-link {\r\n    font-variant: small-caps;\r\n}\r\n\r\n#project-nav-link:hover {\r\n    color: var(--secondary);\r\n}\r\n\r\n#projects-list a {\r\n    position: relative;\r\n    opacity: 0;\r\n    transform: translateX(-100%);\r\n}\r\n\r\n#projects-list a.animate {\r\n    animation: slideInFromLeft 1s cubic-bezier(0.52, 0.17, 0, 0.99) forwards;\r\n}\r\n\r\n#projects-list li {\r\n    color: var(--primary);\r\n    font-size: .85em;\r\n    font-weight: 500;\r\n}"],"sourceRoot":""}]);
+}
+
+/* Projects summary */
+
+#projects-summary {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 0 1em;
+    max-width: 1000px;
+    column-gap: 1em;
+}
+
+#projects-summary .language {
+    position: relative;
+    background: var(--primary);
+    padding: 1.1em;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+}
+
+#projects-summary .language-name {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    font-size: 1.5em;
+    font-weight: 500;
+    text-align: left;
+    background: green;
+}
+
+#projects-summary .language-share {
+    grid-column: 2 / 2;
+    grid-row: 2 / 2;
+}`, "",{"version":3,"sources":["webpack://./styles/dynamic/projects.css"],"names":[],"mappings":"AAAA;IACI,wBAAwB;AAC5B;;AAEA;IACI,uBAAuB;AAC3B;;AAEA;IACI,kBAAkB;IAClB,UAAU;IACV,4BAA4B;AAChC;;AAEA;IACI,wEAAwE;AAC5E;;AAEA;IACI,qBAAqB;IACrB,gBAAgB;IAChB,gBAAgB;AACpB;;AAEA,qBAAqB;;AAErB;IACI,aAAa;IACb,mBAAmB;IACnB,8BAA8B;IAC9B,cAAc;IACd,cAAc;IACd,iBAAiB;IACjB,eAAe;AACnB;;AAEA;IACI,kBAAkB;IAClB,0BAA0B;IAC1B,cAAc;IACd,eAAe;IACf,aAAa;IACb,qCAAqC;IACrC,kCAAkC;AACtC;;AAEA;IACI,kBAAkB;IAClB,eAAe;IACf,gBAAgB;IAChB,gBAAgB;IAChB,gBAAgB;IAChB,iBAAiB;AACrB;;AAEA;IACI,kBAAkB;IAClB,eAAe;AACnB","sourcesContent":["#project-nav-link {\n    font-variant: small-caps;\n}\n\n#project-nav-link:hover {\n    color: var(--secondary);\n}\n\n#projects-list a {\n    position: relative;\n    opacity: 0;\n    transform: translateX(-100%);\n}\n\n#projects-list a.animate {\n    animation: slideInFromLeft 1s cubic-bezier(0.52, 0.17, 0, 0.99) forwards;\n}\n\n#projects-list li {\n    color: var(--primary);\n    font-size: .85em;\n    font-weight: 500;\n}\n\n/* Projects summary */\n\n#projects-summary {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    margin: 0 auto;\n    padding: 0 1em;\n    max-width: 1000px;\n    column-gap: 1em;\n}\n\n#projects-summary .language {\n    position: relative;\n    background: var(--primary);\n    padding: 1.1em;\n    max-width: 100%;\n    display: grid;\n    grid-template-columns: repeat(1, 1fr);\n    grid-template-rows: repeat(1, 1fr);\n}\n\n#projects-summary .language-name {\n    grid-column: 1 / 2;\n    grid-row: 1 / 2;\n    font-size: 1.5em;\n    font-weight: 500;\n    text-align: left;\n    background: green;\n}\n\n#projects-summary .language-share {\n    grid-column: 2 / 2;\n    grid-row: 2 / 2;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -9554,7 +9590,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, `:root {
 .container section {
   padding-top: 8em;
   padding-left: 15em;
-  border: 1px solid red;
 }
 
 .container.lighter {
@@ -9571,6 +9606,18 @@ ___CSS_LOADER_EXPORT___.push([module.id, `:root {
 
 .container.darker {
   background-color: var(--tertiary-2);
+}
+
+@media screen and (max-width: 1440px) {
+  #intro-wrapper section {
+    padding-top: 23em;
+    padding-left: 15em;
+  }
+
+  .container section {
+      padding-top: 6em;
+      padding-left: 15em;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -9651,9 +9698,8 @@ ___CSS_LOADER_EXPORT___.push([module.id, `:root {
 
   .container section {
     /* padding: 11em 5em; */
-    border: 1px solid red;
   }
-}`, "",{"version":3,"sources":["webpack://./styles/style.css"],"names":[],"mappings":"AAIA;EACE,kBAAkB;EAClB,oBAAoB;EACpB,oBAAoB;EACpB,sBAAsB;EACtB,mBAAmB;EACnB,qBAAqB;AACvB;;AAEA;EACE,iBAAiB;AACnB;;AAEA;EACE,iBAAiB;EACjB,kBAAkB;AACpB;;AAEA;EACE,gBAAgB;EAChB,kBAAkB;EAClB,qBAAqB;AACvB;;AAEA;EACE,iCAAiC;AACnC;;AAEA;EACE,qBAAqB;AACvB;;AAEA;EACE,wBAAwB;AAC1B;;AAEA;EACE,mCAAmC;AACrC;;AAEA;EACE;IACE,cAAc;IACd,eAAe;IACf,MAAM;IACN,QAAQ;IACR,SAAS;IACT,UAAU;IACV,YAAY;IACZ,mCAAmC;IACnC,WAAW;IACX,YAAY;IACZ,gBAAgB;IAChB,4BAA4B;IAC5B,4DAA4D;EAC9D;;EAEA;IACE,cAAc;IACd,eAAe;IACf,SAAS;IACT,WAAW;IACX,WAAW;IACX,YAAY;IACZ,eAAe;IACf,qBAAqB;EACvB;;EAEA;IACE,aAAa;IACb,sBAAsB;IACtB,mBAAmB;IACnB,uBAAuB;IACvB,YAAY;EACd;;EAEA;IACE,kBAAkB;IAClB,SAAS;IACT,WAAW;IACX,WAAW;IACX,YAAY;IACZ,eAAe;IACf,uBAAuB;EACzB;;EAEA;IACE,wBAAwB;EAC1B;;EAEA;IACE,UAAU;IACV,WAAW;EACb;;EAEA;IACE,gBAAgB;IAChB,eAAe;IACf,iBAAiB;IACjB,kBAAkB;IAClB,0BAA0B;EAC5B;;EAEA;IACE,iCAAiC;EACnC;;;EAGA;IACE,aAAa;EACf;;EAEA;IACE,aAAa;EACf;;EAEA;IACE,uBAAuB;IACvB,qBAAqB;EACvB;AACF","sourcesContent":["@import url(\"animations/animations.css\");\r\n@import url(\"defaults/core.css\");\r\n@import url(\"dynamic/projects.css\");\r\n\r\n:root {\r\n  --primary: #231b40;\r\n  --primary-2: #7a36d9;\r\n  --secondary: #f29d35;\r\n  --secondary-2: #efb978;\r\n  --tertiary: #e7dcf2;\r\n  --tertiary-2: #0c0915;\r\n}\r\n\r\n.container {\r\n  min-height: 100vh;\r\n}\r\n\r\n#intro-wrapper section {\r\n  padding-top: 30em;\r\n  padding-left: 15em;\r\n}\r\n\r\n.container section {\r\n  padding-top: 8em;\r\n  padding-left: 15em;\r\n  border: 1px solid red;\r\n}\r\n\r\n.container.lighter {\r\n  background-color: var(--tertiary);\r\n}\r\n\r\n.container.lighter h1 {\r\n  color: var(--primary); \r\n}\r\n\r\n.container.lighter h5 {\r\n  color: var(--tertiary-2);\r\n}\r\n\r\n.container.darker {\r\n  background-color: var(--tertiary-2);\r\n}\r\n\r\n@media screen and (max-width: 768px) {\r\n  .mobile-menu {\r\n    display: block;\r\n    position: fixed;\r\n    top: 0;\r\n    right: 0;\r\n    margin: 0;\r\n    padding: 0;\r\n    z-index: 100;\r\n    background-color: var(--tertiary-2);\r\n    width: 100%;\r\n    height: 100%;\r\n    overflow-y: auto;\r\n    transform: translateX(-100%);\r\n    transition: transform 0.3s cubic-bezier(0.52, 0.17, 0, 0.99);\r\n  }\r\n\r\n  .hamburger {\r\n    display: block;\r\n    position: fixed;\r\n    top: 20px;\r\n    right: 20px;\r\n    width: 40px;\r\n    height: 40px;\r\n    cursor: pointer;\r\n    background-color: red;\r\n  }\r\n\r\n  .mobile-menu .menu-items {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    height: 100%;\r\n  }\r\n\r\n  .mobile-menu .close-hamburger-wrapper {\r\n    position: absolute;\r\n    top: 20px;\r\n    right: 20px;\r\n    width: 40px;\r\n    height: 40px;\r\n    cursor: pointer;\r\n    background-color: green;\r\n  }\r\n\r\n  .mobile-menu.open {\r\n    transform: translateX(0);\r\n  }\r\n\r\n  .mobile-menu ul {\r\n    padding: 0;\r\n    width: 100%;\r\n  }\r\n\r\n  .mobile-menu li {\r\n    list-style: none;\r\n    margin: .5rem 0;\r\n    padding: 1.2rem 0;\r\n    text-align: center;\r\n    transition-duration: 300ms;\r\n  }\r\n\r\n  .mobile-menu .menu-items a:hover li {\r\n    background-color: var(--tertiary);\r\n  }\r\n\r\n\r\n  nav {\r\n    display: none;\r\n  }\r\n\r\n  .mobile-menu .hide {\r\n    display: none;\r\n  }\r\n\r\n  .container section {\r\n    /* padding: 11em 5em; */\r\n    border: 1px solid red;\r\n  }\r\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./styles/style.css"],"names":[],"mappings":"AAIA;EACE,kBAAkB;EAClB,oBAAoB;EACpB,oBAAoB;EACpB,sBAAsB;EACtB,mBAAmB;EACnB,qBAAqB;AACvB;;AAEA;EACE,iBAAiB;AACnB;;AAEA;EACE,iBAAiB;EACjB,kBAAkB;AACpB;;AAEA;EACE,gBAAgB;EAChB,kBAAkB;AACpB;;AAEA;EACE,iCAAiC;AACnC;;AAEA;EACE,qBAAqB;AACvB;;AAEA;EACE,wBAAwB;AAC1B;;AAEA;EACE,mCAAmC;AACrC;;AAEA;EACE;IACE,iBAAiB;IACjB,kBAAkB;EACpB;;EAEA;MACI,gBAAgB;MAChB,kBAAkB;EACtB;AACF;;AAEA;EACE;IACE,cAAc;IACd,eAAe;IACf,MAAM;IACN,QAAQ;IACR,SAAS;IACT,UAAU;IACV,YAAY;IACZ,mCAAmC;IACnC,WAAW;IACX,YAAY;IACZ,gBAAgB;IAChB,4BAA4B;IAC5B,4DAA4D;EAC9D;;EAEA;IACE,cAAc;IACd,eAAe;IACf,SAAS;IACT,WAAW;IACX,WAAW;IACX,YAAY;IACZ,eAAe;IACf,qBAAqB;EACvB;;EAEA;IACE,aAAa;IACb,sBAAsB;IACtB,mBAAmB;IACnB,uBAAuB;IACvB,YAAY;EACd;;EAEA;IACE,kBAAkB;IAClB,SAAS;IACT,WAAW;IACX,WAAW;IACX,YAAY;IACZ,eAAe;IACf,uBAAuB;EACzB;;EAEA;IACE,wBAAwB;EAC1B;;EAEA;IACE,UAAU;IACV,WAAW;EACb;;EAEA;IACE,gBAAgB;IAChB,eAAe;IACf,iBAAiB;IACjB,kBAAkB;IAClB,0BAA0B;EAC5B;;EAEA;IACE,iCAAiC;EACnC;;;EAGA;IACE,aAAa;EACf;;EAEA;IACE,aAAa;EACf;;EAEA;IACE,uBAAuB;EACzB;AACF","sourcesContent":["@import url(\"animations/animations.css\");\n@import url(\"defaults/core.css\");\n@import url(\"dynamic/projects.css\");\n\n:root {\n  --primary: #231b40;\n  --primary-2: #7a36d9;\n  --secondary: #f29d35;\n  --secondary-2: #efb978;\n  --tertiary: #e7dcf2;\n  --tertiary-2: #0c0915;\n}\n\n.container {\n  min-height: 100vh;\n}\n\n#intro-wrapper section {\n  padding-top: 30em;\n  padding-left: 15em;\n}\n\n.container section {\n  padding-top: 8em;\n  padding-left: 15em;\n}\n\n.container.lighter {\n  background-color: var(--tertiary);\n}\n\n.container.lighter h1 {\n  color: var(--primary); \n}\n\n.container.lighter h5 {\n  color: var(--tertiary-2);\n}\n\n.container.darker {\n  background-color: var(--tertiary-2);\n}\n\n@media screen and (max-width: 1440px) {\n  #intro-wrapper section {\n    padding-top: 23em;\n    padding-left: 15em;\n  }\n\n  .container section {\n      padding-top: 6em;\n      padding-left: 15em;\n  }\n}\n\n@media screen and (max-width: 768px) {\n  .mobile-menu {\n    display: block;\n    position: fixed;\n    top: 0;\n    right: 0;\n    margin: 0;\n    padding: 0;\n    z-index: 100;\n    background-color: var(--tertiary-2);\n    width: 100%;\n    height: 100%;\n    overflow-y: auto;\n    transform: translateX(-100%);\n    transition: transform 0.3s cubic-bezier(0.52, 0.17, 0, 0.99);\n  }\n\n  .hamburger {\n    display: block;\n    position: fixed;\n    top: 20px;\n    right: 20px;\n    width: 40px;\n    height: 40px;\n    cursor: pointer;\n    background-color: red;\n  }\n\n  .mobile-menu .menu-items {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    height: 100%;\n  }\n\n  .mobile-menu .close-hamburger-wrapper {\n    position: absolute;\n    top: 20px;\n    right: 20px;\n    width: 40px;\n    height: 40px;\n    cursor: pointer;\n    background-color: green;\n  }\n\n  .mobile-menu.open {\n    transform: translateX(0);\n  }\n\n  .mobile-menu ul {\n    padding: 0;\n    width: 100%;\n  }\n\n  .mobile-menu li {\n    list-style: none;\n    margin: .5rem 0;\n    padding: 1.2rem 0;\n    text-align: center;\n    transition-duration: 300ms;\n  }\n\n  .mobile-menu .menu-items a:hover li {\n    background-color: var(--tertiary);\n  }\n\n\n  nav {\n    display: none;\n  }\n\n  .mobile-menu .hide {\n    display: none;\n  }\n\n  .container section {\n    /* padding: 11em 5em; */\n  }\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10377,7 +10423,7 @@ var Reader = /** @class */ (function () {
                         _a.trys.push([0, 2, , 3]);
                         cacheKey = "reposListCache";
                         cachedData = localStorage.getItem(cacheKey);
-                        octokit = new octokit_1.Octokit({ auth: "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" });
+                        octokit = new octokit_1.Octokit({ auth: "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" });
                         headers = {};
                         if (cachedData) {
                             lastModified_1 = JSON.parse(cachedData).lastModified;
@@ -10440,7 +10486,6 @@ var Builder = /** @class */ (function () {
     Builder.prototype.build = function () {
         this.setupEvents();
         this.calculateAge();
-        this.buildProjectsNavigation();
         this.buildSections();
         this.buildProjectSummary();
     };
@@ -10638,18 +10683,18 @@ var ProjectBuilder = /** @class */ (function () {
     }
     ProjectBuilder.prototype.getLanguages = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var repos, languages, uniqueLanguages;
+            var repos, allLanguages, uniqueLanguages;
             var _this = this;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.reader.getData()];
                     case 1:
                         repos = _a.sent();
-                        languages = repos.map(function (repo) { return repo.language; });
-                        uniqueLanguages = new Set(languages);
+                        allLanguages = repos.map(function (repo) { return repo.language; });
+                        uniqueLanguages = new Set(allLanguages);
                         uniqueLanguages.forEach(function (language) {
-                            var count = languages.filter(function (l) { return l === language; }).length;
-                            _this.shares[language] = count;
+                            var filteredLanguage = allLanguages.filter(function (l) { return l === language; }).length;
+                            _this.shares[language] = Math.round(filteredLanguage / allLanguages.length * 100);
                         });
                         return [2 /*return*/, this.shares];
                 }
@@ -12200,59 +12245,10 @@ exports.LRUCache = LRUCache;
 
 /***/ }),
 
-/***/ "./node_modules/@octokit/endpoint/node_modules/is-plain-object/dist/is-plain-object.mjs":
-/*!**********************************************************************************************!*\
-  !*** ./node_modules/@octokit/endpoint/node_modules/is-plain-object/dist/is-plain-object.mjs ***!
-  \**********************************************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   isPlainObject: () => (/* binding */ isPlainObject)
-/* harmony export */ });
-/*!
- * is-plain-object <https://github.com/jonschlinkert/is-plain-object>
- *
- * Copyright (c) 2014-2017, Jon Schlinkert.
- * Released under the MIT License.
- */
-
-function isObject(o) {
-  return Object.prototype.toString.call(o) === '[object Object]';
-}
-
-function isPlainObject(o) {
-  var ctor,prot;
-
-  if (isObject(o) === false) return false;
-
-  // If has modified constructor
-  ctor = o.constructor;
-  if (ctor === undefined) return true;
-
-  // If has modified prototype
-  prot = ctor.prototype;
-  if (isObject(prot) === false) return false;
-
-  // If constructor does not have an Object-specific method
-  if (prot.hasOwnProperty('isPrototypeOf') === false) {
-    return false;
-  }
-
-  // Most likely a plain Object
-  return true;
-}
-
-
-
-
-/***/ }),
-
-/***/ "./node_modules/@octokit/request/node_modules/is-plain-object/dist/is-plain-object.mjs":
-/*!*********************************************************************************************!*\
-  !*** ./node_modules/@octokit/request/node_modules/is-plain-object/dist/is-plain-object.mjs ***!
-  \*********************************************************************************************/
+/***/ "./node_modules/is-plain-object/dist/is-plain-object.mjs":
+/*!***************************************************************!*\
+  !*** ./node_modules/is-plain-object/dist/is-plain-object.mjs ***!
+  \***************************************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";

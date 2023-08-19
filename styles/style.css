@@ -23,7 +23,6 @@
 .container section {
   padding-top: 8em;
   padding-left: 15em;
-  border: 1px solid red;
 }
 
 .container.lighter {
@@ -40,6 +39,18 @@
 
 .container.darker {
   background-color: var(--tertiary-2);
+}
+
+@media screen and (max-width: 1440px) {
+  #intro-wrapper section {
+    padding-top: 23em;
+    padding-left: 15em;
+  }
+
+  .container section {
+      padding-top: 6em;
+      padding-left: 15em;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -120,6 +131,5 @@
 
   .container section {
     /* padding: 11em 5em; */
-    border: 1px solid red;
   }
 }
