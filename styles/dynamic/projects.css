@@ -27,7 +27,7 @@
 #projects-summary {
     margin: 4em 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 2fr));
     justify-content: space-between;
     max-width: 80%;
     column-gap: 2em;

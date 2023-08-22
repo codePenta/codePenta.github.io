@@ -53,14 +53,15 @@ export default class Builder {
 
                 const languageName = document.createElement('span');
                 languageName.classList.add('language-name');
-                languageName.textContent = language;
+                languageName["textContent"] = language;
 
                 const languageShare = document.createElement('span');
                 languageShare.classList.add('language-share');
-                languageShare.textContent = `${shares[index]}`;
+                languageShare.textContent = data[language].amount;
 
                 languageElement.appendChild(languageName);
                 languageElement.appendChild(languageShare);
+                languageElement.href = "#" + data[language].linkToNext;
 
                 summary.appendChild(languageElement);
             });
@@ -120,7 +121,7 @@ export default class Builder {
                     }
                 });
             },
-            { threshold: 0.8 }
+            {threshold: 0.8}
         );
 
         this.containerWrappers.forEach((div) => {

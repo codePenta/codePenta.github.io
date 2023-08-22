@@ -5,7 +5,7 @@ export default class ProjectBuilder {
 
     reader: Reader;
 
-    private shares: Partial<{ [key: string]: number }> = {};
+    private shares: Partial<{ [key: string]: { amount: number, linkToNext: string } }> = {};
 
     constructor(reader: Reader) {
         this.reader = reader
@@ -17,9 +17,18 @@ export default class ProjectBuilder {
         const uniqueLanguages = new Set(allLanguages);
 
         uniqueLanguages.forEach((language: string) => {
-            this.shares[language] = allLanguages.filter((l: string) => l === language).length;
+            this.shares[language] = {
+                amount: allLanguages.filter((l: string) => l === language).length,
+                linkToNext: repos.find((repo: Repo) => repo.language === language)["language"]
+            }
         });
+
+        console.log(this.shares)
 
         return this.shares;
     }
+}
+
+export class ProjectsPageBuilder {
+
 }

@@ -9502,7 +9502,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `#project-nav-link {
 #projects-summary {
     margin: 4em 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 2fr));
     justify-content: space-between;
     max-width: 80%;
     column-gap: 2em;
@@ -9526,7 +9526,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `#project-nav-link {
 
 #projects-summary .language-share {
     font-size: 1.2em;
-}`, "",{"version":3,"sources":["webpack://./styles/dynamic/projects.css"],"names":[],"mappings":"AAAA;IACI,wBAAwB;AAC5B;;AAEA;IACI,uBAAuB;AAC3B;;AAEA;IACI,kBAAkB;IAClB,UAAU;IACV,4BAA4B;AAChC;;AAEA;IACI,wEAAwE;AAC5E;;AAEA;IACI,qBAAqB;IACrB,gBAAgB;IAChB,gBAAgB;AACpB;;AAEA,qBAAqB;;AAErB;IACI,aAAa;IACb,aAAa;IACb,2DAA2D;IAC3D,8BAA8B;IAC9B,cAAc;IACd,eAAe;IACf,YAAY;AAChB;;AAEA;IACI,aAAa;IACb,sBAAsB;IACtB,0BAA0B;IAC1B,cAAc;IACd,kBAAkB;IAClB,WAAW;IACX,sFAAsF;AAC1F;;AAEA;IACI,eAAe;IACf,iBAAiB;AACrB;;AAEA;IACI,gBAAgB;AACpB","sourcesContent":["#project-nav-link {\r\n    font-variant: small-caps;\r\n}\r\n\r\n#project-nav-link:hover {\r\n    color: var(--secondary);\r\n}\r\n\r\n#projects-list a {\r\n    position: relative;\r\n    opacity: 0;\r\n    transform: translateX(-100%);\r\n}\r\n\r\n#projects-list a.animate {\r\n    animation: slideInFromLeft 1s cubic-bezier(0.52, 0.17, 0, 0.99) forwards;\r\n}\r\n\r\n#projects-list li {\r\n    color: var(--primary);\r\n    font-size: .85em;\r\n    font-weight: 500;\r\n}\r\n\r\n/* Projects summary */\r\n\r\n#projects-summary {\r\n    margin: 4em 0;\r\n    display: grid;\r\n    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));\r\n    justify-content: space-between;\r\n    max-width: 80%;\r\n    column-gap: 2em;\r\n    row-gap: 2em;\r\n}\r\n\r\n#projects-summary .language {\r\n    display: flex;\r\n    flex-direction: column;\r\n    background: var(--primary);\r\n    padding: 1.1em;\r\n    text-align: center;\r\n    gap: 1.1rem;\r\n    clip-path: polygon(10% 5%, 90% 5%, 95% 15%, 95% 85%, 90% 95%, 10% 95%, 5% 85%, 5% 15%);\r\n}\r\n\r\n#projects-summary .language-name {\r\n    font-size: 2rem;\r\n    font-weight: bold;\r\n}\r\n\r\n#projects-summary .language-share {\r\n    font-size: 1.2em;\r\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./styles/dynamic/projects.css"],"names":[],"mappings":"AAAA;IACI,wBAAwB;AAC5B;;AAEA;IACI,uBAAuB;AAC3B;;AAEA;IACI,kBAAkB;IAClB,UAAU;IACV,4BAA4B;AAChC;;AAEA;IACI,wEAAwE;AAC5E;;AAEA;IACI,qBAAqB;IACrB,gBAAgB;IAChB,gBAAgB;AACpB;;AAEA,qBAAqB;;AAErB;IACI,aAAa;IACb,aAAa;IACb,2DAA2D;IAC3D,8BAA8B;IAC9B,cAAc;IACd,eAAe;IACf,YAAY;AAChB;;AAEA;IACI,aAAa;IACb,sBAAsB;IACtB,0BAA0B;IAC1B,cAAc;IACd,kBAAkB;IAClB,WAAW;IACX,sFAAsF;AAC1F;;AAEA;IACI,eAAe;IACf,iBAAiB;AACrB;;AAEA;IACI,gBAAgB;AACpB","sourcesContent":["#project-nav-link {\r\n    font-variant: small-caps;\r\n}\r\n\r\n#project-nav-link:hover {\r\n    color: var(--secondary);\r\n}\r\n\r\n#projects-list a {\r\n    position: relative;\r\n    opacity: 0;\r\n    transform: translateX(-100%);\r\n}\r\n\r\n#projects-list a.animate {\r\n    animation: slideInFromLeft 1s cubic-bezier(0.52, 0.17, 0, 0.99) forwards;\r\n}\r\n\r\n#projects-list li {\r\n    color: var(--primary);\r\n    font-size: .85em;\r\n    font-weight: 500;\r\n}\r\n\r\n/* Projects summary */\r\n\r\n#projects-summary {\r\n    margin: 4em 0;\r\n    display: grid;\r\n    grid-template-columns: repeat(auto-fit, minmax(15rem, 2fr));\r\n    justify-content: space-between;\r\n    max-width: 80%;\r\n    column-gap: 2em;\r\n    row-gap: 2em;\r\n}\r\n\r\n#projects-summary .language {\r\n    display: flex;\r\n    flex-direction: column;\r\n    background: var(--primary);\r\n    padding: 1.1em;\r\n    text-align: center;\r\n    gap: 1.1rem;\r\n    clip-path: polygon(10% 5%, 90% 5%, 95% 15%, 95% 85%, 90% 95%, 10% 95%, 5% 85%, 5% 15%);\r\n}\r\n\r\n#projects-summary .language-name {\r\n    font-size: 2rem;\r\n    font-weight: bold;\r\n}\r\n\r\n#projects-summary .language-share {\r\n    font-size: 1.2em;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10416,7 +10416,7 @@ var Reader = /** @class */ (function () {
                         _a.trys.push([0, 2, , 3]);
                         cacheKey = "reposListCache";
                         cachedData = localStorage.getItem(cacheKey);
-                        octokit = new octokit_1.Octokit({ auth: "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" });
+                        octokit = new octokit_1.Octokit({ auth: "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" });
                         headers = {};
                         if (cachedData) {
                             lastModified_1 = JSON.parse(cachedData).lastModified;
@@ -10494,12 +10494,13 @@ var Builder = /** @class */ (function () {
                 languageElement.classList.add('language');
                 var languageName = document.createElement('span');
                 languageName.classList.add('language-name');
-                languageName.textContent = language;
+                languageName["textContent"] = language;
                 var languageShare = document.createElement('span');
                 languageShare.classList.add('language-share');
-                languageShare.textContent = "".concat(shares[index]);
+                languageShare.textContent = data[language].amount;
                 languageElement.appendChild(languageName);
                 languageElement.appendChild(languageShare);
+                languageElement.href = "#" + data[language].linkToNext;
                 summary.appendChild(languageElement);
             });
             _this.projectsSection.appendChild(summary);
@@ -10669,6 +10670,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ProjectsPageBuilder = void 0;
 var ProjectBuilder = /** @class */ (function () {
     function ProjectBuilder(reader) {
         this.shares = {};
@@ -10686,8 +10688,12 @@ var ProjectBuilder = /** @class */ (function () {
                         allLanguages = repos.map(function (repo) { return repo.language; });
                         uniqueLanguages = new Set(allLanguages);
                         uniqueLanguages.forEach(function (language) {
-                            _this.shares[language] = allLanguages.filter(function (l) { return l === language; }).length;
+                            _this.shares[language] = {
+                                amount: allLanguages.filter(function (l) { return l === language; }).length,
+                                linkToNext: repos.find(function (repo) { return repo.language === language; })["language"]
+                            };
                         });
+                        console.log(this.shares);
                         return [2 /*return*/, this.shares];
                 }
             });
@@ -10696,6 +10702,12 @@ var ProjectBuilder = /** @class */ (function () {
     return ProjectBuilder;
 }());
 exports["default"] = ProjectBuilder;
+var ProjectsPageBuilder = /** @class */ (function () {
+    function ProjectsPageBuilder() {
+    }
+    return ProjectsPageBuilder;
+}());
+exports.ProjectsPageBuilder = ProjectsPageBuilder;
 
 
 /***/ }),
