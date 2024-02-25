@@ -1,5 +1,5 @@
 import Reader from "../api/ReposReader";
-import ProjectBuilder from "../core/projectBuilder";
+import ProjectBuilder from "../projects/projectBuilder";
 
 export default class Builder {
     private containers: NodeListOf<HTMLElement>;

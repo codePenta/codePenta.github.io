@@ -1,5 +1,4 @@
-import { Octokit } from "octokit";
-import Repo from "../entities/Repo";
+import { Octokit } from "@octokit/core";
 
 export default class Reader {
 
@@ -13,7 +12,10 @@ export default class Reader {
 
       if (cachedData) {
         const { lastModified } = JSON.parse(cachedData);
-        headers = { "If-Modified-Since": lastModified };
+        headers = {
+          "If-Modified-Since": lastModified,
+          "X-GitHub-Api-Version": "2022-11-28"
+        };
       }
 
       const response = await octokit.request("GET /user/repos", headers);
