@@ -5,7 +5,7 @@
     "module": "ES6",
     "target": "es5",
     "allowJs": true,
-    "moduleResolution": "Node"
+    "moduleResolution": "Bundler"
   },
   "files": ["scripts/main.ts"]
 }
