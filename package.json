@@ -1,0 +1,16 @@
+{
+  "name": "codepenta.github.io",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build:tsc": "tsc",
+    "start:tsc": "tsc -w"
+  },
+  "dependencies": {
+    "typescript": "^5.5.2"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.1.10"
+  }
+}

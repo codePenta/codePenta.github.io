@@ -1,0 +1,21 @@
+@import "../styles/core.css";
+
+html,
+body {
+    font: var(--font);
+    height: 100vh;
+    overflow: hidden;
+    margin: 0 10%;
+}
+
+.parent {
+    overflow: scroll;
+    height: 100vh;
+    scroll-snap-type: y mandatory;
+}
+
+section {
+    height: 100vh;
+    scroll-snap-align: start;
+    position: relative;
+}
