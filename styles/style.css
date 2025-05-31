@@ -4,12 +4,7 @@ html,
 body {
     font: var(--font);
     height: 100vh;
-    overflow: hidden;
-}
-
-.parent {
     overflow: scroll;
-    height: 100vh;
     scroll-snap-type: y mandatory;
 }
 
