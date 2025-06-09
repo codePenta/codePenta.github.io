@@ -1,5 +1,9 @@
 {
   "name": "codepenta.github.io",
+  "author": {
+    "name": "codepenta",
+    "email": "fhelm2001@gmail.com"
+  },
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
