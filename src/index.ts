@@ -1,13 +1,32 @@
-async function main()
+import { displayGitHubRepositories } from "./services/api/github/githubService";
+
+async function initializeWebComponents(): Promise<void>
 {
+    console.log("Initializing web components...");
+
     try
     {
-        const { displayGitHubRepositories } = await import("./services/api/github/githubService");
         await displayGitHubRepositories();
-    } catch (error)
+        console.log("Web components initialized successfully.");
+    }
+    catch (error)
     {
-        console.error("Error in main function:", error);
+        console.error("Error initializing web components:", error);
     }
 }
 
-main();
+function boostrap(): void
+{
+    console.log("Boostrap function called");
+    document.addEventListener("DOMContentLoaded", () =>
+    {
+        console.log("DOM fully loaded and parsed");
+        initializeWebComponents().catch((error) =>
+        {
+            console.error("Error during web components initialization:", error);
+        });
+    });
+
+}
+
+boostrap();
