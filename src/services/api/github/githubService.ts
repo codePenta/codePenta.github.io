@@ -1,9 +1,9 @@
-import { fetchRepos } from "../../api/github";
-import { RepoBlock } from "./repoBlock";
+import { fetchRepos } from '../../../api/github/githubAPI';
+import { IRepoDisplayBlock } from './IRepoDisplayBlock';
 
 export async function displayGitHubRepositories()
 {
-    function displayRepoBlock(repo: RepoBlock): void
+    function displayRepoBlock(repo: IRepoDisplayBlock): void
     {
         console.log('\n=== Repository Details ===');
         console.log(`Name: ${repo.owner.login}/${repo.name}`);
@@ -19,7 +19,7 @@ export async function displayGitHubRepositories()
         console.log('========================\n');
     }
 
-    let reposData = await fetchRepos() as unknown as RepoBlock[];
+    let reposData = await fetchRepos() as unknown as IRepoDisplayBlock[];
 
     if (reposData && reposData.length > 0)
     {

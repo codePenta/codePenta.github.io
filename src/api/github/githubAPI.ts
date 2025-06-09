@@ -1,4 +1,4 @@
-import { GitHubService } from "./services";
+import { GitHubService } from "./apiServices";
 
 export async function fetchRepos()
 {

@@ -1,4 +1,4 @@
-export interface IRepoBlock
+export interface IRepoDisplayBlock
 {
     id: string;
     name: string;
