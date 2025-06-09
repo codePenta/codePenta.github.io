@@ -2,7 +2,7 @@ async function main()
 {
     try
     {
-        const { displayGitHubRepositories } = await import("./services/api/github");
+        const { displayGitHubRepositories } = await import("./services/api/github/github");
         await displayGitHubRepositories();
     } catch (error)
     {

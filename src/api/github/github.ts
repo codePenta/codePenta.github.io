@@ -2,8 +2,6 @@ import { GitHubService } from "./services";
 
 export async function fetchRepos()
 {
-    const octokit = GitHubService.Instance;
-
     const params: any = {
         username: import.meta.env.VITE_GITHUB_USERNAME!,
         type: "all",
@@ -14,6 +12,7 @@ export async function fetchRepos()
 
     try
     {
+        const octokit = GitHubService.Instance;
         const response = await octokit.request("GET /users/{username}/repos", params);
         return response.data;
     } catch (error)
