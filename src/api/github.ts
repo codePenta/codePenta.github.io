@@ -4,7 +4,7 @@ export async function fetchRepos()
 {
     const octokit = GitHubService.Instance;
 
-    const params: RepoRequestParams = {
+    const params: any = {
         username: import.meta.env.VITE_GITHUB_USERNAME!,
         type: "all",
         per_page: 100,
