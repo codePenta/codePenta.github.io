@@ -1,36 +1,7 @@
+import { RepoEntity } from '../../../api/entities/RepoEntity';
 import { fetchRepos } from '../../../api/github/githubAPI';
-import { IRepoDisplayBlock } from './IRepoDisplayBlock';
 
-export async function displayGitHubRepositories()
+export async function getGitHubRepositories(): Promise<any>
 {
-    function displayRepoBlock(repo: IRepoDisplayBlock): void
-    {
-        console.log('\n=== Repository Details ===');
-        console.log(`Name: ${repo.owner.login}/${repo.name}`);
-        console.log(`URL: ${repo.html_url}`);
-        console.log(`Description: ${repo.description || "No description"}`);
-        console.log(`Language: ${repo.language || "Not specified"}`);
-        console.log(`Stats: ⭐ ${repo.stargazers_count} | 🍴 ${repo.forks_count} | ⚠️ ${repo.open_issues_count}`);
-        console.log(`Topics: ${repo.topics.length > 0 ? repo.topics.join(", ") : "No topics"}`);
-        console.log(`Visibility: ${repo.private ? "🔒 Private" : "🌐 Public"}`);
-        console.log(`License: ${repo.license ? repo.license.name : "No license"}`);
-        console.log(`Created: ${new Date(repo.created_at).toLocaleDateString()}`);
-        console.log(`Updated: ${new Date(repo.updated_at).toLocaleDateString()}`);
-        console.log('========================\n');
-    }
-
-    let reposData = await fetchRepos() as unknown as IRepoDisplayBlock[];
-
-    if (reposData && reposData.length > 0)
-    {
-        reposData.forEach((repo) =>
-        {
-            displayRepoBlock(repo);
-        });
-    }
-    else
-    {
-        console.log("No repositories found.");
-    }
-
+    return await fetchRepos();
 }

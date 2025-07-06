@@ -1,4 +1,6 @@
-import { displayGitHubRepositories } from "./services/api/github/githubService";
+import { RepoEntity } from "./api/entities/RepoEntity";
+import { getGitHubRepositories } from "./services/api/github/githubService";
+import { createProjectCard, loadProjects } from "./services/web/provider/githubProvider";
 
 async function initializeWebComponents(): Promise<void>
 {
@@ -6,8 +8,9 @@ async function initializeWebComponents(): Promise<void>
 
     try
     {
-        await displayGitHubRepositories();
-        console.log("Web components initialized successfully.");
+        var repos = await getGitHubRepositories()
+        console.log(repos);
+        loadProjects(repos);
     }
     catch (error)
     {
