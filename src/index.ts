@@ -1,6 +1,5 @@
-import { RepoEntity } from "./api/entities/RepoEntity";
-import { getGitHubRepositories } from "./services/api/github/githubService";
-import { createProjectCard, loadProjects } from "./services/web/provider/githubProvider";
+import { observeSections } from "./services/web/observers/IntersectionObserver";
+import { createProjectsSection } from "./services/web/provider/NavContentProvider";
 
 async function initializeWebComponents(): Promise<void>
 {
@@ -8,9 +7,7 @@ async function initializeWebComponents(): Promise<void>
 
     try
     {
-        var repos = await getGitHubRepositories()
-        console.log(repos);
-        loadProjects(repos);
+        createProjectsSection();
     }
     catch (error)
     {
@@ -24,12 +21,12 @@ function boostrap(): void
     document.addEventListener("DOMContentLoaded", () =>
     {
         console.log("DOM fully loaded and parsed");
+        observeSections();
         initializeWebComponents().catch((error) =>
         {
             console.error("Error during web components initialization:", error);
         });
     });
-
 }
 
 boostrap();
