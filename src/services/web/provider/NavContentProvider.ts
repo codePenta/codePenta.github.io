@@ -1,7 +1,4 @@
-import { RepoEntity } from "../../../api/github/entities/ProjectEntity";
-
 var projects: Project[] = [];
-var navbarBackup: string;
 
 type Project = {
     name: string;

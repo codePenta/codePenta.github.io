@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const username = process.env.VITE_GITHUB_USERNAME
-const apiUrl = process.env.GITHUB_API_URL.replace("{username}", username);
+const apiUrl = process.env.API_URL.replace("{username}", username);
 
 fetch(apiUrl)
     .then(res => res.json())
