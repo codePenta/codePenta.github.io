@@ -1,3 +1,3 @@
 // File paths
 const projectsFileName = 'projects.json';
-export const projectsPath = `/data/${projectsFileName}`;
+export const projectsPath = `data/${projectsFileName}`;
