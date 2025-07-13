@@ -1,6 +1,11 @@
 import { defineConfig } from 'vite'
 
+const BASE_URL = process.env.NODE_ENV === 'production'
+    ? '/codepenta.github.io/'
+    : '/'
+
 export default defineConfig({
+    base: BASE_URL,
     build: {
         outDir: 'dist',
         sourcemap: true,

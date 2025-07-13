@@ -5,16 +5,19 @@
     "name": "codepenta",
     "email": "fhelm2001@gmail.com"
   },
+  "homepage": "codepenta.github.io/",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "dotenv": "^17.1.0",
+    "gh-pages": "^6.3.0",
     "octokit": "^5.0.3",
     "typescript": "^5.5.2"
   },
