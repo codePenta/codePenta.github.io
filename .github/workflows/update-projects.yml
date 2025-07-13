@@ -11,6 +11,8 @@ on:
 jobs:
   update-projects:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     env:
       VITE_GITHUB_USERNAME: ${{ secrets.VITE_GITHUB_USERNAME }}
       API_URL: ${{ secrets.API_URL }}
