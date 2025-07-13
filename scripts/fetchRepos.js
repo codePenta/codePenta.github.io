@@ -26,7 +26,7 @@ fetch(apiUrl)
             tags: repo.topics || []
         }));
 
-        fs.writeFileSync('data/projects.json', JSON.stringify(projects, null, 2));
+        fs.writeFileSync('dist/data/projects.json', JSON.stringify(projects, null, 2));
     })
     .catch(err =>
     {
