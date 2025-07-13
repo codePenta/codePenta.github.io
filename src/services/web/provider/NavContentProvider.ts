@@ -19,7 +19,7 @@ async function loadProjects(): Promise<any>
     console.log("Trying to load projcts");
     try
     {
-        const res = await fetch("/public/data/projects.json");
+        const res = await fetch("/data/projects.json");
         projects = await res.json();
         console.log(projects);
 
