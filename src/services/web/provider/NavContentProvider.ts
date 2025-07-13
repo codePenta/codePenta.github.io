@@ -14,7 +14,7 @@ const defaultNavLinks = [
 
 async function loadProjects(): Promise<any>
 {
-    const res = await fetch('data/projects.json');
+    const res = await fetch('dist/public/data/projects.json');
     projects = await res.json();
     return projects
 }
