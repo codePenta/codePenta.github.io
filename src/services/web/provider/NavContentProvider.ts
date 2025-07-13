@@ -1,3 +1,5 @@
+import { projectsPath } from "../../../utils/constants";
+
 var projects: Project[] = [];
 
 type Project = {
@@ -14,7 +16,7 @@ const defaultNavLinks = [
 
 async function loadProjects(): Promise<any>
 {
-    const res = await fetch('dist/public/data/projects.json');
+    const res = await fetch(projectsPath);
     projects = await res.json();
     return projects
 }

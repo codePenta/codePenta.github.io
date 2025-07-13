@@ -1,3 +1,4 @@
+import { projectsPath } from "../utils/constants";
 import fs from 'fs'
 import dotenv from 'dotenv'
 dotenv.config()
@@ -20,13 +21,13 @@ fetch(apiUrl)
         }
         const projects = repos.map(repo => ({
             name: repo.name,
-            description: repo.description ?? "Not description given",
+            description: repo.description ?? "No description given",
             url: repo.html_url,
             image: repo.owner.avatar_url,
             tags: repo.topics || []
         }));
 
-        fs.writeFileSync('dist/data/projects.json', JSON.stringify(projects, null, 2));
+        fs.writeFileSync(projectsPath, JSON.stringify(projects, null, 2));
     })
     .catch(err =>
     {
