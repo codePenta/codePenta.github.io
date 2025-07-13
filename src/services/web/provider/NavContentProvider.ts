@@ -1,4 +1,4 @@
-import { projectsPath } from "../../../utils/constants";
+const projectsPath = "/public/data/projects.json";
 
 var projects: Project[] = [];
 
@@ -16,9 +16,18 @@ const defaultNavLinks = [
 
 async function loadProjects(): Promise<any>
 {
-    const res = await fetch(projectsPath);
-    projects = await res.json();
-    return projects
+    console.log("Trying to load projcts");
+    try
+    {
+        const res = await fetch("/public/data/projects.json");
+        projects = await res.json();
+        console.log(projects);
+
+        return projects
+    } catch (error)
+    {
+        console.error(`Failed loading projects: ${error}`)
+    }
 }
 
 export async function createProjectsSection()
