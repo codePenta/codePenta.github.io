@@ -1,10 +1,11 @@
-import fs from 'fs'
+import fs, { write } from 'fs'
 import dotenv from 'dotenv'
 import path from 'path'; // Neues Modul für Pfade
 import { fileURLToPath } from 'url'; // Für ES Modules in Node.js
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const outputPath = path.resolve(__dirname, '../public/data/projects.json');
 
 dotenv.config({ path: path.resolve(__dirname, '../.env') })
 
@@ -15,6 +16,28 @@ if (!username) throw new Error("VITE_GITHUB_USERNAME is not set!");
 if (!apiUrlTemplate) throw new Error("API_URL is not set!");
 
 const apiUrl = apiUrlTemplate.replace("{username}", username);
+
+function fulfillConditionsForJSONFile(outputDir)
+{
+    if (!fs.existsSync(outputDir))
+    {
+        fs.mkdirSync(outputDir, { recursive: true }); // Erstellt den Ordner, auch wenn Zwischenordner fehlen
+    }
+}
+
+function writeToJsonFile(projects)
+{
+    const outputDir = path.dirname(outputPath);
+
+    try
+    {
+        fulfillConditionsForJSONFile(outputDir);
+        fs.writeFileSync(outputPath, JSON.stringify(projects, null, 2));
+    } catch (error)
+    {
+        console.error(error);
+    }
+}
 
 fetch(apiUrl)
     .then(res => res.json())
@@ -32,7 +55,7 @@ fetch(apiUrl)
             tags: repo.topics || []
         }));
 
-        fs.writeFileSync('../public/data/projects.json', JSON.stringify(projects, null, 2));
+        writeToJsonFile(projects);
     })
     .catch(err =>
     {

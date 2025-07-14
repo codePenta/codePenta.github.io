@@ -1,3 +1,5 @@
+import { NavLinkProps } from "../../../components/NavLink";
+
 const projectsPath = "/public/data/projects.json";
 
 var projects: Project[] = [];
@@ -14,9 +16,18 @@ const defaultNavLinks = [
     { name: "Projects", href: "#projects-section" }
 ];
 
+function createNavLink(props: NavLinkProps): HTMLLIElement
+{
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.textContent = props.name;
+    a.href = props.href;
+    li.appendChild(a);
+    return li;
+}
+
 async function loadProjects(): Promise<any>
 {
-    console.log("Trying to load projcts");
     try
     {
         const res = await fetch("/data/projects.json");

@@ -4,6 +4,8 @@
     --color-tertiary: #0D0D0D;
 }
 
+/* Base fonts */
+
 .kanit-thin {
     font-family: "Kanit", sans-serif;
     font-weight: 100;
@@ -110,4 +112,12 @@
     font-family: "Kanit", sans-serif;
     font-weight: 900;
     font-style: italic;
+}
+
+.title {
+    font-size: 3.5wrem;
+}
+
+.medium-title {
+    font-size: 2.5rem;
 }

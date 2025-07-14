@@ -11,6 +11,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node ./scripts/fetchRepos.js",
     "build": "vite build",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist"

@@ -2,6 +2,7 @@
 
 html,
 body {
+    font-size: 16px;
     height: 100vh;
     scroll-snap-type: y mandatory;
 }
@@ -13,9 +14,12 @@ section {
     position: relative;
 }
 
+
+
 /* Navbar Styling */
 
 nav {
+    font-size: 1.3rem;
     position: fixed;
     z-index: 1;
     right: 0;
