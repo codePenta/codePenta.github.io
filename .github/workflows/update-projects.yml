@@ -14,8 +14,7 @@ jobs:
     permissions:
       contents: write
     env:
-      VITE_GITHUB_USERNAME: ${{ secrets.VITE_GITHUB_USERNAME }}
-      API_URL_TEMPLATE: ${{ secrets.API_URL }}
+      REPOSITORY_FETCH_TOKEN: ${{ secrets.REPOSITORY_FETCH_TOKEN }}
     steps:
       - uses: actions/checkout@v4
         with:
