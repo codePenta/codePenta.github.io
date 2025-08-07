@@ -1,8 +1,8 @@
 import { observeSections } from "./services/web/observers/IntersectionObserver";
 import { createNavbar } from './components/Navbar';
-import { createProjectList } from "./components/ProjectList";
+import { renderProjectList } from "./components/ProjectList";
 
-import { state, updateProjects } from './store';
+import { state, updateState } from './store';
 import { fetchProjects } from './api/github/services/projectsAPI';
 
 const navElement = document.querySelector("nav");
@@ -12,14 +12,12 @@ async function initializeApp(): Promise<void>
 {
     console.log("Initializing application...");
 
-    observeSections();
-
     try
     {
         if (projectsList)
         {
             const initialProjects = await fetchProjects();
-            updateProjects(initialProjects);
+            updateState(initialProjects);
 
             projectsList.innerHTML = "<p>Loading projects...</p>";
 
@@ -27,7 +25,7 @@ async function initializeApp(): Promise<void>
             {
                 projectsList.removeChild(projectsList.firstChild);
             }
-            projectsList.appendChild(createProjectList({ projects: state.projects }));
+            renderProjectList({ projects: state.projects });
         }
 
         if (navElement)
@@ -40,11 +38,12 @@ async function initializeApp(): Promise<void>
             navElement.appendChild(createNavbar({ links: state.navbarLinks }))
         }
 
+        observeSections();
 
     } catch (error)
     {
         console.error("Error loading initial project data:", error);
-        updateProjects([]);
+        updateState([]);
         if (projectsList)
         {
             projectsList.innerHTML = "<p class='error-message'>Failed to load projects. Please try again later.</p>";

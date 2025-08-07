@@ -1,8 +1,6 @@
-import { createNavLink, NavLinkProps } from "../../../components/NavLink";
+import { NavLinkProjectProps, renderNavLink } from "../../../components/NavLink";
 import { createProjectCard } from "../../../components/ProjectCard";
-import { Project } from "../../../api/github/entities/ProjectEntity";
 import { state } from "../../../store";
-import { createNavbar } from "../../../components/Navbar";
 
 export async function createProjectsSection()
 {
@@ -17,23 +15,35 @@ export async function createProjectsSection()
     }
 }
 
-function renderNavbar(links: { href: string, name: string, ignoredByObserver: boolean }[])
+function renderNavbar(props: NavLinkProjectProps[])
 {
     const navbarList = document.querySelector("nav ul");
-    if (!navbarList) return;
+    if (!navbarList)
+    {
+        console.warn("Navigation list not found");
+        return;
+    }
+
     navbarList.innerHTML = "";
 
-    for (const link of links)
+    const fragment = document.createDocumentFragment();
+
+    props.forEach(link =>
     {
-        var navProps: NavLinkProps = { name: link.name, href: link.href, ignoredByObserver: link.ignoredByObserver }
-        const li = createNavLink(navProps);
-        navbarList.appendChild(li);
-    }
+        renderNavLink(fragment, {
+            name: link.name,
+            href: link.href,
+            ignoredByObserver: link.ignoredByObserver
+        });
+    });
+
+    // Füge alles auf einmal ein
+    navbarList.appendChild(fragment);
 }
 
 export async function loadProjectsIntoNavbar()
 {
-    renderNavbar(state.projects.map(project => ({ href: project.language, name: project.name, ignoredByObserver: true })));
+    renderNavbar(state.filter.map(filter => ({ href: filter.filterName, name: filter.filterName, ignoredByObserver: true })));
 }
 
 export function unloadProjectsFromNavbar()

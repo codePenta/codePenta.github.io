@@ -1,11 +1,9 @@
-import { createNavLink, NavLinkProps } from './NavLink';
+import { createNavLink, NavLinkProjectProps } from './NavLink';
 
 type NavbarProps = {
-    links: NavLinkProps[];
+    links: NavLinkProjectProps[];
 };
 
-// Diese Funktion erstellt die ul und hängt die links an.
-// Sie kann neu aufgerufen werden, um die Navbar zu aktualisieren.
 export function createNavbar(props: NavbarProps): HTMLUListElement
 {
     const ul = document.createElement("ul");

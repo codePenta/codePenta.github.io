@@ -1,5 +1,3 @@
-import { isJSDocPrivateTag, isPrivateIdentifier } from "typescript";
-
 export type GitHubRepoApiResponse = {
     name: string;
     description: string | null;

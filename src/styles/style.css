@@ -34,7 +34,16 @@ nav>ul>li {
 
 nav>ul>li>a {
     text-decoration: none;
-    color: var(--color-tertiary);
+    color: var(--color-terstiary);
 }
 
 /* Project cards styling */
+#projects-list {
+    min-height: 100vh;
+}
+
+#projects-list>.project-card {
+    border: 1px solid rebeccapurple;
+    min-height: calc(70vh);
+    min-width: calc(100vw - 50%);
+}

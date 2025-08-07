@@ -8,10 +8,11 @@ type ProjectListProps = {
     // className?: string;
 };
 
-export function createProjectList(props: ProjectListProps): HTMLDivElement
+export function renderProjectList(props: ProjectListProps)
 {
-    const projectListContainer = document.createElement("div");
-    projectListContainer.className = "projects-list-container";
+    const projectListContainer = document.querySelector("#projects-list");
+    if (!projectListContainer)
+        return
 
     if (!props.projects || props.projects.length === 0)
     {
@@ -19,7 +20,6 @@ export function createProjectList(props: ProjectListProps): HTMLDivElement
         noProjectsMessage.textContent = "No projects available at the moment. Please check back later!";
         noProjectsMessage.className = "no-projects-message";
         projectListContainer.appendChild(noProjectsMessage);
-        return projectListContainer;
     }
 
     const fragment = document.createDocumentFragment();

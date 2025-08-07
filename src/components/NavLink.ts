@@ -1,11 +1,12 @@
 import { state } from "../store";
 
-export type NavLinkProps = {
+export type NavLinkProjectProps = {
     href: string;
     name: string;
     ignoredByObserver: boolean;
 };
-export function createNavLink(navLinkProps: NavLinkProps): HTMLLIElement
+
+export function createNavLink(navLinkProps: NavLinkProjectProps): HTMLLIElement
 {
     const li = document.createElement("li");
     const a = document.createElement("a");
@@ -21,9 +22,25 @@ export function createNavLink(navLinkProps: NavLinkProps): HTMLLIElement
     return li;
 }
 
+export function renderNavLink(parent: DocumentFragment, navLinkProps: NavLinkProjectProps)
+{
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+
+    a.textContent = navLinkProps.name;
+    a.href = navLinkProps.href;
+
+    if (navLinkProps.ignoredByObserver)
+    {
+        setupNavLinkForUserClick(a);
+    }
+
+    li.appendChild(a);
+    parent.appendChild(li);
+}
+
 function setupNavLinkForUserClick(a: HTMLAnchorElement)
 {
-    state.clickedProject = a.textContent;
     a.addEventListener('click', handleClick);
 }
 
