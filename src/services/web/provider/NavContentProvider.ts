@@ -1,19 +1,6 @@
+import { Filter } from "../../../api/github/entities/FilterEntity";
 import { NavLinkProjectProps, renderNavLink } from "../../../components/NavLink";
-import { createProjectCard } from "../../../components/ProjectCard";
 import { state } from "../../../store";
-
-export async function createProjectsSection()
-{
-
-    const projectContainer = document.querySelector("#projects-list");
-    if (!projectContainer)
-        return;
-    projectContainer.innerHTML = "";
-    for (const project of state.projects)
-    {
-        projectContainer.appendChild(createProjectCard(project));
-    }
-}
 
 function renderNavbar(props: NavLinkProjectProps[])
 {

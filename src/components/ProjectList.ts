@@ -14,6 +14,8 @@ export function renderProjectList(props: ProjectListProps)
     if (!projectListContainer)
         return
 
+    projectListContainer.innerHTML = "";
+
     if (!props.projects || props.projects.length === 0)
     {
         const noProjectsMessage = document.createElement("p");

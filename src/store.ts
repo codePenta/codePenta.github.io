@@ -1,10 +1,12 @@
 import { Project } from '../src/api/github/entities/ProjectEntity';
 import { Filter } from './api/github/entities/FilterEntity';
+import { createFilters } from './services/web/provider/FilterProvider';
 
 export type AppState = {
     projects: Project[];
     navbarLinks: { name: string; href: string, ignoredByObserver: boolean }[];
-    filter: Filter[]
+    filter: Filter[];
+    selectedFilter: string;
 };
 
 export const state: AppState = {
@@ -14,15 +16,13 @@ export const state: AppState = {
         { name: "Projects", href: "#projects", ignoredByObserver: false },
     ],
     filter: [],
+    selectedFilter: "",
 };
 
 export function updateState(newProjects: Project[])
 {
     state.projects = newProjects;
-    state.filter = Array.from(
-        new Set(newProjects.map(project => project.language).filter(Boolean))
-    ).map(language => Filter.createFilter(language, newProjects));
-
+    state.filter = createFilters(newProjects);
     console.log(state.filter);
 
 }
