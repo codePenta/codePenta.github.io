@@ -6,7 +6,7 @@ import { state, updateProjects } from './store';
 import { fetchProjects } from './api/github/services/projectsAPI';
 
 const navElement = document.querySelector("nav");
-const projectsSection = document.querySelector("#projects");
+const projectsList = document.querySelector("#projects-list");
 
 async function initializeApp(): Promise<void>
 {
@@ -16,18 +16,18 @@ async function initializeApp(): Promise<void>
 
     try
     {
-        if (projectsSection)
+        if (projectsList)
         {
             const initialProjects = await fetchProjects();
             updateProjects(initialProjects);
 
-            projectsSection.innerHTML = "<p>Loading projects...</p>";
+            projectsList.innerHTML = "<p>Loading projects...</p>";
 
-            while (projectsSection.firstChild)
+            while (projectsList.firstChild)
             {
-                projectsSection.removeChild(projectsSection.firstChild);
+                projectsList.removeChild(projectsList.firstChild);
             }
-            projectsSection.appendChild(createProjectList({ projects: state.projects }));
+            projectsList.appendChild(createProjectList({ projects: state.projects }));
         }
 
         if (navElement)
@@ -45,9 +45,9 @@ async function initializeApp(): Promise<void>
     {
         console.error("Error loading initial project data:", error);
         updateProjects([]);
-        if (projectsSection)
+        if (projectsList)
         {
-            projectsSection.innerHTML = "<p class='error-message'>Failed to load projects. Please try again later.</p>";
+            projectsList.innerHTML = "<p class='error-message'>Failed to load projects. Please try again later.</p>";
         }
     }
     console.log("Application initialized.");

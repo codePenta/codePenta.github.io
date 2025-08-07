@@ -1,21 +1,64 @@
 [
   {
-    "name": "Basket_Fever_Codegeruest",
-    "description": "No description given",
+    "name": "Basket Fever Codegeruest",
+    "description": "Not given",
+    "language": "Processing",
     "url": "https://github.com/codePenta/Basket_Fever_Codegeruest",
     "image": "https://avatars.githubusercontent.com/u/41843603?v=4",
     "tags": []
   },
   {
+    "name": "BrewUI",
+    "description": "Not given",
+    "language": "Not specified",
+    "url": "https://github.com/codePenta/BrewUI",
+    "image": "https://avatars.githubusercontent.com/u/41843603?v=4",
+    "tags": []
+  },
+  {
     "name": "codePenta.github.io",
-    "description": "No description given",
+    "description": "Not given",
+    "language": "TypeScript",
     "url": "https://github.com/codePenta/codePenta.github.io",
+    "image": "https://avatars.githubusercontent.com/u/41843603?v=4",
+    "tags": []
+  },
+  {
+    "name": "CPS-Project",
+    "description": "Not given",
+    "language": "Python",
+    "url": "https://github.com/codePenta/CPS-Project",
+    "image": "https://avatars.githubusercontent.com/u/41843603?v=4",
+    "tags": []
+  },
+  {
+    "name": "Discord-Bot",
+    "description": "Not given",
+    "language": "TypeScript",
+    "url": "https://github.com/codePenta/Discord-Bot",
+    "image": "https://avatars.githubusercontent.com/u/41843603?v=4",
+    "tags": []
+  },
+  {
+    "name": "OOP Tic-Tac-Toe",
+    "description": "An objectoriented version of the game Tic-Tac-Toe written in Python",
+    "language": "Python",
+    "url": "https://github.com/codePenta/OOP_Tic-Tac-Toe",
+    "image": "https://avatars.githubusercontent.com/u/41843603?v=4",
+    "tags": []
+  },
+  {
+    "name": "SmartCarRobot",
+    "description": "ArduinoRobotFromWork",
+    "language": "C++",
+    "url": "https://github.com/codePenta/SmartCarRobot",
     "image": "https://avatars.githubusercontent.com/u/41843603?v=4",
     "tags": []
   },
   {
     "name": "TimePunch-MVVM",
     "description": "A really simple and reduced mvvm pattern for wpf and modern UI apps",
+    "language": "C#",
     "url": "https://github.com/codePenta/TimePunch-MVVM",
     "image": "https://avatars.githubusercontent.com/u/41843603?v=4",
     "tags": []

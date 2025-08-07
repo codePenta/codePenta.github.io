@@ -1,7 +1,7 @@
 import fs, { write } from 'fs'
 import dotenv from 'dotenv'
-import path from 'path'; // Neues Modul für Pfade
-import { fileURLToPath } from 'url'; // Für ES Modules in Node.js
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -9,19 +9,16 @@ const outputPath = path.resolve(__dirname, '../public/data/projects.json');
 
 dotenv.config({ path: path.resolve(__dirname, '../.env') })
 
-const username = process.env.VITE_GITHUB_USERNAME;
-const apiUrlTemplate = process.env.API_URL_TEMPLATE;
+const apiUrl = "https://api.github.com/user/repos"
+const repositoryFetchToken = process.env.REPOSITORY_FETCH_TOKEN;
 
-if (!username) throw new Error("VITE_GITHUB_USERNAME is not set!");
-if (!apiUrlTemplate) throw new Error("API_URL is not set!");
-
-const apiUrl = apiUrlTemplate.replace("{username}", username);
+if (!repositoryFetchToken) throw new Error("REPOSITORY_FETCHING_TOKEN is not set!");
 
 function fulfillConditionsForJSONFile(outputDir)
 {
     if (!fs.existsSync(outputDir))
     {
-        fs.mkdirSync(outputDir, { recursive: true }); // Erstellt den Ordner, auch wenn Zwischenordner fehlen
+        fs.mkdirSync(outputDir, { recursive: true });
     }
 }
 
@@ -39,17 +36,23 @@ function writeToJsonFile(projects)
     }
 }
 
-fetch(apiUrl)
+fetch(apiUrl, {
+    headers:
+    {
+        'Authorization': `token ${repositoryFetchToken}`
+    }
+})
     .then(res => res.json())
     .then(repos =>
     {
         if (!Array.isArray(repos))
         {
-            throw new Error("GitHub API did not return an array. Response: " + JSON.stringify(repos));
+            throw new Error("GitHub API did not return an array. Response: " + JSON.stringify(repos, null, 2));
         }
         const projects = repos.map(repo => ({
             name: repo.name,
-            description: repo.description ?? "No description given",
+            description: repo.description,
+            language: repo.language,
             url: repo.html_url,
             image: repo.owner.avatar_url,
             tags: repo.topics || []

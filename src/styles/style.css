@@ -8,16 +8,14 @@ body {
 }
 
 section {
-    padding: 10% 15%;
     height: 100vh;
-    scroll-snap-align: start;
-    position: relative;
 }
 
-
+section>div {
+    padding: 10% 15%;
+}
 
 /* Navbar Styling */
-
 nav {
     font-size: 1.3rem;
     position: fixed;

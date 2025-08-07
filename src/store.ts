@@ -2,20 +2,20 @@ import { Project } from '../src/api/github/entities/ProjectEntity';
 
 export type AppState = {
     projects: Project[];
-    navbarLinks: { name: string; href: string }[];
+    navbarLinks: { name: string; href: string, ignoredByObserver: boolean }[];
+    clickedProject: string;
 };
 
 export const state: AppState = {
     projects: [],
     navbarLinks: [
-        { name: "Home", href: "#home" },
-        { name: "Projects", href: "#projects-section" },
-        { name: "Career", href: "#career" }
-    ]
+        { name: "Home", href: "#home", ignoredByObserver: false },
+        { name: "Projects", href: "#projects", ignoredByObserver: false },
+    ],
+    clickedProject: "",
 };
 
 export function updateProjects(newProjects: Project[])
 {
     state.projects = newProjects;
-    state.navbarLinks = newProjects.map(p => ({ name: p.name, href: p.url }));
 }

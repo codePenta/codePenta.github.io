@@ -1,45 +1,23 @@
-import { NavLinkProps } from "../../../components/NavLink";
+import { createNavLink, NavLinkProps } from "../../../components/NavLink";
 import { createProjectCard } from "../../../components/ProjectCard";
 import { Project } from "../../../api/github/entities/ProjectEntity";
 import { state } from "../../../store";
-
-const projectsPath = "/public/data/projects.json";
-
-var projects: Project[] = [];
-
-async function loadProjects(): Promise<any>
-{
-    try
-    {
-        const res = await fetch("/data/projects.json");
-        projects = await res.json();
-        console.log(projects);
-
-        return projects
-    } catch (error)
-    {
-        console.error(`Failed loading projects: ${error}`)
-    }
-}
+import { createNavbar } from "../../../components/Navbar";
 
 export async function createProjectsSection()
 {
-    if (projects.length == 0)
-    {
-        projects = await loadProjects();
-    }
 
-    const projectContainer = document.querySelector("#projects");
+    const projectContainer = document.querySelector("#projects-list");
     if (!projectContainer)
         return;
     projectContainer.innerHTML = "";
-    for (const project of projects)
+    for (const project of state.projects)
     {
         projectContainer.appendChild(createProjectCard(project));
     }
 }
 
-function renderNavbar(links: { name: string, href: string }[])
+function renderNavbar(links: { href: string, name: string, ignoredByObserver: boolean }[])
 {
     const navbarList = document.querySelector("nav ul");
     if (!navbarList) return;
@@ -47,23 +25,15 @@ function renderNavbar(links: { name: string, href: string }[])
 
     for (const link of links)
     {
-        const li = document.createElement("li");
-        const a = document.createElement("a");
-        a.textContent = link.name;
-        a.href = link.href;
-        li.appendChild(a);
+        var navProps: NavLinkProps = { name: link.name, href: link.href, ignoredByObserver: link.ignoredByObserver }
+        const li = createNavLink(navProps);
         navbarList.appendChild(li);
     }
 }
 
 export async function loadProjectsIntoNavbar()
 {
-    if (projects.length === 0)
-    {
-        projects = await loadProjects();
-    }
-
-    renderNavbar(projects.map(project => ({ name: project.name, href: project.url })));
+    renderNavbar(state.projects.map(project => ({ href: project.language, name: project.name, ignoredByObserver: true })));
 }
 
 export function unloadProjectsFromNavbar()

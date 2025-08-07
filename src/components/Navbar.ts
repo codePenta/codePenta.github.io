@@ -9,7 +9,6 @@ type NavbarProps = {
 export function createNavbar(props: NavbarProps): HTMLUListElement
 {
     const ul = document.createElement("ul");
-    ul.id = "navbar"; // Oder eine andere ID
 
     const fragment = document.createDocumentFragment();
     props.links.forEach(link =>
