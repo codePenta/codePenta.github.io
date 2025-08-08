@@ -1,0 +1,37 @@
+@import '../core.css';
+
+#projects-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+#projects-list>.project-card {
+    box-sizing: border-box;
+    border: 1px solid rebeccapurple;
+    border-radius: 5px;
+    padding: 1em;
+    max-height: 60vh;
+    width: calc(100% / 3 - 1.6em);
+    margin: .8em;
+    overflow-wrap: break-word;
+}
+
+#projects-list>.project-card .author-img-container>img {
+    width: 30px;
+    margin: 1em;
+}
+
+@media (width <=900px) {
+    #projects-list>.project-card {
+        border: 1px solid rebeccapurple;
+        width: calc(100% / 2 - 1.6em);
+    }
+}
+
+@media (width <=600px) {
+    #projects-list>.project-card {
+        border: 1px solid rebeccapurple;
+        width: 60vw;
+    }
+}
