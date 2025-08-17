@@ -1,13 +1,12 @@
+import { FilePaths } from '../../../constants';
 import { GitHubRepoApiResponse, Project } from '../entities/ProjectEntity';
 import { mapGitHubReposToProjects } from '../mappers/GitHubRepoMapper';
-
-const PROJECTS_DATA_PATH = "/data/projects.json";
 
 export async function fetchProjects(): Promise<Project[]>
 {
     try
     {
-        const response = await fetch(PROJECTS_DATA_PATH);
+        const response = await fetch(FilePaths.PROJECTS_DATA_PATH);
         if (!response.ok)
         {
             throw new Error(`Failed to load projects.json: ${response.status} ${response.statusText}`);

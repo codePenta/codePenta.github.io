@@ -1,9 +1,10 @@
 import { Project } from '../api/github/entities/ProjectEntity';
+import { formatWithoutPrefix, Tags } from '../constants';
 
 export function createProjectCard(project: Project): HTMLElement
 {
     const card = document.createElement("div");
-    card.className = "project-card";
+    card.className = formatWithoutPrefix(Tags.PROJECT_CARD_CLASSNAME);
 
     const h2 = document.createElement("h2");
     h2.textContent = project.name;

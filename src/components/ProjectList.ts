@@ -1,4 +1,5 @@
 import { Project } from '../api/github/entities/ProjectEntity'; // Importiere den Project-Typ
+import { formatWithoutPrefix, Tags } from '../constants';
 import { createProjectCard } from './ProjectCard'; // Importiere die Funktion zum Erstellen einer einzelnen Karte
 
 type ProjectListProps = {
@@ -10,7 +11,7 @@ type ProjectListProps = {
 
 export function renderProjectList(props: ProjectListProps)
 {
-    const projectListContainer = document.querySelector("#projects-list");
+    const projectListContainer = document.querySelector(Tags.PROJECTS_LIST_ID);
     if (!projectListContainer)
         return
 
@@ -20,7 +21,7 @@ export function renderProjectList(props: ProjectListProps)
     {
         const noProjectsMessage = document.createElement("p");
         noProjectsMessage.textContent = "No projects available at the moment. Please check back later!";
-        noProjectsMessage.className = "no-projects-message";
+        noProjectsMessage.className = Tags.ERROR_NO_PROJECTS_CLASSNAME;
         projectListContainer.appendChild(noProjectsMessage);
     }
 

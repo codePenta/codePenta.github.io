@@ -6,7 +6,7 @@ export function createFilters(projects: Project[]): Filter[]
 {
     const languages = [...new Set(projects.map(p => p.language).filter(Boolean))] as string[];
 
-    const allFilter = new Filter('all', projects);
+    const allFilter = new Filter('All', projects);
 
     const languageFilters = languages.map(lang => Filter.createFilter(lang, projects));
 
