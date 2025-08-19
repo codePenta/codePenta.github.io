@@ -48,6 +48,14 @@
     "tags": []
   },
   {
+    "name": "pomodoro_app",
+    "description": "My own focus tracking app",
+    "language": "C++",
+    "url": "https://github.com/codePenta/pomodoro_app",
+    "image": "https://avatars.githubusercontent.com/u/41843603?v=4",
+    "tags": []
+  },
+  {
     "name": "SmartCarRobot",
     "description": "ArduinoRobotFromWork",
     "language": "C++",
