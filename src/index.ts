@@ -1,4 +1,4 @@
-import { observeSections } from "./services/web/observers/IntersectionObserver";
+import { Observer } from "./services/web/observers/IntersectionObserver";
 import { createNavbar } from './components/Navbar';
 import { renderProjectList } from "./components/ProjectList";
 
@@ -11,6 +11,7 @@ const projectsList = document.querySelector("#projects-list");
 async function initializeApp(): Promise<void>
 {
     console.log("Initializing application...");
+    const observer = new Observer();
 
     try
     {
@@ -38,7 +39,7 @@ async function initializeApp(): Promise<void>
             navElement.appendChild(createNavbar({ links: state.navbarLinks }))
         }
 
-        observeSections();
+        observer.observeSections();
 
     } catch (error)
     {

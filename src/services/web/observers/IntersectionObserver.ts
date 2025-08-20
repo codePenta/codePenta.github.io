@@ -1,38 +1,60 @@
 import { loadProjectsIntoNavbar, unloadProjectsFromNavbar } from "../provider/NavContentProvider";
-import { state } from "../../../store";
 
-var previousEntryId: string = "";
-
-const options = {
-    threshold: 0.5,
-};
-
-const callback = (entries: any, observer: any) =>
+class Observer
 {
-    entries.forEach((entry: any) =>
+    private previousEntryId: string = "";
+    private options = {
+        threshold: 0.5,
+    }
+
+    private scrollObserver: IntersectionObserver;
+
+    constructor()
     {
-        if (entry.isIntersecting)
+        this.scrollObserver = new IntersectionObserver(this.callback, this.options);
+    }
+
+    private callback = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) =>
+    {
+        entries.forEach((entry: any) =>
         {
-            if (entry.target.id == 'projects')
+            if (entry.isIntersecting)
             {
-                loadProjectsIntoNavbar();
-                window.history.pushState(entry.target.textContent, "Title", `#${entry.target.id}`);
-            }
-            else
-            {
-                unloadProjectsFromNavbar();
-                window.history.pushState(entry.target.textContent, "Title", "/");
-            }
-        }
-    });
-};
+                const currentSectionId = entry.target.id;
+                if (currentSectionId !== this.previousEntryId)
+                {
+                    if (entry.target.id == 'projects')
+                    {
+                        loadProjectsIntoNavbar();
+                        window.history.pushState(entry.target.textContent, "Title", `#${entry.target.id}`);
+                    }
+                    else
+                    {
+                        unloadProjectsFromNavbar();
+                        window.history.pushState(entry.target.textContent, "Title", "/");
+                    }
 
-const scrollObserver = new IntersectionObserver(callback, options);
+                    this.previousEntryId = currentSectionId;
+                }
+            }
+        });
+    };
 
-export function observeSections()
-{
-    document.querySelectorAll('section').forEach(section =>
+    public get get(): IntersectionObserver
     {
-        scrollObserver.observe(section)
-    });
+        return this.scrollObserver;
+    }
+
+    observeSections()
+    {
+        document.querySelectorAll('section').forEach(section =>
+        {
+            this.get.observe(section)
+        });
+    }
+}
+
+export
+{
+    Observer
 }
