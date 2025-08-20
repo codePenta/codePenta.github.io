@@ -28,7 +28,7 @@ class Observer
                 const currentSectionId = entry.target.id;
                 if (currentSectionId !== this.previousEntryId)
                 {
-                    if (this.sections.includes(currentSectionId))
+                    if (this.sections.includes(`#${currentSectionId}`))
                     {
                         loadProjectsIntoNavbar();
                         window.history.pushState(entry.target.textContent, "Title", `#${entry.target.id}`);
