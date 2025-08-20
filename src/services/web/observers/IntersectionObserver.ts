@@ -1,3 +1,4 @@
+import { Tags } from "../../../constants";
 import { loadProjectsIntoNavbar, unloadProjectsFromNavbar } from "../provider/NavContentProvider";
 
 class Observer
@@ -6,6 +7,10 @@ class Observer
     private options = {
         threshold: 0.5,
     }
+
+    private sections: Tags[] = [
+        Tags.OBSERVER_PROJECT_SECTION
+    ]
 
     private scrollObserver: IntersectionObserver;
 
@@ -23,7 +28,7 @@ class Observer
                 const currentSectionId = entry.target.id;
                 if (currentSectionId !== this.previousEntryId)
                 {
-                    if (entry.target.id == 'projects')
+                    if (this.sections.includes(currentSectionId))
                     {
                         loadProjectsIntoNavbar();
                         window.history.pushState(entry.target.textContent, "Title", `#${entry.target.id}`);

@@ -12,6 +12,9 @@ export class Tags
 
     // Error tags
     static readonly ERROR_NO_PROJECTS_CLASSNAME = "no-projects-message";
+
+    // For observers
+    static readonly OBSERVER_PROJECT_SECTION = "#projects";
 }
 
 export const formatWithoutPrefix = (value: string) =>
