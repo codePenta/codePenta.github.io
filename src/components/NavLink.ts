@@ -51,7 +51,7 @@ function handleClick(event: any)
     event.preventDefault();
 
     state.selectedFilter = event.target.innerText;
-    if (state.selectedFilter === 'all')
+    if (state.selectedFilter === 'All')
     {
         renderProjectList({ projects: state.projects });
         return;
