@@ -4,6 +4,7 @@ export type GitHubRepoApiResponse = {
     url: string;
     image: string;
     language: string | null;
+    languageIconUrl: string | null;
 };
 
 export type Project = {
@@ -12,4 +13,5 @@ export type Project = {
     url: string;
     imageUrl: string;
     language: string;
+    languageIconUrl: string | null;
 };

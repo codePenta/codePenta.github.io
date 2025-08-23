@@ -23,6 +23,4 @@ export function updateState(newProjects: Project[])
 {
     state.projects = newProjects;
     state.filter = createFilters(newProjects);
-    console.log(state.filter);
-
 }

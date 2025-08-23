@@ -6,11 +6,15 @@
     flex-direction: row;
 }
 
-#projects-list>.project-card {
+#projects-list .project-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     box-sizing: border-box;
     border: 1px solid rebeccapurple;
     border-radius: 5px;
     padding: 1em;
+    min-height: 40vh;
     max-height: 60vh;
     /* Subtraction of 1.6em is necessary because .8em for left and right of the margin needs to be taken into consideration for each project card*/
     width: calc(100% / 3 - 1.6em);
@@ -18,7 +22,15 @@
     overflow-wrap: break-word;
 }
 
-#projects-list>.project-card .author-img-container>img {
+#projects-list .project-card-heading>h2 {
+    margin: 0;
+}
+
+#projects-list .project-card-footer {
+    margin-top: auto;
+}
+
+#projects-list .author-img-container>img {
     width: 30px;
     margin: 1em;
 }

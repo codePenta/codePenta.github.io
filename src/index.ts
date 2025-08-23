@@ -3,7 +3,9 @@ import { createNavbar } from './components/Navbar';
 import { renderProjectList } from "./components/ProjectList";
 
 import { state, updateState } from './store';
-import { fetchProjects } from './api/github/services/projectsAPI';
+import { fetchLanguagesFromProjects, fetchProjects } from './api/github/services/projectsAPI';
+import { isConstructSignatureDeclaration } from "typescript";
+import { IconService } from "./services/IconService";
 
 const navElement = document.querySelector("nav");
 const projectsList = document.querySelector("#projects-list");
