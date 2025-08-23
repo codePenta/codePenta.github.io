@@ -22,8 +22,16 @@
     overflow-wrap: break-word;
 }
 
+#projects-list .project-card-heading {
+    min-height: 5vh;
+}
+
 #projects-list .project-card-heading>h2 {
     margin: 0;
+}
+
+#projects-list .project-card-details {
+    margin-top: auto;
 }
 
 #projects-list .project-card-footer {
@@ -31,7 +39,7 @@
 }
 
 #projects-list .author-img-container>img {
-    width: 30px;
+    width: 2vw;
     margin: 1em;
 }
 
