@@ -1,6 +1,6 @@
 {
-  "c#": "/assets/icons/c#.svg",
-  "c++": "/assets/icons/c++.svg",
+  "cpp": "/assets/icons/cpp.svg",
+  "csharp": "/assets/icons/csharp.svg",
   "java": "/assets/icons/java.svg",
   "not specified": "/assets/icons/not specified.svg",
   "python": "/assets/icons/python.svg",

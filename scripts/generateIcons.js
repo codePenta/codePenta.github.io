@@ -1,4 +1,3 @@
-// generate-icons.js
 import * as fs from 'fs';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
@@ -10,20 +9,17 @@ const iconsDir = path.resolve(__dirname, '../public/assets/icons');
 const outputDir = path.resolve(__dirname, '../src/data');
 const outputFile = path.join(outputDir, 'icons.json');
 
-if (!fs.existsSync(outputDir))
-{
-    fs.mkdirSync(outputDir, { recursive: true });
-}
+fs.mkdirSync(outputDir, { recursive: true });
 
-const iconMap = {};
 const files = fs.readdirSync(iconsDir).filter(file => path.extname(file) === '.svg');
 
-files.forEach(file =>
+const iconMap = files.reduce((map, file) =>
 {
-    const languageName = path.basename(file, '.svg').toLowerCase();
+    let languageName = path.basename(file, '.svg').toLowerCase();
     const iconPath = `/assets/icons/${file}`;
-    iconMap[languageName] = iconPath;
-});
+    map[languageName] = iconPath;
+    return map;
+}, {});
 
 fs.writeFileSync(outputFile, JSON.stringify(iconMap, null, 2), 'utf-8');
 
