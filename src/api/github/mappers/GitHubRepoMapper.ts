@@ -15,7 +15,6 @@ export function mapGitHubReposToProjects(repos: GitHubRepoApiResponse[]): Projec
         const rawLanguage = repo.language ?? "Not specified";
 
         const mappedLanguage = languageNameMap[rawLanguage] || rawLanguage;
-        console.log(mappedLanguage);
 
         return {
             name: repo.name,
@@ -23,7 +22,8 @@ export function mapGitHubReposToProjects(repos: GitHubRepoApiResponse[]): Projec
             url: repo.url,
             imageUrl: repo.image ?? "No avatar available.",
             language: rawLanguage,
-            languageIconUrl: iconService.getIconUrl(mappedLanguage),
+            languageIconUrl: iconService.getLanguageIconUrl(mappedLanguage),
+            versionControl: iconService.getVersionControlIconUrl(repo.url),
         };
     });
 

@@ -5,9 +5,9 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const iconsDir = path.resolve(__dirname, '../public/assets/icons');
+const iconsDir = path.resolve(__dirname, '../public/assets/icons/programming');
 const outputDir = path.resolve(__dirname, '../src/data');
-const outputFile = path.join(outputDir, 'icons.json');
+const outputFile = path.join(outputDir, 'languageIcons.json');
 
 fs.mkdirSync(outputDir, { recursive: true });
 
@@ -16,7 +16,7 @@ const files = fs.readdirSync(iconsDir).filter(file => path.extname(file) === '.s
 const iconMap = files.reduce((map, file) =>
 {
     let languageName = path.basename(file, '.svg').toLowerCase();
-    const iconPath = `/assets/icons/${file}`;
+    const iconPath = `/assets/icons/programming/${file}`;
     map[languageName] = iconPath;
     return map;
 }, {});

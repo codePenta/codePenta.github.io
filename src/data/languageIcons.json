@@ -1,0 +1,9 @@
+{
+  "cpp": "/assets/icons/programming/cpp.svg",
+  "csharp": "/assets/icons/programming/csharp.svg",
+  "java": "/assets/icons/programming/java.svg",
+  "not specified": "/assets/icons/programming/not specified.svg",
+  "processing": "/assets/icons/programming/processing.svg",
+  "python": "/assets/icons/programming/python.svg",
+  "typescript": "/assets/icons/programming/typescript.svg"
+}

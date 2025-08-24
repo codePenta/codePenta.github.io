@@ -7,7 +7,7 @@ export function createProjectCard(project: Project): HTMLElement
     card.className = formatWithoutPrefix(Tags.PROJECT_CARD_CLASSNAME);
 
     const cardHeading = document.createElement("div");
-    cardHeading.className = "project-card-heading";
+    cardHeading.className = formatWithoutPrefix(Tags.PROJECT_CARD_HEADING);
 
     const h2 = document.createElement("h2");
     h2.textContent = project.name;
@@ -15,29 +15,33 @@ export function createProjectCard(project: Project): HTMLElement
     cardHeading.append(h2);
 
     const cardContent = document.createElement("div");
-    cardContent.className = "project-card-details";
+    cardContent.className = formatWithoutPrefix(Tags.PROJECT_CARD_DETAILS);
 
-    const language = document.createElement("img");
-    language.src = `${project.languageIconUrl}`;
-    language.alt = project.language;
-    language.width = 40;
-    language.height = 40;
+    const programmingLanguage = document.createElement("img");
+    programmingLanguage.src = `${project.languageIconUrl}`;
+    programmingLanguage.alt = project.language;
+    programmingLanguage.width = 40;
 
     const description = document.createElement("p");
     description.textContent = project.description;
-    cardContent.append(language, description);
+    cardContent.append(programmingLanguage, description);
 
     const url = document.createElement("a");
-    url.textContent = `View on GitHub`;
     url.href = project.url;
     url.target = "_blank";
     url.rel = "noopener noreferrer";
 
+    const versionControlImg = document.createElement("img");
+    versionControlImg.src = `${project.versionControl}`;
+    versionControlImg.alt = project.url;
+    versionControlImg.width = 40;
+    url.append(versionControlImg);
+
     const cardFooter = document.createElement("div");
-    cardFooter.className = "project-card-footer";
+    cardFooter.className = formatWithoutPrefix(Tags.PROJECT_CARD_FOOTER);
 
     const imgDiv = document.createElement("div");
-    imgDiv.className = "author-img-container";
+    imgDiv.className = formatWithoutPrefix(Tags.PROJECT_AUTHOR_CLASSNAME);
 
     const authorImg = document.createElement("img");
     authorImg.src = project.imageUrl;

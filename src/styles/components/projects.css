@@ -13,17 +13,12 @@
     box-sizing: border-box;
     border: 1px solid rebeccapurple;
     border-radius: 5px;
-    padding: 1em;
-    min-height: 40vh;
+    min-height: 20vh;
     max-height: 60vh;
-    /* Subtraction of 1.6em is necessary because .8em for left and right of the margin needs to be taken into consideration for each project card*/
     width: calc(100% / 3 - 1.6em);
     margin: .8em;
+    padding: 1em;
     overflow-wrap: break-word;
-}
-
-#projects-list .project-card-heading {
-    min-height: 5vh;
 }
 
 #projects-list .project-card-heading>h2 {
@@ -39,8 +34,7 @@
 }
 
 #projects-list .author-img-container>img {
-    width: 2vw;
-    margin: 1em;
+    width: 40px;
 }
 
 @media (width <=900px) {

@@ -1,27 +1,45 @@
-import icons from "../data/icons.json";
+import languageIcons from "../data/languageIcons.json";
+import versionControlIcons from "../data/versionControlIcons.json";
 
 export class IconService
 {
-    private readonly iconMap: { [key: string]: string; } | undefined;
+    private readonly languageIconMap: { [key: string]: string; } | undefined;
+    private readonly versionControlIcanMap: { [key: string]: string; } | undefined;
 
     private availableLanguages: any[] = [];
 
     constructor()
     {
-        this.iconMap = icons;
+        this.languageIconMap = languageIcons;
+        this.versionControlIcanMap = versionControlIcons;
     }
 
-    public getIconUrl(language: string)
+    public getLanguageIconUrl(language: string)
     {
-        if (this.iconMap === undefined)
+        if (this.languageIconMap === undefined)
             throw new Error(`No icon found for language ${language}`);
 
-        return this.iconMap[language.toLowerCase()];
+        return this.languageIconMap[language.toLowerCase()];
+    }
+
+    public getVersionControlIconUrl(url: string)
+    {
+        if (this.versionControlIcanMap === undefined)
+            throw new Error(`No icon found for language ${url}`);
+
+        return this.versionControlIcanMap[this.getDomainFromVersionControl(url)];
     }
 
     public hasIconForLanguage(language: string): boolean
     {
         const languageSet = new Set(this.availableLanguages);
         return languageSet.has(language.toLowerCase);
+    }
+
+    private getDomainFromVersionControl(url: string): string
+    {
+        let hostname: string = new URL(url).host;
+        let withoutTopLevelDomain = hostname.substring(0, hostname.indexOf("."));
+        return withoutTopLevelDomain;
     }
 }

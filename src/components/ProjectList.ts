@@ -21,7 +21,7 @@ export function renderProjectList(props: ProjectListProps)
     {
         const noProjectsMessage = document.createElement("p");
         noProjectsMessage.textContent = "No projects available at the moment. Please check back later!";
-        noProjectsMessage.className = Tags.ERROR_NO_PROJECTS_CLASSNAME;
+        noProjectsMessage.className = formatWithoutPrefix(Tags.ERROR_NO_PROJECTS_CLASSNAME);
         projectListContainer.appendChild(noProjectsMessage);
     }
 
