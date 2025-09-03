@@ -1,6 +1,7 @@
 {
   "cpp": "/assets/icons/programming/cpp.svg",
   "csharp": "/assets/icons/programming/csharp.svg",
+  "dart": "/assets/icons/programming/dart.svg",
   "java": "/assets/icons/programming/java.svg",
   "not specified": "/assets/icons/programming/not specified.svg",
   "processing": "/assets/icons/programming/processing.svg",

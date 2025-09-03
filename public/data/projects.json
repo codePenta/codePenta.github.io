@@ -50,7 +50,7 @@
   {
     "name": "pomodoro_app",
     "description": "My own focus tracking app",
-    "language": "C++",
+    "language": "Dart",
     "url": "https://github.com/codePenta/pomodoro_app",
     "image": "https://avatars.githubusercontent.com/u/41843603?v=4",
     "tags": []
