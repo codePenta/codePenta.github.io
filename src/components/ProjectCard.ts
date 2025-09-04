@@ -1,48 +1,73 @@
 import { Project } from '../api/github/entities/Project';
 import { Tags } from '../utils/constants';
-import { removePrefixFromTag } from '../utils/Helpers';
+import { removePrefixFromTag as removePrefix } from '../utils/Helpers';
 
-export function createProjectCard(project: Project): HTMLElement
+export class ProjectCard
 {
-    const card = document.createElement("div");
-    card.className = removePrefixFromTag(Tags.PROJECT_CARD_CLASSNAME);
+    public createProjectCard(project: Project): HTMLElement
+    {
+        const cardHeading: HTMLDivElement = this.buildHeader(project);
+        const cardContent: HTMLDivElement = this.buildContent(project);
+        const cardFooter: HTMLDivElement = this.buildFooter(project);
 
-    const cardHeading = document.createElement("div");
-    cardHeading.className = removePrefixFromTag(Tags.PROJECT_CARD_HEADING);
+        const card: HTMLDivElement = this.buildCard(cardHeading, cardContent, cardFooter);
+        return card;
+    }
 
-    const h2 = document.createElement("h2");
-    h2.textContent = project.name;
+    private buildCard(...children: (Node | string)[]): HTMLDivElement
+    {
+        const card = document.createElement("div");
+        card.className = removePrefix(Tags.PROJECT_CARD_CLASSNAME);
 
-    cardHeading.append(h2);
+        card.append(...children);
+        return card;
+    }
 
-    const cardContent = document.createElement("div");
-    cardContent.className = removePrefixFromTag(Tags.PROJECT_CARD_DETAILS);
+    private buildHeader(project: Project): HTMLDivElement
+    {
+        const cardHeading = document.createElement("div");
+        cardHeading.className = removePrefix(Tags.PROJECT_CARD_HEADING);
 
-    const programmingLanguage = document.createElement("img");
-    programmingLanguage.src = `${project.languageIconUrl}`;
-    programmingLanguage.alt = project.language;
-    programmingLanguage.width = 40;
+        const h2 = document.createElement("h2");
+        h2.textContent = project.name;
 
-    const description = document.createElement("p");
-    description.textContent = project.description;
-    cardContent.append(programmingLanguage, description);
+        cardHeading.appendChild(h2);
+        return cardHeading;
+    }
 
-    const url = document.createElement("a");
-    url.href = project.url;
-    url.target = "_blank";
-    url.rel = "noopener noreferrer";
+    private buildContent(project: Project): HTMLDivElement
+    {
+        const cardContent = document.createElement("div");
+        cardContent.className = removePrefix(Tags.PROJECT_CARD_DETAILS);
 
-    const versionControlImg = document.createElement("img");
-    versionControlImg.src = `${project.versionControl}`;
-    versionControlImg.alt = project.url;
-    versionControlImg.width = 40;
-    url.append(versionControlImg);
+        const programmingLanguage = document.createElement("img");
+        programmingLanguage.src = `${project.languageIconUrl}`;
+        programmingLanguage.alt = project.language;
+        programmingLanguage.width = 40;
 
-    const cardFooter = document.createElement("div");
-    cardFooter.className = removePrefixFromTag(Tags.PROJECT_CARD_FOOTER);
+        const description = document.createElement("p");
+        description.textContent = project.description;
+        cardContent.append(programmingLanguage, description);
+        return cardContent;
+    }
 
-    cardFooter.append(url);
+    private buildFooter(project: Project): HTMLDivElement
+    {
+        const cardFooter = document.createElement("div");
+        cardFooter.className = removePrefix(Tags.PROJECT_CARD_FOOTER);
 
-    card.append(cardHeading, cardContent, cardFooter);
-    return card;
+        const url = document.createElement("a");
+        url.href = project.url;
+        url.target = "_blank";
+        url.rel = "noopener noreferrer";
+
+        const versionControlImg = document.createElement("img");
+        versionControlImg.src = `${project.versionControl}`;
+        versionControlImg.alt = project.url;
+        versionControlImg.width = 40;
+        url.append(versionControlImg);
+
+        cardFooter.append(url);
+        return cardFooter;
+    }
 }

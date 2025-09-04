@@ -1,7 +1,7 @@
 import { Project } from '../api/github/entities/Project'; // Importiere den Project-Typ
 import { Tags } from '../utils/constants';
 import { getElementFromQuerySelector, removePrefixFromTag } from '../utils/Helpers';
-import { createProjectCard } from './ProjectCard'; // Importiere die Funktion zum Erstellen einer einzelnen Karte
+import { ProjectCard } from './ProjectCard';
 
 type ProjectListProps = {
     projects: Project[];
@@ -34,8 +34,9 @@ export class ProjectList
 
         for (const project of props.projects)
         {
-            const projectCard = createProjectCard(project);
-            fragment.appendChild(projectCard);
+            const projectCard: ProjectCard = new ProjectCard();
+            const projectCardElement = projectCard.createProjectCard(project);
+            fragment.appendChild(projectCardElement);
         }
 
         projectListContainer.appendChild(fragment);
