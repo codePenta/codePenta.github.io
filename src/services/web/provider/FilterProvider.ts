@@ -1,14 +1,14 @@
-import { Project } from "../../../api/github/entities/ProjectEntity";
-import { Filter } from "../../../api/github/entities/FilterEntity";
+import { Project } from "../../../api/github/entities/Project";
+import { Filter } from "../../../api/github/entities/Filter";
+import { FilterConstants } from "../../../utils/constants";
 
-// Erstelle eine Liste aller eindeutigen Sprachen aus den Projekten
 export function createFilters(projects: Project[]): Filter[]
 {
     const languages = [...new Set(projects.map(p => p.language).filter(Boolean))] as string[];
 
-    const allFilter = new Filter('All', projects);
+    const allFilter = new Filter(FilterConstants.DEFAULT_FILTER_STATE, projects);
 
-    const languageFilters = languages.map(lang => Filter.createFilter(lang, projects));
+    const languageFilters = languages.map(lang => Filter.create(lang, projects));
 
     return [allFilter, ...languageFilters];
 }

@@ -1,13 +1,14 @@
-import { Project } from '../api/github/entities/ProjectEntity';
-import { formatWithoutPrefix, Tags } from '../constants';
+import { Project } from '../api/github/entities/Project';
+import { Tags } from '../utils/constants';
+import { removePrefixFromTag } from '../utils/Helpers';
 
 export function createProjectCard(project: Project): HTMLElement
 {
     const card = document.createElement("div");
-    card.className = formatWithoutPrefix(Tags.PROJECT_CARD_CLASSNAME);
+    card.className = removePrefixFromTag(Tags.PROJECT_CARD_CLASSNAME);
 
     const cardHeading = document.createElement("div");
-    cardHeading.className = formatWithoutPrefix(Tags.PROJECT_CARD_HEADING);
+    cardHeading.className = removePrefixFromTag(Tags.PROJECT_CARD_HEADING);
 
     const h2 = document.createElement("h2");
     h2.textContent = project.name;
@@ -15,7 +16,7 @@ export function createProjectCard(project: Project): HTMLElement
     cardHeading.append(h2);
 
     const cardContent = document.createElement("div");
-    cardContent.className = formatWithoutPrefix(Tags.PROJECT_CARD_DETAILS);
+    cardContent.className = removePrefixFromTag(Tags.PROJECT_CARD_DETAILS);
 
     const programmingLanguage = document.createElement("img");
     programmingLanguage.src = `${project.languageIconUrl}`;
@@ -38,17 +39,9 @@ export function createProjectCard(project: Project): HTMLElement
     url.append(versionControlImg);
 
     const cardFooter = document.createElement("div");
-    cardFooter.className = formatWithoutPrefix(Tags.PROJECT_CARD_FOOTER);
+    cardFooter.className = removePrefixFromTag(Tags.PROJECT_CARD_FOOTER);
 
-    const imgDiv = document.createElement("div");
-    imgDiv.className = formatWithoutPrefix(Tags.PROJECT_AUTHOR_CLASSNAME);
-
-    const authorImg = document.createElement("img");
-    authorImg.src = project.imageUrl;
-    authorImg.alt = "Author image"
-    imgDiv.appendChild(authorImg);
-
-    cardFooter.append(url, imgDiv);
+    cardFooter.append(url);
 
     card.append(cardHeading, cardContent, cardFooter);
     return card;

@@ -1,4 +1,4 @@
-import { GitHubRepoApiResponse, Project } from '../entities/ProjectEntity';
+import { GitHubRepoApiResponse, Project } from '../entities/Project';
 import { IconService } from '../../../services/IconService';
 
 export function mapGitHubReposToProjects(repos: GitHubRepoApiResponse[]): Project[]

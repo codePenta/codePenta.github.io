@@ -1,11 +1,11 @@
-import { Project } from "./ProjectEntity";
+import { Project } from "./Project";
 
 export class Filter
 {
     constructor(public readonly filterName: string, public readonly filteredContent: Project[])
     { }
 
-    static createFilter(language: string, projects: Project[]): Filter
+    static create(language: string, projects: Project[]): Filter
     {
         return new Filter(
             language,

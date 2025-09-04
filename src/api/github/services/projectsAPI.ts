@@ -1,5 +1,5 @@
-import { FilePaths } from '../../../constants';
-import { GitHubRepoApiResponse, Project } from '../entities/ProjectEntity';
+import { FilePaths } from '../../../utils/constants';
+import { GitHubRepoApiResponse, Project } from '../entities/Project';
 import { mapGitHubReposToProjects } from '../mappers/GitHubRepoMapper';
 
 export async function fetchProjects(): Promise<Project[]>

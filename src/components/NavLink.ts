@@ -1,6 +1,6 @@
-import { Project } from "../api/github/entities/ProjectEntity";
+import { Project } from "../api/github/entities/Project";
 import { state } from "../store";
-import { renderProjectList } from "./ProjectList";
+import { ProjectList } from "./ProjectList";
 
 export type NavLinkProjectProps = {
     href: string;
@@ -8,62 +8,65 @@ export type NavLinkProjectProps = {
     ignoredByObserver: boolean;
 };
 
-export function createNavLink(navLinkProps: NavLinkProjectProps): HTMLLIElement
+export class NavLink
 {
-    const li = document.createElement("li");
-    const a = document.createElement("a");
-    a.textContent = navLinkProps.name;
-    a.href = navLinkProps.href;
-
-    if (navLinkProps.ignoredByObserver)
+    public createNavLink(navLinkProps: NavLinkProjectProps): HTMLLIElement
     {
-        setupNavLinkForUserClick(a);
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.textContent = navLinkProps.name;
+        a.href = navLinkProps.href;
+
+        if (navLinkProps.ignoredByObserver)
+        {
+            this.setupNavLinkForUserClick(a);
+        }
+
+        li.appendChild(a);
+        return li;
     }
 
-    li.appendChild(a);
-    return li;
-}
-
-export function renderNavLink(parent: DocumentFragment, navLinkProps: NavLinkProjectProps)
-{
-    const li = document.createElement("li");
-    const a = document.createElement("a");
-
-    a.textContent = navLinkProps.name;
-    a.href = navLinkProps.href;
-
-    if (navLinkProps.ignoredByObserver)
+    public renderNavLink(parent: DocumentFragment, navLinkProps: NavLinkProjectProps)
     {
-        setupNavLinkForUserClick(a);
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+
+        a.textContent = navLinkProps.name;
+        a.href = navLinkProps.href;
+
+        if (navLinkProps.ignoredByObserver)
+        {
+            this.setupNavLinkForUserClick(a);
+        }
+
+        li.appendChild(a);
+        parent.appendChild(li);
     }
 
-    li.appendChild(a);
-    parent.appendChild(li);
-}
-
-function setupNavLinkForUserClick(a: HTMLAnchorElement)
-{
-    a.addEventListener('click', handleClick);
-}
-
-function handleClick(event: any)
-{
-    event.preventDefault();
-
-    state.selectedFilter = event.target.innerText;
-    if (state.selectedFilter === 'All')
+    private setupNavLinkForUserClick(a: HTMLAnchorElement)
     {
-        renderProjectList({ projects: state.projects });
-        return;
+        a.addEventListener('click', (event) => this.handleClick(event));
     }
 
-    const filteredProjets: Project[] = state.projects.filter(isProjectInFilter);
-    renderProjectList({ projects: filteredProjets });
-}
+    private handleClick(event: any)
+    {
+        event.preventDefault();
 
-function isProjectInFilter(value: Project)
-{
-    var isInFilter = value.language === state.selectedFilter;
+        state.selectedFilter = event.target.innerText;
+        if (state.selectedFilter === 'All')
+        {
+            new ProjectList().renderProjectList({ projects: state.projects });
+            return;
+        }
 
-    return isInFilter;
+        const filteredProjets: Project[] = state.projects.filter(this.isProjectInFilter);
+        new ProjectList().renderProjectList({ projects: filteredProjets });
+    }
+
+    private isProjectInFilter(value: Project)
+    {
+        var isInFilter = value.language === state.selectedFilter;
+
+        return isInFilter;
+    }
 }

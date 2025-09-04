@@ -1,5 +1,5 @@
-import { Project } from '../src/api/github/entities/ProjectEntity';
-import { Filter } from './api/github/entities/FilterEntity';
+import { Project } from './api/github/entities/Project';
+import { Filter } from './api/github/entities/Filter';
 import { createFilters } from './services/web/provider/FilterProvider';
 
 export type AppState = {

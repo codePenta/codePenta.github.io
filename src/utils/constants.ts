@@ -20,7 +20,7 @@ export class Tags
     static readonly OBSERVER_PROJECT_SECTION = "#projects";
 }
 
-export const formatWithoutPrefix = (value: string) =>
+export class FilterConstants
 {
-    return value.substring(1, value.length);
+    static readonly DEFAULT_FILTER_STATE = 'All';
 }

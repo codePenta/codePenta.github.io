@@ -1,7 +1,8 @@
-import { Tags } from "../../../constants";
-import { loadProjectsIntoNavbar, unloadProjectsFromNavbar } from "../provider/NavContentProvider";
 
-class Observer
+import { Tags } from "../../../utils/constants";
+import { ContentProvider } from "../provider/NavContentProvider";
+
+export class Observer
 {
     private previousEntryId: string = "";
     private options = {
@@ -12,11 +13,13 @@ class Observer
         Tags.OBSERVER_PROJECT_SECTION
     ]
 
+    private navContentProvider;
     private scrollObserver: IntersectionObserver;
 
     constructor()
     {
         this.scrollObserver = new IntersectionObserver(this.callback, this.options);
+        this.navContentProvider = new ContentProvider();
     }
 
     private callback = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) =>
@@ -30,12 +33,12 @@ class Observer
                 {
                     if (this.sections.includes(`#${currentSectionId}`))
                     {
-                        loadProjectsIntoNavbar();
+                        this.navContentProvider.loadProjectsIntoNavbar();
                         window.history.pushState(entry.target.textContent, "Title", `#${entry.target.id}`);
                     }
                     else
                     {
-                        unloadProjectsFromNavbar();
+                        this.navContentProvider.unloadProjectsFromNavbar();
                         window.history.pushState(entry.target.textContent, "Title", "/");
                     }
 
@@ -50,16 +53,11 @@ class Observer
         return this.scrollObserver;
     }
 
-    observeSections()
+    public observeSections()
     {
         document.querySelectorAll('section').forEach(section =>
         {
             this.get.observe(section)
         });
     }
-}
-
-export
-{
-    Observer
 }

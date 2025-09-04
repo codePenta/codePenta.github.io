@@ -1,9 +1,10 @@
 import { Observer } from "./services/web/observers/IntersectionObserver";
-import { createNavbar } from './components/Navbar';
-import { renderProjectList } from "./components/ProjectList";
+import { Navbar } from './components/Navbar';
+import { ProjectList } from "./components/ProjectList";
 
 import { state, updateState } from './store';
 import { fetchProjects } from './api/github/services/projectsAPI';
+import { renderGlobalError, renderError as showError } from "./utils/Helpers";
 
 const navElement = document.querySelector("nav");
 const projectsList = document.querySelector("#projects-list");
@@ -11,24 +12,25 @@ const projectsList = document.querySelector("#projects-list");
 export class App
 {
     private observer;
+    private navbar;
 
     constructor()
     {
         this.observer = new Observer();
+        this.navbar = new Navbar();
     }
 
-    async initialize(): Promise<void>
+    async initialize()
     {
         console.log("Initializing application...");
-
         try
         {
-            this.renderPageContents(projectsList, navElement);
+            await this.renderPageContents(projectsList, navElement);
             this.observer.observeSections();
 
         } catch (error)
         {
-            this.renderErrorMessage(error, projectsList);
+            renderGlobalError(projectsList, error);
         }
 
         console.log("Application initialized.");
@@ -36,6 +38,9 @@ export class App
 
     private async renderPageContents(projectsList: Element | null, navElement: HTMLElement | null)
     {
+        const initialProjects = await fetchProjects();
+        updateState(initialProjects);
+
         if (projectsList)
         {
             this.renderProjects(projectsList);
@@ -43,43 +48,30 @@ export class App
 
         if (navElement)
         {
-            this.renderNavbar(navElement);
+            this.buildNavbar(navElement);
         }
     }
 
-
     private async renderProjects(projectsListTag: Element): Promise<void>
     {
-        const initialProjects = await fetchProjects();
-        updateState(initialProjects);
-
         projectsListTag.innerHTML = "<p>Loading projects...</p>";
 
         while (projectsListTag.firstChild)
         {
             projectsListTag.removeChild(projectsListTag.firstChild);
         }
-        renderProjectList({ projects: state.projects });
+
+        new ProjectList().renderProjectList({ projects: state.projects });
     }
 
-    private async renderNavbar(navbarElement: HTMLElement)
+    private async buildNavbar(navbarElement: HTMLElement)
     {
         while (navbarElement.firstChild)
         {
             navbarElement.removeChild(navbarElement.firstChild);
         }
 
-        navbarElement.appendChild(createNavbar({ links: state.navbarLinks }))
-    }
-
-    private async renderErrorMessage(error: any, elementToShowOn?: null | Element)
-    {
-        console.error("Error loading initial project data:", error);
-        updateState([]);
-        if (elementToShowOn)
-        {
-            elementToShowOn.innerHTML = "<p class='error-message'>Failed loading this element.</p>";
-        }
+        navbarElement.appendChild(this.navbar.createNavbar({ links: state.navbarLinks }))
     }
 }
 

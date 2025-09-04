@@ -1,19 +1,23 @@
-import { createNavLink, NavLinkProjectProps } from './NavLink';
+import { NavLink, NavLinkProjectProps } from './NavLink';
 
 type NavbarProps = {
     links: NavLinkProjectProps[];
 };
 
-export function createNavbar(props: NavbarProps): HTMLUListElement
+export class Navbar
 {
-    const ul = document.createElement("ul");
-
-    const fragment = document.createDocumentFragment();
-    props.links.forEach(link =>
+    public createNavbar(props: NavbarProps): HTMLUListElement
     {
-        fragment.appendChild(createNavLink(link));
-    });
+        const navLink: NavLink = new NavLink();
+        const ul = document.createElement("ul");
 
-    ul.appendChild(fragment);
-    return ul;
+        const fragment = document.createDocumentFragment();
+        props.links.forEach(link =>
+        {
+            fragment.appendChild(navLink.createNavLink(link));
+        });
+
+        ul.appendChild(fragment);
+        return ul;
+    }
 }

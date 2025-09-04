@@ -1,39 +1,48 @@
-import { Filter } from "../../../api/github/entities/FilterEntity";
-import { NavLinkProjectProps, renderNavLink } from "../../../components/NavLink";
+import { Filter } from "../../../api/github/entities/Filter";
+import { NavLink, NavLinkProjectProps } from "../../../components/NavLink";
 import { state } from "../../../store";
+import { getElementFromQuerySelector } from "../../../utils/Helpers";
 
-function renderNavbar(props: NavLinkProjectProps[])
+export class ContentProvider
 {
-    const navbarList = document.querySelector("nav ul");
-    if (!navbarList)
+    private navLink;
+
+    constructor()
     {
-        console.warn("Navigation list not found");
-        return;
+        this.navLink = new NavLink();
     }
 
-    navbarList.innerHTML = "";
-
-    const fragment = document.createDocumentFragment();
-
-    props.forEach(link =>
+    public async loadProjectsIntoNavbar()
     {
-        renderNavLink(fragment, {
-            name: link.name,
-            href: link.href,
-            ignoredByObserver: link.ignoredByObserver
+        this.renderNavbar(state.filter.map(filter => ({ href: filter.filterName, name: filter.filterName, ignoredByObserver: true })));
+        state.projects.forEach((project: any) => 
+        {
+            console.log(project);
+        })
+    }
+
+    public unloadProjectsFromNavbar()
+    {
+        this.renderNavbar(state.navbarLinks);
+    }
+
+    private renderNavbar(props: NavLinkProjectProps[])
+    {
+        const navbarList = getElementFromQuerySelector("nav ul")
+        navbarList.innerHTML = "";
+
+        const fragment = document.createDocumentFragment();
+
+        props.forEach(link =>
+        {
+
+            this.navLink.renderNavLink(fragment, {
+                name: link.name,
+                href: link.href,
+                ignoredByObserver: link.ignoredByObserver
+            });
         });
-    });
 
-    // Füge alles auf einmal ein
-    navbarList.appendChild(fragment);
-}
-
-export async function loadProjectsIntoNavbar()
-{
-    renderNavbar(state.filter.map(filter => ({ href: filter.filterName, name: filter.filterName, ignoredByObserver: true })));
-}
-
-export function unloadProjectsFromNavbar()
-{
-    renderNavbar(state.navbarLinks);
+        navbarList.appendChild(fragment);
+    }
 }
