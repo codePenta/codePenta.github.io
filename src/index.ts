@@ -8,49 +8,79 @@ import { fetchProjects } from './api/github/services/projectsAPI';
 const navElement = document.querySelector("nav");
 const projectsList = document.querySelector("#projects-list");
 
-async function initializeApp(): Promise<void>
+export class App
 {
-    console.log("Initializing application...");
-    const observer = new Observer();
+    private observer;
 
-    try
+    constructor()
+    {
+        this.observer = new Observer();
+    }
+
+    async initialize(): Promise<void>
+    {
+        console.log("Initializing application...");
+
+        try
+        {
+            this.renderPageContents(projectsList, navElement);
+            this.observer.observeSections();
+
+        } catch (error)
+        {
+            this.renderErrorMessage(error, projectsList);
+        }
+
+        console.log("Application initialized.");
+    }
+
+    private async renderPageContents(projectsList: Element | null, navElement: HTMLElement | null)
     {
         if (projectsList)
         {
-            const initialProjects = await fetchProjects();
-            updateState(initialProjects);
-
-            projectsList.innerHTML = "<p>Loading projects...</p>";
-
-            while (projectsList.firstChild)
-            {
-                projectsList.removeChild(projectsList.firstChild);
-            }
-            renderProjectList({ projects: state.projects });
+            this.renderProjects(projectsList);
         }
 
         if (navElement)
         {
-            while (navElement.firstChild)
-            {
-                navElement.removeChild(navElement.firstChild);
-            }
+            this.renderNavbar(navElement);
+        }
+    }
 
-            navElement.appendChild(createNavbar({ links: state.navbarLinks }))
+
+    private async renderProjects(projectsListTag: Element): Promise<void>
+    {
+        const initialProjects = await fetchProjects();
+        updateState(initialProjects);
+
+        projectsListTag.innerHTML = "<p>Loading projects...</p>";
+
+        while (projectsListTag.firstChild)
+        {
+            projectsListTag.removeChild(projectsListTag.firstChild);
+        }
+        renderProjectList({ projects: state.projects });
+    }
+
+    private async renderNavbar(navbarElement: HTMLElement)
+    {
+        while (navbarElement.firstChild)
+        {
+            navbarElement.removeChild(navbarElement.firstChild);
         }
 
-        observer.observeSections();
+        navbarElement.appendChild(createNavbar({ links: state.navbarLinks }))
+    }
 
-    } catch (error)
+    private async renderErrorMessage(error: any, elementToShowOn?: null | Element)
     {
         console.error("Error loading initial project data:", error);
         updateState([]);
-        if (projectsList)
+        if (elementToShowOn)
         {
-            projectsList.innerHTML = "<p class='error-message'>Failed to load projects. Please try again later.</p>";
+            elementToShowOn.innerHTML = "<p class='error-message'>Failed loading this element.</p>";
         }
     }
-    console.log("Application initialized.");
 }
 
-document.addEventListener("DOMContentLoaded", initializeApp);
+document.addEventListener("DOMContentLoaded", () => new App().initialize());
