@@ -5,20 +5,9 @@ import { getElementFromQuerySelector } from "../../../utils/Helpers";
 
 export class ContentProvider
 {
-    private navLink;
-
-    constructor()
-    {
-        this.navLink = new NavLink();
-    }
-
     public async loadProjectsIntoNavbar()
     {
-        this.renderNavbar(state.filter.map(filter => ({ href: filter.filterName, name: filter.filterName, ignoredByObserver: true })));
-        state.projects.forEach((project: any) => 
-        {
-            console.log(project);
-        })
+        this.renderNavbar(state.filter.map(filter => ({ href: filter.filterName, name: filter.filterName, isContentFetched: false, ignoredByObserver: true })), true, true);
     }
 
     public unloadProjectsFromNavbar()
@@ -26,23 +15,45 @@ export class ContentProvider
         this.renderNavbar(state.navbarLinks);
     }
 
-    private renderNavbar(props: NavLinkProjectProps[])
+    private renderNavbar(props: NavLinkProjectProps[], hasPreviousSection?: boolean, hasFollowingSection?: boolean)
     {
         const navbarList = getElementFromQuerySelector("nav ul")
         navbarList.innerHTML = "";
 
-        const fragment = document.createDocumentFragment();
+        const mainFragment = document.createDocumentFragment();
 
         props.forEach(link =>
         {
-
-            this.navLink.renderNavLink(fragment, {
+            let navLink = new NavLink();
+            navLink.renderNavLink(mainFragment, {
                 name: link.name,
                 href: link.href,
+                isContentFetched: false,
                 ignoredByObserver: link.ignoredByObserver
             });
         });
 
-        navbarList.appendChild(fragment);
+        if (hasPreviousSection)
+        {
+
+            var previousNav = new NavLink();
+            const previousFragment = document.createDocumentFragment();
+            previousNav.renderNavLink(previousFragment, {
+                name: this.getNameOfPreviousSection(state.previousSection),
+                href: "#",
+                isContentFetched: true,
+                ignoredByObserver: false
+            })
+
+            console.log(state.previousSection);
+            navbarList.appendChild(previousFragment);
+        }
+
+        navbarList.appendChild(mainFragment);
+    }
+
+    getNameOfPreviousSection = (section: string) => 
+    {
+        return section.charAt(0).toUpperCase() + section.slice(1);
     }
 }

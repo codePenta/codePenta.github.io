@@ -9,13 +9,21 @@ nav {
     transform: translateY(-50%);
 }
 
-nav>ul>li {
+nav li {
     /* top, right, bottom, left */
     margin: 0 2rem 0 0;
     list-style-type: none;
 }
 
-nav>ul>li>a {
+nav a,
+nav .fetched {
     text-decoration: none;
-    color: var(--color-terstiary);
+}
+
+nav a {
+    color: gray;
+}
+
+nav .fetched {
+    color: var(--color-primary);
 }

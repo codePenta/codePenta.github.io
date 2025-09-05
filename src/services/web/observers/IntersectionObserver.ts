@@ -1,4 +1,5 @@
 
+import { state } from "../../../store";
 import { Tags } from "../../../utils/constants";
 import { ContentProvider } from "../provider/NavContentProvider";
 
@@ -29,6 +30,8 @@ export class Observer
             if (entry.isIntersecting)
             {
                 const currentSectionId = entry.target.id;
+                state.previousSection = this.previousEntryId;
+
                 if (currentSectionId !== this.previousEntryId)
                 {
                     if (this.sections.includes(`#${currentSectionId}`))
@@ -41,7 +44,6 @@ export class Observer
                         this.navContentProvider.unloadProjectsFromNavbar();
                         window.history.pushState(entry.target.textContent, "Title", "/");
                     }
-
                     this.previousEntryId = currentSectionId;
                 }
             }

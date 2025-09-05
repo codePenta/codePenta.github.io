@@ -5,6 +5,7 @@ import { ProjectList } from "./ProjectList";
 export type NavLinkProjectProps = {
     href: string;
     name: string;
+    isContentFetched: boolean
     ignoredByObserver: boolean;
 };
 
@@ -33,6 +34,10 @@ export class NavLink
 
         a.textContent = navLinkProps.name;
         a.href = navLinkProps.href;
+        if (!navLinkProps.isContentFetched)
+        {
+            a.classList.add("fetched");
+        }
 
         if (navLinkProps.ignoredByObserver)
         {
