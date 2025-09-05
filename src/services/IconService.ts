@@ -1,4 +1,4 @@
-import languageIcons from "../data/languageIcons.json";
+import languageIcons from "../data/programmingIcons.json";
 import versionControlIcons from "../data/versionControlIcons.json";
 
 export class IconService

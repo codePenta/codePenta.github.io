@@ -36,6 +36,20 @@ function writeToJsonFile(projects)
     }
 }
 
+function mapProjects(repositories)
+{
+    const mappedProjects = repos.map(repo => ({
+        name: repo.name,
+        description: repo.description,
+        language: repo.language,
+        url: repo.html_url,
+        image: repo.owner.avatar_url,
+        tags: repo.topics || []
+    }));
+
+    return mappedProjects;
+}
+
 fetch(apiUrl, {
     headers:
     {
@@ -49,14 +63,7 @@ fetch(apiUrl, {
         {
             throw new Error("GitHub API did not return an array. Response: " + JSON.stringify(repos, null, 2));
         }
-        const projects = repos.map(repo => ({
-            name: repo.name,
-            description: repo.description,
-            language: repo.language,
-            url: repo.html_url,
-            image: repo.owner.avatar_url,
-            tags: repo.topics || []
-        }));
+        const projects = mapProjects(repos);
 
         writeToJsonFile(projects);
     })
