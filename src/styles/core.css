@@ -1,7 +1,9 @@
 :root {
-    --color-primary: #F29D35;
-    --color-secondary: #472773;
-    --color-tertiary: #0D0D0D;
+    --color-background: #E7DCF2;
+    --color-primary: #231B40;
+    --color-secondary: #7139C0;
+    --color-tertiary: #F29D35;
+    --color-text: #231B40;
 }
 
 /* Base fonts */

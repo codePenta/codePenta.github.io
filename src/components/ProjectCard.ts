@@ -31,7 +31,16 @@ export class ProjectCard
         const h2 = document.createElement("h2");
         h2.textContent = project.name;
 
-        cardHeading.appendChild(h2);
+        const programmingLanguageContainer = document.createElement("div");
+        programmingLanguageContainer.className = "languageContainer";
+
+        const programmingLanguage = document.createElement("img");
+        programmingLanguage.src = `${project.languageIconUrl}`;
+        programmingLanguage.alt = project.language;
+
+        programmingLanguageContainer.append(programmingLanguage);
+
+        cardHeading.append(h2, programmingLanguageContainer);
         return cardHeading;
     }
 
@@ -40,14 +49,9 @@ export class ProjectCard
         const cardContent = document.createElement("div");
         cardContent.className = removePrefix(Tags.PROJECT_CARD_DETAILS);
 
-        const programmingLanguage = document.createElement("img");
-        programmingLanguage.src = `${project.languageIconUrl}`;
-        programmingLanguage.alt = project.language;
-        programmingLanguage.width = 40;
-
         const description = document.createElement("p");
         description.textContent = project.description;
-        cardContent.append(programmingLanguage, description);
+        cardContent.append(description);
         return cardContent;
     }
 
