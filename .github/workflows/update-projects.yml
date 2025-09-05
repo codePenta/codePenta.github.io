@@ -6,7 +6,9 @@ on:
   workflow_dispatch: # manually executable from within GitHub
   push:
     paths:
-      - "scripts/fetchRepos.json"
+      - "scripts/fetchers/fetchRepos.js"
+      - "scripts/generators/generateLanguageIcons.js"
+      - "scripts/generators/generateVersionControlIcons.js"
 
 jobs:
   update-projects:
@@ -28,7 +30,13 @@ jobs:
         run: npm install node-fetch
 
       - name: run fetch script
-        run: node scripts/fetchRepos.js
+        run: node scripts/fetchers/fetchRepos.js
+
+      - name: run language icon generation script
+        run: node scripts/generators/generateLanguageIcons.js
+
+      - name: run version control icon generation script
+        run: node scripts/generators/generateVersionControlIcons.js
 
       - name: Commit and push changes
         run: |
