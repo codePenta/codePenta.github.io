@@ -1,5 +1,5 @@
-import { IconsReader } from './fileReader.js';
-import { IconsWriter } from './fileWriter.js';
+import { IconsReader } from '../fileReader.js';
+import { IconsWriter } from '../fileWriter.js';
 
 var iconsReader = new IconsReader("versionControl");
 iconsReader.resolveIconsPathForCategory();

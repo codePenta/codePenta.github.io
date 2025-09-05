@@ -1,4 +1,4 @@
-import { ICON_CATEGORIES, VALID_FILE_EXTENSION, RELATIVE_PATH_TO_ICONS } from './utils/constants.js';
+import { ICON_CATEGORIES, VALID_FILE_EXTENSION, RELATIVE_PATH_TO_ICONS } from '../../utils/constants.js';
 import * as fs from 'fs';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
