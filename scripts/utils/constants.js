@@ -11,8 +11,9 @@ export const FETCH_TOKEN = process.env.REPOSITORY_FETCH_TOKEN;
 export const GITHB_API_URL = "https://api.github.com/user/repos";
 
 // File constants
-export const RELATIVE_PATH_TO_DATA = "../public/data/";
-export const RELATIVE_PATH_TO_ICONS = "../public/assets/icons/";
+const PATH_TO_PUBLIC_DIRECTORY = "../../../public/"
+export const RELATIVE_PATH_TO_DATA = `${PATH_TO_PUBLIC_DIRECTORY}data/`;
+export const RELATIVE_PATH_TO_ICONS = `${PATH_TO_PUBLIC_DIRECTORY}assets/icons/`;
 export const RELATIVE_OUTPUT_PATH = "../src/data"
 export const VALID_FILE_EXTENSION = ".svg";
 

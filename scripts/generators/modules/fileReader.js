@@ -34,8 +34,9 @@ export class IconsReader
             throw new Error(`Could not find icon category ${this.#category}`);
         }
 
-
         this.#fullIconsPath = path.resolve(this.#dirname, `${RELATIVE_PATH_TO_ICONS}${this.#category}`);
+        console.log(this.#fullIconsPath);
+
     }
 
 
