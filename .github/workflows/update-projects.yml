@@ -6,9 +6,9 @@ on:
   workflow_dispatch: # manually executable from within GitHub
   push:
     paths:
-      - "scripts/fetchers/fetchRepos.js"
-      - "scripts/generators/generateLanguageIcons.js"
-      - "scripts/generators/generateVersionControlIcons.js"
+      - "../../scripts/fetchers/fetchRepos.js"
+      - "../../scripts/generators/generateLanguageIcons.js"
+      - "../../scripts/generators/generateVersionControlIcons.js"
 
 jobs:
   update-projects:
