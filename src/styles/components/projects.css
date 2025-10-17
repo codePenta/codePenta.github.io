@@ -25,7 +25,6 @@
     max-height: 40vh;
     width: calc(100% / 3 - 1.6em);
     margin: .8em;
-    overflow-wrap: break-word;
     box-shadow: 1px 1px 10px black;
 }
 
@@ -69,6 +68,9 @@
 #projects-list .project-card-heading>h2 {
     margin: 0;
     color: var(--color-tertiary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 80%;
 }
 
 #projects-list .project-card-details {
@@ -83,6 +85,7 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;
     line-clamp: 4;
+    overflow-wrap: break-word;
 }
 
 #projects-list .project-card-footer {
@@ -91,6 +94,18 @@
 
 #projects-list .author-img-container>img {
     width: 40px;
+}
+
+@media (orientation: portrait) {
+    #projects-list>.project-card {
+        border: 1px solid transparent;
+        width: calc(100% / 2 - 1.6em);
+    }
+
+    #projects-list .project-card {
+        min-height: 15vh;
+        max-height: 25vh;
+    }
 }
 
 @media (width <=900px) {

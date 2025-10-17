@@ -6,13 +6,15 @@ import { ContentProvider } from "../provider/NavContentProvider";
 export class Observer
 {
     private previousEntryId: string = "";
+    private sections: Element[] = []
+    private triggerSections: Tags[] = [
+        Tags.OBSERVER_PROJECT_SECTION
+    ]
+    currentSectionId: number = -1;
+
     private options = {
         threshold: 0.5,
     }
-
-    private sections: Tags[] = [
-        Tags.OBSERVER_PROJECT_SECTION
-    ]
 
     private navContentProvider;
     private scrollObserver: IntersectionObserver;
@@ -25,29 +27,32 @@ export class Observer
 
     private callback = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) =>
     {
-        entries.forEach((entry: any) =>
-        {
-            if (entry.isIntersecting)
-            {
-                const currentSectionId = entry.target.id;
-                state.previousSection = this.previousEntryId;
+        const currentEntry = entries.find(entry => entry.isIntersecting);
 
-                if (currentSectionId !== this.previousEntryId)
+        if (currentEntry)
+        {
+            const currentSectionId = currentEntry.target.id;
+
+            state.previousSection = this.previousEntryId;
+            const newSectionId = this.sections.findIndex(section => section.id === currentSectionId);
+
+            if (currentSectionId !== this.previousEntryId)
+            {
+                if (this.triggerSections.includes(`#${currentSectionId}`))
                 {
-                    if (this.sections.includes(`#${currentSectionId}`))
-                    {
-                        this.navContentProvider.loadProjectsIntoNavbar();
-                        window.history.pushState(entry.target.textContent, "Title", `#${entry.target.id}`);
-                    }
-                    else
-                    {
-                        this.navContentProvider.unloadProjectsFromNavbar();
-                        window.history.pushState(entry.target.textContent, "Title", "/");
-                    }
-                    this.previousEntryId = currentSectionId;
+                    this.navContentProvider.loadProjectsIntoNavbar(this);
+                    window.history.pushState(currentEntry.target.textContent, "Title", `#${currentEntry.target.id}`);
                 }
+                else
+                {
+                    this.navContentProvider.unloadProjectsFromNavbar();
+                    window.history.pushState(currentEntry.target.textContent, "Title", "/");
+                }
+
+                this.previousEntryId = currentSectionId;
+                this.currentSectionId = newSectionId;
             }
-        });
+        }
     };
 
     public get get(): IntersectionObserver
@@ -55,9 +60,53 @@ export class Observer
         return this.scrollObserver;
     }
 
+    public HasNext(): boolean
+    {
+        return this.currentSectionId < this.sections.length - 1;
+    }
+
+    public HasPrevious(): boolean
+    {
+        return this.currentSectionId > 0;
+    }
+
+    public goToNext()
+    {
+        if (this.HasNext())
+        {
+            this.currentSectionId++;
+            this.sections[this.currentSectionId].scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
+    public goToPrevious()
+    {
+        if (this.HasPrevious())
+        {
+            this.currentSectionId--;
+            this.sections[this.currentSectionId].scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
+    public getCurrentSectionName(): string
+    {
+        return this.sections[this.currentSectionId].id;
+    }
+
+    public getSectionNameByIndex(index: number): string | undefined
+    {
+        if (index >= 0 && index < this.sections.length)
+        {
+            return this.sections[index].id;
+        }
+
+        return undefined;
+    }
+
     public observeSections()
     {
-        document.querySelectorAll('section').forEach(section =>
+        this.sections = Array.from(document.querySelectorAll('section'));
+        this.sections.forEach(section =>
         {
             this.get.observe(section)
         });
