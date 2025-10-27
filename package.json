@@ -6,7 +6,7 @@
     "email": "fhelm2001@gmail.com"
   },
   "homepage": "codepenta.github.io/",
-  "version": "1.0.0",
+  "version": "4.10.3",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
