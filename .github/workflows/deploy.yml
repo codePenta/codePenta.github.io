@@ -34,9 +34,17 @@ jobs:
               uses: actions/setup-node@v5
               with:
                   node-version: lts/*
-                  cache: "npm"
+                  cache: "yarn"
+
+            - name: Enable Corepack (provide Yarn)
+              run: |
+                  corepack enable
+                  corepack prepare yarn@stable --activate
+
+            - name: Install dependencies
+              run: yarn install --frozen-lockfile
             - name: Build
-              run: npm run build
+              run: yarn build
             - name: Setup Pages
               uses: actions/configure-pages@v5
             - name: Upload artifact
