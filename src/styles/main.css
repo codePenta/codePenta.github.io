@@ -38,6 +38,10 @@ section>div {
     font-size: 2.5rem;
 }
 
+.no-scroll {
+    overflow: hidden;
+}
+
 @media (width <=900px) {
     .title {
         font-size: 2.9rem;

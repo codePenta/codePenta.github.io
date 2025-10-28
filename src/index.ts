@@ -75,4 +75,8 @@ export class App
     }
 }
 
-document.addEventListener("DOMContentLoaded", () => new App().initialize());
+document.addEventListener("DOMContentLoaded", () =>
+{
+    // init application
+    new App().initialize();
+});
