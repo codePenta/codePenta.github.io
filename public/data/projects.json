@@ -33,7 +33,7 @@
   },
   {
     "name": "Discord-Bot",
-    "description": null,
+    "description": "Test descrition for my bot",
     "language": "TypeScript",
     "url": "https://github.com/codePenta/Discord-Bot",
     "image": "https://avatars.githubusercontent.com/u/41843603?v=4",
