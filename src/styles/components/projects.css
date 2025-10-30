@@ -103,8 +103,8 @@
     }
 
     #projects-list .project-card {
-        min-height: 15vh;
-        max-height: 25vh;
+        min-height: 55vh;
+        max-height: 65vh;
     }
 }
 
