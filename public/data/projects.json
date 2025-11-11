@@ -32,6 +32,14 @@
     "tags": []
   },
   {
+    "name": "HotPotato",
+    "description": "A school project to learn how to plan and develop an own app idea from scratch",
+    "language": "C++",
+    "url": "https://github.com/codePenta/HotPotato",
+    "image": "https://avatars.githubusercontent.com/u/41843603?v=4",
+    "tags": []
+  },
+  {
     "name": "OOP_Tic-Tac-Toe",
     "description": "An objectoriented version of the game Tic-Tac-Toe written in Python",
     "language": "Python",
