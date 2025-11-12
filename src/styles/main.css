@@ -7,15 +7,15 @@ body {
     font-size: 16px;
     height: 100vh;
     scroll-snap-type: y mandatory;
-    background: var(--color-background);
+    background: var(--background);
 }
 
 h1 {
-    color: var(--color-primary);
+    color: var(--primary);
 }
 
 h2 {
-    color: var(--color-secondary);
+    color: var(--primary-accent-3);
 }
 
 section {

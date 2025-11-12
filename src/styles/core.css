@@ -1,9 +1,14 @@
 :root {
-    --color-background: #E7DCF2;
-    --color-primary: #231B40;
-    --color-secondary: #7139C0;
-    --color-tertiary: #F29D35;
-    --color-text: #231B40;
+    --background: #fef5eb;
+
+    --text: #07040b;
+
+    --primary: #472773;
+    --primary-accent-1: #c8bed5;
+    --primary-accent-2: #2b1745;
+    --primary-accent-3: #1c102e;
+
+    --secondary: #cdae08;
 }
 
 /* Base fonts */

@@ -25,7 +25,7 @@ nav a {
 }
 
 nav .fetched {
-    color: var(--color-primary);
+    color: var(--primary);
 }
 
 /* default: hide the checkbox input in an accessible way (prevents focus jump) */
