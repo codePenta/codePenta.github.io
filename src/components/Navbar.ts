@@ -4,7 +4,6 @@ type NavbarProps = { links: NavLinkProjectProps[] };
 
 export class Navbar
 {
-    /** Build a <ul> filled with nav links. */
     public createNavbar(props: NavbarProps): HTMLUListElement
     {
         const navLink: NavLink = new NavLink();

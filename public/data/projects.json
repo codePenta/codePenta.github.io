@@ -9,7 +9,7 @@
   },
   {
     "name": "codePenta.github.io",
-    "description": "My personal portfolio website",
+    "description": "My personal website",
     "language": "TypeScript",
     "url": "https://github.com/codePenta/codePenta.github.io",
     "image": "https://avatars.githubusercontent.com/u/41843603?v=4",
@@ -28,6 +28,14 @@
     "description": "My personal discord bot, I got big plans for ya!",
     "language": "TypeScript",
     "url": "https://github.com/codePenta/Discord-Bot",
+    "image": "https://avatars.githubusercontent.com/u/41843603?v=4",
+    "tags": []
+  },
+  {
+    "name": "HotPotato",
+    "description": "A school project to learn how to plan and develop an own app idea from scratch",
+    "language": "Dart",
+    "url": "https://github.com/codePenta/HotPotato",
     "image": "https://avatars.githubusercontent.com/u/41843603?v=4",
     "tags": []
   },
