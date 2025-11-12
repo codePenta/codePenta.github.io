@@ -11,7 +11,7 @@ export class ContentProvider
         const filteredProjectLinks = state.filter.map(filter => ({
             href: filter.filterName,
             name: filter.filterName,
-            isContentFetched: false,
+            navigate: false,
             ignoredByObserver: true
         }));
 
@@ -39,7 +39,7 @@ export class ContentProvider
             navLink.renderNavLink(mainFragment, {
                 name: link.name,
                 href: link.href,
-                isContentFetched: link.isContentFetched,
+                navigate: link.navigate,
                 ignoredByObserver: link.ignoredByObserver
             });
         });
@@ -61,7 +61,7 @@ export class ContentProvider
                 links.unshift({
                     name: this.getNameOfSection(previousSectionName),
                     href: `#$${previousSectionName}`,
-                    isContentFetched: false,
+                    navigate: false,
                     ignoredByObserver: false
                 })
             }
@@ -77,7 +77,7 @@ export class ContentProvider
                 links.push({
                     name: this.getNameOfSection(nextSectionName),
                     href: `#$${nextSectionName}`,
-                    isContentFetched: false,
+                    navigate: false,
                     ignoredByObserver: false
                 })
             }

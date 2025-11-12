@@ -4,7 +4,7 @@ import { createFilters } from './services/web/provider/FilterProvider';
 
 export type AppState = {
     projects: Project[];
-    navbarLinks: { name: string; href: string, isContentFetched: boolean, ignoredByObserver: boolean }[];
+    navbarLinks: { name: string; href: string, navigate: boolean, ignoredByObserver: boolean }[];
     filter: Filter[];
     selectedFilter: string;
     previousSection: string;
@@ -14,8 +14,8 @@ export type AppState = {
 export const state: AppState = {
     projects: [],
     navbarLinks: [
-        { name: "Home", href: "#home", isContentFetched: false, ignoredByObserver: false },
-        { name: "Projects", href: "#projects", isContentFetched: false, ignoredByObserver: false },
+        { name: "Home", href: "#home", navigate: true, ignoredByObserver: false },
+        { name: "Projects", href: "#projects", navigate: true, ignoredByObserver: false },
     ],
     filter: [],
     selectedFilter: "",
