@@ -31,7 +31,8 @@ section>div {
 }
 
 .sub-title {
-    font-size: 1.9rem;
+    font-size: 1.7rem;
+    color: var(--primary-accent-3);
 }
 
 .medium-title {
