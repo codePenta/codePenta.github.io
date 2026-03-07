@@ -1,0 +1,258 @@
+/* ============================================================
+   Maintenance Page – Styles
+   ============================================================
+   Struktur:
+   1. Custom Properties (Farben, Tokens)
+   2. Reset & Base
+   3. Hintergrund-Effekte (Grid, Glow, Scanline, Corners)
+   4. Layout & Animationen
+   5. Typografie (Name, Heading)
+   6. Formular
+   7. Footer
+   ============================================================ */
+
+
+/* ── 1. Custom Properties ───────────────────────────────── */
+:root {
+  --bg:         #080c10;
+  --panel:      #111820;
+  --border:     rgba(0, 200, 255, 0.12);
+  --cyan:       #00c8ff;
+  --cyan-dim:   rgba(0, 200, 255, 0.4);
+  --cyan-glow:  rgba(0, 200, 255, 0.08);
+  --text:       #e2e8f0;
+  --text-dim:   #5a7080;
+  --green:      #00ff88;
+
+  --font-mono:  'Space Mono', monospace;
+  --font-sans:  'DM Sans', sans-serif;
+}
+
+
+/* ── 2. Reset & Base ─────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  overflow: hidden;
+}
+
+
+/* ── 3. Hintergrund-Effekte ──────────────────────────────── */
+
+/* Subtiles Raster */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 200, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 200, 255, 0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Radialer Glow in der Mitte */
+body::after {
+  content: '';
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 200, 255, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Scan-Linie */
+.scanline {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyan-dim), transparent);
+  animation: scan 7s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes scan {
+  0%        { top: -2px; opacity: 0; }
+  5%, 95%   { opacity: 1; }
+  100%      { top: 100%; opacity: 0; }
+}
+
+/* Ecken-Brackets */
+.corner {
+  position: fixed;
+  width: 18px;
+  height: 18px;
+  opacity: 0.4;
+}
+
+.corner--tl { top: 1.5rem;    left: 1.5rem;  border-top:    1px solid var(--cyan); border-left:  1px solid var(--cyan); }
+.corner--tr { top: 1.5rem;    right: 1.5rem; border-top:    1px solid var(--cyan); border-right: 1px solid var(--cyan); }
+.corner--bl { bottom: 1.5rem; left: 1.5rem;  border-bottom: 1px solid var(--cyan); border-left:  1px solid var(--cyan); }
+.corner--br { bottom: 1.5rem; right: 1.5rem; border-bottom: 1px solid var(--cyan); border-right: 1px solid var(--cyan); }
+
+
+/* ── 4. Layout & Animationen ─────────────────────────────── */
+main {
+  position: relative;
+  z-index: 1;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+}
+
+@keyframes up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ── 5. Typografie ───────────────────────────────────────── */
+.name {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: up 0.8s 0.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+h1 {
+  font-family: var(--font-sans);
+  font-weight: 200;
+  font-size: clamp(2.6rem, 8vw, 3.8rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 3.5rem;
+  /* Sichtbarkeit wird per JS gesetzt, sobald der Typewriter startet */
+}
+
+h1 .accent {
+  color: var(--cyan);
+  display: inline;
+}
+
+/* Cursor von typed.js */
+.typed-cursor {
+  color: var(--cyan);
+  font-weight: 200;
+  animation: blink 1.1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+
+/* ── 6. Formular ─────────────────────────────────────────── */
+.form-wrap {
+  opacity: 0;
+  animation: up 0.8s 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.input-row {
+  display: flex;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.input-row:focus-within {
+  border-color: var(--cyan-dim);
+  box-shadow: 0 0 0 3px var(--cyan-glow);
+}
+
+.input-row input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 0.85rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text);
+  outline: none;
+  min-width: 0;
+}
+
+.input-row input::placeholder {
+  color: var(--text-dim);
+  opacity: 0.5;
+}
+
+.input-row button {
+  border: none;
+  border-left: 1px solid var(--border);
+  background: transparent;
+  color: var(--cyan);
+  padding: 0.85rem 1.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.input-row button:hover {
+  background: var(--cyan-glow);
+}
+
+.success {
+  display: none;
+  margin-top: 0.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--green);
+  letter-spacing: 0.08em;
+}
+
+.success.show {
+  display: block;
+  animation: up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+
+/* ── 7. Footer ───────────────────────────────────────────── */
+footer {
+  position: fixed;
+  bottom: 1.8rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  color: var(--text-dim);
+  opacity: 0.3;
+  z-index: 1;
+}

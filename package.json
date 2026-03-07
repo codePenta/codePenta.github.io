@@ -1,0 +1,36 @@
+{
+  "name": "codepenta.github.io",
+  "version": "1.0.0",
+  "description": "My maintenance page",
+  "homepage": "https://github.com/codePenta/codePenta.github.io#readme",
+  "bugs": {
+    "url": "https://github.com/codePenta/codePenta.github.io/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codePenta/codePenta.github.io.git"
+  },
+  "license": "ISC",
+  "author": "codePenta",
+  "type": "commonjs",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"No tests configured yet\"",
+    "prepare": "husky",
+    "commit": "cz",
+    "release": "standard-version"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^20.4.3",
+    "@commitlint/config-conventional": "^20.4.3",
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^9.1.7",
+    "standard-version": "^9.5.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
+}

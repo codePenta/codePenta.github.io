@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bald zurück</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono&family=DM+Sans:wght@200;300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="scanline"></div>
+  <div class="corner corner--tl"></div>
+  <div class="corner corner--tr"></div>
+  <div class="corner corner--bl"></div>
+  <div class="corner corner--br"></div>
+
+  <main>
+    <!-- ✏️ Deinen Namen hier anpassen -->
+    <p class="name">Ferenz.Helm</p>
+
+    <!-- ✏️ Headline-Strings in main.js unter TYPED_STRINGS anpassen -->
+    <h1><span id="headline"></span></h1>
+
+    <div class="form-wrap">
+      <div class="input-row">
+        <input id="email" type="email" placeholder="deine@email.de" autocomplete="email" />
+        <button onclick="submitForm()">Notify me</button>
+      </div>
+      <p class="success" id="ok">✓ &nbsp;Ich melde mich.</p>
+    </div>
+  </main>
+
+  <footer>
+    <!-- ✏️ Jahr anpassen -->
+    <span>© 2026</span>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
