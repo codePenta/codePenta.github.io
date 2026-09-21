@@ -2,8 +2,8 @@ name: Update Projects JSON
 
 on:
   schedule:
-    - cron: "0 4 * * *" # every day at 4 am UTC
-  workflow_dispatch: # manually executable from within GitHub
+    - cron: "0 4 * * *"
+  workflow_dispatch:
   push:
     paths:
       - "scripts/fetchers/fetchRepos.js"
@@ -15,33 +15,43 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+
     env:
-      REPOSITORY_FETCH_TOKEN: ${{ secrets.REPOSITORY_FETCH_TOKEN }}
+      REPOSITORY_FETCH_TOKEN: ${{ secrets.PAT_TOKEN }}
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.PAT_TOKEN }}
+          persist-credentials: true
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - name: Install dependencies
-        run: npm install node-fetch
 
-      - name: run fetch script
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run fetch script
         run: node scripts/fetchers/fetchRepos.js
 
-      - name: run language icon generation script
+      - name: Run language icon generation script
         run: node scripts/generators/generateLanguageIcons.js
 
-      - name: run version control icon generation script
+      - name: Run version control icon generation script
         run: node scripts/generators/generateVersionControlIcons.js
 
-      - name: Commit and push changes
+      - name: Commit and push generated files
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add public/data/projects.json
-          git commit -m "Update projects.json [Automated]" || echo "No changes to commit"
-          git push
+
+          if ! git diff --quiet -- public/data/projects.json public/assets/icons; then
+            git add public/data/projects.json public/assets/icons
+            git commit -m "Update generated project data [Automated]"
+            git push
+          else
+            echo "No generated file changes to commit."
+          fi
