@@ -1,0 +1,24 @@
+sequenceDiagram
+    actor User
+    participant Service as ProjectService
+    participant GH as GitHubClient
+    participant GL as GitLabClient
+    participant DS as DesignLoader
+    participant API as GitHub/GitLab API
+
+    User->>Service: fetchAll()
+    Service->>GH: fetchRepos(username)
+    Service->>GL: fetchProjects(username)
+    Service->>DS: loadDesignProjects()
+
+    GH->>API: GET /users/:u/repos
+    API-->>GH: GitHubRepo[]
+    GH-->>Service: Result<CodeProject[]>
+
+    GL->>API: GET /users/:u/projects
+    API-->>GL: GitLabProject[]
+    GL-->>Service: Result<CodeProject[]>
+
+    DS-->>Service: Result<DesignProject[]>
+
+    Service-->>User: Result<Project[]>

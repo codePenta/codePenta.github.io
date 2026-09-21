@@ -1,0 +1,29 @@
+classDiagram
+    class BaseProject {
+        +slug: string
+        +title: string
+        +description: string
+        +tags: string[]
+        +createdAt: Date
+        +status: active|archived|wip
+    }
+
+    class CodeProject {
+        +kind: "code"
+        +platform: github|gitlab
+        +repoUrl: string
+        +techStack: string[]
+        +stars: number
+        +liveUrl?: string
+    }
+
+    class DesignProject {
+        +kind: "design"
+        +type: figma|system-model|...
+        +previewImage: string
+        +figmaUrl?: string
+        +caseStudy?: string
+    }
+
+    BaseProject <|-- CodeProject
+    BaseProject <|-- DesignProject

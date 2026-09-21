@@ -1,0 +1,18 @@
+graph TD
+    main["main.ts"]
+    service["ProjectService"]
+    gh["GitHubClient"]
+    gl["GitLabClient"]
+    ds["loadDesignProjects"]
+    http["http.ts"]
+    result["Result&lt;T&gt;"]
+
+    main --> service
+    service --> gh
+    service --> gl
+    service --> ds
+    gh --> http
+    gl --> http
+    gh --> result
+    gl --> result
+    ds --> result
