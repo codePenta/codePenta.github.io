@@ -1,4 +1,4 @@
-import { FilePaths } from '../../../utils/constants';
+import { FilePaths } from '../../../shared/constants';
 import { GitHubRepoApiResponse, Project } from '../entities/Project';
 import { mapGitHubReposToProjects } from '../mappers/GitHubRepoMapper';
 
@@ -7,10 +7,12 @@ export async function fetchProjects(): Promise<Project[]>
     try
     {
         const response = await fetch(FilePaths.PROJECTS_DATA_PATH);
+
         if (!response.ok)
         {
             throw new Error(`Failed to load projects.json: ${response.status} ${response.statusText}`);
         }
+
         const rawProjects: GitHubRepoApiResponse[] = await response.json();
         return mapGitHubReposToProjects(rawProjects);
     } catch (error)
@@ -22,7 +24,8 @@ export async function fetchProjects(): Promise<Project[]>
 
 export async function fetchLanguagesFromProjects(rawProjects: Project[]): Promise<string>
 {
-    let mappedLanguages = rawProjects.map((toMap => toMap.language));
-    let removedDuplicates = Array.from(new Set(mappedLanguages));
-    return JSON.stringify(removedDuplicates, null, 2);
+    const languageNames = rawProjects.map(project => project.language);
+    const uniqueLanguages = Array.from(new Set(languageNames));
+
+    return JSON.stringify(uniqueLanguages, null, 2);
 }

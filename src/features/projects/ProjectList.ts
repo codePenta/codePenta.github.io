@@ -1,13 +1,10 @@
-import { Project } from '../api/github/entities/Project'; // Importiere den Project-Typ
-import { Tags } from '../utils/constants';
-import { getElementFromQuerySelector, removePrefixFromTag } from '../utils/Helpers';
+import { Project } from '../../api/github/entities/Project';
+import { Tags } from '../../shared/constants';
+import { getElementFromQuerySelector, removePrefixFromTag } from '../../shared/Helpers';
 import { ProjectCard } from './ProjectCard';
 
 type ProjectListProps = {
     projects: Project[];
-    // Optional: Könntest hier weitere Props übergeben, z.B. für eine Überschrift, CSS-Klassen etc.
-    // headingText?: string;
-    // className?: string;
 };
 
 export class ProjectList
@@ -26,7 +23,6 @@ export class ProjectList
 
         return projectListContainer;
     }
-
 
     private renderProjects(props: ProjectListProps, projectListContainer: Element)
     {

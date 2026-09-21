@@ -1,7 +1,7 @@
 import { Filter } from "../../../api/github/entities/Filter";
-import { NavLink, NavLinkProjectProps } from "../../../components/NavLink";
+import { NavLink, NavLinkProjectProps } from "../../../features/navigation/NavLink";
 import { state } from "../../../store";
-import { getElementFromQuerySelector } from "../../../utils/Helpers";
+import { getElementFromQuerySelector } from "../../../shared/Helpers";
 import { Observer } from "../observers/IntersectionObserver";
 
 export class ContentProvider

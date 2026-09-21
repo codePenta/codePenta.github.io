@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.resolve(__dirname, '../../.env') })
 
 // API constants
-export const FETCH_TOKEN = process.env.REPOSITORY_FETCH_TOKEN;
+export const FETCH_TOKEN = process.env.REPOSITORY_FETCH_TOKEN || process.env.GITHUB_TOKEN || "";
 export const GITHB_API_URL = "https://api.github.com/user/repos";
 
 // File constants

@@ -1,6 +1,6 @@
 import { Project } from "../../../api/github/entities/Project";
 import { Filter } from "../../../api/github/entities/Filter";
-import { FilterConstants } from "../../../utils/constants";
+import { FilterConstants } from "../../../shared/constants";
 
 export function createFilters(projects: Project[]): Filter[]
 {

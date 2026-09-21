@@ -1,10 +1,10 @@
 import { Observer } from "./services/web/observers/IntersectionObserver";
-import { Navbar } from './components/Navbar';
-import { ProjectList } from "./components/ProjectList";
+import { Navbar } from './features/navigation/Navbar';
+import { ProjectList } from "./features/projects/ProjectList";
 
 import { state, updateState } from './store';
 import { fetchProjects } from './api/github/services/projectsAPI';
-import { renderGlobalError, renderError as showError } from "./utils/Helpers";
+import { renderGlobalError, renderError as showError } from "./shared/Helpers";
 
 const navElement = document.querySelector("nav");
 const projectsList = document.querySelector("#projects-list");
@@ -52,7 +52,7 @@ export class App
         }
     }
 
-    private async renderProjects(projectsListTag: Element): Promise<void>
+    private renderProjects(projectsListTag: Element): void
     {
         projectsListTag.innerHTML = "<p>Loading projects...</p>";
 
@@ -64,14 +64,14 @@ export class App
         new ProjectList().renderProjectList({ projects: state.projects });
     }
 
-    private async buildNavbar(navbarElement: HTMLElement)
+    private buildNavbar(navbarElement: HTMLElement): void
     {
         while (navbarElement.firstChild)
         {
             navbarElement.removeChild(navbarElement.firstChild);
         }
 
-        navbarElement.appendChild(this.navbar.createNavbar({ links: state.navbarLinks }))
+        navbarElement.appendChild(this.navbar.createNavbar({ links: state.navbarLinks }));
     }
 }
 

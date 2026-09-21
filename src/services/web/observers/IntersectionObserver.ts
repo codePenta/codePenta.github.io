@@ -1,6 +1,6 @@
 
 import { state } from "../../../store";
-import { Tags } from "../../../utils/constants";
+import { Tags } from "../../../shared/constants";
 import { ContentProvider } from "../provider/NavContentProvider";
 
 export class Observer

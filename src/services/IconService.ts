@@ -3,43 +3,45 @@ import versionControlIcons from "../data/versionControlIcons.json";
 
 export class IconService
 {
-    private readonly languageIconMap: { [key: string]: string; } | undefined;
-    private readonly versionControlIcanMap: { [key: string]: string; } | undefined;
-
-    private availableLanguages: any[] = [];
+    private readonly languageIconMap: Record<string, string>;
+    private readonly versionControlIconMap: Record<string, string>;
 
     constructor()
     {
-        this.languageIconMap = languageIcons;
-        this.versionControlIcanMap = versionControlIcons;
+        this.languageIconMap = languageIcons as Record<string, string>;
+        this.versionControlIconMap = versionControlIcons as Record<string, string>;
     }
 
-    public getLanguageIconUrl(language: string)
+    public getLanguageIconUrl(language: string): string
     {
-        if (this.languageIconMap === undefined)
+        const normalizedLanguage = language.toLowerCase();
+
+        if (!this.languageIconMap[normalizedLanguage])
             throw new Error(`No icon found for language ${language}`);
 
-        return this.languageIconMap[language.toLowerCase()];
+        return this.languageIconMap[normalizedLanguage];
     }
 
-    public getVersionControlIconUrl(url: string)
+    public getVersionControlIconUrl(url: string): string
     {
-        if (this.versionControlIcanMap === undefined)
-            throw new Error(`No icon found for language ${url}`);
+        const domainKey = this.getDomainFromVersionControl(url);
 
-        return this.versionControlIcanMap[this.getDomainFromVersionControl(url)];
+        if (!this.versionControlIconMap[domainKey])
+            throw new Error(`No icon found for version control provider ${domainKey}`);
+
+        return this.versionControlIconMap[domainKey];
     }
 
     public hasIconForLanguage(language: string): boolean
     {
-        const languageSet = new Set(this.availableLanguages);
-        return languageSet.has(language.toLowerCase);
+        return Boolean(this.languageIconMap[language.toLowerCase()]);
     }
 
     private getDomainFromVersionControl(url: string): string
     {
-        let hostname: string = new URL(url).host;
-        let withoutTopLevelDomain = hostname.substring(0, hostname.indexOf("."));
-        return withoutTopLevelDomain;
+        const hostname = new URL(url).host;
+        const firstDotIndex = hostname.indexOf(".");
+
+        return firstDotIndex === -1 ? hostname : hostname.substring(0, firstDotIndex);
     }
 }

@@ -1,6 +1,6 @@
-import { Project } from '../api/github/entities/Project';
-import { Tags } from '../utils/constants';
-import { removePrefixFromTag as removePrefix } from '../utils/Helpers';
+import { Project } from '../../api/github/entities/Project';
+import { Tags } from '../../shared/constants';
+import { removePrefixFromTag as removePrefix } from '../../shared/Helpers';
 
 export class ProjectCard
 {

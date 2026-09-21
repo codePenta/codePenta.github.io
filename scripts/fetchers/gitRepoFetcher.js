@@ -4,13 +4,17 @@ export class Fetcher
 {
     fetchGitRepos()
     {
-        const fetchedResult = fetch(GITHB_API_URL, {
+        if (!FETCH_TOKEN)
+        {
+            console.warn("No GitHub token configured. Skipping repository refresh and keeping the existing local project data.");
+            return Promise.resolve({ ok: false, status: 401, json: async () => ({}) });
+        }
+
+        return fetch(GITHB_API_URL, {
             headers:
             {
                 'Authorization': `token ${FETCH_TOKEN}`
             }
-        })
-
-        return fetchedResult;
+        });
     }
 }

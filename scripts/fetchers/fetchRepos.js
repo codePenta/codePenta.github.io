@@ -2,20 +2,30 @@ import { Fetcher } from './gitRepoFetcher.js';
 import { RepoMapper } from '../processors/dataMapper.js';
 import { ProjectsWriter } from '../generators/modules/fileWriter.js';
 
-const apiFetcher = new Fetcher();
-const repos = apiFetcher.fetchGitRepos();
-repos.then(res => res.json())
-    .then(repos =>
+async function refreshProjects()
+{
+    const apiFetcher = new Fetcher();
+    const response = await apiFetcher.fetchGitRepos();
+
+    if (!response || !response.ok)
     {
-        if (!Array.isArray(repos))
-        {
-            throw new Error("GitHub API did not return an array. Response: " + JSON.stringify(repos, null, 2));
-        }
-        const projects = new RepoMapper().mapToProject(repos);
-        new ProjectsWriter().writeToJsonFile(projects);
-    })
-    .catch(err =>
+        console.warn("Skipping repository refresh because GitHub data could not be fetched. Existing project data will be kept.");
+        return;
+    }
+
+    const repos = await response.json();
+
+    if (!Array.isArray(repos))
     {
-        console.error("Fetch error:", err);
-        process.exit(1);
-    });
+        console.warn("GitHub API response was not an array. Keeping existing project data.");
+        return;
+    }
+
+    const projects = new RepoMapper().mapToProject(repos);
+    new ProjectsWriter().writeToJsonFile(projects);
+}
+
+refreshProjects().catch(err =>
+{
+    console.warn("Project refresh was skipped because the GitHub API request failed.", err.message);
+});

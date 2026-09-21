@@ -1,11 +1,11 @@
-import { Project } from "../api/github/entities/Project";
-import { state } from "../store";
-import { ProjectList } from "./ProjectList";
+import { Project } from '../../api/github/entities/Project';
+import { state } from '../../store';
+import { ProjectList } from '../projects/ProjectList';
 
 export type NavLinkProjectProps = {
     href: string;
     name: string;
-    navigate: boolean
+    navigate: boolean;
     ignoredByObserver: boolean;
 };
 
@@ -64,14 +64,12 @@ export class NavLink
             return;
         }
 
-        const filteredProjets: Project[] = state.projects.filter(this.isProjectInFilter);
-        new ProjectList().renderProjectList({ projects: filteredProjets });
+        const filteredProjects: Project[] = state.projects.filter(this.isProjectInFilter);
+        new ProjectList().renderProjectList({ projects: filteredProjects });
     }
 
     private isProjectInFilter(value: Project)
     {
-        var isInFilter = value.language === state.selectedFilter;
-
-        return isInFilter;
+        return value.language === state.selectedFilter;
     }
 }
