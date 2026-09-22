@@ -94,8 +94,9 @@ export class NavigationController
     private buildNavItems(): NavLinkProps[]
     {
         const items: NavLinkProps[] = [];
+        const expandedIndex = this.sections.findIndex(s => s.expandable && s.id === this.activeSectionId);
 
-        this.sections.forEach(section =>
+        this.sections.forEach((section, index) =>
         {
             const isActive = section.id === this.activeSectionId;
 
@@ -106,11 +107,15 @@ export class NavigationController
                 return;
             }
 
+            const isBackLink = expandedIndex !== -1;
+
             items.push({
                 id: section.id,
                 label: section.label,
                 isActiveSection: isActive,
                 isHeading: false,
+                isBackLink,
+                backDirection: isBackLink ? (index < expandedIndex ? 'up' : 'down') : undefined,
                 onClick: () => this.scrollTo(section.id),
             });
         });

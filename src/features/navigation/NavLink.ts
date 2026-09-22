@@ -4,6 +4,8 @@ export type NavLinkProps = {
     isActiveSection: boolean;
     isHeading: boolean;
     isActiveFilter?: boolean;
+    isBackLink?: boolean;
+    backDirection?: 'up' | 'down';
     onClick?: () => void;
 };
 
@@ -26,6 +28,8 @@ export class NavLink
         a.textContent = props.label;
         a.href = `#${props.id}`;
         a.classList.toggle("active", props.isActiveSection || !!props.isActiveFilter);
+        a.classList.toggle("back-link", !!props.isBackLink);
+        if (props.backDirection) a.dataset.direction = props.backDirection;
 
         if (props.onClick)
         {

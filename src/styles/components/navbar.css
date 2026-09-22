@@ -27,3 +27,31 @@ nav a {
 nav .fetched {
     color: var(--color-primary);
 }
+
+nav a.active {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+nav a.back-link {
+    color: var(--secondary);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    opacity: 0.85;
+    transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+nav a.back-link:hover {
+    opacity: 1;
+}
+
+nav a.back-link[data-direction="up"]::before {
+    content: "↑";
+    font-size: 0.9em;
+}
+
+nav a.back-link[data-direction="down"]::before {
+    content: "↓";
+    font-size: 0.9em;
+}
