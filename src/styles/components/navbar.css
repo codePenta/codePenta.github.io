@@ -40,7 +40,7 @@
     font-size: 0.9em;
 }
 
-.nav-list a.back-link[data-direction="down"]::after {
+.nav-list a.back-link[data-direction="down"]::before {
     content: "↓";
     font-size: 0.9em;
 }
