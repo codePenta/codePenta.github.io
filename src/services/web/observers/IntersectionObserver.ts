@@ -7,7 +7,10 @@ export class Observer
 
     constructor(private navigationController: NavigationController, private sections: SectionConfig[])
     {
-        this.scrollObserver = new IntersectionObserver(this.callback, { threshold: 0.5 });
+        this.scrollObserver = new IntersectionObserver(this.callback, {
+            rootMargin: "-45% 0px -45% 0px",
+            threshold: 0,
+        });
     }
 
     private callback = (entries: IntersectionObserverEntry[]) =>

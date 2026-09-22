@@ -20,7 +20,7 @@
     justify-content: space-between;
     box-sizing: border-box;
     border: 1px solid transparent;
-    border-radius: 5px;
+    border-radius: 15px;
     min-height: 35vh;
     max-height: 40vh;
     width: calc(100% / 3 - 1.6em);
@@ -103,7 +103,7 @@
     }
 
     #projects-list .project-card {
-        min-height: 55vh;
+        min-height: 25vh;
         max-height: 65vh;
     }
 }
@@ -119,5 +119,6 @@
     #projects-list>.project-card {
         border: 1px solid transparent;
         width: 60vw;
+        height: 40vh;
     }
 }

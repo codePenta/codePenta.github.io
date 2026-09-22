@@ -1,3 +1,63 @@
+/* ====================  */
+/*   Shared nav content   */
+/*  (Desktop-Liste + Sheet-Liste) */
+/* ====================  */
+
+.nav-list {
+    list-style: none;
+}
+
+.nav-list li {
+    list-style-type: none;
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: gray;
+}
+
+.nav-list a.active {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.nav-list a.back-link {
+    color: var(--secondary);
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    opacity: 0.85;
+    transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.nav-list a.back-link:hover {
+    opacity: 1;
+}
+
+.nav-list a.back-link[data-direction="up"]::before {
+    content: "↑";
+    font-size: 0.9em;
+}
+
+.nav-list a.back-link[data-direction="down"]::after {
+    content: "↓";
+    font-size: 0.9em;
+}
+
+.nav-list .nav-heading {
+    display: block;
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid var(--primary-accent-1);
+}
+
+/* ====================  */
+/*   Desktop-Nav (nur Positionierung + Entrance-Animation) */
+/* ====================  */
+
 nav {
     font-size: 1.9rem;
     position: fixed;
@@ -10,69 +70,8 @@ nav {
 
 nav li {
     margin: 0 2rem 0 0;
-    list-style-type: none;
     animation: navItemIn 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
     animation-delay: calc(var(--i, 0) * 35ms);
-}
-
-nav a,
-nav .fetched {
-    text-decoration: none;
-}
-
-nav a {
-    color: gray;
-}
-
-nav .fetched {
-    color: var(--color-primary);
-}
-
-nav a.active {
-    color: var(--primary);
-    font-weight: 600;
-}
-
-nav a.back-link {
-    color: var(--secondary);
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    opacity: 0.85;
-    transition: opacity 0.2s ease, color 0.2s ease;
-}
-
-nav .nav-heading {
-    display: block;
-    color: var(--primary);
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    padding-bottom: 0.25rem;
-    border-bottom: 1px solid var(--primary-accent-1);
-}
-
-nav a.back-link {
-    color: var(--secondary);
-    font-weight: 700;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    opacity: 0.85;
-    transition: opacity 0.2s ease, color 0.2s ease;
-}
-
-nav a.back-link:hover {
-    opacity: 1;
-}
-
-nav a.back-link[data-direction="up"]::before {
-    content: "↑";
-    font-size: 0.9em;
-}
-
-nav a.back-link[data-direction="down"]::before {
-    content: "↓";
-    font-size: 0.9em;
 }
 
 @keyframes navItemIn {
@@ -87,12 +86,204 @@ nav a.back-link[data-direction="down"]::before {
     }
 }
 
-/* ====================  */
-/*      Animations       */
-/* ====================  */
-
 @media (prefers-reduced-motion: reduce) {
     nav li {
         animation: none;
+    }
+}
+
+/* ====================  */
+/*   Hamburger-Button    */
+/* ====================  */
+
+#menu-toggle {
+    position: fixed;
+    right: 20px;
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.menu-button-container {
+    display: none;
+    position: fixed;
+    right: 20px;
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--primary);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 30;
+    box-shadow: 0 8px 24px rgba(71, 39, 115, 0.35);
+}
+
+.menu-button,
+.menu-button::before,
+.menu-button::after {
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background: var(--background);
+    border-radius: 2px;
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease, background 0.2s ease;
+}
+
+.menu-button::before {
+    content: "";
+    transform: translateY(-6px);
+}
+
+.menu-button::after {
+    content: "";
+    transform: translateY(6px);
+}
+
+#menu-toggle:checked~.menu-button-container .menu-button {
+    background: transparent;
+}
+
+#menu-toggle:checked~.menu-button-container .menu-button::before {
+    transform: rotate(45deg);
+}
+
+#menu-toggle:checked~.menu-button-container .menu-button::after {
+    transform: rotate(-45deg);
+}
+
+/* ====================  */
+/*   Backdrop            */
+/* ====================  */
+
+.nav-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(28, 16, 46, 0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    z-index: 20;
+}
+
+#menu-toggle:checked~.nav-backdrop {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ====================  */
+/*   Mobile Sheet        */
+/* ====================  */
+
+.mobile-nav-sheet {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--background);
+    border-radius: 20px 20px 0 0;
+    padding: 10px 20px calc(20px + env(safe-area-inset-bottom, 0px));
+    transform: translateY(105%);
+    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 25;
+    box-shadow: 0 -8px 32px rgba(28, 16, 46, 0.18);
+}
+
+#menu-toggle:checked~.mobile-nav-sheet {
+    transform: translateY(0);
+}
+
+.sheet-handle {
+    width: 36px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--primary-accent-1);
+    margin: 0 auto 16px;
+}
+
+.sheet-item {
+    opacity: 0;
+    transform: translateY(8px);
+}
+
+#menu-toggle:checked~.mobile-nav-sheet .sheet-item {
+    animation: sheetItemIn 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--i, 0) * 40ms);
+}
+
+@keyframes sheetItemIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .sheet-item,
+    #menu-toggle:checked~.mobile-nav-sheet .sheet-item {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* ---- horizontaler Filter-Scroller ---- */
+.filter-scroller {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 2px 2px 14px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.filter-scroller::-webkit-scrollbar {
+    display: none;
+}
+
+.chip {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1.5px solid var(--primary-accent-1);
+    font-size: 12.5px;
+    color: var(--primary-accent-3);
+    opacity: 0.75;
+    white-space: nowrap;
+    background: transparent;
+    font: inherit;
+}
+
+.chip.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--background);
+    font-weight: 700;
+    opacity: 1;
+}
+
+/* ====================  */
+/*   Breakpoint-Umschaltung */
+/* ====================  */
+
+@media (max-width: 640px) {
+    nav {
+        display: none;
+    }
+
+    .menu-button-container,
+    .nav-backdrop {
+        display: flex;
+    }
+
+    .mobile-nav-sheet {
+        display: block;
     }
 }

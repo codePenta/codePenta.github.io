@@ -20,6 +20,7 @@ export class Tags
     static readonly OBSERVER_PROJECT_SECTION = "#projects";
 
     static readonly NAVBAR_LIST_SELECTOR = "nav ul";
+    static readonly MOBILE_SHEET_LIST_SELECTOR = ".mobile-nav-sheet .sheet-list";
 }
 
 export class FilterConstants

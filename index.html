@@ -20,14 +20,38 @@
 
 	<body class="kanit-medium">
 		<main>
-			<!-- Preparation for planned hamburger menu -->
+			<!-- ====================
+					Hamburger menu
+				 ==================== -->
 			<input id="menu-toggle" type="checkbox" />
 			<label for="menu-toggle" class="menu-button-container">
 				<span class="menu-button"></span>
 			</label>
+
+			<input id="menu-toggle" type="checkbox" />
+
+			<label for="menu-toggle" class="menu-button-container">
+				<span class="menu-button"></span>
+			</label>
+			<label for="menu-toggle" class="nav-backdrop"></label>
+
+			<div class="mobile-nav-sheet">
+				<div class="sheet-handle"></div>
+				<ul class="sheet-list nav-list"></ul>
+			</div>
+
+			<!-- ====================
+						Navbar
+				 ==================== -->
+
 			<nav class="kanit-medium-italic">
-				<ul id="navbar"></ul>
+				<ul id="navbar" class="nav-list"></ul>
 			</nav>
+
+			<!-- ====================
+					 Home section
+				 ==================== -->
+
 			<section id="home" data-nav-label="Home">
 				<div>
 					<h1 class="kanit-black title">
@@ -37,6 +61,11 @@
 					<h2 class="kanit-medium sub-title">Ich bin ein Entwickler</h2>
 				</div>
 			</section>
+
+			<!-- ====================
+				   Projects section
+				 ==================== -->
+
 			<section
 				id="projects"
 				data-nav-label="Projects"
@@ -47,6 +76,11 @@
 					<div id="projects-list"></div>
 				</div>
 			</section>
+
+			<!-- ====================
+					Contact section
+				 ==================== -->
+
 			<section id="contact" data-nav-label="Contact">
 				<div>
 					<h1 class="kanit-medium medium-title">Contact</h1>
