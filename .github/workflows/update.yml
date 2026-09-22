@@ -51,7 +51,7 @@ jobs:
 
           if ! git diff --quiet -- public/data/projects.json public/assets/icons; then
             git add public/data/projects.json public/assets/icons
-            git commit -m "fix(ci): stabilize repo refresh workflow with PAT and update guard"
+            git commit -m "Updated update.yml"
             git push
           else
             echo "No generated file changes to commit."
