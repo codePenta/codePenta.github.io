@@ -5,8 +5,8 @@ This project is a small portfolio / project showcase website for GitHub projects
 ## Quick start
 
 ```bash
-npm install
-npm run dev
+yarn install
+yarn dev
 ```
 
 ## Project goals
