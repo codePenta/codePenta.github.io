@@ -15,9 +15,12 @@ export const renderError = (element: Element | null, error: any) =>
     if (element)
     {
         const errorElement = element;
-        errorElement.textContent = "No projects available at the moment. Please check back later!";
+        const isEnglish = document.documentElement.lang === "en";
+        const errorMessage = isEnglish
+            ? "The projects could not be loaded. Please try again later."
+            : "Die Projekte konnten nicht geladen werden. Bitte versuche es später erneut.";
         errorElement.className = "error-message";
-        errorElement.innerHTML = `Failed loading data ${error}`;
+        errorElement.textContent = `${errorMessage} (${error})`;
     }
 };
 

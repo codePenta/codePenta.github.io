@@ -22,6 +22,7 @@ export function mapGitHubReposToProjects(repos: GitHubRepoApiResponse[]): Projec
             url: repo.url,
             imageUrl: repo.image ?? "No avatar available.",
             language: rawLanguage,
+            tags: repo.tags ?? [],
             languageIconUrl: iconService.getLanguageIconUrl(mappedLanguage),
             versionControl: iconService.getVersionControlIconUrl(repo.url),
         };

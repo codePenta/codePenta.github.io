@@ -11,6 +11,7 @@ export class NavLink
             const span = document.createElement("span");
             span.textContent = props.label;
             span.classList.add("nav-heading");
+            if (props.id.endsWith("-filters")) span.classList.add("filter-heading");
             li.appendChild(span);
             return li;
         }
@@ -33,6 +34,7 @@ export class NavLink
         else
         {
             a.classList.toggle("active", props.isActive);
+            a.classList.add("filter-link");
         }
 
         li.appendChild(a);

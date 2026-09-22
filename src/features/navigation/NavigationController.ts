@@ -83,6 +83,12 @@ export class NavigationController
 
     public render(): void
     {
+        this.sections.forEach(section =>
+        {
+            const element = document.getElementById(section.id);
+            if (element?.dataset.navLabel) section.label = element.dataset.navLabel;
+        });
+
         const items = this.buildNavItems();
         this.renderDesktop(items);
         this.renderMobileSheet(items);
@@ -169,6 +175,11 @@ export class NavigationController
             if (isActive && section.expandable)
             {
                 items.push({ kind: 'heading', id: section.id, label: section.label });
+                items.push({
+                    kind: 'heading',
+                    id: `${section.id}-filters`,
+                    label: document.documentElement.lang === 'en' ? 'Filter by language' : 'Filtern nach Sprache',
+                });
                 items.push(...this.buildFilterItems());
                 return;
             }
@@ -194,7 +205,7 @@ export class NavigationController
         return state.filter.map(f => ({
             kind: 'filter' as const,
             id: f.filterName,
-            label: `${f.filterName} (${f.count})`,
+            label: f.filterName,
             isActive: f.filterName === this.activeFilter,
             onClick: () => this.onFilterSelect(f.filterName),
         }));

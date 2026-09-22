@@ -41,7 +41,9 @@ export class ProjectList
     private showError(projectListContainer: Element)
     {
         const noProjectsMessage = document.createElement("p");
-        noProjectsMessage.textContent = "No projects available at the moment. Please check back later!";
+        noProjectsMessage.textContent = document.documentElement.lang === "en"
+            ? "No projects available at the moment. Please check back later!"
+            : "Zurzeit sind keine Projekte verfügbar. Bitte schau später noch einmal vorbei!";
         noProjectsMessage.className = removePrefixFromTag(Tags.ERROR_NO_PROJECTS_CLASSNAME);
         projectListContainer.appendChild(noProjectsMessage);
     }

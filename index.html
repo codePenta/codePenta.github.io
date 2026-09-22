@@ -1,12 +1,16 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="Persönliches Portfolio von codePenta: Projekte, Lernwege und Interesse an Frontend-Entwicklung und neuen Technologien."
+		/>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,500;0,900;1,500&display=swap"
 			rel="stylesheet"
 		/>
 		<link rel="stylesheet" href="src/styles/core.css" />
@@ -20,22 +24,28 @@
 
 	<body class="kanit-medium">
 		<main>
+			<button
+				id="language-toggle"
+				type="button"
+				aria-label="Seite auf Englisch anzeigen"
+			>
+				EN
+			</button>
 			<!-- ====================
 					Hamburger menu
 				 ==================== -->
-			<input id="menu-toggle" type="checkbox" />
-			<label for="menu-toggle" class="menu-button-container">
-				<span class="menu-button"></span>
-			</label>
-
-			<input id="menu-toggle" type="checkbox" />
-
-			<label for="menu-toggle" class="menu-button-container">
+			<input
+				id="menu-toggle"
+				type="checkbox"
+				aria-label="Navigationsmenü öffnen"
+				aria-controls="mobile-nav-sheet"
+			/>
+			<label for="menu-toggle" class="menu-button-container" aria-hidden="true">
 				<span class="menu-button"></span>
 			</label>
 			<label for="menu-toggle" class="nav-backdrop"></label>
 
-			<div class="mobile-nav-sheet">
+			<div id="mobile-nav-sheet" class="mobile-nav-sheet">
 				<div class="sheet-handle"></div>
 				<ul class="sheet-list nav-list"></ul>
 			</div>
@@ -52,13 +62,94 @@
 					 Home section
 				 ==================== -->
 
-			<section id="home" data-nav-label="Home">
+			<section
+				id="home"
+				data-nav-label="Home"
+				data-nav-label-de="Home"
+				data-nav-label-en="Home"
+			>
 				<div>
-					<h1 class="kanit-black title">
-						Programmer and <br />
-						parttime webdeveloper
-					</h1>
-					<h2 class="kanit-medium sub-title">Ich bin ein Entwickler</h2>
+					<p
+						class="eyebrow"
+						data-i18n-de="Portfolio · Offen für neue Möglichkeiten"
+						data-i18n-en="Portfolio · Open to new opportunities"
+					></p>
+					<h1
+						class="kanit-black title"
+						data-i18n-de="Neugierig auf das, was kommt."
+						data-i18n-en="Curious about what comes next."
+					></h1>
+					<h2
+						class="kanit-medium sub-title"
+						data-i18n-de="Ich lerne schnell, probiere gerne Neues aus und entwickle Ideen weiter."
+						data-i18n-en="I learn quickly, enjoy trying new things, and keep developing ideas."
+					></h2>
+					<div class="home-actions">
+						<a
+							class="button button-primary"
+							href="#projects"
+							data-i18n-de="Projekte ansehen"
+							data-i18n-en="View projects"
+						></a>
+						<a
+							class="button button-secondary"
+							href="#contact"
+							data-i18n-de="Kontakt aufnehmen"
+							data-i18n-en="Get in touch"
+						></a>
+					</div>
+				</div>
+			</section>
+
+			<section
+				id="about"
+				data-nav-label="Über mich"
+				data-nav-label-de="Über mich"
+				data-nav-label-en="About me"
+			>
+				<div>
+					<p
+						class="eyebrow"
+						data-i18n-de="Kurzprofil"
+						data-i18n-en="A short introduction"
+					></p>
+					<h1
+						class="medium-title"
+						data-i18n-de="Lernen, ausprobieren, weiterkommen."
+						data-i18n-en="Learning, exploring, moving forward."
+					></h1>
+					<div class="about-points">
+						<article class="about-point">
+							<h2
+								data-i18n-de="Was mich ausmacht"
+								data-i18n-en="What defines me"
+							></h2>
+							<p
+								data-i18n-de="Ich lerne schnell, bleibe neugierig und gehe offen an neue Aufgaben heran."
+								data-i18n-en="I learn quickly, stay curious, and approach new challenges with an open mind."
+							></p>
+						</article>
+						<article class="about-point">
+							<h2
+								data-i18n-de="Woran ich arbeite"
+								data-i18n-en="What I work on"
+							></h2>
+							<p
+								data-i18n-de="Mich interessieren klare Interfaces, gute Strukturen und Lösungen, die sich weiterentwickeln lassen."
+								data-i18n-en="I am interested in clear interfaces, thoughtful structures, and solutions that can grow over time."
+							></p>
+						</article>
+						<article class="about-point">
+							<h2
+								data-i18n-de="Was ich suche"
+								data-i18n-en="What I am looking for"
+							></h2>
+							<p
+								data-i18n-de="Aufgaben, an denen ich Verantwortung übernehmen, dazulernen und gute Arbeit mitgestalten kann."
+								data-i18n-en="Opportunities where I can take responsibility, keep learning, and contribute meaningful work."
+							></p>
+						</article>
+					</div>
 				</div>
 			</section>
 
@@ -68,12 +159,36 @@
 
 			<section
 				id="projects"
-				data-nav-label="Projects"
+				data-nav-label="Projekte"
+				data-nav-label-de="Projekte"
+				data-nav-label-en="Projects"
 				data-nav-expandable="true"
 			>
 				<div>
-					<h1 class="kanit-medium medium-title">Projects</h1>
-					<div id="projects-list"></div>
+					<h1
+						class="kanit-medium medium-title"
+						data-i18n-de="Projekte"
+						data-i18n-en="Projects"
+					></h1>
+					<label
+						for="menu-toggle"
+						class="projects-filter-trigger"
+						aria-label="Projektfilter öffnen"
+					>
+						<span
+							data-i18n-de="Filter öffnen"
+							data-i18n-en="Open filters"
+						></span>
+					</label>
+					<div id="projects-list">
+						<div class="projects-loading" role="status" aria-live="polite">
+							<span class="projects-loading-mark" aria-hidden="true"></span>
+							<p
+								data-i18n-de="Ich stelle gerade ein paar Projekte zusammen ..."
+								data-i18n-en="I am putting a few projects together ..."
+							></p>
+						</div>
+					</div>
 				</div>
 			</section>
 
@@ -81,9 +196,27 @@
 					Contact section
 				 ==================== -->
 
-			<section id="contact" data-nav-label="Contact">
+			<section
+				id="contact"
+				data-nav-label="Kontakt"
+				data-nav-label-de="Kontakt"
+				data-nav-label-en="Contact"
+			>
 				<div>
-					<h1 class="kanit-medium medium-title">Contact</h1>
+					<p class="eyebrow" data-i18n-de="Kontakt" data-i18n-en="Contact"></p>
+					<h1
+						class="kanit-medium medium-title"
+						data-i18n-de="Ein gutes Gespräch ist ein guter Anfang."
+						data-i18n-en="A good conversation is a good start."
+					></h1>
+					<p
+						class="contact-copy"
+						data-i18n-de="Ob neue Aufgabe, Projektidee oder fachlicher Austausch: Ich bin offen für interessante Gespräche."
+						data-i18n-en="Whether it is a new opportunity, a project idea, or a professional exchange: I am open to interesting conversations."
+					></p>
+					<a class="contact-email" href="mailto:fhelm2001@gmail.com">
+						fhelm2001@gmail.com
+					</a>
 				</div>
 			</section>
 		</main>

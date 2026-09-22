@@ -13,12 +13,22 @@
 
 .nav-list a {
     text-decoration: none;
-    color: gray;
+    color: var(--primary-accent-3);
+    transition: color .2s ease, opacity .2s ease;
+}
+
+.nav-list a:hover,
+.nav-list a:focus-visible {
+    color: var(--primary);
 }
 
 .nav-list a.active {
     color: var(--primary);
     font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--secondary);
+    text-decoration-thickness: 2px;
+    text-underline-offset: .25em;
 }
 
 .nav-list a.back-link {
@@ -54,12 +64,25 @@
     border-bottom: 1px solid var(--primary-accent-1);
 }
 
+.nav-list .nav-heading.filter-heading {
+    margin-top: .75rem;
+    color: var(--primary-accent-3);
+    font-size: .7em;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+}
+
+.nav-list a.filter-link {
+    font-size: .8em;
+    opacity: .75;
+}
+
 /* ====================  */
 /*   Desktop-Nav (nur Positionierung + Entrance-Animation) */
 /* ====================  */
 
 nav {
-    font-size: 1.9rem;
+    font-size: 1rem;
     position: fixed;
     z-index: 1;
     right: 0;
@@ -71,8 +94,18 @@ nav {
 nav li {
     margin: 0 2rem 0 0;
     animation: navItemIn 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: calc(var(--i, 0) * 35ms);
+    animation-delay: calc(var(--i, 0) * 25ms);
 }
+
+/* @media (width >=1101px) and (width <=1600px) {
+    nav {
+        font-size: 1.45rem;
+    }
+
+    nav li {
+        margin-right: 1.25rem;
+    }
+} */
 
 @keyframes navItemIn {
     from {
@@ -212,8 +245,8 @@ nav li {
 }
 
 #menu-toggle:checked~.mobile-nav-sheet .sheet-item {
-    animation: sheetItemIn 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: calc(var(--i, 0) * 40ms);
+    animation: sheetItemIn 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--i, 0) * 55ms);
 }
 
 @keyframes sheetItemIn {
@@ -236,7 +269,7 @@ nav li {
 /* ---- horizontaler Filter-Scroller ---- */
 .filter-scroller {
     display: flex;
-    gap: 8px;
+    gap: 6px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     padding: 2px 2px 14px;
@@ -250,10 +283,10 @@ nav li {
 .chip {
     flex: 0 0 auto;
     scroll-snap-align: start;
-    padding: 8px 16px;
+    padding: 7px 12px;
     border-radius: 999px;
     border: 1.5px solid var(--primary-accent-1);
-    font-size: 12.5px;
+    font-size: 12px;
     color: var(--primary-accent-3);
     opacity: 0.75;
     white-space: nowrap;
@@ -273,7 +306,7 @@ nav li {
 /*   Breakpoint-Umschaltung */
 /* ====================  */
 
-@media (max-width: 640px) {
+@media (max-width: 1100px) {
     nav {
         display: none;
     }
@@ -285,5 +318,17 @@ nav li {
 
     .mobile-nav-sheet {
         display: block;
+    }
+
+    .mobile-nav-sheet .nav-list {
+        margin: 0;
+        padding: 0;
+    }
+
+    .mobile-nav-sheet .nav-list a {
+        display: block;
+        min-height: 44px;
+        padding: 10px 4px;
+        font-size: 1.1rem;
     }
 }
