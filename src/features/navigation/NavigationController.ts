@@ -87,7 +87,12 @@ export class NavigationController
         navList.innerHTML = '';
 
         const fragment = document.createDocumentFragment();
-        this.buildNavItems().forEach(props => fragment.appendChild(this.navLink.createLink(props)));
+        this.buildNavItems().forEach((props, index) =>
+        {
+            const li = this.navLink.createLink(props);
+            li.style.setProperty('--i', String(index));
+            fragment.appendChild(li);
+        });
         navList.appendChild(fragment);
     }
 

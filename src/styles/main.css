@@ -4,7 +4,7 @@
 
 html,
 body {
-    font-size: 16px;
+    font-size: 13px;
     height: 100vh;
     scroll-snap-type: y mandatory;
     background: var(--background);
@@ -27,7 +27,9 @@ section>div {
 }
 
 .title {
-    font-size: 3.9rem;
+    font-size: 6rem;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 .sub-title {
