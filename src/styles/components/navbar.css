@@ -42,6 +42,25 @@ nav a.back-link {
     transition: opacity 0.2s ease, color 0.2s ease;
 }
 
+nav .nav-heading {
+    display: block;
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid var(--primary-accent-1);
+}
+
+nav a.back-link {
+    color: var(--secondary);
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    opacity: 0.85;
+    transition: opacity 0.2s ease, color 0.2s ease;
+}
+
 nav a.back-link:hover {
     opacity: 1;
 }
