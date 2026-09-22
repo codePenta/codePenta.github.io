@@ -32,6 +32,15 @@ export class App
             }
             this.navigationController.render();
         });
+
+        const footerYear = document.getElementById('footer-year');
+        if (footerYear) footerYear.textContent = String(new Date().getFullYear());
+
+        document.getElementById('footer-top-link')?.addEventListener('click', (event) =>
+        {
+            event.preventDefault();
+            this.navigationController.scrollTo('home');
+        });
     }
 
     async initialize()

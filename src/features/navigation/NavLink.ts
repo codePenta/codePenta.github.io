@@ -16,6 +16,52 @@ export class NavLink
             return li;
         }
 
+        if (props.kind === 'group')
+        {
+            li.classList.add("nav-group");
+            li.dataset.direction = props.direction;
+
+            if (props.direction === 'up')
+            {
+                const arrow = document.createElement("span");
+                arrow.className = "arrow";
+                arrow.textContent = "↑";
+                li.appendChild(arrow);
+            }
+
+            props.links.forEach((link, index) =>
+            {
+                if (index > 0)
+                {
+                    const divider = document.createElement("span");
+                    divider.className = "nav-group-divider";
+                    divider.textContent = "·";
+                    li.appendChild(divider);
+                }
+
+                const a = document.createElement("a");
+                a.textContent = link.label;
+                a.href = `#${link.id}`;
+                a.classList.add("back-link");
+                a.addEventListener("click", (event) =>
+                {
+                    event.preventDefault();
+                    link.onClick();
+                });
+                li.appendChild(a);
+            });
+
+            if (props.direction === 'down')
+            {
+                const arrow = document.createElement("span");
+                arrow.className = "arrow";
+                arrow.textContent = "↓";
+                li.appendChild(arrow);
+            }
+
+            return li;
+        }
+
         const a = document.createElement("a");
         a.textContent = props.label;
         a.href = `#${props.id}`;
@@ -28,8 +74,6 @@ export class NavLink
         if (props.kind === 'section')
         {
             a.classList.toggle("active", props.isActiveSection);
-            a.classList.toggle("back-link", props.isBackLink);
-            if (props.backDirection) a.dataset.direction = props.backDirection;
         }
         else
         {

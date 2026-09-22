@@ -35,14 +35,22 @@ export class TranslationService
         document.documentElement.lang = language;
         window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
 
-        document.querySelectorAll<HTMLElement>('[data-i18n-de][data-i18n-en]').forEach(element =>
+        document.querySelectorAll<HTMLElement>('[data-i18n-en]').forEach(element =>
         {
-            element.textContent = element.dataset[`i18n${language === 'de' ? 'De' : 'En'}`] ?? '';
+            if (!element.dataset.i18nDe)
+            {
+                element.dataset.i18nDe = element.textContent ?? '';
+            }
+            element.textContent = language === 'de' ? element.dataset.i18nDe! : element.dataset.i18nEn!;
         });
 
-        document.querySelectorAll<HTMLElement>('section[data-nav-label-de][data-nav-label-en]').forEach(section =>
+        document.querySelectorAll<HTMLElement>('section[data-nav-label-en]').forEach(section =>
         {
-            section.dataset.navLabel = section.dataset[language === 'de' ? 'navLabelDe' : 'navLabelEn'];
+            if (!section.dataset.navLabelDe)
+            {
+                section.dataset.navLabelDe = section.dataset.navLabel ?? '';
+            }
+            section.dataset.navLabel = language === 'de' ? section.dataset.navLabelDe! : section.dataset.navLabelEn!;
         });
 
         const toggle = document.querySelector<HTMLButtonElement>('#language-toggle');

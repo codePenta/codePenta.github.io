@@ -10,6 +10,8 @@ export class NavigationController
     private navLink = new NavLink();
     private activeSectionId: string;
     private activeFilter: string = FilterConstants.DEFAULT_FILTER_STATE;
+    private static readonly GROUP_COLLAPSE_THRESHOLD = 3;
+
 
     constructor(private sections: SectionConfig[])
     {
@@ -165,39 +167,70 @@ export class NavigationController
 
     private buildNavItems(): NavLinkProps[]
     {
-        const items: NavLinkProps[] = [];
-        const expandedIndex = this.sections.findIndex(s => s.expandable && s.id === this.activeSectionId);
-
-        this.sections.forEach((section, index) =>
+        this.sections.forEach(section =>
         {
-            const isActive = section.id === this.activeSectionId;
-
-            if (isActive && section.expandable)
-            {
-                items.push({ kind: 'heading', id: section.id, label: section.label });
-                items.push({
-                    kind: 'heading',
-                    id: `${section.id}-filters`,
-                    label: document.documentElement.lang === 'en' ? 'Filter by language' : 'Filtern nach Sprache',
-                });
-                items.push(...this.buildFilterItems());
-                return;
-            }
-
-            const isBackLink = expandedIndex !== -1;
-
-            items.push({
-                kind: 'section',
-                id: section.id,
-                label: section.label,
-                isActiveSection: isActive,
-                isBackLink,
-                backDirection: isBackLink ? (index < expandedIndex ? 'up' : 'down') : undefined,
-                onClick: () => this.scrollTo(section.id),
-            });
+            const element = document.getElementById(section.id);
+            if (element?.dataset.navLabel) section.label = element.dataset.navLabel;
         });
 
+        const expandedIndex = this.sections.findIndex(s => s.expandable && s.id === this.activeSectionId);
+
+        if (expandedIndex === -1)
+        {
+            return this.sections.map(section => ({
+                kind: 'section' as const,
+                id: section.id,
+                label: section.label,
+                isActiveSection: section.id === this.activeSectionId,
+                isBackLink: false,
+                onClick: () => this.scrollTo(section.id),
+            }));
+        }
+
+        const items: NavLinkProps[] = [];
+        const before = this.sections.slice(0, expandedIndex);
+        const after = this.sections.slice(expandedIndex + 1);
+        const expandedSection = this.sections[expandedIndex];
+
+        if (before.length > 0) items.push(this.buildDirectionalGroup(before, 'up'));
+
+        items.push({ kind: 'heading', id: expandedSection.id, label: expandedSection.label });
+        items.push({
+            kind: 'heading',
+            id: `${expandedSection.id}-filters`,
+            label: document.documentElement.lang === 'en' ? 'Filter by language' : 'Filtern nach Sprache',
+        });
+        items.push(...this.buildFilterItems());
+
+        if (after.length > 0) items.push(this.buildDirectionalGroup(after, 'down'));
+
         return items;
+    }
+    private buildDirectionalGroup(sections: SectionConfig[], direction: 'up' | 'down'): NavLinkProps
+    {
+        if (sections.length <= NavigationController.GROUP_COLLAPSE_THRESHOLD)
+        {
+            return {
+                kind: 'group',
+                direction,
+                links: sections.map(s => ({ id: s.id, label: s.label, onClick: () => this.scrollTo(s.id) })),
+            };
+        }
+
+        // Kollabiert: nächstgelegene Section zuerst anzeigen — bei 'up' die letzte im Array (am nächsten zu Projects),
+        // bei 'down' die erste (ebenfalls am nächsten zu Projects)
+        const nearest = direction === 'up' ? sections[sections.length - 1] : sections[0];
+        const remaining = sections.length - 1;
+
+        return {
+            kind: 'group',
+            direction,
+            links: [{
+                id: nearest.id,
+                label: `${nearest.label} +${remaining}`,
+                onClick: () => this.scrollTo(nearest.id),
+            }],
+        };
     }
 
     private buildFilterItems(): NavLinkProps[]

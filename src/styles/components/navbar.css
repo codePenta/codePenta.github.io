@@ -45,14 +45,22 @@
     opacity: 1;
 }
 
-.nav-list a.back-link[data-direction="up"]::before {
-    content: "↑";
+.nav-list li.nav-group {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.nav-list li.nav-group .arrow {
+    color: var(--secondary);
     font-size: 0.9em;
 }
 
-.nav-list a.back-link[data-direction="down"]::before {
-    content: "↓";
-    font-size: 0.9em;
+.nav-list li.nav-group .nav-group-divider {
+    color: var(--primary-accent-1);
+    opacity: 0.6;
+    font-size: 0.85em;
 }
 
 .nav-list .nav-heading {
