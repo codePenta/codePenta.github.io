@@ -18,6 +18,8 @@ export class Tags
 
     // For observers
     static readonly OBSERVER_PROJECT_SECTION = "#projects";
+
+    static readonly NAVBAR_LIST_SELECTOR = "nav ul";
 }
 
 export class FilterConstants

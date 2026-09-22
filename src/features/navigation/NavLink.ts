@@ -1,75 +1,42 @@
-import { Project } from '../../api/github/entities/Project';
-import { state } from '../../store';
-import { ProjectList } from '../projects/ProjectList';
-
-export type NavLinkProjectProps = {
-    href: string;
-    name: string;
-    navigate: boolean;
-    ignoredByObserver: boolean;
+export type NavLinkProps = {
+    id: string;
+    label: string;
+    isActiveSection: boolean;
+    isHeading: boolean;
+    isActiveFilter?: boolean;
+    onClick?: () => void;
 };
 
 export class NavLink
 {
-    public createNavLink(navLinkProps: NavLinkProjectProps): HTMLLIElement
+    public createLink(props: NavLinkProps): HTMLLIElement
     {
         const li = document.createElement("li");
-        const a = document.createElement("a");
-        a.textContent = navLinkProps.name;
-        a.href = navLinkProps.href;
 
-        if (navLinkProps.ignoredByObserver)
+        if (props.isHeading)
         {
-            this.setupNavLinkForUserClick(a);
+            const span = document.createElement("span");
+            span.textContent = props.label;
+            span.classList.add("nav-heading");
+            li.appendChild(span);
+            return li;
+        }
+
+        const a = document.createElement("a");
+        a.textContent = props.label;
+        a.href = `#${props.id}`;
+        a.classList.toggle("active", props.isActiveSection || !!props.isActiveFilter);
+
+        if (props.onClick)
+        {
+            a.addEventListener("click", (event) =>
+            {
+                event.preventDefault();
+                props.onClick!();
+            });
         }
 
         li.appendChild(a);
         return li;
-    }
-
-    public renderNavLink(parent: DocumentFragment, navLinkProps: NavLinkProjectProps)
-    {
-        const li = document.createElement("li");
-        const a = document.createElement("a");
-
-        a.textContent = navLinkProps.name;
-        a.href = navLinkProps.href;
-        if (!navLinkProps.navigate)
-        {
-            a.classList.add("navigate");
-        }
-
-        if (navLinkProps.ignoredByObserver)
-        {
-            this.setupNavLinkForUserClick(a);
-        }
-
-        li.appendChild(a);
-        parent.appendChild(li);
-    }
-
-    private setupNavLinkForUserClick(a: HTMLAnchorElement)
-    {
-        a.addEventListener('click', (event) => this.handleClick(event));
-    }
-
-    private handleClick(event: any)
-    {
-        event.preventDefault();
-
-        state.selectedFilter = event.target.innerText;
-        if (state.selectedFilter === 'All')
-        {
-            new ProjectList().renderProjectList({ projects: state.projects });
-            return;
-        }
-
-        const filteredProjects: Project[] = state.projects.filter(this.isProjectInFilter);
-        new ProjectList().renderProjectList({ projects: filteredProjects });
-    }
-
-    private isProjectInFilter(value: Project)
-    {
-        return value.language === state.selectedFilter;
     }
 }
