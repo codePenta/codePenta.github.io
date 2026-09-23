@@ -14,12 +14,10 @@
     "prebuild": "node ./scripts/fetchers/fetchRepos.js",
     "build": "vite build",
     "test": "echo \"No tests yet\"",
-    "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "preview": "vite preview"
   },
   "dependencies": {
     "dotenv": "^17.1.0",
-    "gh-pages": "^6.3.0",
     "octokit": "^5.0.3",
     "typescript": "^5.5.2"
   },

@@ -1,7 +1,5 @@
 /// <reference types="vite/client" />
 
-const globOptions = { eager: true, query: "?url", import: "default" } as const;
-
 const languageIcons = import.meta.glob<string>("../assets/icons/programming/*.svg",
     { eager: true, query: "?url", import: "default" });
 

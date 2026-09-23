@@ -5,28 +5,19 @@ export function mapGitHubReposToProjects(repos: GitHubRepoApiResponse[]): Projec
 {
     const iconService = new IconService();
 
-    const languageNameMap: { [key: string]: string } = {
-        'C#': 'csharp',
-        'C++': 'cpp',
-    };
-
-    const mappedProjects = repos.map(repo =>
+    return repos.map(repo =>
     {
-        const rawLanguage = repo.language ?? "Not specified";
-
-        const mappedLanguage = languageNameMap[rawLanguage] || rawLanguage;
+        const language = repo.language ?? "Not specified";
 
         return {
             name: repo.name,
             description: repo.description ?? "No description available.",
             url: repo.url,
             imageUrl: repo.image ?? "No avatar available.",
-            language: rawLanguage,
+            language,
             tags: repo.tags ?? [],
-            languageIconUrl: iconService.getLanguageIconUrl(mappedLanguage),
+            languageIconUrl: iconService.getLanguageIconUrl(language),
             versionControl: iconService.getVersionControlIconUrl(repo.url),
         };
     });
-
-    return mappedProjects;
 }
