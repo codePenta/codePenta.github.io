@@ -29,6 +29,14 @@ export class NavLink
                 li.appendChild(arrow);
             }
 
+            if (props.direction === 'down')
+            {
+                const arrow = document.createElement("span");
+                arrow.className = "arrow";
+                arrow.textContent = "↓";
+                li.appendChild(arrow);
+            }
+
             props.links.forEach((link, index) =>
             {
                 if (index > 0)
@@ -50,14 +58,6 @@ export class NavLink
                 });
                 li.appendChild(a);
             });
-
-            if (props.direction === 'down')
-            {
-                const arrow = document.createElement("span");
-                arrow.className = "arrow";
-                arrow.textContent = "↓";
-                li.appendChild(arrow);
-            }
 
             return li;
         }

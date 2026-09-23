@@ -217,8 +217,6 @@ export class NavigationController
             };
         }
 
-        // Kollabiert: nächstgelegene Section zuerst anzeigen — bei 'up' die letzte im Array (am nächsten zu Projects),
-        // bei 'down' die erste (ebenfalls am nächsten zu Projects)
         const nearest = direction === 'up' ? sections[sections.length - 1] : sections[0];
         const remaining = sections.length - 1;
 
