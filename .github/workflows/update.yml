@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - "scripts/fetchers/fetchRepos.js"
+      - "scripts/**"
 
 jobs:
   update-projects:
@@ -34,7 +34,7 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Run fetch script
-        run: node scripts/fetchers/fetchRepos.js
+        run: node scripts/updateProjects.js
 
       - name: Commit and push generated files
         run: |
