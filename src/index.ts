@@ -7,7 +7,7 @@ import { renderGlobalError } from "./shared/Helpers";
 import { Tags } from "./shared/constants";
 import { TranslationService } from './services/TranslationService';
 import { Filter } from "./api/github/entities/Filter";
-import { readSectionsFromDom } from "./features/navigation/ReadSectionsFromDom";
+import { readSectionsFromDom } from "./features/navigation/readSectionsFromDom";
 
 const projectsList = document.querySelector(Tags.PROJECTS_LIST_ID);
 
