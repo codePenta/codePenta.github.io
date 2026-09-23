@@ -1,6 +1,5 @@
 import { Observer } from "./services/web/observers/IntersectionObserver";
 import { NavigationController } from './features/navigation/NavigationController';
-import { read as readSectionsFromDom } from "./features/navigation/ReadSectionsFromDom";
 import { ProjectList } from "./features/projects/ProjectList";
 import { state, updateState } from './store';
 import { fetchProjects } from './api/github/services/projectsAPI';
@@ -8,6 +7,7 @@ import { renderGlobalError } from "./shared/Helpers";
 import { Tags } from "./shared/constants";
 import { TranslationService } from './services/TranslationService';
 import { Filter } from "./api/github/entities/Filter";
+import { readSectionsFromDom } from "./features/navigation/ReadSectionsFromDom";
 
 const projectsList = document.querySelector(Tags.PROJECTS_LIST_ID);
 

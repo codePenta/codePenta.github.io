@@ -1,11 +1,11 @@
 import { SectionConfig } from './Types';
 
-export function read(): SectionConfig[]
+export function readSectionsFromDom(): SectionConfig[]
 {
     return Array.from(document.querySelectorAll<HTMLElement>('section[data-nav-label]'))
-        .map(section => ({
-            id: section.id,
-            label: section.dataset.navLabel!,
-            expandable: section.dataset.navExpandable === 'true',
+        .map(el => ({
+            id: el.id,
+            label: el.dataset.navLabel!,
+            expandable: el.dataset.navExpandable === 'true',
         }));
 }
