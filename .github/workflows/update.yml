@@ -1,4 +1,4 @@
-name: Update Projects JSON
+name: Update Projects
 
 on:
   schedule:
