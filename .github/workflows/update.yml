@@ -7,8 +7,6 @@ on:
   push:
     paths:
       - "scripts/fetchers/fetchRepos.js"
-      - "scripts/generators/generateLanguageIcons.js"
-      - "scripts/generators/generateVersionControlIcons.js"
 
 jobs:
   update-projects:
@@ -38,18 +36,12 @@ jobs:
       - name: Run fetch script
         run: node scripts/fetchers/fetchRepos.js
 
-      - name: Run language icon generation script
-        run: node scripts/generators/generateLanguageIcons.js
-
-      - name: Run version control icon generation script
-        run: node scripts/generators/generateVersionControlIcons.js
-
       - name: Commit and push generated files
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-          if ! git diff --quiet -- public/data/projects.json then
+          if ! git diff --quiet -- public/data/projects.json; then
             git add public/data/projects.json
             git commit -m "Updated projects.json"
             git push
