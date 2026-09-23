@@ -71,6 +71,12 @@ export class IconsWriter
             throw new Error("No output file specified");
         }
 
-        fs.writeFileSync(this.#outputFile, JSON.stringify(iconMap, null, 2), 'utf-8');
+        try
+        {
+            fs.writeFileSync(this.#outputFile, JSON.stringify(iconMap, null, 2), 'utf-8');
+        } catch (error)
+        {
+            console.error(error);
+        }
     }
 }

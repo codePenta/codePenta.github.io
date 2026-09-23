@@ -9,17 +9,17 @@
   },
   {
     "name": "codePenta.github.io",
-    "description": "My personal website",
+    "description": null,
     "language": "TypeScript",
     "url": "https://github.com/codePenta/codePenta.github.io",
     "image": "https://avatars.githubusercontent.com/u/41843603?v=4",
     "tags": []
   },
   {
-    "name": "CPS-Project",
+    "name": "DigitalResume",
     "description": null,
-    "language": "Python",
-    "url": "https://github.com/codePenta/CPS-Project",
+    "language": "HTML",
+    "url": "https://github.com/codePenta/DigitalResume",
     "image": "https://avatars.githubusercontent.com/u/41843603?v=4",
     "tags": []
   },
@@ -36,30 +36,6 @@
     "description": "A school project to learn how to plan and develop an own app idea from scratch",
     "language": "Dart",
     "url": "https://github.com/codePenta/HotPotato",
-    "image": "https://avatars.githubusercontent.com/u/41843603?v=4",
-    "tags": []
-  },
-  {
-    "name": "OOP_Tic-Tac-Toe",
-    "description": "An objectoriented version of the game Tic-Tac-Toe written in Python",
-    "language": "Python",
-    "url": "https://github.com/codePenta/OOP_Tic-Tac-Toe",
-    "image": "https://avatars.githubusercontent.com/u/41843603?v=4",
-    "tags": []
-  },
-  {
-    "name": "pomodoro_app",
-    "description": "My own focus tracking app",
-    "language": "Dart",
-    "url": "https://github.com/codePenta/pomodoro_app",
-    "image": "https://avatars.githubusercontent.com/u/41843603?v=4",
-    "tags": []
-  },
-  {
-    "name": "SmartCarRobot",
-    "description": "Can be removed, just still here for test purposes",
-    "language": "C++",
-    "url": "https://github.com/codePenta/SmartCarRobot",
     "image": "https://avatars.githubusercontent.com/u/41843603?v=4",
     "tags": []
   },

@@ -49,9 +49,9 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-          if ! git diff --quiet -- public/data/projects.json public/assets/icons; then
-            git add public/data/projects.json public/assets/icons
-            git commit -m "Updated update.yml"
+          if ! git diff --quiet -- public/data/projects.json then
+            git add public/data/projects.json
+            git commit -m "Updated projects.json"
             git push
           else
             echo "No generated file changes to commit."

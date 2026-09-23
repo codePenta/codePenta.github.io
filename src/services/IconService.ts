@@ -1,47 +1,32 @@
-import languageIcons from "../data/programmingIcons.json";
-import versionControlIcons from "../data/versionControlIcons.json";
+/// <reference types="vite/client" />
+
+const globOptions = { eager: true, query: "?url", import: "default" } as const;
+
+const languageIcons = import.meta.glob<string>("../assets/icons/programming/*.svg",
+    { eager: true, query: "?url", import: "default" });
+
+const versionControlIcons = import.meta.glob<string>("../assets/icons/versionControl/*.svg",
+    { eager: true, query: "?url", import: "default" });
+
+const languagePath = (name: string) => `../assets/icons/programming/${name}.svg`;
+const versionControlPath = (name: string) => `../assets/icons/versionControl/${name}.svg`;
+
+// "C#" -> "csharp", "C++" -> "cpp"
+const toSlug = (language: string) =>
+    language.toLowerCase().replace(/#/g, "sharp").replace(/\+/g, "p");
 
 export class IconService
 {
-    private readonly languageIconMap: Record<string, string>;
-    private readonly versionControlIconMap: Record<string, string>;
-
-    constructor()
-    {
-        this.languageIconMap = languageIcons as Record<string, string>;
-        this.versionControlIconMap = versionControlIcons as Record<string, string>;
-    }
-
     public getLanguageIconUrl(language: string): string
     {
-        const normalizedLanguage = language.toLowerCase();
-
-        if (!this.languageIconMap[normalizedLanguage])
-            throw new Error(`No icon found for language ${language}`);
-
-        return this.languageIconMap[normalizedLanguage];
+        return languageIcons[languagePath(toSlug(language))]
+            ?? languageIcons[languagePath("not specified")];
     }
 
     public getVersionControlIconUrl(url: string): string
     {
-        const domainKey = this.getDomainFromVersionControl(url);
-
-        if (!this.versionControlIconMap[domainKey])
-            throw new Error(`No icon found for version control provider ${domainKey}`);
-
-        return this.versionControlIconMap[domainKey];
-    }
-
-    public hasIconForLanguage(language: string): boolean
-    {
-        return Boolean(this.languageIconMap[language.toLowerCase()]);
-    }
-
-    private getDomainFromVersionControl(url: string): string
-    {
-        const hostname = new URL(url).host;
-        const firstDotIndex = hostname.indexOf(".");
-
-        return firstDotIndex === -1 ? hostname : hostname.substring(0, firstDotIndex);
+        const provider = new URL(url).hostname.split(".")[0];
+        return versionControlIcons[versionControlPath(provider)]
+            ?? versionControlIcons[versionControlPath("github")];
     }
 }
