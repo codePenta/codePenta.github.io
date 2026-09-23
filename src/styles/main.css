@@ -147,6 +147,15 @@ section>div {
     font-size: 1.15rem;
 }
 
+.projects-intro {
+    max-width: 34rem;
+    margin: .75rem 0 2.5rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--primary);
+}
+
 .home-actions {
     display: flex;
     flex-wrap: wrap;
