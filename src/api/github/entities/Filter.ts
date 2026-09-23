@@ -2,7 +2,7 @@ import { Project } from "./Project";
 
 export class Filter
 {
-    constructor(public readonly filterName: string, public readonly filteredContent: Project[])
+    constructor(public readonly name: string, public readonly content: Project[])
     { }
 
     static create(language: string, projects: Project[]): Filter
@@ -15,6 +15,6 @@ export class Filter
 
     get count(): number
     {
-        return this.filteredContent.length;
+        return this.content.length;
     }
 }

@@ -1,6 +1,6 @@
 import { Observer } from "./services/web/observers/IntersectionObserver";
 import { NavigationController } from './features/navigation/NavigationController';
-import { readSectionsFromDom } from './features/navigation/readSectionsFromDom';
+import { read as readSectionsFromDom } from "./features/navigation/readSectionsFromDom";
 import { ProjectList } from "./features/projects/ProjectList";
 import { state, updateState } from './store';
 import { fetchProjects } from './api/github/services/projectsAPI';
@@ -28,7 +28,11 @@ export class App
             this.translationService.toggle();
             if (projectsList)
             {
-                new ProjectList().renderProjectList({ projects: state.projects });
+                const hash = window.location.hash.replace('#', '');
+                const [sectionId, filterName] = hash.split('/');
+                const filter = state.filter.find(f => f.name === filterName);
+                if (filter)
+                    new ProjectList().renderProjectList({ projects: filter.content });
             }
             this.navigationController.render();
         });

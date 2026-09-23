@@ -36,11 +36,11 @@ export class NavigationController
 
         if (section.expandable && filterName)
         {
-            const filter = state.filter.find(f => f.filterName === filterName);
+            const filter = state.filter.find(f => f.name === filterName);
             if (filter)
             {
                 this.activeFilter = filterName;
-                new ProjectList().renderProjectList({ projects: filter.filteredContent });
+                new ProjectList().renderProjectList({ projects: filter.content });
             }
         }
     }
@@ -66,13 +66,13 @@ export class NavigationController
     {
         if (filterName === this.activeFilter) return;
 
-        const filter = state.filter.find(f => f.filterName === filterName);
+        const filter = state.filter.find(f => f.name === filterName);
         if (!filter) return;
 
         this.activeFilter = filterName;
         window.history.pushState(null, '', `#${this.activeSectionId}/${filterName}`);
 
-        new ProjectList().renderProjectList({ projects: filter.filteredContent });
+        new ProjectList().renderProjectList({ projects: filter.content });
         this.render();
     }
 
@@ -235,12 +235,12 @@ export class NavigationController
 
     private buildFilterItems(): NavLinkProps[]
     {
-        return state.filter.map(f => ({
+        return state.filter.map(filter => ({
             kind: 'filter' as const,
-            id: f.filterName,
-            label: f.filterName,
-            isActive: f.filterName === this.activeFilter,
-            onClick: () => this.onFilterSelect(f.filterName),
+            id: filter.name,
+            label: filter.name,
+            isActive: filter.name === this.activeFilter,
+            onClick: () => this.onFilterSelect(filter.name),
         }));
     }
 }

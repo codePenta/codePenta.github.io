@@ -6,7 +6,7 @@ export class TranslationService
 {
     private language: Language = 'de';
 
-    public initialize(): Language
+    public initialize()
     {
         const storedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
         const browserLanguage = window.navigator.language.toLowerCase().startsWith('en') ? 'en' : 'de';
@@ -15,13 +15,11 @@ export class TranslationService
             : browserLanguage;
 
         this.setLanguage(language);
-        return this.language;
     }
 
-    public toggle(): Language
+    public toggle()
     {
         this.setLanguage(this.language === 'de' ? 'en' : 'de');
-        return this.language;
     }
 
     public getLanguage(): Language
