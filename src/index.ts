@@ -1,12 +1,13 @@
 import { Observer } from "./services/web/observers/IntersectionObserver";
 import { NavigationController } from './features/navigation/NavigationController';
-import { read as readSectionsFromDom } from "./features/navigation/readSectionsFromDom";
+import { read as readSectionsFromDom } from "./features/navigation/ReadSectionsFromDom";
 import { ProjectList } from "./features/projects/ProjectList";
 import { state, updateState } from './store';
 import { fetchProjects } from './api/github/services/projectsAPI';
 import { renderGlobalError } from "./shared/Helpers";
 import { Tags } from "./shared/constants";
 import { TranslationService } from './services/TranslationService';
+import { Filter } from "./api/github/entities/Filter";
 
 const projectsList = document.querySelector(Tags.PROJECTS_LIST_ID);
 
@@ -30,9 +31,11 @@ export class App
             {
                 const hash = window.location.hash.replace('#', '');
                 const [sectionId, filterName] = hash.split('/');
-                const filter = state.filter.find(f => f.name === filterName);
+                const filter: Filter | undefined = state.filter.find(f => f.name === filterName);
                 if (filter)
                     new ProjectList().renderProjectList({ projects: filter.content });
+                else
+                    new ProjectList().renderProjectList({ projects: state.projects });
             }
             this.navigationController.render();
         });
