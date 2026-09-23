@@ -1,81 +1,82 @@
-# codePenta.github.io
+# codePenta — Portfolio
 
-This project is a small portfolio / project showcase website for GitHub projects. It fetches project metadata, maps it to a local app model, and renders navigation and project cards.
+Persönliche Portfolio- und Projektübersichtsseite. Läuft live unter [pentanet.work](https://pentanet.work), gehostet über GitHub Pages.
 
-## Quick start
+Die Seite lädt Projektmetadaten von GitHub, filtert sie nach Sprache, und zeigt sie in einem responsiven Bento-artigen Layout — mit einer kontextsensitiven Navigation, die sich abhängig vom sichtbaren Bereich verändert, und vollständiger DE/EN-Zweisprachigkeit.
+
+## Tech-Stack
+
+- **Vanilla TypeScript** + **Vite** — kein UI-Framework, bewusst
+- **Octokit** — GitHub-API-Zugriff zur Build-Zeit (nicht zur Laufzeit im Browser)
+- **GitHub Actions** — Build & Deploy auf GitHub Pages
+- **Yarn 4 (Berry)** als Package Manager
+
+## Quick Start
 
 ```bash
 yarn install
 yarn dev
 ```
 
-## Project goals
+## Scripts
 
-- Show project cards in a simple portfolio layout
-- Aggregate GitHub metadata from local JSON data
-- Filter projects by language
-- Keep the UI lightweight and static
+| Befehl         | Zweck                                                                                 |
+| -------------- | ------------------------------------------------------------------------------------- |
+| `yarn dev`     | Lokaler Vite-Dev-Server                                                               |
+| `yarn build`   | Produktions-Build nach `dist/` (führt vorher automatisch `prebuild` aus)              |
+| `yarn preview` | Baut lokal aus, was `dist/` nach dem Build enthält                                    |
+| `yarn deploy`  | Manueller Deploy via `gh-pages` — wird normalerweise **nicht** gebraucht, siehe unten |
 
-## Structure overview
+`prebuild` ruft `scripts/fetchers/fetchRepos.js` auf und schreibt frische Projektdaten nach `public/data/projects.json`, bevor Vite baut.
+
+## Deployment
+
+Der reguläre Weg läuft komplett über **GitHub Actions** (`.github/workflows/deploy.yml`): Jeder Push auf `main` baut das Projekt frisch und lädt `dist/` als Pages-Artefakt hoch. Der `yarn deploy`-Script (über das `gh-pages`-Paket) ist ein Relikt aus einer früheren, alternativen Deploy-Methode und wird aktuell nicht verwendet — **Repo → Settings → Pages → Source** muss auf "GitHub Actions" stehen, nicht auf "Deploy from a branch".
+
+Custom Domain: `pentanet.work`, per `public/CNAME` + vier `A`-Records (`185.199.108.153` – `185.199.111.153`) und vier `AAAA`-Records auf die GitHub-Pages-IPs konfiguriert.
+
+## Struktur
 
 ```text
 .
-├── documentation/            # Mermaid diagrams and architecture docs
-├── public/                   # Public static assets and generated data files
-│   └── data/
-├── scripts/                  # Fetchers and data generation scripts
-│   ├── fetchers/
-│   ├── generators/
-│   └── processors/
-├── src/                      # Application source code
-│   ├── api/
-│   ├── components/
-│   ├── data/
+├── documentation/                    # Mermaid-Diagramme + Architektur-Notizen
+├── public/
+│   ├── assets/                       # Icons (Programmiersprachen, GitHub-Logo), Farbpalette
+│   ├── data/projects.json            # Von scripts/fetchers generierte Projektdaten
+│   └── CNAME                         # Custom-Domain-Konfiguration für GitHub Pages
+├── scripts/
+│   ├── fetchers/                     # Holt Repo-Daten von GitHub (Octokit)
+│   ├── generators/                   # Generiert Icon-Mappings (Sprache → SVG)
+│   └── processors/                   # Mapped Rohdaten aufs App-Modell
+├── src/
+│   ├── api/github/                   # Entities, Mapper, Service für GitHub-Projektdaten
+│   ├── features/
+│   │   ├── navigation/               # NavigationController, NavLink, readSectionsFromDom
+│   │   └── projects/                 # ProjectCard, ProjectList
 │   ├── services/
+│   │   ├── IconService.ts            # Sprache/Tool → Icon-Pfad
+│   │   ├── TranslationService.ts     # DE/EN-Umschaltung über data-i18n-*-Attribute
+│   │   └── web/
+│   │       ├── observers/            # IntersectionObserver für Scroll-basierte Nav-Aktivierung
+│   │       └── provider/FilterProvider.ts
+│   ├── shared/                       # Helpers.ts, constants.ts — aktuelle, genutzte Version
 │   ├── styles/
-│   ├── utils/
-│   ├── index.ts
-│   └── store.ts
+│   │   ├── core.css                  # Farb-Variablen, Basis-Reset
+│   │   ├── main.css                  # Layout, Sections, Buttons
+│   │   └── components/               # navbar.css, projects.css
+│   ├── index.ts                      # App-Bootstrap
+│   └── store.ts                      # Zentraler App-State (Projekte, Filter)
 ├── index.html
-├── package.json
 ├── vite.config.ts
-├── tsconfig.json
-└── README.md
+└── package.json
 ```
 
-## Main flow
+## Navigation — Kernkonzept
 
-1. The app initializes in [src/index.ts](src/index.ts)
-2. It fetches project data through [src/api/github/services/projectsAPI.ts](src/api/github/services/projectsAPI.ts)
-3. The fetched data is mapped and stored in [src/store.ts](src/store.ts)
-4. UI components render the cards and navbar using the app state
+Eine einzige `NavigationController`-Instanz rendert sowohl die Desktop-Sidebar-Nav als auch das Mobile-Bottom-Sheet aus denselben Daten (`buildNavItems()`), statt zwei separate Render-Pfade zu pflegen. Sections werden nicht hartcodiert, sondern zur Laufzeit aus `<section data-nav-label="...">`-Attributen im DOM gelesen (`readSectionsFromDom.ts`) — die `index.html` bleibt damit die einzige Quelle für Struktur und Reihenfolge der Navigation.
 
-## Main pain points in the current structure
+Beim Betreten einer als `data-nav-expandable="true"` markierten Section (aktuell: Projects) klappt die Nav zu Heading + Sprach-Filter-Liste um; alle anderen Sections bleiben als direkt anklickbare Links erreichbar. Aktivierung läuft sowohl über Klick als auch über einen `IntersectionObserver` beim Scrollen; beides aktualisiert konsistent Browser-History (`pushState` bei bewusster Navigation, `replaceState` beim Scroll) und den URL-Hash.
 
-The project is functional, but a few things make it harder to read than necessary:
+## Mehrsprachigkeit
 
-- Data is spread across multiple sources and generated files
-- Some logic is mixed between app runtime code and build scripts
-- Generic folders such as `utils`, `data`, and `services` are broad and not sharply separated
-- The project lacks a single place describing architecture and responsibilities
-
-## Step-by-step cleanup plan
-
-### Step 1: document the architecture
-This is the current first step. The project now has a single place explaining the intended structure and the current pain points.
-
-### Step 2: define a single source of truth for project data
-The project should decide whether generated JSON or source JSON is canonical. Avoid duplicate responsibilities.
-
-### Step 3: reorganize by feature area
-Group logic by feature instead of by generic folder names where possible.
-
-### Step 4: reduce cross-layer coupling
-Keep API/data mapping separate from UI rendering logic.
-
-### Step 5: add project quality checks
-Add linting and formatting standards to keep the codebase stable and easier to understand.
-
-## Notes
-
-This README is intentionally kept simple and actionable. The goal is not to rewrite the app immediately, but to make the structure understandable again before making bigger refactors.
+Deutsch ist die Default-Sprache und liegt als echter, sichtbarer Text im HTML (kein Framework, kein JSON-Wörterbuch). Englische Übersetzungen liegen als `data-i18n-en`-Attribut auf demselben Element; `TranslationService.ts` tauscht den `textContent` beim Umschalten aus und merkt sich die Wahl in `localStorage`.
