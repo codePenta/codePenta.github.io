@@ -1,0 +1,26 @@
+{
+  "Basket_Fever_Codegeruest": {
+    "en": null,
+    "de": ""
+  },
+  "codePenta.github.io": {
+    "en": null,
+    "de": ""
+  },
+  "DigitalResume": {
+    "en": null,
+    "de": ""
+  },
+  "Discord-Bot": {
+    "en": "My personal discord bot, I got big plans for ya!",
+    "de": "Mein persönlicher Discord-Bot – ich habe große Pläne mit dir!"
+  },
+  "HotPotato": {
+    "en": "A school project to learn how to plan and develop an own app idea from scratch",
+    "de": "Ein Schulprojekt, bei dem gelernt wird, wie man eine eigene App-Idee von Grund auf plant und entwickelt"
+  },
+  "TimePunch-MVVM": {
+    "en": "A really simple and reduced mvvm pattern for wpf and modern UI apps",
+    "de": "Ein wirklich einfaches und reduziertes MVVM-Muster für WPF- und Modern-UI-Apps"
+  }
+}
