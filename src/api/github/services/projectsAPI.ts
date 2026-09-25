@@ -1,31 +1,32 @@
 import { FilePaths } from '../../../shared/constants';
-import { GitHubRepoApiResponse, Project } from '../entities/Project';
-import { mapGitHubReposToProjects } from '../mappers/GitHubRepoMapper';
+import { GitHubRepoApiResponse, I18nMap, ProjectsData } from '../entities/Project';
 
-export async function fetchProjects(): Promise<Project[]>
+export async function fetchProjects(): Promise<ProjectsData>
 {
     try
     {
-        const response = await fetch(FilePaths.PROJECTS_DATA_PATH);
+        const [projectsResponse, i18nResponse] = await Promise.all([
+            fetch(FilePaths.PROJECTS_DATA_PATH),
+            fetch(FilePaths.PROJECTS_I18N_PATH),
+        ]);
 
-        if (!response.ok)
+        if (!projectsResponse.ok)
         {
-            throw new Error(`Failed to load projects.json: ${response.status} ${response.statusText}`);
+            throw new Error(`Failed to load projects.json: ${projectsResponse.status} ${projectsResponse.statusText}`);
         }
 
-        const rawProjects: GitHubRepoApiResponse[] = await response.json();
-        return mapGitHubReposToProjects(rawProjects);
+        if (!i18nResponse.ok)
+        {
+            throw new Error(`Failed to load projects.i18n.json: ${i18nResponse.status} ${i18nResponse.statusText}`);
+        }
+
+        const rawProjects: GitHubRepoApiResponse[] = await projectsResponse.json();
+        const i18nMap: I18nMap = await i18nResponse.json();
+
+        return { rawProjects, i18nMap };
     } catch (error)
     {
         console.error("Error fetching projects from local JSON:", error);
         throw error;
     }
-}
-
-export async function fetchLanguagesFromProjects(rawProjects: Project[]): Promise<string>
-{
-    const languageNames = rawProjects.map(project => project.language);
-    const uniqueLanguages = Array.from(new Set(languageNames));
-
-    return JSON.stringify(uniqueLanguages, null, 2);
 }

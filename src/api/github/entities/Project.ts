@@ -24,3 +24,8 @@ export type Project = {
     languageIconUrl: string | null;
     versionControl: string | null;
 };
+
+export type ProjectsData = {
+    rawProjects: GitHubRepoApiResponse[];
+    i18nMap: I18nMap;
+};

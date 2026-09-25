@@ -1,17 +1,18 @@
-import { GitHubRepoApiResponse, Project } from '../entities/Project';
+import { GitHubRepoApiResponse, I18nMap, Locale, Project } from '../entities/Project';
 import { IconService } from '../../../services/IconService';
 
-export function mapGitHubReposToProjects(repos: GitHubRepoApiResponse[]): Project[]
+export function mapGitHubReposToProjects(repos: GitHubRepoApiResponse[], i18nMap: I18nMap, locale: Locale): Project[]
 {
     const iconService = new IconService();
 
     return repos.map(repo =>
     {
         const language = repo.language ?? "Not specified";
+        const description = i18nMap[repo.name]?.[locale] ?? repo.description ?? "No description available.";
 
         return {
             name: repo.name,
-            description: repo.description ?? "No description available.",
+            description,
             url: repo.url,
             imageUrl: repo.image ?? "No avatar available.",
             language,

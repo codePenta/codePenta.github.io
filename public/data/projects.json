@@ -1,13 +1,5 @@
 [
   {
-    "name": "Basket_Fever_Codegeruest",
-    "description": null,
-    "language": "Processing",
-    "url": "https://github.com/codePenta/Basket_Fever_Codegeruest",
-    "image": "https://avatars.githubusercontent.com/u/41843603?v=4",
-    "tags": []
-  },
-  {
     "name": "codePenta.github.io",
     "description": null,
     "language": "TypeScript",
@@ -17,7 +9,7 @@
   },
   {
     "name": "DigitalResume",
-    "description": null,
+    "description": "A digital way of creating a resume, because the traditional process using word annoyed me.",
     "language": "HTML",
     "url": "https://github.com/codePenta/DigitalResume",
     "image": "https://avatars.githubusercontent.com/u/41843603?v=4",
@@ -25,7 +17,7 @@
   },
   {
     "name": "Discord-Bot",
-    "description": "My personal discord bot, I got big plans for ya!",
+    "description": "A discord bot developed for fun with a nice side effect of being my personal assistant",
     "language": "TypeScript",
     "url": "https://github.com/codePenta/Discord-Bot",
     "image": "https://avatars.githubusercontent.com/u/41843603?v=4",

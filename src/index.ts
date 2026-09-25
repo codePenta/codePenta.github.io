@@ -2,7 +2,7 @@ import { Observer } from "./services/web/observers/IntersectionObserver";
 import { NavigationController } from './features/navigation/NavigationController';
 import { ProjectList } from "./features/projects/ProjectList";
 import { state, updateState } from './store';
-import { fetchProjects } from './api/github/services/projectsAPI';
+import { ProjectRepository } from './api/github/repositories/ProjectRepository';
 import { renderGlobalError } from "./shared/Helpers";
 import { Tags } from "./shared/constants";
 import { TranslationService } from './services/TranslationService';
@@ -16,6 +16,7 @@ export class App
     private navigationController: NavigationController;
     private observer: Observer;
     private translationService = new TranslationService();
+    private projectRepository = new ProjectRepository();
 
     constructor()
     {
@@ -27,6 +28,10 @@ export class App
         document.getElementById('language-toggle')?.addEventListener('click', () =>
         {
             this.translationService.toggle();
+
+            // Reine Ableitung aus bereits geladenen Daten — kein Re-Fetch
+            updateState(this.projectRepository.getLocalisedProjects(this.translationService.getLanguage()));
+
             if (projectsList)
             {
                 const hash = window.location.hash.replace('#', '');
@@ -55,8 +60,8 @@ export class App
         console.log("Initializing application...");
         try
         {
-            const initialProjects = await fetchProjects();
-            updateState(initialProjects);
+            await this.projectRepository.load();
+            updateState(this.projectRepository.getLocalisedProjects(this.translationService.getLanguage()));
 
             if (projectsList)
             {

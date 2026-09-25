@@ -1,7 +1,7 @@
 export class FilePaths
 {
     static readonly PROJECTS_DATA_PATH = "/data/projects.json";
-    static readonly PROJECTS_I18N_PATH = "";
+    static readonly PROJECTS_I18N_PATH = "/data/projects.i18n.json";
 }
 
 export class Tags
