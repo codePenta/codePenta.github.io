@@ -1,15 +1,15 @@
 {
   "DigitalResume": {
     "en": "A digital way of creating a resume, because the traditional process using word annoyed me.",
-    "de": "Eine digitale Methode zur Erstellung eines Lebenslaufs, da mich die herkömmliche Vorgehensweise mit Word genervt hat."
+    "de": "Eine digitale Methode zur Erstellung eines Lebenslaufs, da mich das herkömmliche Verfahren mit Word genervt hat."
   },
   "Discord-Bot": {
     "en": "A discord bot developed for fun with a nice side effect of being my personal assistant",
-    "de": "Ein Discord-Bot, der aus Spaß entwickelt wurde und ganz nebenbei als mein persönlicher Assistent dient"
+    "de": "Ein Discord-Bot, der zum Spaß entwickelt wurde und als netter Nebeneffekt als mein persönlicher Assistent dient"
   },
   "HotPotato": {
     "en": "A school project to learn how to plan and develop an own app idea from scratch",
-    "de": "Ein Schulprojekt, bei dem man lernt, wie man eine eigene App-Idee von Grund auf plant und entwickelt"
+    "de": "Ein Schulprojekt, bei dem gelernt wird, wie man eine eigene App-Idee von Grund auf plant und entwickelt"
   },
   "TimePunch-MVVM": {
     "en": "A really simple and reduced mvvm pattern for wpf and modern UI apps",
