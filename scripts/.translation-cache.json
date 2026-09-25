@@ -1,17 +1,21 @@
 {
   "DigitalResume": {
+    "sourceText": "A digital way of creating a resume, because the traditional process using word annoyed me.",
     "en": "A digital way of creating a resume, because the traditional process using word annoyed me.",
     "de": "Eine digitale Methode zur Erstellung eines Lebenslaufs, da mich die herkömmliche Vorgehensweise mit Word genervt hat."
   },
   "Discord-Bot": {
+    "sourceText": "A discord bot developed for fun with a nice side effect of being my personal assistant",
     "en": "A discord bot developed for fun with a nice side effect of being my personal assistant",
     "de": "Ein Discord-Bot, der aus Spaß entwickelt wurde und nebenbei noch als mein persönlicher Assistent fungiert"
   },
   "HotPotato": {
+    "sourceText": "A school project to learn how to plan and develop an own app idea from scratch",
     "en": "A school project to learn how to plan and develop an own app idea from scratch",
     "de": "Ein Schulprojekt, bei dem man lernt, wie man eine eigene App-Idee von Grund auf plant und entwickelt"
   },
   "TimePunch-MVVM": {
+    "sourceText": "A really simple and reduced mvvm pattern for wpf and modern UI apps",
     "en": "A really simple and reduced mvvm pattern for wpf and modern UI apps",
     "de": "Ein wirklich einfaches und reduziertes MVVM-Muster für WPF- und Modern-UI-Apps"
   }
