@@ -16,7 +16,7 @@ jobs:
 
     env:
       REPOSITORY_FETCH_TOKEN: ${{ secrets.PAT_TOKEN }}
-      DEEPL_API_TOKEN: ${{ secrets.DEEPL_API_TOKEN }}
+      DEEPL_API_KEY: ${{ secrets.DEEPL_API_KEY }}
 
     steps:
       - name: Checkout repository

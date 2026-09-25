@@ -8,7 +8,7 @@ const PROJECTS_OUTPUT = new URL("../public/data/projects.json", import.meta.url)
 const I18N_OUTPUT = new URL("../public/data/projects.i18n.json", import.meta.url);
 
 const token = process.env.REPOSITORY_FETCH_TOKEN;
-const deeplKey = process.env.DEEPL_API_TOKEN;
+const deeplKey = process.env.DEEPL_API_KEY;
 
 if (!token) throw new Error("REPOSITORY_FETCH_TOKEN is not set");
 if (!deeplKey) throw new Error("DEEPL_API_KEY is not set");
