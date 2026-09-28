@@ -1,0 +1,86 @@
+:root {
+  --bg: #fcf8f3;
+  --surface: #f3ecdf;
+  --border: #c8bed5;
+  --text: #07040b;
+  --text-muted: #472773;
+  --gold: #b59d16;
+  --purple: #472773;
+  --purple-dark: #2b1745;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.7;
+  font-size: 16px;
+}
+.wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 64px 24px 96px;
+}
+header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 56px;
+}
+.mark { flex-shrink: 0; }
+.brand { display: flex; flex-direction: column; gap: 2px; }
+.brand strong { font-size: 16px; font-weight: 600; }
+nav { font-size: 14px; }
+nav a { color: var(--text-muted); text-decoration: none; border-bottom: 1px solid transparent; }
+nav a:hover, nav a:focus-visible { color: var(--gold); border-bottom-color: var(--gold); }
+h1 {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+.updated {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin: 0 0 48px;
+}
+h2 {
+  font-size: 19px;
+  font-weight: 600;
+  margin: 40px 0 12px;
+  color: var(--text);
+}
+p { margin: 0 0 16px; color: var(--text); }
+p.muted, li.muted { color: var(--text-muted); }
+ul { margin: 0 0 16px; padding-left: 20px; }
+li { margin-bottom: 8px; }
+.callout {
+  border-left: 3px solid var(--purple);
+  background: var(--surface);
+  padding: 16px 20px;
+  border-radius: 0 8px 8px 0;
+  margin: 24px 0;
+}
+.callout p:last-child { margin-bottom: 0; }
+a { color: var(--purple); text-decoration-color: var(--border); }
+a:hover, a:focus-visible { text-decoration-color: var(--purple); }
+code {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: 14px;
+}
+footer {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 14px;
+}
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+@media (max-width: 480px) {
+  .wrap { padding: 40px 20px 64px; }
+  h1 { font-size: 26px; }
+}
