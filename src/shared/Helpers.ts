@@ -40,3 +40,38 @@ export const getElementFromQuerySelector = (selector: string) =>
     const element = document.querySelector(selector)!;
     return element;
 };
+
+/**
+ * Resolved, sobald die Seite aufgehört hat zu scrollen.
+ *
+ * Warum nicht einfach nur das 'scrollend'-Event?
+ * - Ältere Safari-Versionen kennen es nicht.
+ * - Wenn gar nicht gescrollt wird (Ziel ist schon im Bild), feuert es nie.
+ * Deshalb zusätzlich: "seit idleMs kein 'scroll'-Event mehr" bzw. spätestens nach maxMs.
+ */
+export const waitForScrollEnd = (idleMs = 150, maxMs = 2000): Promise<void> =>
+{
+    return new Promise(resolve =>
+    {
+        let idleTimer = window.setTimeout(finish, idleMs);
+        const maxTimer = window.setTimeout(finish, maxMs);
+
+        function onScroll()
+        {
+            window.clearTimeout(idleTimer);
+            idleTimer = window.setTimeout(finish, idleMs);
+        }
+
+        function finish()
+        {
+            window.clearTimeout(idleTimer);
+            window.clearTimeout(maxTimer);
+            window.removeEventListener('scroll', onScroll);
+            window.removeEventListener('scrollend', finish);
+            resolve();
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('scrollend', finish);
+    });
+};

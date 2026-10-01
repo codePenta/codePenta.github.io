@@ -67,17 +67,20 @@ export class App
             {
                 new ProjectList().renderProjectList({ projects: state.projects });
             }
-
-            this.navigationController.initFromLocation();
-            document.getElementById(this.navigationController.getActiveSectionId())
-                ?.scrollIntoView({ behavior: 'auto' });
-
-            this.navigationController.render();
-            this.observer.observeSections();
         } catch (error)
         {
             renderGlobalError(projectsList, error);
         }
+
+        // FIX (Robustheit): Navigation + Observer liefen vorher INNERHALB des try-Blocks.
+        // Schlug das Laden der Projekte fehl, wurde der Observer nie gestartet → Navbar komplett tot.
+        // Die Navigation hängt fachlich nicht von den Projektdaten ab, also immer starten.
+        this.navigationController.initFromLocation();
+        document.getElementById(this.navigationController.getActiveSectionId())
+            ?.scrollIntoView({ behavior: 'auto' });
+
+        this.navigationController.render();
+        this.observer.observeSections();
 
         console.log("Application initialized.");
     }
