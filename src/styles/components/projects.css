@@ -93,15 +93,15 @@
 
 
 #projects-list .project-card {
-    --card-background: #0e0c0b;
-    --card-background-hover: #1c1916;
-    --card-text: #f3ede4;
-    --card-text-muted: #c9c1b6;
-    --card-text-subtle: #8c847a;
-    --card-chip: #26221f;
-    --card-accent: #e8541c;
+    --card-background: var(--primary-accent-3);
+    --card-background-hover: var(--primary-accent-2);
+    --card-text: var(--background);
+    --card-text-muted: var(--primary-accent-1);
+    --card-text-subtle: color-mix(in srgb, var(--primary-accent-1) 60%, var(--primary-accent-3));
+    --card-chip: color-mix(in srgb, var(--primary-accent-1) 14%, transparent);
+    --card-accent: var(--secondary);
     --card-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-    --language-color: #8c847a;
+    --language-color: var(--card-text-subtle);
 
     position: relative;
     display: flex;
@@ -112,6 +112,7 @@
     border-radius: 16px;
     background: var(--card-background);
     color: var(--card-text);
+    box-shadow: 0 4px 14px rgba(28, 16, 46, .22);
     transition: background-color .2s ease, outline-color .2s ease;
     outline: 2px solid transparent;
     outline-offset: 4px;
