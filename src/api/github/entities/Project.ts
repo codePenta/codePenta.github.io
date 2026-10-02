@@ -15,10 +15,12 @@ export type GitHubRepoApiResponse = {
 
 export type Project = {
     name: string;
+    owner: string;
     description: string;
     url: string;
     imageUrl: string;
     language: string;
+    context: string | null;
     tags: string[];
     languageIconUrl: string | null;
     versionControl: string | null;

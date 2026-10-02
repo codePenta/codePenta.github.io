@@ -28,3 +28,16 @@ export class FilterConstants
 {
     static readonly DEFAULT_FILTER_STATE = 'All';
 }
+
+export class ProjectContexts
+{
+    // GitHub-Topics mit diesem Präfix werden als Kontext-Pill angezeigt, nicht als Tag
+    static readonly TOPIC_PREFIX = "context-";
+
+    static readonly LABELS: Record<string, { de: string; en: string }> = {
+        "context-hobby": { de: "Freizeitprojekt", en: "Side project" },
+        "context-school": { de: "Schulprojekt", en: "School project" },
+        "context-apprenticeship": { de: "Ausbildungsprojekt", en: "Apprenticeship project" },
+        "context-tool": { de: "Eigenes Werkzeug", en: "Own tool" },
+    };
+}
