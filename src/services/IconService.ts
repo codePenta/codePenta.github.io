@@ -9,7 +9,6 @@ const versionControlIcons = import.meta.glob<string>("../assets/icons/versionCon
 const languagePath = (name: string) => `../assets/icons/programming/${name}.svg`;
 const versionControlPath = (name: string) => `../assets/icons/versionControl/${name}.svg`;
 
-// "C#" -> "csharp", "C++" -> "cpp"
 const toSlug = (language: string) =>
     language.toLowerCase().replace(/#/g, "sharp").replace(/\+/g, "p");
 
