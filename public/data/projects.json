@@ -5,7 +5,12 @@
     "language": "TypeScript",
     "url": "https://github.com/codePenta/codePenta.github.io",
     "image": "https://avatars.githubusercontent.com/u/41843603?v=4",
-    "tags": []
+    "tags": [
+      "context-hobby",
+      "portfolio",
+      "typescript",
+      "vite"
+    ]
   },
   {
     "name": "DigitalResume",
@@ -13,7 +18,12 @@
     "language": "HTML",
     "url": "https://github.com/codePenta/DigitalResume",
     "image": "https://avatars.githubusercontent.com/u/41843603?v=4",
-    "tags": []
+    "tags": [
+      "context-tool",
+      "css",
+      "html",
+      "pdf"
+    ]
   },
   {
     "name": "Discord-Bot",
@@ -21,7 +31,11 @@
     "language": "TypeScript",
     "url": "https://github.com/codePenta/Discord-Bot",
     "image": "https://avatars.githubusercontent.com/u/41843603?v=4",
-    "tags": []
+    "tags": [
+      "bot",
+      "context-hobby",
+      "discord"
+    ]
   },
   {
     "name": "HotPotato",
@@ -29,7 +43,11 @@
     "language": "Dart",
     "url": "https://github.com/codePenta/HotPotato",
     "image": "https://avatars.githubusercontent.com/u/41843603?v=4",
-    "tags": []
+    "tags": [
+      "app",
+      "context-school",
+      "flutter"
+    ]
   },
   {
     "name": "TimePunch-MVVM",
@@ -37,6 +55,10 @@
     "language": "C#",
     "url": "https://github.com/codePenta/TimePunch-MVVM",
     "image": "https://avatars.githubusercontent.com/u/41843603?v=4",
-    "tags": []
+    "tags": [
+      "context-internship",
+      "mvvm",
+      "wpf"
+    ]
   }
 ]
