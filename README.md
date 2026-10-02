@@ -29,6 +29,15 @@ yarn dev
 
 Die Projektdaten aktualisiert `.github/workflows/update.yml` täglich: `scripts/updateProjects.js` schreibt sie nach `public/data/projects.json` und committet sie bei Änderungen. Der Build liest nur diese Datei. Lokal aktualisieren: Token als `REPOSITORY_FETCH_TOKEN` in eine `.env` schreiben, dann `node --env-file=.env scripts/updateProjects.js`.
 
+## Projektkarten pflegen
+
+Die Karten werden aus den GitHub-Repos gebaut; gepflegt wird alles über die **Topics** des jeweiligen Repos:
+
+- Normale Topics (z. B. `discord`, `bot`) erscheinen als Tags unten auf der Karte.
+- Ein Topic mit `context-`-Präfix erscheint stattdessen als Kontext-Pill oben links: `context-hobby` (Freizeitprojekt), `context-school` (Schulprojekt), `context-apprenticeship` (Ausbildungsprojekt), `context-tool` (Eigenes Werkzeug). Die Beschriftungen stehen in `src/shared/constants.ts`.
+
+Änderungen an Topics landen mit dem nächsten Lauf von `update.yml` auf der Seite.
+
 ## Deployment
 
 Der reguläre Weg läuft komplett über **GitHub Actions** (`.github/workflows/deploy.yml`): Jeder Push auf `main` baut das Projekt frisch und lädt `dist/` als Pages-Artefakt hoch. **Repo → Settings → Pages → Source** muss auf "GitHub Actions" stehen, nicht auf "Deploy from a branch".

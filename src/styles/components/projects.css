@@ -2,7 +2,7 @@
 
 #projects-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 17.5rem), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, max(22rem, calc((100% - 1.25rem) / 2))), 1fr));
     gap: 1.25rem;
 }
 
@@ -93,52 +93,76 @@
 
 
 #projects-list .project-card {
-    --language-accent: var(--secondary);
-    --card-line: color-mix(in srgb, var(--primary-accent-1) 16%, transparent);
+    --card-background: #0e0c0b;
+    --card-background-hover: #1c1916;
+    --card-text: #f3ede4;
+    --card-text-muted: #c9c1b6;
+    --card-text-subtle: #8c847a;
+    --card-chip: #26221f;
+    --card-accent: #e8541c;
+    --card-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --language-color: #8c847a;
 
     position: relative;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    overflow: hidden;
-    padding: 1.4rem 1.25rem .5rem;
-    border: 1px solid var(--card-line);
-    border-radius: 14px;
-    background: var(--primary-accent-2);
-    box-shadow: 0 4px 14px rgba(28, 16, 46, .22);
-    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-}
-
-#projects-list .project-card::before {
-    content: '';
-    position: absolute;
-    inset: 0 0 auto;
-    height: 4px;
-    background: var(--language-accent);
+    min-height: 17rem;
+    padding: 1.6rem 1.9rem 1.5rem;
+    border-radius: 16px;
+    background: var(--card-background);
+    color: var(--card-text);
+    transition: background-color .2s ease, outline-color .2s ease;
+    outline: 2px solid transparent;
+    outline-offset: 4px;
 }
 
 #projects-list .project-card:hover,
-#projects-list .project-card:focus-within {
-    transform: translateY(-4px);
-    border-color: color-mix(in srgb, var(--language-accent) 55%, transparent);
-    box-shadow: 0 12px 28px rgba(28, 16, 46, .32);
+#projects-list .project-card:has(.project-link:focus-visible) {
+    background: var(--card-background-hover);
+    outline-color: var(--card-accent);
+}
+
+#projects-list .project-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 1.75rem;
+}
+
+#projects-list .project-context {
+    padding: .3rem .75rem;
+    border-radius: 999px;
+    background: var(--card-chip);
+    color: var(--card-text);
+    font-size: .8rem;
+    font-weight: 400;
+    line-height: 1.2;
 }
 
 #projects-list .project-language {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: .45rem;
-    color: var(--secondary);
-    font-size: .75rem;
-    font-weight: 700;
-    letter-spacing: .08em;
-    text-transform: uppercase;
+    gap: .5rem;
+    margin-left: auto;
+    color: var(--card-text-muted);
+    font-family: var(--card-mono);
+    font-size: .8rem;
 }
 
-#projects-list .project-language img {
-    width: 1.1rem;
-    height: 1.1rem;
-    object-fit: contain;
+#projects-list .project-language-dot {
+    width: .55rem;
+    height: .55rem;
+    border-radius: 50%;
+    background: var(--language-color);
+}
+
+#projects-list .project-owner {
+    margin: 1.1rem 0 0;
+    color: var(--card-text-subtle);
+    font-family: var(--card-mono);
+    font-size: .85rem;
+    line-height: 1.2;
 }
 
 #projects-list .project-card-heading>h2 {
@@ -147,10 +171,11 @@
     -webkit-line-clamp: 2;
     line-clamp: 2;
     overflow: hidden;
-    margin: .5rem 0 0;
-    color: var(--background);
-    font-size: 1.35rem;
-    line-height: 1.25;
+    margin: .15rem 0 0;
+    color: var(--card-text);
+    font-size: 1.9rem;
+    font-weight: 600;
+    line-height: 1.2;
     overflow-wrap: anywhere;
 }
 
@@ -161,49 +186,54 @@
 #projects-list .project-card-details p {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
-    line-clamp: 4;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
     overflow: hidden;
-    margin: .75rem 0 0;
-    color: var(--primary-accent-1);
+    max-width: 34rem;
+    margin: .8rem 0 0;
+    color: var(--card-text-muted);
     font-weight: 400;
-    line-height: 1.5;
+    line-height: 1.6;
     overflow-wrap: break-word;
+}
+
+#projects-list .project-card-footer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.75rem;
 }
 
 #projects-list .project-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: .35rem;
-    margin: .9rem 0 0;
+    gap: .4rem;
+    margin: 0;
     padding: 0;
     list-style: none;
 }
 
 #projects-list .project-tag {
-    padding: .2rem .55rem;
-    border: 1px solid var(--card-line);
-    border-radius: 999px;
-    color: var(--primary-accent-1);
-    font-size: .75rem;
+    padding: .3rem .55rem;
+    border-radius: 5px;
+    background: var(--card-chip);
+    color: var(--card-text-muted);
+    font-family: var(--card-mono);
+    font-size: .8rem;
     line-height: 1.2;
 }
 
-#projects-list .project-card-footer {
-    margin-top: 1.25rem;
-    border-top: 1px solid var(--card-line);
-}
-
 #projects-list .project-link {
-    display: flex;
+    display: inline-flex;
+    flex-shrink: 0;
     align-items: center;
-    gap: .6rem;
+    gap: .5rem;
     min-height: 44px;
-    padding: .4rem 0;
-    color: var(--primary-accent-1);
-    font-size: .9rem;
+    margin-left: auto;
+    color: var(--card-accent);
+    font-size: .95rem;
+    font-weight: 500;
     text-decoration: none;
-    transition: color .2s ease;
 }
 
 /* Spannt den Link über die ganze Karte, damit sie überall klickbar ist */
@@ -219,64 +249,48 @@
     outline: none;
 }
 
-#projects-list .project-link:focus-visible::after {
-    outline: 2px solid var(--secondary);
-    outline-offset: -2px;
-    border-radius: 14px;
-}
-
-#projects-list .project-link img {
-    box-sizing: border-box;
-    width: 1.75rem;
-    height: 1.75rem;
-    padding: .2rem;
-    border-radius: 50%;
-    background: var(--background);
-}
-
 #projects-list .project-link-arrow {
-    margin-left: auto;
-    font-size: 1.1rem;
+    font-size: .9rem;
     line-height: 1;
     transition: transform .2s ease;
 }
 
-#projects-list .project-card:hover .project-link,
-#projects-list .project-link:focus-visible {
-    color: var(--secondary);
-}
-
 #projects-list .project-card:hover .project-link-arrow,
 #projects-list .project-link:focus-visible .project-link-arrow {
-    transform: translateX(4px);
+    transform: translate(2px, -2px);
 }
 
+/* Sprachfarben wie auf GitHub */
 #projects-list .project-card[data-language="TypeScript"] {
-    --language-accent: #3178c6;
+    --language-color: #3178c6;
 }
 
 #projects-list .project-card[data-language="Python"] {
-    --language-accent: #3776ab;
+    --language-color: #3572a5;
 }
 
 #projects-list .project-card[data-language="Dart"] {
-    --language-accent: #0175c2;
+    --language-color: #00b4ab;
 }
 
 #projects-list .project-card[data-language="C#"] {
-    --language-accent: #9b4f96;
+    --language-color: #178600;
 }
 
 #projects-list .project-card[data-language="C++"] {
-    --language-accent: #659ad2;
+    --language-color: #f34b7d;
 }
 
 #projects-list .project-card[data-language="HTML"] {
-    --language-accent: #e34c26;
+    --language-color: #e34c26;
 }
 
 #projects-list .project-card[data-language="Java"] {
-    --language-accent: #e76f00;
+    --language-color: #b07219;
+}
+
+#projects-list .project-card[data-language="Processing"] {
+    --language-color: #0096d8;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -286,8 +300,6 @@
         transition: none;
     }
 
-    #projects-list .project-card:hover,
-    #projects-list .project-card:focus-within,
     #projects-list .project-card:hover .project-link-arrow,
     #projects-list .project-link:focus-visible .project-link-arrow {
         transform: none;
@@ -300,14 +312,21 @@
     }
 
     #projects-list .project-card {
-        padding: 1.2rem 1rem .4rem;
+        min-height: 0;
+        padding: 1.25rem 1.2rem 1rem;
     }
 
     #projects-list .project-card-heading>h2 {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
     }
 
     #projects-list .project-card-details p {
         font-size: .95rem;
+    }
+
+    #projects-list .project-card-footer {
+        flex-wrap: wrap;
+        gap: .5rem 1rem;
+        margin-top: 1.25rem;
     }
 }
