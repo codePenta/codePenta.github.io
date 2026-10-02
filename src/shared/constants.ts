@@ -38,6 +38,7 @@ export class ProjectContexts
         "context-hobby": { de: "Freizeitprojekt", en: "Side project" },
         "context-school": { de: "Schulprojekt", en: "School project" },
         "context-apprenticeship": { de: "Ausbildungsprojekt", en: "Apprenticeship project" },
+        "context-internship": { de: "Praktikumsprojekt", en: "Internship project" },
         "context-tool": { de: "Eigenes Werkzeug", en: "Own tool" },
     };
 }
