@@ -34,7 +34,7 @@ Die Projektdaten aktualisiert `.github/workflows/update.yml` täglich: `scripts/
 Die Karten werden aus den GitHub-Repos gebaut; gepflegt wird alles über die **Topics** des jeweiligen Repos:
 
 - Normale Topics (z. B. `discord`, `bot`) erscheinen als Tags unten auf der Karte.
-- Ein Topic mit `context-`-Präfix erscheint stattdessen als Kontext-Pill oben links: `context-hobby` (Freizeitprojekt), `context-school` (Schulprojekt), `context-apprenticeship` (Ausbildungsprojekt), `context-tool` (Eigenes Werkzeug). Die Beschriftungen stehen in `src/shared/constants.ts`.
+- Ein Topic mit `context-`-Präfix erscheint stattdessen als Kontext-Pill oben links: `context-hobby` (Freizeitprojekt), `context-school` (Schulprojekt), `context-apprenticeship` (Ausbildungsprojekt), `context-internship` (Praktikumsprojekt), `context-tool` (Eigenes Werkzeug). Die Beschriftungen stehen in `src/shared/constants.ts`.
 
 Änderungen an Topics landen mit dem nächsten Lauf von `update.yml` auf der Seite.
 
