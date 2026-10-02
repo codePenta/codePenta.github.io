@@ -1,13 +1,18 @@
 {
+  "codePenta.github.io": {
+    "sourceText": "My personal portfolio website",
+    "en": "My personal portfolio website",
+    "de": "Meine persönliche Portfolio-Website"
+  },
   "DigitalResume": {
     "sourceText": "A digital way of creating a resume, because the traditional process using word annoyed me.",
     "en": "A digital way of creating a resume, because the traditional process using word annoyed me.",
     "de": "Eine digitale Methode zur Erstellung eines Lebenslaufs, da mich die herkömmliche Vorgehensweise mit Word genervt hat."
   },
   "Discord-Bot": {
-    "sourceText": "A discord bot developed for fun with a nice side effect of being my personal assistant",
-    "en": "A discord bot developed for fun with a nice side effect of being my personal assistant",
-    "de": "Ein Discord-Bot, der aus Spaß entwickelt wurde und nebenbei noch als mein persönlicher Assistent fungiert"
+    "sourceText": "A discord bot developed for fun",
+    "en": "A discord bot developed for fun",
+    "de": "Ein Discord-Bot, der nur zum Spaß entwickelt wurde"
   },
   "HotPotato": {
     "sourceText": "A school project to learn how to plan and develop an own app idea from scratch",
