@@ -10,15 +10,15 @@ export class ProjectCard
         const cardContent: HTMLDivElement = this.buildContent(project);
         const cardFooter: HTMLDivElement = this.buildFooter(project);
 
-        const card: HTMLDivElement = this.buildCard(cardHeading, cardContent, cardFooter);
+        const card: HTMLElement = this.buildCard(project, cardHeading, cardContent, cardFooter);
         return card;
     }
 
-    private buildCard(...children: (Node | string)[]): HTMLDivElement
+    private buildCard(project: Project, ...children: (Node | string)[]): HTMLElement
     {
-        const card = document.createElement("div");
+        const card = document.createElement("article");
         card.className = removePrefix(Tags.PROJECT_CARD_CLASSNAME);
-        card.dataset.language = children.length > 0 ? (children[0] as HTMLElement).dataset.language : "";
+        card.dataset.language = project.language;
 
         card.append(...children);
         return card;
@@ -28,19 +28,6 @@ export class ProjectCard
     {
         const cardHeading = document.createElement("div");
         cardHeading.className = removePrefix(Tags.PROJECT_CARD_HEADING);
-        cardHeading.dataset.language = project.language;
-
-        const h2 = document.createElement("h2");
-        h2.textContent = project.name;
-        cardHeading.append(h2);
-        return cardHeading;
-    }
-
-    private buildContent(project: Project): HTMLDivElement
-    {
-        const cardContent = document.createElement("div");
-        const isEnglish = document.documentElement.lang === "en";
-        cardContent.className = removePrefix(Tags.PROJECT_CARD_DETAILS);
 
         const projectMeta = document.createElement("div");
         projectMeta.className = "project-language";
@@ -53,21 +40,40 @@ export class ProjectCard
 
         projectMeta.append(programmingLanguage, project.language);
 
-        const projectTags = document.createElement("div");
-        projectTags.className = "project-tags";
-        project.tags.forEach(tag =>
-        {
-            const tagElement = document.createElement("span");
-            tagElement.className = "project-tag";
-            tagElement.textContent = tag;
-            projectTags.appendChild(tagElement);
-        });
+        const h2 = document.createElement("h2");
+        h2.textContent = project.name;
+        h2.title = project.name;
+
+        cardHeading.append(projectMeta, h2);
+        return cardHeading;
+    }
+
+    private buildContent(project: Project): HTMLDivElement
+    {
+        const cardContent = document.createElement("div");
+        const isEnglish = document.documentElement.lang === "en";
+        cardContent.className = removePrefix(Tags.PROJECT_CARD_DETAILS);
 
         const description = document.createElement("p");
         description.textContent = project.description === "No description available."
             ? (isEnglish ? project.description : "Keine Beschreibung verfügbar.")
             : project.description;
-        cardContent.append(projectMeta, projectTags, description);
+        cardContent.append(description);
+
+        if (project.tags.length > 0)
+        {
+            const projectTags = document.createElement("ul");
+            projectTags.className = "project-tags";
+            project.tags.forEach(tag =>
+            {
+                const tagElement = document.createElement("li");
+                tagElement.className = "project-tag";
+                tagElement.textContent = tag;
+                projectTags.appendChild(tagElement);
+            });
+            cardContent.append(projectTags);
+        }
+
         return cardContent;
     }
 
@@ -77,6 +83,7 @@ export class ProjectCard
         cardFooter.className = removePrefix(Tags.PROJECT_CARD_FOOTER);
 
         const url = document.createElement("a");
+        url.className = "project-link";
         url.href = project.url;
         url.target = "_blank";
         url.rel = "noopener noreferrer";
@@ -90,11 +97,17 @@ export class ProjectCard
         const versionControlImg = document.createElement("img");
         versionControlImg.src = `${project.versionControl}`;
         versionControlImg.alt = "";
-        versionControlImg.width = 40;
-        versionControlImg.height = 40;
+        versionControlImg.width = 28;
+        versionControlImg.height = 28;
         versionControlImg.loading = "lazy";
         versionControlImg.decoding = "async";
-        url.append(versionControlImg, linkLabel);
+
+        const arrow = document.createElement("span");
+        arrow.className = "project-link-arrow";
+        arrow.setAttribute("aria-hidden", "true");
+        arrow.textContent = "→";
+
+        url.append(versionControlImg, linkLabel, arrow);
 
         cardFooter.append(url);
         return cardFooter;
