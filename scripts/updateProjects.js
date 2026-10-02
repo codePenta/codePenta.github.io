@@ -1,4 +1,3 @@
-// updateProjects.js
 import { writeFileSync } from "node:fs";
 import { fetchPublicRepos } from "./lib/github.js";
 import { mapProject } from "./lib/mapProject.js";

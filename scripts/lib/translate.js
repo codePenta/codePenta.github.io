@@ -1,4 +1,3 @@
-// lib/translate.js
 const DEEPL_API_URL = "https://api-free.deepl.com/v2/translate";
 
 async function callDeepL(text, targetLang, apiKey)
@@ -12,7 +11,6 @@ async function callDeepL(text, targetLang, apiKey)
         body: JSON.stringify({
             text: [text],
             target_lang: targetLang,
-            // Kein source_lang -> DeepL erkennt die Ausgangssprache selbst
         }),
     });
 
@@ -23,7 +21,7 @@ async function callDeepL(text, targetLang, apiKey)
 
     return {
         text: data.translations[0].text,
-        detectedSourceLang: data.translations[0].detected_source_language, // z.B. "EN", "DE"
+        detectedSourceLang: data.translations[0].detected_source_language,
     };
 }
 
@@ -58,8 +56,6 @@ export async function translateBoth(text, apiKey)
         return { en: text, de: second.text };
     }
 
-    // Weder DE noch EN erkannt (z.B. FR) -> Original nirgendwo unübersetzt
-    // einsetzen, sondern beide Zielsprachen sauber von DeepL übersetzen lassen.
     console.warn(`Unerwartete Sprache "${first.detectedSourceLang}" erkannt für: "${text}"`);
     const second = await callDeepL(text, "DE", apiKey);
     return { en: first.text, de: second.text };

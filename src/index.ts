@@ -28,8 +28,6 @@ export class App
         document.getElementById('language-toggle')?.addEventListener('click', () =>
         {
             this.translationService.toggle();
-
-            // Reine Ableitung aus bereits geladenen Daten — kein Re-Fetch
             updateState(this.projectRepository.getLocalisedProjects(this.translationService.getLanguage()));
 
             if (projectsList)
@@ -72,9 +70,6 @@ export class App
             renderGlobalError(projectsList, error);
         }
 
-        // FIX (Robustheit): Navigation + Observer liefen vorher INNERHALB des try-Blocks.
-        // Schlug das Laden der Projekte fehl, wurde der Observer nie gestartet → Navbar komplett tot.
-        // Die Navigation hängt fachlich nicht von den Projektdaten ab, also immer starten.
         this.navigationController.initFromLocation();
         document.getElementById(this.navigationController.getActiveSectionId())
             ?.scrollIntoView({ behavior: 'auto' });

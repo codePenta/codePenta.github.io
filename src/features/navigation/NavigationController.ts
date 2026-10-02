@@ -60,7 +60,7 @@ export class NavigationController
         if (viaScroll)
         {
             this.lastObservedSectionId = id;
-            if (this.scrollLocks > 0) return; // wird nach Scroll-Ende per syncWithObservedSection() nachgeholt
+            if (this.scrollLocks > 0) return;
         }
 
         if (id === this.activeSectionId) return;
