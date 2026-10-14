@@ -20,6 +20,7 @@ export function mapGitHubReposToProjects(repos: GitHubRepoApiResponse[], i18nMap
             url: repo.url,
             imageUrl: repo.image ?? "No avatar available.",
             language,
+            caseStudyUrl: null,
             context: contextTopic ? ProjectContexts.LABELS[contextTopic][locale] : null,
             tags: topics.filter(topic => !topic.startsWith(ProjectContexts.TOPIC_PREFIX)),
             languageIconUrl: iconService.getLanguageIconUrl(language),

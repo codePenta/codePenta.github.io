@@ -102,11 +102,22 @@ export class ProjectCard
 
         const url = document.createElement("a");
         url.className = "project-link";
-        url.href = project.url;
-        url.target = "_blank";
-        url.rel = "noopener noreferrer";
         const isEnglish = document.documentElement.lang === "en";
-        const linkText = isEnglish ? "View code" : "Code ansehen";
+        let linkText: string;
+
+        if (project.caseStudyUrl)
+        {
+            // Interne Seite: gleicher Tab
+            url.href = project.caseStudyUrl;
+            linkText = isEnglish ? "Read case study" : "Case Study lesen";
+        }
+        else
+        {
+            url.href = project.url;
+            url.target = "_blank";
+            url.rel = "noopener noreferrer";
+            linkText = isEnglish ? "View code" : "Code ansehen";
+        }
         url.setAttribute("aria-label", `${project.name}: ${linkText}`);
 
         const linkLabel = document.createElement("span");
@@ -115,7 +126,7 @@ export class ProjectCard
         const arrow = document.createElement("span");
         arrow.className = "project-link-arrow";
         arrow.setAttribute("aria-hidden", "true");
-        arrow.textContent = "↗";
+        arrow.textContent = project.caseStudyUrl ? "→" : "↗";
 
         url.append(linkLabel, arrow);
 

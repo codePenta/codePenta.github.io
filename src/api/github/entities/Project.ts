@@ -22,6 +22,7 @@ export type Project = {
     language: string;
     context: string | null;
     tags: string[];
+    caseStudyUrl: string | null;
     languageIconUrl: string | null;
     versionControl: string | null;
 };

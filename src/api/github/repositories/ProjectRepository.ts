@@ -1,6 +1,7 @@
 import { GitHubRepoApiResponse, I18nMap, Locale, Project } from '../entities/Project';
 import { fetchProjects } from '../services/projectsAPI';
 import { mapGitHubReposToProjects } from '../mappers/GitHubRepoMapper';
+import { getManualProjects } from '../../manual/manualProject';
 
 export class ProjectRepository
 {
@@ -20,6 +21,9 @@ export class ProjectRepository
 
     public getLocalisedProjects(locale: Locale): Project[]
     {
-        return mapGitHubReposToProjects(this.rawProjects, this.i18nMap, locale);
+        return [
+            ...getManualProjects(locale),
+            ...mapGitHubReposToProjects(this.rawProjects, this.i18nMap, locale),
+        ]
     }
 }

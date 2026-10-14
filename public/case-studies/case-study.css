@@ -1,0 +1,536 @@
+/*
+ * Gemeinsames Stylesheet für alle Case Studies unter /case-studies/.
+ * Tokens sind eine Kopie aus src/styles/core.css – bei Änderungen dort mitziehen.
+ */
+
+:root {
+    --background: #fcf8f3;
+    --text: #07040b;
+    --primary: #472773;
+    --primary-accent-1: #c8bed5;
+    --primary-accent-2: #2b1745;
+    --primary-accent-3: #1c102e;
+    --secondary: #b59d16;
+
+    /* Abgeleitete Werte */
+    --text-soft: color-mix(in srgb, var(--text) 68%, var(--background));
+    --text-muted: color-mix(in srgb, var(--text) 48%, var(--background));
+    --surface: color-mix(in srgb, var(--primary-accent-1) 28%, var(--background));
+    --line: color-mix(in srgb, var(--primary-accent-1) 70%, var(--background));
+
+    --radius: 18px;
+    --content: 1060px;
+    --gutter: 20px;
+    /* Abstand vom Fensterrand bis zur Inhaltskante */
+    --edge: max(var(--gutter), (100% - var(--content)) / 2);
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--background);
+    color: var(--text);
+    font-family: "Kanit", system-ui, sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+}
+
+code {
+    font-family: var(--mono);
+    font-size: 0.9em;
+}
+
+/* ── Layout ─────────────────────────────────────────────── */
+
+main > *,
+.cs-cta {
+    width: min(100% - 2 * var(--gutter), var(--content));
+    margin-inline: auto;
+}
+
+main {
+    display: grid;
+    gap: 96px;
+    padding-block: 24px 64px;
+}
+
+/* ── Zurück-Link (sticky) und Sprachschalter ────────────── */
+
+/* Direktes Kind von <body>, damit sticky über die ganze Seite wirkt */
+.cs-back {
+    position: sticky;
+    top: 16px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    min-height: 40px;
+    margin: 16px 0 0 calc(var(--edge) - 14px);
+    padding: 8px 14px;
+    border: 1.5px solid transparent;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    text-decoration: none;
+    color: var(--text-muted);
+    transition: color 0.2s, margin 0.3s var(--ease), border-color 0.3s, background 0.3s, box-shadow 0.3s;
+}
+
+/* Nach dem Scrollen: schwebende Glas-Pill */
+.is-scrolled .cs-back {
+    margin-left: var(--edge);
+    border-color: var(--line);
+    background: color-mix(in srgb, var(--background) 78%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 6px 24px color-mix(in srgb, var(--primary) 12%, transparent);
+}
+
+.cs-back:hover {
+    color: var(--primary);
+}
+
+/* Text klappt ein, bleibt aber für Screenreader lesbar (kein display: none) */
+.cs-back-label {
+    max-width: 24ch;
+    margin-left: 6px;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: max-width 0.35s var(--ease), margin 0.35s var(--ease), opacity 0.2s;
+}
+
+@media (max-width: 760px) {
+    .is-scrolled .cs-back {
+        padding-inline: 13px;
+    }
+
+    .is-scrolled .cs-back-label {
+        max-width: 0;
+        margin-left: 0;
+        opacity: 0;
+    }
+}
+
+/* Scrollt normal mit weg */
+#language-toggle {
+    position: absolute;
+    top: 16px;
+    right: var(--edge);
+    padding: 8px 14px;
+    border: 1.5px solid var(--line);
+    border-radius: 999px;
+    font: 500 12px/1 "Kanit", sans-serif;
+    letter-spacing: 0.08em;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+#language-toggle:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+/* ── Typografie ─────────────────────────────────────────── */
+
+.cs-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 12px;
+}
+
+h1 {
+    font-size: clamp(40px, 6.5vw, 84px);
+    font-weight: 700;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    max-width: 14ch;
+}
+
+h1 em {
+    font-style: normal;
+    color: var(--primary);
+}
+
+h2 {
+    font-size: clamp(28px, 3.6vw, 42px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.25;
+    margin-bottom: 6px;
+}
+
+.cs-lead {
+    max-width: 58ch;
+    margin-top: 24px;
+    font-size: clamp(17px, 2vw, 19px);
+    color: var(--text-soft);
+}
+
+.cs-prose {
+    max-width: 64ch;
+    color: var(--text-soft);
+}
+
+/* ── Hero-Fakten ────────────────────────────────────────── */
+
+.cs-facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    margin-top: 48px;
+}
+
+.cs-facts div {
+    border-top: 2px solid var(--primary);
+    padding-top: 12px;
+}
+
+.cs-facts dt {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.cs-facts dd {
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+/* ── Karten ─────────────────────────────────────────────── */
+
+.cs-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    margin-top: 32px;
+}
+
+.cs-card {
+    padding: 24px;
+    border-radius: var(--radius);
+    background: var(--surface);
+    transition: transform 0.35s var(--ease), box-shadow 0.35s ease;
+}
+
+.cs-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 48px color-mix(in srgb, var(--primary) 16%, transparent);
+}
+
+.cs-card p {
+    font-size: 15px;
+    color: var(--text-soft);
+}
+
+.cs-card--wide {
+    grid-column: span 2;
+    background: var(--primary);
+    color: var(--background);
+}
+
+.cs-card--wide p {
+    color: var(--primary-accent-1);
+}
+
+.cs-tag {
+    display: inline-block;
+    margin-bottom: 14px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--primary);
+    background: color-mix(in srgb, var(--primary) 9%, transparent);
+}
+
+.cs-card--wide .cs-tag {
+    color: var(--background);
+    background: color-mix(in srgb, var(--secondary) 45%, transparent);
+}
+
+/* ── Dunkle Sektion ─────────────────────────────────────── */
+
+.cs-dark {
+    padding: clamp(40px, 7vw, 80px) clamp(24px, 5vw, 56px);
+    border-radius: 28px;
+    background:
+        radial-gradient(ellipse at 20% 0%, color-mix(in srgb, var(--primary) 55%, transparent), transparent 60%),
+        var(--primary-accent-3);
+    color: var(--background);
+}
+
+.cs-dark .cs-label {
+    color: var(--secondary);
+}
+
+.cs-dark .cs-prose,
+.cs-dark li {
+    color: var(--primary-accent-1);
+}
+
+/* ── Fluss-Diagramm (A → B → C) ─────────────────────────── */
+
+.cs-flow {
+    display: flex;
+    gap: 14px;
+    margin-top: 40px;
+    list-style: none;
+}
+
+.cs-flow > li {
+    flex: 1;
+    position: relative;
+    padding: 18px;
+    border: 1px solid color-mix(in srgb, var(--primary-accent-1) 22%, transparent);
+    border-radius: 14px;
+    background: color-mix(in srgb, var(--primary-accent-2) 60%, transparent);
+    color: var(--background);
+}
+
+.cs-flow > li:last-child {
+    flex: 2;
+    border-color: color-mix(in srgb, var(--secondary) 55%, transparent);
+}
+
+/* Pfeil zwischen den Knoten */
+.cs-flow > li + li::before {
+    content: "→";
+    position: absolute;
+    left: -14px;
+    top: 50%;
+    translate: -50% -50%;
+    color: var(--secondary);
+}
+
+.cs-flow strong {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--secondary);
+}
+
+.cs-flow small {
+    display: block;
+    margin-top: 4px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--primary-accent-1);
+}
+
+.cs-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+    list-style: none;
+}
+
+.cs-chips li {
+    padding: 3px 9px;
+    border-radius: 4px;
+    font-family: var(--mono);
+    font-size: 11px;
+    background: color-mix(in srgb, var(--primary-accent-1) 14%, transparent);
+}
+
+/* ── Entscheidungen (automatisch nummeriert) ────────────── */
+
+.cs-decisions {
+    margin-top: 32px;
+    border-top: 2px solid var(--primary);
+    list-style: none;
+    counter-reset: decision;
+}
+
+.cs-decisions li {
+    display: grid;
+    grid-template-columns: 56px 1fr 1.4fr;
+    gap: 24px;
+    padding-block: 26px;
+    border-bottom: 1px solid var(--line);
+    counter-increment: decision;
+}
+
+.cs-decisions li::before {
+    content: counter(decision, decimal-leading-zero);
+    font-weight: 600;
+    color: var(--secondary);
+}
+
+.cs-decisions p {
+    color: var(--text-soft);
+}
+
+/* ── Zwei Spalten (z. B. Learnings / Ausblick) ──────────── */
+
+.cs-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 14px;
+    margin-top: 32px;
+}
+
+.cs-columns > * {
+    padding: 28px;
+    border-radius: var(--radius);
+}
+
+.cs-columns > :not(.cs-dark) {
+    background: var(--surface);
+}
+
+.cs-columns ul {
+    display: grid;
+    gap: 12px;
+    list-style: none;
+}
+
+.cs-columns li {
+    position: relative;
+    padding-left: 22px;
+    color: var(--text-soft);
+}
+
+.cs-columns li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+}
+
+.cs-columns .cs-dark li {
+    color: var(--primary-accent-1);
+}
+
+.cs-columns .cs-dark li::before {
+    color: var(--secondary);
+}
+
+.cs-columns strong {
+    font-weight: 500;
+    color: var(--text);
+}
+
+.cs-columns .cs-dark strong {
+    color: var(--background);
+}
+
+/* ── Abschluss ──────────────────────────────────────────── */
+
+.cs-cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding-block: 48px 96px;
+    border-top: 1px solid var(--line);
+}
+
+.cs-cta p {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.cs-cta a {
+    padding: 11px 24px;
+    border-radius: 999px;
+    font-weight: 500;
+    text-decoration: none;
+    background: var(--primary);
+    color: var(--background);
+    transition: background 0.2s;
+}
+
+.cs-cta a:hover {
+    background: var(--primary-accent-2);
+}
+
+/* ── Einblenden beim Scrollen (Klasse setzt case-study.js) ── */
+
+.cs-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
+}
+
+.cs-reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+
+@media (max-width: 760px) {
+    main {
+        gap: 64px;
+    }
+
+    .cs-card--wide {
+        grid-column: auto;
+    }
+
+    .cs-flow {
+        flex-direction: column;
+        gap: 28px;
+    }
+
+    .cs-flow > li + li::before {
+        content: "↓";
+        left: 50%;
+        top: -14px;
+    }
+
+    .cs-decisions li {
+        grid-template-columns: 1fr;
+        gap: 4px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .cs-card,
+    .cs-reveal {
+        transition: none;
+    }
+}
