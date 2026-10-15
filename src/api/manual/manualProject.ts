@@ -31,7 +31,7 @@ export function getManualProjects(locale: Locale): Project[]
 
     return MANUAL_PROJECTS.map(project => ({
         name: project.name,
-        owner: "codePenta",
+        owner: "",
         description: project.description[locale],
         url: project.caseStudyUrl,
         imageUrl: "",
