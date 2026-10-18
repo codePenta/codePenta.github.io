@@ -13,22 +13,22 @@
     <script src="/case-studies/case-study.js" defer></script>
 </head>
 <body>
-    <a class="cs-back" href="/#projects">
+    <a class="casestudy-back" href="/#projects">
         <span aria-hidden="true">←</span>
-        <span class="cs-back-label" data-i18n-en="Back to projects">Zurück zu Projekten</span>
+        <span class="casestudy-back-label" data-i18n-en="Back to projects">Zurück zu Projekten</span>
     </a>
     <button id="language-toggle" type="button">EN</button>
 
     <main>
         <header>
-            <p class="cs-label">Case Study · Self-Hosting</p>
+            <p class="casestudy-label">Case Study · Self-Hosting</p>
             <h1>
                 <span data-i18n-en="My own infrastructure on">Eigene Infrastruktur auf</span>
                 <em data-i18n-en="2&nbsp;GB of RAM">2&nbsp;GB RAM</em>
             </h1>
-            <p class="cs-lead" data-i18n-en="A homelab on a Synology DS220+: Git hosting, databases, network-wide DNS filtering and container management – self-operated and reachable from anywhere through a private network.">Ein Homelab auf einer Synology DS220+: Git-Hosting, Datenbanken, netzwerkweiter DNS-Filter und Container-Verwaltung – selbst betrieben und von überall über ein privates Netzwerk erreichbar.</p>
+            <p class="casestudy-lead" data-i18n-en="A homelab on a Synology DS220+: Git hosting, databases, network-wide DNS filtering and container management – self-operated and reachable from anywhere through a private network.">Ein Homelab auf einer Synology DS220+: Git-Hosting, Datenbanken, netzwerkweiter DNS-Filter und Container-Verwaltung – selbst betrieben und von überall über ein privates Netzwerk erreichbar.</p>
 
-            <dl class="cs-facts">
+            <dl class="casestudy-facts">
                 <div><dt data-i18n-en="Role">Rolle</dt><dd data-i18n-en="Planning, setup, operations">Planung, Setup, Betrieb</dd></div>
                 <div><dt>Hardware</dt><dd>Synology DS220+ · 2&nbsp;GB RAM</dd></div>
                 <div><dt data-i18n-en="Year">Jahr</dt><dd>2026</dd></div>
@@ -37,36 +37,36 @@
         </header>
 
         <section>
-            <p class="cs-label" data-i18n-en="01 — Starting point">01 — Ausgangslage</p>
+            <p class="casestudy-label" data-i18n-en="01 — Starting point">01 — Ausgangslage</p>
             <h2 data-i18n-en="Why self-host at all?">Warum überhaupt selbst hosten?</h2>
-            <p class="cs-prose" data-i18n-en="The NAS was already there for storage. I wanted to use it as a small development platform – to understand how services, containers, DNS and networking actually fit together, instead of only consuming them as cloud products.">Das NAS war als Speicher sowieso da. Ich wollte es zu einer kleinen Entwicklungsplattform ausbauen – um zu verstehen, wie Dienste, Container, DNS und Netzwerk tatsächlich zusammenspielen, statt sie nur als Cloud-Produkt zu konsumieren.</p>
+            <p class="casestudy-prose" data-i18n-en="The NAS was already there for storage. I wanted to use it as a small development platform – to understand how services, containers, DNS and networking actually fit together, instead of only consuming them as cloud products.">Das NAS war als Speicher sowieso da. Ich wollte es zu einer kleinen Entwicklungsplattform ausbauen – um zu verstehen, wie Dienste, Container, DNS und Netzwerk tatsächlich zusammenspielen, statt sie nur als Cloud-Produkt zu konsumieren.</p>
 
-            <div class="cs-cards">
-                <article class="cs-card">
+            <div class="casestudy-cards">
+                <article class="casestudy-card">
                     <h3 data-i18n-en="Own Git server">Eigener Git-Server</h3>
                     <p data-i18n-en="Repositories on my own hardware, independent of external platforms.">Repositories auf eigener Hardware, unabhängig von externen Plattformen.</p>
                 </article>
-                <article class="cs-card">
+                <article class="casestudy-card">
                     <h3 data-i18n-en="Database playground">Datenbank-Spielwiese</h3>
                     <p data-i18n-en="A database for demos and tests that I can break and rebuild at will.">Eine Datenbank für Demos und Tests, die ich jederzeit kaputt machen und neu aufsetzen kann.</p>
                 </article>
-                <article class="cs-card">
+                <article class="casestudy-card">
                     <h3 data-i18n-en="Cleaner network">Saubereres Netzwerk</h3>
                     <p data-i18n-en="Ads and trackers blocked at DNS level for every device at home.">Werbung und Tracker auf DNS-Ebene blockiert – für jedes Gerät im Haushalt.</p>
                 </article>
-                <article class="cs-card">
+                <article class="casestudy-card">
                     <h3 data-i18n-en="Secure access from anywhere">Sicherer Zugriff von überall</h3>
                     <p data-i18n-en="Reach every service on the go without opening ports to the internet.">Alle Dienste unterwegs erreichen, ohne Ports ins Internet zu öffnen.</p>
                 </article>
             </div>
         </section>
 
-        <section class="cs-dark">
-            <p class="cs-label" data-i18n-en="02 — Architecture">02 — Architektur</p>
+        <section class="casestudy-dark">
+            <p class="casestudy-label" data-i18n-en="02 — Architecture">02 — Architektur</p>
             <h2 data-i18n-en="One box, several services">Eine Kiste, mehrere Dienste</h2>
-            <p class="cs-prose" data-i18n-en="All services run as Docker containers on the NAS and are managed through Arcane. Access goes through Tailscale; every service has its own subdomain under pentanet.work instead of an IP and port.">Alle Dienste laufen als Docker-Container auf dem NAS und werden über Arcane verwaltet. Der Zugriff läuft über Tailscale; jeder Dienst hat eine eigene Subdomain unter pentanet.work statt IP und Port.</p>
+            <p class="casestudy-prose" data-i18n-en="All services run as Docker containers on the NAS and are managed through Arcane. Access goes through Tailscale; every service has its own subdomain under pentanet.work instead of an IP and port.">Alle Dienste laufen als Docker-Container auf dem NAS und werden über Arcane verwaltet. Der Zugriff läuft über Tailscale; jeder Dienst hat eine eigene Subdomain unter pentanet.work statt IP und Port.</p>
 
-            <ol class="cs-flow" aria-label="Architektur">
+            <ol class="casestudy-flow" aria-label="Architektur">
                 <li>
                     <strong data-i18n-en="Devices">Geräte</strong>
                     <span data-i18n-en="Laptop, phone, desktop">Laptop, Smartphone, Desktop</span>
@@ -80,7 +80,7 @@
                 <li>
                     <strong>Synology DS220+</strong>
                     <span data-i18n-en="Docker, managed via Arcane">Docker, verwaltet über Arcane</span>
-                    <ul class="cs-chips">
+                    <ul class="casestudy-chips">
                         <li>Forgejo</li>
                         <li>MariaDB</li>
                         <li>phpMyAdmin</li>
@@ -92,32 +92,32 @@
         </section>
 
         <section>
-            <p class="cs-label">03 — Stack</p>
+            <p class="casestudy-label">03 — Stack</p>
             <h2 data-i18n-en="What runs on it">Was darauf läuft</h2>
 
-            <div class="cs-cards">
-                <article class="cs-card cs-card--wide">
-                    <span class="cs-tag">Git</span>
+            <div class="casestudy-cards">
+                <article class="casestudy-card casestudy-card--wide">
+                    <span class="casestudy-tag">Git</span>
                     <h3>Forgejo</h3>
                     <p data-i18n-en="Self-hosted Git forge for my repositories – web UI, issues and everything I would otherwise use an external platform for.">Selbst gehostete Git-Plattform für meine Repositories – mit Weboberfläche, Issues und allem, wofür ich sonst eine externe Plattform nutzen würde.</p>
                 </article>
-                <article class="cs-card">
-                    <span class="cs-tag" data-i18n-en="Containers">Container</span>
+                <article class="casestudy-card">
+                    <span class="casestudy-tag" data-i18n-en="Containers">Container</span>
                     <h3>Arcane</h3>
                     <p data-i18n-en="Web UI for Docker containers and Compose stacks. Replaced Portainer.">Weboberfläche für Docker-Container und Compose-Stacks. Hat Portainer abgelöst.</p>
                 </article>
-                <article class="cs-card">
-                    <span class="cs-tag" data-i18n-en="Database">Datenbank</span>
+                <article class="casestudy-card">
+                    <span class="casestudy-tag" data-i18n-en="Database">Datenbank</span>
                     <h3>MariaDB + phpMyAdmin</h3>
                     <p data-i18n-en="Separate stack for demos and tests, with a web UI for quick queries.">Eigener Stack für Demos und Tests, mit Weboberfläche für schnelle Abfragen.</p>
                 </article>
-                <article class="cs-card">
-                    <span class="cs-tag">DNS</span>
+                <article class="casestudy-card">
+                    <span class="casestudy-tag">DNS</span>
                     <h3>Pi-hole</h3>
                     <p data-i18n-en="Network-wide DNS filter that blocks ads and trackers.">Netzwerkweiter DNS-Filter, der Werbung und Tracker blockiert.</p>
                 </article>
-                <article class="cs-card">
-                    <span class="cs-tag" data-i18n-en="Network">Netzwerk</span>
+                <article class="casestudy-card">
+                    <span class="casestudy-tag" data-i18n-en="Network">Netzwerk</span>
                     <h3>Tailscale</h3>
                     <p data-i18n-en="Private mesh VPN – the NAS is only reachable for my own devices.">Privates Mesh-VPN – das NAS ist nur für meine eigenen Geräte erreichbar.</p>
                 </article>
@@ -125,10 +125,10 @@
         </section>
 
         <section>
-            <p class="cs-label" data-i18n-en="04 — Decisions">04 — Entscheidungen</p>
+            <p class="casestudy-label" data-i18n-en="04 — Decisions">04 — Entscheidungen</p>
             <h2 data-i18n-en="What I decided, and why">Was ich entschieden habe – und warum</h2>
 
-            <ol class="cs-decisions">
+            <ol class="casestudy-decisions">
                 <li>
                     <h3 data-i18n-en="Tailscale instead of port forwarding">Tailscale statt Port-Forwarding</h3>
                     <p data-i18n-en="No port on the router is open to the internet. That removes a whole class of attacks, and access is tied to my own devices instead of a password on a public login page.">Kein Port am Router ist ins Internet geöffnet. Das nimmt eine ganze Klasse von Angriffen vom Tisch, und der Zugriff hängt an meinen eigenen Geräten statt an einem Passwort auf einer öffentlichen Login-Seite.</p>
@@ -150,21 +150,21 @@
         </section>
 
         <section>
-            <p class="cs-label" data-i18n-en="05 — Status">05 — Stand</p>
+            <p class="casestudy-label" data-i18n-en="05 — Status">05 — Stand</p>
             <h2 data-i18n-en="Done for now – with room to grow">Vorerst fertig – mit Luft nach oben</h2>
-            <p class="cs-prose" data-i18n-en="The setup does what I built it for. The biggest limit isn't the software, it's the hardware.">Das Setup macht, wofür ich es gebaut habe. Die größte Grenze ist nicht die Software, sondern die Hardware.</p>
+            <p class="casestudy-prose" data-i18n-en="The setup does what I built it for. The biggest limit isn't the software, it's the hardware.">Das Setup macht, wofür ich es gebaut habe. Die größte Grenze ist nicht die Software, sondern die Hardware.</p>
 
-            <div class="cs-columns">
+            <div class="casestudy-columns">
                 <div>
-                    <h3 class="cs-label" data-i18n-en="Limits &amp; learnings">Grenzen &amp; Learnings</h3>
+                    <h3 class="casestudy-label" data-i18n-en="Limits &amp; learnings">Grenzen &amp; Learnings</h3>
                     <ul>
                         <li><strong data-i18n-en="2&nbsp;GB of RAM">2&nbsp;GB RAM</strong> <span data-i18n-en="is the bottleneck – it decides how many services can run in parallel.">sind der Flaschenhals – sie entscheiden, wie viele Dienste parallel laufen können.</span></li>
                         <li><strong data-i18n-en="Networking &amp; DNS">Netzwerk &amp; DNS</strong> <span data-i18n-en="became tangible: what a subdomain resolves to and why.">wurden greifbar: wohin eine Subdomain auflöst und warum.</span></li>
                         <li><strong data-i18n-en="Swapping tools">Tools austauschen</strong> <span data-i18n-en="(Portainer → Arcane) showed how much depends on clean Compose files.">(Portainer → Arcane) hat gezeigt, wie viel an sauberen Compose-Dateien hängt.</span></li>
                     </ul>
                 </div>
-                <div class="cs-dark">
-                    <h3 class="cs-label" data-i18n-en="Possible next steps">Mögliche nächste Schritte</h3>
+                <div class="casestudy-dark">
+                    <h3 class="casestudy-label" data-i18n-en="Possible next steps">Mögliche nächste Schritte</h3>
                     <ul>
                         <li><strong data-i18n-en="RAM upgrade">RAM-Upgrade</strong><span data-i18n-en=" to make room for more services.">, um Platz für weitere Dienste zu schaffen.</span></li>
                         <li><strong>CI/CD</strong> <span data-i18n-en="with Forgejo Actions directly on the NAS.">mit Forgejo Actions direkt auf dem NAS.</span></li>
@@ -175,7 +175,7 @@
         </section>
     </main>
 
-    <footer class="cs-cta">
+    <footer class="casestudy-cta">
         <p data-i18n-en="Questions about the setup?">Fragen zum Setup?</p>
         <a href="/#contact" data-i18n-en="Get in touch">Kontakt aufnehmen</a>
     </footer>

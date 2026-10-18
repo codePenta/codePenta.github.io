@@ -1,8 +1,3 @@
-/*
- * Gemeinsames Stylesheet für alle Case Studies unter /case-studies/.
- * Tokens sind eine Kopie aus src/styles/core.css – bei Änderungen dort mitziehen.
- */
-
 :root {
     --background: #fcf8f3;
     --text: #07040b;
@@ -12,7 +7,6 @@
     --primary-accent-3: #1c102e;
     --secondary: #b59d16;
 
-    /* Abgeleitete Werte */
     --text-soft: color-mix(in srgb, var(--text) 68%, var(--background));
     --text-muted: color-mix(in srgb, var(--text) 48%, var(--background));
     --surface: color-mix(in srgb, var(--primary-accent-1) 28%, var(--background));
@@ -21,7 +15,7 @@
     --radius: 18px;
     --content: 1060px;
     --gutter: 20px;
-    /* Abstand vom Fensterrand bis zur Inhaltskante */
+
     --edge: max(var(--gutter), (100% - var(--content)) / 2);
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
     --mono: "JetBrains Mono", ui-monospace, monospace;
@@ -60,7 +54,7 @@ code {
 /* ── Layout ─────────────────────────────────────────────── */
 
 main > *,
-.cs-cta {
+.casestudy-cta {
     width: min(100% - 2 * var(--gutter), var(--content));
     margin-inline: auto;
 }
@@ -71,10 +65,9 @@ main {
     padding-block: 24px 64px;
 }
 
-/* ── Zurück-Link (sticky) und Sprachschalter ────────────── */
+/* ── Link back and language toggle ────────────── */
 
-/* Direktes Kind von <body>, damit sticky über die ganze Seite wirkt */
-.cs-back {
+.casestudy-back {
     position: sticky;
     top: 16px;
     z-index: 10;
@@ -94,8 +87,7 @@ main {
     transition: color 0.2s, margin 0.3s var(--ease), border-color 0.3s, background 0.3s, box-shadow 0.3s;
 }
 
-/* Nach dem Scrollen: schwebende Glas-Pill */
-.is-scrolled .cs-back {
+.is-scrolled .casestudy-back {
     margin-left: var(--edge);
     border-color: var(--line);
     background: color-mix(in srgb, var(--background) 78%, transparent);
@@ -104,12 +96,11 @@ main {
     box-shadow: 0 6px 24px color-mix(in srgb, var(--primary) 12%, transparent);
 }
 
-.cs-back:hover {
+.casestudy-back:hover {
     color: var(--primary);
 }
 
-/* Text klappt ein, bleibt aber für Screenreader lesbar (kein display: none) */
-.cs-back-label {
+.casestudy-back-label {
     max-width: 24ch;
     margin-left: 6px;
     overflow: hidden;
@@ -118,18 +109,17 @@ main {
 }
 
 @media (max-width: 760px) {
-    .is-scrolled .cs-back {
+    .is-scrolled .casestudy-back {
         padding-inline: 13px;
     }
 
-    .is-scrolled .cs-back-label {
+    .is-scrolled .casestudy-back-label {
         max-width: 0;
         margin-left: 0;
         opacity: 0;
     }
 }
 
-/* Scrollt normal mit weg */
 #language-toggle {
     position: absolute;
     top: 16px;
@@ -150,9 +140,9 @@ main {
     color: var(--primary);
 }
 
-/* ── Typografie ─────────────────────────────────────────── */
+/* ── Typography ─────────────────────────────────────────── */
 
-.cs-label {
+.casestudy-label {
     font-size: 12px;
     font-weight: 500;
     letter-spacing: 0.16em;
@@ -189,33 +179,33 @@ h3 {
     margin-bottom: 6px;
 }
 
-.cs-lead {
+.casestudy-lead {
     max-width: 58ch;
     margin-top: 24px;
     font-size: clamp(17px, 2vw, 19px);
     color: var(--text-soft);
 }
 
-.cs-prose {
+.casestudy-prose {
     max-width: 64ch;
     color: var(--text-soft);
 }
 
-/* ── Hero-Fakten ────────────────────────────────────────── */
+/* ── Herofacts ────────────────────────────────────────── */
 
-.cs-facts {
+.casestudy-facts {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 14px;
     margin-top: 48px;
 }
 
-.cs-facts div {
+.casestudy-facts div {
     border-top: 2px solid var(--primary);
     padding-top: 12px;
 }
 
-.cs-facts dt {
+.casestudy-facts dt {
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.14em;
@@ -223,48 +213,48 @@ h3 {
     color: var(--text-muted);
 }
 
-.cs-facts dd {
+.casestudy-facts dd {
     font-weight: 500;
     line-height: 1.4;
 }
 
-/* ── Karten ─────────────────────────────────────────────── */
+/* ── Cards ─────────────────────────────────────────────── */
 
-.cs-cards {
+.casestudy-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 14px;
     margin-top: 32px;
 }
 
-.cs-card {
+.casestudy-card {
     padding: 24px;
     border-radius: var(--radius);
     background: var(--surface);
     transition: transform 0.35s var(--ease), box-shadow 0.35s ease;
 }
 
-.cs-card:hover {
+.casestudy-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 18px 48px color-mix(in srgb, var(--primary) 16%, transparent);
 }
 
-.cs-card p {
+.casestudy-card p {
     font-size: 15px;
     color: var(--text-soft);
 }
 
-.cs-card--wide {
+.casestudy-card--wide {
     grid-column: span 2;
     background: var(--primary);
     color: var(--background);
 }
 
-.cs-card--wide p {
+.casestudy-card--wide p {
     color: var(--primary-accent-1);
 }
 
-.cs-tag {
+.casestudy-tag {
     display: inline-block;
     margin-bottom: 14px;
     padding: 3px 10px;
@@ -277,14 +267,14 @@ h3 {
     background: color-mix(in srgb, var(--primary) 9%, transparent);
 }
 
-.cs-card--wide .cs-tag {
+.casestudy-card--wide .casestudy-tag {
     color: var(--background);
     background: color-mix(in srgb, var(--secondary) 45%, transparent);
 }
 
-/* ── Dunkle Sektion ─────────────────────────────────────── */
+/* ── Dark section ─────────────────────────────────────── */
 
-.cs-dark {
+.casestudy-dark {
     padding: clamp(40px, 7vw, 80px) clamp(24px, 5vw, 56px);
     border-radius: 28px;
     background:
@@ -293,25 +283,25 @@ h3 {
     color: var(--background);
 }
 
-.cs-dark .cs-label {
+.casestudy-dark .casestudy-label {
     color: var(--secondary);
 }
 
-.cs-dark .cs-prose,
-.cs-dark li {
+.casestudy-dark .casestudy-prose,
+.casestudy-dark li {
     color: var(--primary-accent-1);
 }
 
-/* ── Fluss-Diagramm (A → B → C) ─────────────────────────── */
+/* ── Flowchart ─────────────────────────── */
 
-.cs-flow {
+.casestudy-flow {
     display: flex;
     gap: 14px;
     margin-top: 40px;
     list-style: none;
 }
 
-.cs-flow > li {
+.casestudy-flow > li {
     flex: 1;
     position: relative;
     padding: 18px;
@@ -321,13 +311,12 @@ h3 {
     color: var(--background);
 }
 
-.cs-flow > li:last-child {
+.casestudy-flow > li:last-child {
     flex: 2;
     border-color: color-mix(in srgb, var(--secondary) 55%, transparent);
 }
 
-/* Pfeil zwischen den Knoten */
-.cs-flow > li + li::before {
+.casestudy-flow > li + li::before {
     content: "→";
     position: absolute;
     left: -14px;
@@ -336,7 +325,7 @@ h3 {
     color: var(--secondary);
 }
 
-.cs-flow strong {
+.casestudy-flow strong {
     display: block;
     margin-bottom: 6px;
     font-size: 11px;
@@ -346,7 +335,7 @@ h3 {
     color: var(--secondary);
 }
 
-.cs-flow small {
+.casestudy-flow small {
     display: block;
     margin-top: 4px;
     font-family: var(--mono);
@@ -354,7 +343,7 @@ h3 {
     color: var(--primary-accent-1);
 }
 
-.cs-chips {
+.casestudy-chips {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
@@ -362,7 +351,7 @@ h3 {
     list-style: none;
 }
 
-.cs-chips li {
+.casestudy-chips li {
     padding: 3px 9px;
     border-radius: 4px;
     font-family: var(--mono);
@@ -370,16 +359,16 @@ h3 {
     background: color-mix(in srgb, var(--primary-accent-1) 14%, transparent);
 }
 
-/* ── Entscheidungen (automatisch nummeriert) ────────────── */
+/* ── Decisions ────────────── */
 
-.cs-decisions {
+.casestudy-decisions {
     margin-top: 32px;
     border-top: 2px solid var(--primary);
     list-style: none;
     counter-reset: decision;
 }
 
-.cs-decisions li {
+.casestudy-decisions li {
     display: grid;
     grid-template-columns: 56px 1fr 1.4fr;
     gap: 24px;
@@ -388,73 +377,73 @@ h3 {
     counter-increment: decision;
 }
 
-.cs-decisions li::before {
+.casestudy-decisions li::before {
     content: counter(decision, decimal-leading-zero);
     font-weight: 600;
     color: var(--secondary);
 }
 
-.cs-decisions p {
+.casestudy-decisions p {
     color: var(--text-soft);
 }
 
-/* ── Zwei Spalten (z. B. Learnings / Ausblick) ──────────── */
+/* ── Two columns (z. B. Learnings / Improvements) ──────────── */
 
-.cs-columns {
+.casestudy-columns {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 14px;
     margin-top: 32px;
 }
 
-.cs-columns > * {
+.casestudy-columns > * {
     padding: 28px;
     border-radius: var(--radius);
 }
 
-.cs-columns > :not(.cs-dark) {
+.casestudy-columns > :not(.casestudy-dark) {
     background: var(--surface);
 }
 
-.cs-columns ul {
+.casestudy-columns ul {
     display: grid;
     gap: 12px;
     list-style: none;
 }
 
-.cs-columns li {
+.casestudy-columns li {
     position: relative;
     padding-left: 22px;
     color: var(--text-soft);
 }
 
-.cs-columns li::before {
+.casestudy-columns li::before {
     content: "→";
     position: absolute;
     left: 0;
     color: var(--primary);
 }
 
-.cs-columns .cs-dark li {
+.casestudy-columns .casestudy-dark li {
     color: var(--primary-accent-1);
 }
 
-.cs-columns .cs-dark li::before {
+.casestudy-columns .casestudy-dark li::before {
     color: var(--secondary);
 }
 
-.cs-columns strong {
+.casestudy-columns strong {
     font-weight: 500;
     color: var(--text);
 }
 
-.cs-columns .cs-dark strong {
+.casestudy-columns .casestudy-dark strong {
     color: var(--background);
 }
 
-/* ── Abschluss ──────────────────────────────────────────── */
+/* ── Ending ──────────────────────────────────────────── */
 
-.cs-cta {
+.casestudy-cta {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -464,12 +453,12 @@ h3 {
     border-top: 1px solid var(--line);
 }
 
-.cs-cta p {
+.casestudy-cta p {
     font-size: 24px;
     font-weight: 600;
 }
 
-.cs-cta a {
+.casestudy-cta a {
     padding: 11px 24px;
     border-radius: 999px;
     font-weight: 500;
@@ -479,19 +468,19 @@ h3 {
     transition: background 0.2s;
 }
 
-.cs-cta a:hover {
+.casestudy-cta a:hover {
     background: var(--primary-accent-2);
 }
 
-/* ── Einblenden beim Scrollen (Klasse setzt case-study.js) ── */
+/* ── Managed by case-study.js ── */
 
-.cs-reveal {
+.casestudy-reveal {
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
 }
 
-.cs-reveal.is-visible {
+.casestudy-reveal.is-visible {
     opacity: 1;
     transform: none;
 }
@@ -503,22 +492,22 @@ h3 {
         gap: 64px;
     }
 
-    .cs-card--wide {
+    .casestudy-card--wide {
         grid-column: auto;
     }
 
-    .cs-flow {
+    .casestudy-flow {
         flex-direction: column;
         gap: 28px;
     }
 
-    .cs-flow > li + li::before {
+    .casestudy-flow > li + li::before {
         content: "↓";
         left: 50%;
         top: -14px;
     }
 
-    .cs-decisions li {
+    .casestudy-decisions li {
         grid-template-columns: 1fr;
         gap: 4px;
     }
@@ -529,8 +518,8 @@ h3 {
         scroll-behavior: auto;
     }
 
-    .cs-card,
-    .cs-reveal {
+    .casestudy-card,
+    .casestudy-reveal {
         transition: none;
     }
 }
