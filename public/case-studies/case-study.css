@@ -14,6 +14,7 @@
     --secondary: #b59d16;
     --primary-on: var(--background);
     --primary-on-soft: var(--primary-accent-1);
+    --dark-surface-text: var(--background);
 
     /* Abgeleitete Werte */
     --text-soft: color-mix(in srgb, var(--text) 68%, var(--background));
@@ -42,6 +43,7 @@
         --secondary: #e4c65a;
         --primary-on: #100e13;
         --primary-on-soft: #453b50;
+        --dark-surface-text: var(--text);
     }
 }
 
@@ -308,7 +310,15 @@ h3 {
     background:
         radial-gradient(ellipse at 20% 0%, color-mix(in srgb, var(--primary) 55%, transparent), transparent 60%),
         var(--primary-accent-3);
-    color: var(--background);
+    color: var(--dark-surface-text);
+}
+
+@media (prefers-color-scheme: dark) {
+    .cs-dark {
+        background:
+            radial-gradient(ellipse at 20% 0%, color-mix(in srgb, var(--primary) 18%, transparent), transparent 60%),
+            var(--primary-accent-3);
+    }
 }
 
 .cs-dark .cs-label {
@@ -336,7 +346,7 @@ h3 {
     border: 1px solid color-mix(in srgb, var(--primary-accent-1) 22%, transparent);
     border-radius: 14px;
     background: color-mix(in srgb, var(--primary-accent-2) 60%, transparent);
-    color: var(--background);
+    color: var(--dark-surface-text);
 }
 
 .cs-flow > li:last-child {
@@ -514,7 +524,7 @@ h3 {
 }
 
 .cs-columns .cs-dark strong {
-    color: var(--background);
+    color: var(--dark-surface-text);
 }
 
 /* ── Abschluss ──────────────────────────────────────────── */
