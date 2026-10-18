@@ -16,7 +16,6 @@
     --primary-on-soft: var(--primary-accent-1);
     --dark-surface-text: var(--background);
 
-    /* Abgeleitete Werte */
     --text-soft: color-mix(in srgb, var(--text) 68%, var(--background));
     --text-muted: color-mix(in srgb, var(--text) 48%, var(--background));
     --surface: color-mix(in srgb, var(--primary-accent-1) 28%, var(--background));
@@ -25,7 +24,6 @@
     --radius: 18px;
     --content: 1060px;
     --gutter: 20px;
-    /* Abstand vom Fensterrand bis zur Inhaltskante */
     --edge: max(var(--gutter), (100% - var(--content)) / 2);
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
     --mono: "JetBrains Mono", ui-monospace, monospace;
