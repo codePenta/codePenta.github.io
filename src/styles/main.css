@@ -12,6 +12,7 @@ body {
     line-height: 1.5;
     scroll-snap-type: y mandatory;
     background: var(--background);
+    color: var(--text);
 }
 
 html {
@@ -104,7 +105,7 @@ h1 {
 }
 
 h2 {
-    color: var(--primary-accent-3);
+    color: var(--text);
 }
 
 section {
@@ -123,7 +124,7 @@ section>div {
 
 .sub-title {
     font-size: clamp(1.4rem, 2vw, 2rem);
-    color: var(--primary-accent-3);
+    color: var(--text);
     max-width: 38rem;
 }
 
@@ -143,7 +144,7 @@ section>div {
 .home-intro,
 .contact-copy {
     max-width: 36rem;
-    color: var(--primary-accent-3);
+    color: var(--text);
     font-size: 1.15rem;
 }
 
@@ -173,7 +174,7 @@ section>div {
     border-radius: 6px;
     font-size: 1rem;
     text-decoration: none;
-    transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .2s ease, box-shadow .2s ease;
 }
 
 .button-primary {
@@ -189,12 +190,19 @@ section>div {
 .button:hover,
 .button:focus-visible {
     transform: translateY(-2px);
+    box-shadow: 0 5px 16px color-mix(in srgb, var(--primary) 22%, transparent);
+}
+
+.button:active {
+    transform: translateY(0);
+    box-shadow: none;
 }
 
 .button-primary:hover,
 .button-primary:focus-visible {
-    background: var(--primary-accent-3);
-    border-color: var(--primary-accent-3);
+    background: var(--primary-hover);
+    border-color: var(--primary-hover);
+    color: var(--primary-hover-foreground);
 }
 
 .button-secondary:hover,
@@ -280,7 +288,7 @@ section>div {
 
 .about-point p {
     margin: .75rem 0 0;
-    color: var(--primary-accent-3);
+    color: var(--text);
     font-size: 1rem;
     line-height: 1.55;
 }

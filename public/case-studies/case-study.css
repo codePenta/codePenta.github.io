@@ -388,6 +388,53 @@ h3 {
     background: color-mix(in srgb, var(--primary-accent-1) 14%, transparent);
 }
 
+/* ── Begriffe aufklappbar (<details>, kein JS nötig) ────── */
+
+.cs-explain {
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+}
+
+.cs-explain summary {
+    width: fit-content;
+    cursor: pointer;
+    font-weight: 500;
+    list-style: none;
+}
+
+.cs-explain summary::-webkit-details-marker {
+    display: none;
+}
+
+.cs-explain summary::before {
+    content: "+";
+    display: inline-block;
+    width: 1.2em;
+    color: var(--secondary);
+    transition: transform 0.25s var(--ease);
+}
+
+.cs-explain[open] summary::before {
+    transform: rotate(45deg);
+}
+
+.cs-explain dl {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 12px 28px;
+    margin-top: 20px;
+    max-width: 72ch;
+}
+
+.cs-explain dt {
+    font-weight: 500;
+}
+
+.cs-explain dd {
+    opacity: 0.8;
+}
+
 /* ── Entscheidungen (automatisch nummeriert) ────────────── */
 
 .cs-decisions {
@@ -539,6 +586,15 @@ h3 {
     .cs-decisions li {
         grid-template-columns: 1fr;
         gap: 4px;
+    }
+
+    .cs-explain dl {
+        grid-template-columns: 1fr;
+        gap: 2px;
+    }
+
+    .cs-explain dd {
+        margin-bottom: 10px;
     }
 }
 

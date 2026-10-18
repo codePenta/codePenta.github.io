@@ -1,14 +1,37 @@
 :root {
+    color-scheme: light;
     --background: #fcf8f3;
-
     --text: #07040b;
-
     --primary: #472773;
+    --primary-background: var(--primary);
+    --primary-foreground: var(--background);
+    --primary-hover: var(--primary-accent-3);
+    --primary-hover-foreground: var(--background);
     --primary-accent-1: #c8bed5;
     --primary-accent-2: #2b1745;
     --primary-accent-3: #1c102e;
-
     --secondary: #b59d16;
+    --border-primary: #c8bed5;
+    --surface-text: var(--background);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+        --background: #100e13;
+        --text: #f5effa;
+        --primary: #b69ad9;
+        --primary-background: var(--primary);
+        --primary-foreground: var(--background);
+        --primary-hover: #9e81c0;
+        --primary-hover-foreground: var(--background);
+        --border-primary: #60359c;
+        --primary-accent-1: #d4c4e5;
+        --primary-accent-2: #31223f;
+        --primary-accent-3: #19151f;
+        --secondary: #e4c65a;
+        --surface-text: var(--text);
+    }
 }
 
 /* Base fonts */

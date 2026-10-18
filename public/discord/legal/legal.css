@@ -1,4 +1,5 @@
 :root {
+  color-scheme: light;
   --bg: #fcf8f3;
   --surface: #f3ecdf;
   --border: #c8bed5;
@@ -7,6 +8,19 @@
   --gold: #b59d16;
   --purple: #472773;
   --purple-dark: #2b1745;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --bg: #100e13;
+    --surface: #211b29;
+    --border: #554765;
+    --text: #f5effa;
+    --text-muted: #d4c4e5;
+    --gold: #e4c65a;
+    --purple: #b69ad9;
+    --purple-dark: #31223f;
+  }
 }
 * { box-sizing: border-box; }
 body {

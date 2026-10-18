@@ -8,9 +8,7 @@ function readStoredLanguage() {
     try {
         const stored = localStorage.getItem(STORAGE_KEY);
         if (stored === "de" || stored === "en") return stored;
-    } catch {
-        // Speicher blockiert (z. B. privater Modus) → Browser-Sprache
-    }
+    } catch {}
     return navigator.language.toLowerCase().startsWith("en") ? "en" : "de";
 }
 

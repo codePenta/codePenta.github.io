@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Homelab · Case Study · pentanet.work</title>
-    <meta name="description" content="Case Study: Selbst betriebene Infrastruktur auf einer Synology DS220+ – Forgejo, MariaDB, Pi-hole, Arcane und Tailscale, erreichbar unter *.pentanet.work." />
+    <meta name="description" content="Case Study: Meine eigene kleine Cloud zuhause – Code-Ablage, Werbefilter und sicherer Zugriff von unterwegs auf einer Synology DS220+ mit Forgejo, Pi-hole, MariaDB, Arcane und Tailscale." />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,14 +23,14 @@
         <header>
             <p class="cs-label">Case Study · Self-Hosting</p>
             <h1>
-                <span data-i18n-en="My own infrastructure on">Eigene Infrastruktur auf</span>
-                <em data-i18n-en="2&nbsp;GB of RAM">2&nbsp;GB RAM</em>
+                <span data-i18n-en="My own little cloud –">Meine eigene kleine Cloud –</span>
+                <em data-i18n-en="in a shoebox at home">im Schuhkarton zuhause</em>
             </h1>
-            <p class="cs-lead" data-i18n-en="A homelab on a Synology DS220+: Git hosting, databases, network-wide DNS filtering and container management – self-operated and reachable from anywhere through a private network.">Ein Homelab auf einer Synology DS220+: Git-Hosting, Datenbanken, netzwerkweiter DNS-Filter und Container-Verwaltung – selbst betrieben und von überall über ein privates Netzwerk erreichbar.</p>
+            <p class="cs-lead" data-i18n-en="Instead of keeping my code and tools with big providers, I run them on a small device in my living room. It filters ads for the whole household and I can reach everything securely from anywhere – only I can get in.">Statt meinen Code und meine Werkzeuge bei großen Anbietern abzulegen, betreibe ich sie auf einem kleinen Gerät in meinem Wohnzimmer. Es filtert nebenbei Werbung für den ganzen Haushalt, und ich erreiche alles sicher von unterwegs – nur ich komme rein.</p>
 
             <dl class="cs-facts">
-                <div><dt data-i18n-en="Role">Rolle</dt><dd data-i18n-en="Planning, setup, operations">Planung, Setup, Betrieb</dd></div>
-                <div><dt>Hardware</dt><dd>Synology DS220+ · 2&nbsp;GB RAM</dd></div>
+                <div><dt data-i18n-en="Role">Rolle</dt><dd data-i18n-en="Planning, setup, operations">Planung, Aufbau, Betrieb</dd></div>
+                <div><dt data-i18n-en="Device">Gerät</dt><dd>Synology DS220+ · 2&nbsp;GB RAM</dd></div>
                 <div><dt data-i18n-en="Year">Jahr</dt><dd>2026</dd></div>
                 <div><dt>Status</dt><dd data-i18n-en="Done for now – room to grow">Vorerst fertig – Luft nach oben</dd></div>
             </dl>
@@ -38,48 +38,48 @@
 
         <section>
             <p class="cs-label" data-i18n-en="01 — Starting point">01 — Ausgangslage</p>
-            <h2 data-i18n-en="Why self-host at all?">Warum überhaupt selbst hosten?</h2>
-            <p class="cs-prose" data-i18n-en="The NAS was already there for storage. I wanted to use it as a small development platform – to understand how services, containers, DNS and networking actually fit together, instead of only consuming them as cloud products.">Das NAS war als Speicher sowieso da. Ich wollte es zu einer kleinen Entwicklungsplattform ausbauen – um zu verstehen, wie Dienste, Container, DNS und Netzwerk tatsächlich zusammenspielen, statt sie nur als Cloud-Produkt zu konsumieren.</p>
+            <h2 data-i18n-en="Why run it myself?">Warum selbst betreiben?</h2>
+            <p class="cs-prose" data-i18n-en="I already had a network storage device (NAS) at home – basically a small, always-on computer for files. I wanted to get more out of it and, above all, understand how the services we use every day actually work behind the scenes.">Bei mir zuhause stand schon ein Netzwerkspeicher (NAS) – im Grunde ein kleiner Computer, der rund um die Uhr läuft und Dateien speichert. Ich wollte mehr daraus machen und vor allem verstehen, wie die Dienste, die wir alle täglich nutzen, hinter den Kulissen funktionieren.</p>
 
             <div class="cs-cards">
                 <article class="cs-card">
-                    <h3 data-i18n-en="Own Git server">Eigener Git-Server</h3>
-                    <p data-i18n-en="Repositories on my own hardware, independent of external platforms.">Repositories auf eigener Hardware, unabhängig von externen Plattformen.</p>
+                    <h3 data-i18n-en="My code stays with me">Mein Code bleibt bei mir</h3>
+                    <p data-i18n-en="A storage place for my programming projects, on my own device instead of on someone else's servers.">Eine Ablage für meine Programmierprojekte – auf meinem eigenen Gerät statt auf fremden Servern.</p>
                 </article>
                 <article class="cs-card">
-                    <h3 data-i18n-en="Database playground">Datenbank-Spielwiese</h3>
-                    <p data-i18n-en="A database for demos and tests that I can break and rebuild at will.">Eine Datenbank für Demos und Tests, die ich jederzeit kaputt machen und neu aufsetzen kann.</p>
+                    <h3 data-i18n-en="Room to experiment">Platz zum Ausprobieren</h3>
+                    <p data-i18n-en="A database I can test with freely – if something breaks, I simply rebuild it.">Eine Datenbank, mit der ich frei testen kann. Geht etwas kaputt, baue ich sie einfach neu auf.</p>
                 </article>
                 <article class="cs-card">
-                    <h3 data-i18n-en="Cleaner network">Saubereres Netzwerk</h3>
-                    <p data-i18n-en="Ads and trackers blocked at DNS level for every device at home.">Werbung und Tracker auf DNS-Ebene blockiert – für jedes Gerät im Haushalt.</p>
+                    <h3 data-i18n-en="Fewer ads for everyone">Weniger Werbung für alle</h3>
+                    <p data-i18n-en="Ads and trackers are blocked for every device at home – phone, laptop, TV – without installing anything on them.">Werbung und Tracker werden für jedes Gerät im Haushalt blockiert – Handy, Laptop, Fernseher – ohne dort etwas zu installieren.</p>
                 </article>
                 <article class="cs-card">
-                    <h3 data-i18n-en="Secure access from anywhere">Sicherer Zugriff von überall</h3>
-                    <p data-i18n-en="Reach every service on the go without opening ports to the internet.">Alle Dienste unterwegs erreichen, ohne Ports ins Internet zu öffnen.</p>
+                    <h3 data-i18n-en="Reachable – but only for me">Erreichbar – aber nur für mich</h3>
+                    <p data-i18n-en="I can use everything on the go, while the device stays invisible to the rest of the internet.">Ich kann alles von unterwegs nutzen, während das Gerät für den Rest des Internets unsichtbar bleibt.</p>
                 </article>
             </div>
         </section>
 
         <section class="cs-dark">
-            <p class="cs-label" data-i18n-en="02 — Architecture">02 — Architektur</p>
-            <h2 data-i18n-en="One box, several services">Eine Kiste, mehrere Dienste</h2>
-            <p class="cs-prose" data-i18n-en="All services run as Docker containers on the NAS and are managed through Arcane. Access goes through Tailscale; every service has its own subdomain under pentanet.work instead of an IP and port.">Alle Dienste laufen als Docker-Container auf dem NAS und werden über Arcane verwaltet. Der Zugriff läuft über Tailscale; jeder Dienst hat eine eigene Subdomain unter pentanet.work statt IP und Port.</p>
+            <p class="cs-label" data-i18n-en="02 — How it fits together">02 — So hängt alles zusammen</p>
+            <h2 data-i18n-en="One device, several apartments">Ein Gerät, mehrere Wohnungen</h2>
+            <p class="cs-prose" data-i18n-en="Think of the NAS as a small apartment building. Every service lives in its own apartment, so they don't get in each other's way. Each apartment has its own doorbell sign – a readable address. And only my own devices have a key to the front door.">Stell dir das NAS wie ein kleines Mehrfamilienhaus vor: Jeder Dienst wohnt in seiner eigenen Wohnung und kommt den anderen nicht in die Quere. Jede Wohnung hat ein eigenes Klingelschild – eine lesbare Adresse. Und einen Schlüssel für die Haustür haben nur meine eigenen Geräte.</p>
 
-            <ol class="cs-flow" aria-label="Architektur">
+            <ol class="cs-flow" aria-label="Aufbau">
                 <li>
-                    <strong data-i18n-en="Devices">Geräte</strong>
-                    <span data-i18n-en="Laptop, phone, desktop">Laptop, Smartphone, Desktop</span>
+                    <strong data-i18n-en="My devices">Meine Geräte</strong>
+                    <span data-i18n-en="Laptop, phone, desktop">Laptop, Handy, PC</span>
                     <small data-i18n-en="at home or on the go">zuhause oder unterwegs</small>
                 </li>
                 <li>
-                    <strong data-i18n-en="Access">Zugang</strong>
-                    <span>Tailscale</span>
-                    <small>*.pentanet.work</small>
+                    <strong data-i18n-en="The key">Der Schlüssel</strong>
+                    <span data-i18n-en="Private network">Privates Netzwerk</span>
+                    <small>Tailscale · *.pentanet.work</small>
                 </li>
                 <li>
-                    <strong>Synology DS220+</strong>
-                    <span data-i18n-en="Docker, managed via Arcane">Docker, verwaltet über Arcane</span>
+                    <strong data-i18n-en="The building">Das Haus</strong>
+                    <span data-i18n-en="NAS with one apartment per service">NAS mit einer Wohnung pro Dienst</span>
                     <ul class="cs-chips">
                         <li>Forgejo</li>
                         <li>MariaDB</li>
@@ -89,37 +89,53 @@
                     </ul>
                 </li>
             </ol>
+
+            <details class="cs-explain">
+                <summary data-i18n-en="Terms briefly explained">Begriffe kurz erklärt</summary>
+                <dl>
+                    <dt>NAS</dt>
+                    <dd data-i18n-en="Network storage – a small computer that runs around the clock and stores files for the whole household.">Netzwerkspeicher – ein kleiner Computer, der rund um die Uhr läuft und Dateien für den ganzen Haushalt speichert.</dd>
+                    <dt data-i18n-en="Container (Docker)">Container (Docker)</dt>
+                    <dd data-i18n-en="The &quot;apartments&quot;: each program runs sealed off from the others and can be moved or replaced without affecting the rest.">Die „Wohnungen“: Jedes Programm läuft abgeschottet von den anderen und lässt sich austauschen, ohne den Rest zu stören.</dd>
+                    <dt>Tailscale</dt>
+                    <dd data-i18n-en="The &quot;key&quot;: a private network that connects only my devices – like a hidden tunnel that nobody else can see.">Der „Schlüssel“: ein privates Netzwerk, das nur meine Geräte verbindet – wie ein versteckter Tunnel, den sonst niemand sieht.</dd>
+                    <dt>Subdomain</dt>
+                    <dd data-i18n-en="The &quot;doorbell sign&quot;: a readable address such as git.example.com instead of a string of numbers.">Das „Klingelschild“: eine lesbare Adresse wie git.example.com statt einer Zahlenfolge.</dd>
+                    <dt>RAM</dt>
+                    <dd data-i18n-en="Working memory. It determines how many programs can run at the same time – and 2 GB is not much.">Arbeitsspeicher. Er bestimmt, wie viele Programme gleichzeitig laufen können – und 2&nbsp;GB sind nicht viel.</dd>
+                </dl>
+            </details>
         </section>
 
         <section>
-            <p class="cs-label">03 — Stack</p>
-            <h2 data-i18n-en="What runs on it">Was darauf läuft</h2>
+            <p class="cs-label" data-i18n-en="03 — What runs on it">03 — Was darauf läuft</p>
+            <h2 data-i18n-en="Five services, five jobs">Fünf Dienste, fünf Aufgaben</h2>
 
             <div class="cs-cards">
                 <article class="cs-card cs-card--wide">
-                    <span class="cs-tag">Git</span>
-                    <h3>Forgejo</h3>
-                    <p data-i18n-en="Self-hosted Git forge for my repositories – web UI, issues and everything I would otherwise use an external platform for.">Selbst gehostete Git-Plattform für meine Repositories – mit Weboberfläche, Issues und allem, wofür ich sonst eine externe Plattform nutzen würde.</p>
+                    <span class="cs-tag">Forgejo</span>
+                    <h3 data-i18n-en="Storage for my code">Ablage für meinen Code</h3>
+                    <p data-i18n-en="Like GitHub, just at home: every version of my projects is saved, so I can always go back to an earlier state.">Wie GitHub, nur zuhause: Jede Version meiner Projekte wird gespeichert, sodass ich jederzeit zu einem früheren Stand zurückkann.</p>
                 </article>
                 <article class="cs-card">
-                    <span class="cs-tag" data-i18n-en="Containers">Container</span>
-                    <h3>Arcane</h3>
-                    <p data-i18n-en="Web UI for Docker containers and Compose stacks. Replaced Portainer.">Weboberfläche für Docker-Container und Compose-Stacks. Hat Portainer abgelöst.</p>
+                    <span class="cs-tag">Arcane</span>
+                    <h3 data-i18n-en="Control panel">Schaltzentrale</h3>
+                    <p data-i18n-en="Shows which services are running and lets me start, stop or update them with a click.">Zeigt, welche Dienste laufen, und lässt mich sie per Klick starten, stoppen oder aktualisieren.</p>
                 </article>
                 <article class="cs-card">
-                    <span class="cs-tag" data-i18n-en="Database">Datenbank</span>
-                    <h3>MariaDB + phpMyAdmin</h3>
-                    <p data-i18n-en="Separate stack for demos and tests, with a web UI for quick queries.">Eigener Stack für Demos und Tests, mit Weboberfläche für schnelle Abfragen.</p>
+                    <span class="cs-tag">MariaDB · phpMyAdmin</span>
+                    <h3 data-i18n-en="Test database">Test-Datenbank</h3>
+                    <p data-i18n-en="Structured data storage for my own experiments, with a web view to look inside.">Ein strukturierter Datenspeicher für eigene Experimente – mit einer Weboberfläche, um hineinzuschauen.</p>
                 </article>
                 <article class="cs-card">
-                    <span class="cs-tag">DNS</span>
-                    <h3>Pi-hole</h3>
-                    <p data-i18n-en="Network-wide DNS filter that blocks ads and trackers.">Netzwerkweiter DNS-Filter, der Werbung und Tracker blockiert.</p>
+                    <span class="cs-tag">Pi-hole</span>
+                    <h3 data-i18n-en="Ad filter">Werbefilter</h3>
+                    <p data-i18n-en="Checks every request to the internet and quietly drops the ones that lead to ads or trackers.">Prüft jede Anfrage ins Internet und verwirft still die, die zu Werbung oder Trackern führen.</p>
                 </article>
                 <article class="cs-card">
-                    <span class="cs-tag" data-i18n-en="Network">Netzwerk</span>
-                    <h3>Tailscale</h3>
-                    <p data-i18n-en="Private mesh VPN – the NAS is only reachable for my own devices.">Privates Mesh-VPN – das NAS ist nur für meine eigenen Geräte erreichbar.</p>
+                    <span class="cs-tag">Tailscale</span>
+                    <h3 data-i18n-en="Private access">Privater Zugang</h3>
+                    <p data-i18n-en="Connects my devices to the NAS from anywhere – without opening it up to the internet.">Verbindet meine Geräte von überall mit dem NAS – ohne es fürs Internet zu öffnen.</p>
                 </article>
             </div>
         </section>
@@ -130,21 +146,21 @@
 
             <ol class="cs-decisions">
                 <li>
-                    <h3 data-i18n-en="Tailscale instead of port forwarding">Tailscale statt Port-Forwarding</h3>
-                    <p data-i18n-en="No port on the router is open to the internet. That removes a whole class of attacks, and access is tied to my own devices instead of a password on a public login page.">Kein Port am Router ist ins Internet geöffnet. Das nimmt eine ganze Klasse von Angriffen vom Tisch, und der Zugriff hängt an meinen eigenen Geräten statt an einem Passwort auf einer öffentlichen Login-Seite.</p>
+                    <h3 data-i18n-en="No open door to the internet">Keine offene Tür ins Internet</h3>
+                    <p data-i18n-en="The usual way would be to open a gateway in the router (port forwarding). Then anyone on the internet could knock. With Tailscale, that door doesn't exist – only my own devices get in.">Der übliche Weg wäre, im Router ein Tor zu öffnen (Port-Forwarding). Dann könnte jeder im Internet anklopfen. Mit Tailscale gibt es diese Tür gar nicht – rein kommen nur meine eigenen Geräte.</p>
                 </li>
                 <li>
-                    <h3 data-i18n-en="Subdomains instead of IP:port">Subdomains statt IP:Port</h3>
-                    <p data-i18n-en="Every service has a readable address under *.pentanet.work. Easier to remember, easier to bookmark, and it reuses the domain I already own for my portfolio.">Jeder Dienst hat eine lesbare Adresse unter *.pentanet.work. Leichter zu merken, leichter als Lesezeichen – und es nutzt die Domain, die ich für mein Portfolio ohnehin habe.</p>
+                    <h3 data-i18n-en="Names instead of numbers">Namen statt Zahlen</h3>
+                    <p data-i18n-en="Every service has a readable address under my domain pentanet.work instead of a string of numbers. Easier to remember, easier to bookmark – and I reuse the domain I already have for this portfolio.">Jeder Dienst hat eine lesbare Adresse unter meiner Domain pentanet.work statt einer Zahlenfolge aus IP und Port. Leichter zu merken, leichter als Lesezeichen – und ich nutze die Domain, die ich für dieses Portfolio ohnehin habe.</p>
                 </li>
                 <li>
-                    <h3 data-i18n-en="Switching from Portainer to Arcane">Wechsel von Portainer zu Arcane</h3>
+                    <h3 data-i18n-en="A leaner control panel">Eine schlankere Schaltzentrale</h3>
                     <!-- TODO: durch deine eigene Begründung ersetzen -->
-                    <p data-i18n-en="Portainer worked, but felt heavier than I needed. Arcane focuses on what I actually use: containers and Compose stacks, in a leaner interface.">Portainer hat funktioniert, war mir aber schwerer als nötig. Arcane konzentriert sich auf das, was ich tatsächlich nutze: Container und Compose-Stacks, in einer schlankeren Oberfläche.</p>
+                    <p data-i18n-en="I started with Portainer, but it could do far more than I needed. Arcane focuses on the essentials, which keeps it clearer to use.">Angefangen habe ich mit Portainer, das aber viel mehr konnte, als ich brauchte. Arcane beschränkt sich aufs Wesentliche und ist dadurch übersichtlicher.</p>
                 </li>
                 <li>
-                    <h3 data-i18n-en="Few services, chosen deliberately">Wenige Dienste, bewusst gewählt</h3>
-                    <p data-i18n-en="With 2 GB of RAM, every container competes for memory. Instead of installing everything that sounds interesting, each service has to earn its place.">Bei 2&nbsp;GB RAM konkurriert jeder Container um Speicher. Statt alles zu installieren, was spannend klingt, muss sich jeder Dienst seinen Platz verdienen.</p>
+                    <h3 data-i18n-en="Fewer services, chosen deliberately">Lieber wenige Dienste, dafür bewusst</h3>
+                    <p data-i18n-en="With only 2 GB of working memory, every service takes space from the others. So instead of installing everything that sounds interesting, each one has to earn its place.">Mit nur 2&nbsp;GB Arbeitsspeicher nimmt jeder Dienst den anderen Platz weg. Statt alles zu installieren, was spannend klingt, muss sich deshalb jeder seinen Platz verdienen.</p>
                 </li>
             </ol>
         </section>
@@ -152,23 +168,23 @@
         <section>
             <p class="cs-label" data-i18n-en="05 — Status">05 — Stand</p>
             <h2 data-i18n-en="Done for now – with room to grow">Vorerst fertig – mit Luft nach oben</h2>
-            <p class="cs-prose" data-i18n-en="The setup does what I built it for. The biggest limit isn't the software, it's the hardware.">Das Setup macht, wofür ich es gebaut habe. Die größte Grenze ist nicht die Software, sondern die Hardware.</p>
+            <p class="cs-prose" data-i18n-en="Everything does what I built it for. The biggest limit isn't the software, it's the device's small working memory.">Alles macht, wofür ich es gebaut habe. Die größte Grenze ist nicht die Software, sondern der knappe Arbeitsspeicher des Geräts.</p>
 
             <div class="cs-columns">
                 <div>
-                    <h3 class="cs-label" data-i18n-en="Limits &amp; learnings">Grenzen &amp; Learnings</h3>
+                    <h3 class="cs-label" data-i18n-en="What I learned">Was ich gelernt habe</h3>
                     <ul>
-                        <li><strong data-i18n-en="2&nbsp;GB of RAM">2&nbsp;GB RAM</strong> <span data-i18n-en="is the bottleneck – it decides how many services can run in parallel.">sind der Flaschenhals – sie entscheiden, wie viele Dienste parallel laufen können.</span></li>
-                        <li><strong data-i18n-en="Networking &amp; DNS">Netzwerk &amp; DNS</strong> <span data-i18n-en="became tangible: what a subdomain resolves to and why.">wurden greifbar: wohin eine Subdomain auflöst und warum.</span></li>
-                        <li><strong data-i18n-en="Swapping tools">Tools austauschen</strong> <span data-i18n-en="(Portainer → Arcane) showed how much depends on clean Compose files.">(Portainer → Arcane) hat gezeigt, wie viel an sauberen Compose-Dateien hängt.</span></li>
+                        <li><strong data-i18n-en="Resources are finite.">Ressourcen sind endlich.</strong> <span data-i18n-en="On a small device you have to prioritise – a good exercise for any software project.">Auf einem kleinen Gerät muss man priorisieren – eine gute Übung für jedes Softwareprojekt.</span></li>
+                        <li><strong data-i18n-en="Networks became tangible.">Netzwerke wurden greifbar.</strong> <span data-i18n-en="How a name leads to the right service is no longer magic to me.">Wie ein Name zum richtigen Dienst führt, ist für mich keine Magie mehr.</span></li>
+                        <li><strong data-i18n-en="Good order pays off.">Ordnung zahlt sich aus.</strong> <span data-i18n-en="Because every service is cleanly described in its own file, swapping the control panel was quick.">Weil jeder Dienst sauber in einer eigenen Datei beschrieben ist, war der Wechsel der Schaltzentrale schnell erledigt.</span></li>
                     </ul>
                 </div>
                 <div class="cs-dark">
                     <h3 class="cs-label" data-i18n-en="Possible next steps">Mögliche nächste Schritte</h3>
                     <ul>
-                        <li><strong data-i18n-en="RAM upgrade">RAM-Upgrade</strong><span data-i18n-en=" to make room for more services.">, um Platz für weitere Dienste zu schaffen.</span></li>
-                        <li><strong>CI/CD</strong> <span data-i18n-en="with Forgejo Actions directly on the NAS.">mit Forgejo Actions direkt auf dem NAS.</span></li>
-                        <li><strong>Infrastructure as Code</strong><span data-i18n-en=": all Compose files versioned in one repo.">: alle Compose-Dateien versioniert in einem Repo.</span></li>
+                        <li><strong data-i18n-en="More working memory">Mehr Arbeitsspeicher</strong><span data-i18n-en=", to make room for more services.">, um Platz für weitere Dienste zu schaffen.</span></li>
+                        <li><strong data-i18n-en="Automatic checks">Automatische Prüfungen</strong><span data-i18n-en=": code is tested on the NAS every time I save it (CI/CD).">: Code wird bei jedem Speichern direkt auf dem NAS getestet (CI/CD).</span></li>
+                        <li><strong data-i18n-en="Rebuild at the push of a button">Neuaufbau per Knopfdruck</strong><span data-i18n-en=": the whole setup described in files, so it can be restored any time (Infrastructure as Code).">: das ganze Setup in Dateien beschrieben, sodass es sich jederzeit wiederherstellen lässt (Infrastructure as Code).</span></li>
                     </ul>
                 </div>
             </div>
