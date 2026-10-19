@@ -109,7 +109,7 @@ main {
 .is-scrolled .casestudy-back {
     margin-left: var(--edge);
     border-color: var(--line);
-    background: color-mix(in srgb, var(--background) 78%, transparent);
+    background: color-mix(in srgb, var(--background) 80%, transparent);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 6px 24px color-mix(in srgb, var(--primary) 12%, transparent);
@@ -265,7 +265,7 @@ h3 {
 
 .casestudy-card--wide {
     grid-column: span 2;
-    background: var(--primary);
+    background: color-mix(in srgb, var(--primary) 55%, transparent);
     color: var(--primary-on);
 }
 
@@ -386,6 +386,108 @@ h3 {
     background: color-mix(in srgb, var(--primary-accent-1) 14%, transparent);
 }
 
+/* ── Terms ─────────────────────────────────────────────── */
+
+.cs-explain {
+    margin-top: 32px;
+    padding: 0 18px 4px;
+    border: 1px solid color-mix(in srgb, var(--primary-accent-1) 22%, transparent);
+    border-top: 2px solid var(--secondary);
+    border-radius: 12px;
+    background:
+        linear-gradient(135deg, color-mix(in srgb, var(--primary) 10%, transparent), transparent 55%),
+        color-mix(in srgb, var(--primary-accent-2) 35%, var(--primary-accent-3));
+}
+
+.cs-explain summary {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 30px;
+    align-items: center;
+    column-gap: 14px;
+    padding-block: 16px 14px;
+    color: var(--dark-surface-text);
+    font-weight: 500;
+    cursor: pointer;
+    list-style: none;
+}
+
+.cs-explain summary::before {
+    grid-column: 1 / -1;
+    content: "REFERENCE / 05";
+    color: var(--secondary);
+    font: 400 10px/1.4 var(--mono);
+}
+
+.cs-explain summary::-webkit-details-marker {
+    display: none;
+}
+
+.cs-explain summary::after {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    aspect-ratio: 1;
+    border: 1px solid color-mix(in srgb, var(--secondary) 45%, transparent);
+    border-radius: 50%;
+    content: "+";
+    color: var(--secondary);
+    font: 400 19px/1 var(--mono);
+    transition: background-color 0.2s, color 0.2s, rotate 0.3s var(--ease);
+}
+
+.cs-explain[open] summary::after {
+    content: "−";
+    background: color-mix(in srgb, var(--secondary) 14%, transparent);
+}
+
+.cs-explain summary:hover::after {
+    background: color-mix(in srgb, var(--secondary) 18%, transparent);
+}
+
+.cs-explain summary:focus-visible {
+    outline: 2px solid var(--secondary);
+    outline-offset: 4px;
+}
+
+.cs-explain dl {
+    display: grid;
+    grid-template-columns: minmax(145px, 0.4fr) minmax(0, 1fr);
+    column-gap: 24px;
+    padding: 4px 0 18px;
+    counter-reset: term;
+}
+
+.cs-explain dt {
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    align-items: baseline;
+    padding: 14px 0 8px;
+    border-top: 1px solid color-mix(in srgb, var(--primary-accent-1) 16%, transparent);
+    color: var(--secondary);
+    font-family: var(--mono);
+    font-size: 13px;
+    counter-increment: term;
+}
+
+.cs-explain dt:first-of-type {
+    padding-top: 0;
+    border-top: 0;
+}
+
+.cs-explain dt::before {
+    content: counter(term, decimal-leading-zero);
+    color: color-mix(in srgb, var(--secondary) 58%, transparent);
+    font-size: 10px;
+}
+
+.cs-explain dd {
+    grid-column: 2;
+    padding: 14px 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--primary-accent-1) 16%, transparent);
+    color: var(--primary-accent-1);
+    font-size: 14px;
+}
+
 /* ── Decisions ────────────── */
 
 .casestudy-decisions {
@@ -465,7 +567,7 @@ h3 {
 }
 
 .casestudy-columns .casestudy-dark strong {
-    color: var(--background);
+    color: var(--dark-surface-text);
 }
 
 /* ── Ending ──────────────────────────────────────────── */
@@ -541,11 +643,16 @@ h3 {
 
     .cs-explain dl {
         grid-template-columns: 1fr;
-        gap: 2px;
+        gap: 0;
     }
 
     .cs-explain dd {
-        margin-bottom: 10px;
+        grid-column: 1;
+        padding: 0 0 14px calc(2rem + 10px);
+    }
+
+    .cs-explain dd {
+        margin-bottom: 0;
     }
 }
 
