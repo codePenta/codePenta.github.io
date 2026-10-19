@@ -1,6 +1,6 @@
 # codePenta — Portfolio
 
-Persönliche Portfolio- und Projektübersichtsseite. Läuft live unter [pentanet.work](https://pentanet.work), gehostet über GitHub Pages.
+Persönliche Portfolio- und Projektübersichtsseite mit eigenständigen, zweisprachigen Case Studies. Läuft live unter [pentanet.work](https://pentanet.work), gehostet über GitHub Pages.
 
 Die Seite lädt Projektmetadaten von GitHub, filtert sie nach Sprache, und zeigt sie in einem responsiven Bento-artigen Layout — mit einer kontextsensitiven Navigation, die sich abhängig vom sichtbaren Bereich verändert, und vollständiger DE/EN-Zweisprachigkeit.
 
@@ -50,6 +50,10 @@ Custom Domain: `pentanet.work`, per `public/CNAME` + vier `A`-Records (`185.199.
 .
 ├── documentation/                    # Mermaid-Diagramme + Architektur-Notizen
 ├── public/
+│   ├── case-studies/
+│   │   ├── case-study.css             # Gemeinsame Darstellung der Case Studies
+│   │   ├── case-study.js              # Sprache, Scrollzustand und Reveal-Effekte
+│   │   └── homelab/index.html         # Homelab-Case-Study
 │   ├── assets/                       # Farbpalette
 │   ├── data/projects.json            # Von scripts/updateProjects.js generierte Projektdaten
 │   └── CNAME                         # Custom-Domain-Konfiguration für GitHub Pages
