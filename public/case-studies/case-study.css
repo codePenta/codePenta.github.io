@@ -432,12 +432,13 @@ h3 {
     content: "+";
     color: var(--secondary);
     font: 400 19px/1 var(--mono);
-    transition: background-color 0.2s, color 0.2s, rotate 0.3s var(--ease);
+    transition: background-color 0.2s, color 0.2s, transform 0.25s var(--ease);
 }
 
 .cs-explain[open] summary::after {
     content: "−";
     background: color-mix(in srgb, var(--secondary) 14%, transparent);
+    transform: scale(1.06);
 }
 
 .cs-explain summary:hover::after {
@@ -455,6 +456,43 @@ h3 {
     column-gap: 24px;
     padding: 4px 0 18px;
     counter-reset: term;
+}
+
+.cs-explain[open] dt,
+.cs-explain[open] dd {
+    animation: cs-term-reveal 0.36s var(--ease) both;
+}
+
+.cs-explain[open] dt:nth-of-type(2),
+.cs-explain[open] dd:nth-of-type(2) {
+    animation-delay: 0.06s;
+}
+
+.cs-explain[open] dt:nth-of-type(3),
+.cs-explain[open] dd:nth-of-type(3) {
+    animation-delay: 0.12s;
+}
+
+.cs-explain[open] dt:nth-of-type(4),
+.cs-explain[open] dd:nth-of-type(4) {
+    animation-delay: 0.18s;
+}
+
+.cs-explain[open] dt:nth-of-type(5),
+.cs-explain[open] dd:nth-of-type(5) {
+    animation-delay: 0.24s;
+}
+
+@keyframes cs-term-reveal {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .cs-explain dt {
@@ -662,7 +700,11 @@ h3 {
     }
 
     .casestudy-card,
-    .casestudy-reveal {
+    .casestudy-reveal,
+    .cs-explain[open] dt,
+    .cs-explain[open] dd,
+    .cs-explain summary::after {
         transition: none;
+        animation: none;
     }
 }
