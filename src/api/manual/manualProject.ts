@@ -18,7 +18,7 @@ const MANUAL_PROJECTS: ManualProject[] = [
             de: "Selbst betriebene Infrastruktur auf einer Synology DS220+ – Forgejo, MariaDB, Pi-hole und Arcane, erreichbar über Tailscale unter *.pentanet.work.",
             en: "Self-hosted infrastructure on a Synology DS220+ – Forgejo, MariaDB, Pi-hole and Arcane, reachable via Tailscale under *.pentanet.work.",
         },
-        language: "Infrastructure",
+        language: "Infra",
         context: "context-hobby",
         tags: ["self-hosting", "docker", "forgejo", "tailscale"],
         caseStudyUrl: "/case-studies/homelab/",
